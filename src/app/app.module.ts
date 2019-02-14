@@ -43,6 +43,7 @@ import {
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { ProfilePageComponent } from './components/pages/profile-page/profile-pa
     MatTooltipModule,
     MatTreeModule,
     FlexLayoutModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

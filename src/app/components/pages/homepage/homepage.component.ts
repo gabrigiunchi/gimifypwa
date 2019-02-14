@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-homepage',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  message = '';
+
+  constructor(private mainService: MainService) { }
 
   ngOnInit() {
+    this.mainService.greetings().subscribe(e => {
+      console.log(e);
+      this.message = e.message;
+    });
   }
 
 }
