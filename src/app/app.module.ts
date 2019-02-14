@@ -42,11 +42,13 @@ import {
   MatTreeModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent
+    HomepageComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
