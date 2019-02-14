@@ -44,6 +44,8 @@ import {
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -92,6 +94,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatTreeModule,
     FlexLayoutModule,
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]
