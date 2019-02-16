@@ -20,6 +20,8 @@ export class LoginService {
     const url = this.urlService.getRestUrl(CONSTANTS.LOGIN_URL);
     return this.http.post<Token>(url, {username: 'gabrigiunchi', password: 'aaaa'})
       .pipe(tap((result: Token) => {
+        console.log('Login successfull');
+        console.log(result.token);
         this.sessionService.token = result.token;
       }));
   }

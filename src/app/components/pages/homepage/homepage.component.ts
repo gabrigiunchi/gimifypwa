@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CONSTANTS } from 'src/app/constants';
+import {Component, OnInit} from '@angular/core';
+import {CONSTANTS} from 'src/app/constants';
 import {LoginService} from 'src/app/services/server-communication/login.service';
 import {UserService} from 'src/app/services/server-communication/user.service';
 
@@ -15,10 +15,13 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private loginService: LoginService) { }
+    private loginService: LoginService) {}
 
   ngOnInit() {
-    // this.loginService.login().subscribe(() => this.getUsers());
+  }
+
+  fetchData() {
+    this.loginService.login().subscribe(() => this.getUsers());
   }
 
   private getUsers() {
