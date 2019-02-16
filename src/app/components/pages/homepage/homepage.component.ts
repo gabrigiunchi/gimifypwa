@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MainService } from 'src/app/services/main.service';
 import { CONSTANTS } from 'src/app/constants';
+import {LoginService} from 'src/app/services/server-communication/login.service';
+import {UserService} from 'src/app/services/server-communication/user.service';
 
 @Component({
   selector: 'app-homepage',
@@ -12,13 +13,16 @@ export class HomepageComponent implements OnInit {
   message = '';
   readonly version = CONSTANTS.VERSION;
 
-  constructor(private mainService: MainService) { }
+  constructor(
+    private userService: UserService,
+    private loginService: LoginService) { }
 
   ngOnInit() {
-    this.mainService.greetings().subscribe(e => {
-      console.log(e);
-      this.message = e.message;
-    });
+    // this.loginService.login().subscribe(() => this.getUsers());
+  }
+
+  private getUsers() {
+    this.userService.getUsers().subscribe(result => console.log(result));
   }
 
 }
