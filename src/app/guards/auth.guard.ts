@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate {
 
     if (this.sessionService.token) {
       console.log('Token found, checking if it is valid');
-      return this.loginService.checkToken().pipe(
+      return this.loginService.checkToken(this.sessionService.token).pipe(
         tap(result => {
           if (result) {
             console.log('Token valid');

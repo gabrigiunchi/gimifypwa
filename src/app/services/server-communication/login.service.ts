@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {CONSTANTS} from 'src/app/constants';
 import {UrlService} from '../url.service';
-import {tap, delay} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 import {SessionService} from '../session.service';
 import {Token} from 'src/app/model/dto/token';
 import {Credentials} from 'src/app/model/dto/credentials';
@@ -43,13 +43,13 @@ export class LoginService {
       }));
   }
 
-  checkToken(): Observable<boolean> {
+  checkToken(token: string): Observable<boolean> {
     this._isLoading = true;
-    return of(false).pipe(
-      delay(2000),
-      tap(result => {
-        console.log('Server responsed, the token is ' + (result ? 'valid' : 'invalid'));
-        this._isLoggedIn = result;
+    const url = this.urlService.getRestUrl(CONSTANTS.LOGIN_URL + '/token');
+    return this.http.post<boolean>(url, token).pipe(
+      tap(valid => {
+        console.log('Server responsed, the token is ' + (valid ? 'valid' : 'invalid'));
+        this._isLoggedIn = valid;
         this._isLoading = false;
       })
     );
