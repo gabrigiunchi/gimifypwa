@@ -1,9 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomepageComponent } from './components/pages/homepage/homepage.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HomepageComponent} from './components/pages/homepage/homepage.component';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -40,22 +40,31 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
+  MatFormFieldModule,
 } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {ProfilePageComponent} from './components/pages/profile-page/profile-page.component';
+import {HttpClientModule} from '@angular/common/http';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
+import {LoginComponent} from './components/pages/login/login.component';
+import {WaitingPageComponent} from './components/pages/waiting-page/waiting-page.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    LoginComponent,
+    WaitingPageComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    MatFormFieldModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatBadgeModule,
@@ -94,9 +103,9 @@ import { environment } from '../environments/environment';
     MatTreeModule,
     FlexLayoutModule,
     HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

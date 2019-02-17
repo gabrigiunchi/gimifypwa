@@ -1,3 +1,4 @@
-<div class="mat-typography">
-    <router-outlet></router-outlet>
+<div class="mat-typography" [style.height]="'100%'">
+    <router-outlet *ngIf="!isLoading"></router-outlet>
+    <app-waiting-page *ngIf="isLoading" [style.height]="'100%'"></app-waiting-page>
 </div>

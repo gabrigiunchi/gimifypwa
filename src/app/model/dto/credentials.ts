@@ -1,4 +1,4 @@
-export interface ValidationUser {
+export interface Credentials {
     username: string;
     password: string;
 }
