@@ -43,6 +43,11 @@ export class LoginService {
       }));
   }
 
+  logout() {
+    this._isLoggedIn = false;
+    this.sessionService.clear();
+  }
+
   checkToken(token: string): Observable<boolean> {
     this._isLoading = true;
     const url = this.urlService.getRestUrl(CONSTANTS.LOGIN_URL + '/token');

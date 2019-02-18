@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {LocalStorageKey} from '../model/local-storage-key';
 
 @Injectable({
@@ -6,7 +6,7 @@ import {LocalStorageKey} from '../model/local-storage-key';
 })
 export class SessionService {
 
-  constructor() { }
+  constructor() {}
 
   set token(token: string) {
     localStorage.setItem(LocalStorageKey.token, token);
@@ -14,5 +14,9 @@ export class SessionService {
 
   get token(): string {
     return localStorage.getItem(LocalStorageKey.token);
+  }
+
+  clear() {
+    localStorage.clear();
   }
 }

@@ -50,6 +50,7 @@ import {environment} from '../environments/environment';
 import {LoginComponent} from './components/pages/login/login.component';
 import {WaitingPageComponent} from './components/pages/waiting-page/waiting-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ToolbarComponent } from './components/layout/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     HomepageComponent,
     ProfilePageComponent,
     LoginComponent,
-    WaitingPageComponent
+    WaitingPageComponent,
+    ToolbarComponent
   ],
   imports: [
     FormsModule,
