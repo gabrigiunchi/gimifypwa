@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {CONSTANTS} from 'src/app/constants';
 import {UrlService} from '../url.service';
 import {tap} from 'rxjs/operators';
@@ -31,12 +31,12 @@ export class LoginService {
 
   login(username: string, password: string): Observable<Token> {
     const credentials: Credentials = {username: username, password: password};
-    console.log('Logging in as ', credentials);
+    console.log('Logging in as ' + credentials.username);
 
     const url = this.urlService.getRestUrl(CONSTANTS.LOGIN_URL);
     return this.http.post<Token>(url, credentials)
       .pipe(tap((result: Token) => {
-        console.log('Login successfull');
+        console.log('Login successful');
         console.log(result.token);
         this.sessionService.token = result.token;
         this._isLoggedIn = true;
