@@ -14,4 +14,8 @@ export class AppComponent {
   get isLoading(): boolean {
     return this.loginService.isLoading;
   }
+
+  get isLoggedIn(): boolean {
+    return this.loginService.isLoggedIn;
+  }
 }
