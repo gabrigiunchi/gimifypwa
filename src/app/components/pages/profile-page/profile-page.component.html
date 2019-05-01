@@ -1,3 +1,4 @@
-<p>
-  profile-page works!
-</p>
+<div fxLayout="column" *ngIf="userInfo$ | async as userInfo">
+  <div>{{userInfo.name}}</div>
+  <div>{{userInfo.surname}}</div>
+</div>

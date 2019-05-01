@@ -16,7 +16,12 @@ export class HomepageComponent {
   constructor(private aliveService: AliveService, private loginService: LoginService) {}
 
   fetchData() {
-    this.aliveService.check().subscribe(result => this.message = 'Wow that is amazing');
+    this.aliveService.check().subscribe(
+      result => {
+        this.message = result.message;
+        console.log(result);
+      },
+      () => console.error('Something went wrong'));
   }
 
   logout() {
