@@ -9,6 +9,7 @@ import {LoginComponent} from './components/pages/login/login.component';
 import {ProfilePageComponent} from './components/pages/profile-page/profile-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ToolbarComponent} from './components/layout/toolbar/toolbar.component';
+import {FooterComponent} from './components/layout/footer/footer.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -20,6 +21,7 @@ describe('AppComponent', () => {
         LoginComponent,
         ProfilePageComponent,
         ToolbarComponent,
+        FooterComponent
       ],
       imports: [
         RouterTestingModule,
@@ -30,7 +32,6 @@ describe('AppComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         MatInputModule,
-
       ],
 
     }).compileComponents();

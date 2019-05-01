@@ -11,7 +11,7 @@ describe('HomepageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomepageComponent, ProfilePageComponent],
+      declarations: [HomepageComponent],
       imports: [
         MatIconModule,
         HttpClientModule,

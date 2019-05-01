@@ -52,6 +52,7 @@ import {WaitingPageComponent} from './components/pages/waiting-page/waiting-page
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ToolbarComponent } from './components/layout/toolbar/toolbar.component';
 import { DatePipe } from './pipes/date.pipe';
+import { FooterComponent } from './components/layout/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { DatePipe } from './pipes/date.pipe';
     LoginComponent,
     WaitingPageComponent,
     ToolbarComponent,
-    DatePipe
+    DatePipe,
+    FooterComponent
   ],
   imports: [
     FormsModule,

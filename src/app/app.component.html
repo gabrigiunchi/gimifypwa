@@ -2,6 +2,7 @@
     <div *ngIf="!isLoading">
         <app-toolbar></app-toolbar>
         <router-outlet></router-outlet>
+        <app-footer id="footer"></app-footer>
     </div>
     <app-waiting-page *ngIf="isLoading" [style.height]="'100%'"></app-waiting-page>
 </div>
