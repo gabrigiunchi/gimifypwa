@@ -1,9 +1,9 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {GymsPageComponent} from './gyms-page.component';
-import {MatListModule} from '@angular/material';
+import {MatListModule, MatProgressSpinnerModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import {LoadingComponent} from '../../layout/loading/loading.component';
 
 describe('GymsPageComponent', () => {
   let component: GymsPageComponent;
@@ -11,11 +11,12 @@ describe('GymsPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [GymsPageComponent],
+      declarations: [GymsPageComponent, LoadingComponent],
       imports: [
         MatListModule,
         RouterModule.forRoot([]),
-        HttpClientModule
+        HttpClientModule,
+        MatProgressSpinnerModule
       ]
     })
       .compileComponents();
