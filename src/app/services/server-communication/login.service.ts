@@ -7,6 +7,7 @@ import {tap} from 'rxjs/operators';
 import {SessionService} from '../session.service';
 import {Token} from 'src/app/model/dto/token';
 import {Credentials} from 'src/app/model/dto/credentials';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class LoginService {
   private _isLoading = false;
 
   constructor(
+    private router: Router,
     private sessionService: SessionService,
     private urlService: UrlService, private http: HttpClient) {}
 
@@ -44,8 +46,10 @@ export class LoginService {
   }
 
   logout() {
+    console.log('Logging out...');
     this._isLoggedIn = false;
     this.sessionService.clear();
+    this.router.navigateByUrl('/login');
   }
 
   checkToken(token: string): Observable<boolean> {

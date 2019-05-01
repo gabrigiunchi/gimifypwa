@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {LoginComponent} from './login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatInputModule, MatProgressSpinnerModule} from '@angular/material';
+import {MatInputModule, MatProgressSpinnerModule, MatSnackBarModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -21,7 +21,8 @@ describe('LoginComponent', () => {
         MatInputModule,
         MatProgressSpinnerModule,
         HttpClientModule,
-        RouterModule.forRoot([])
+        RouterModule.forRoot([]),
+        MatSnackBarModule
       ]
     })
       .compileComponents();

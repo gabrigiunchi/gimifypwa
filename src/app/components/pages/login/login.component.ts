@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, Validators, FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoginService} from 'src/app/services/server-communication/login.service';
+import {SnackbarService} from 'src/app/services/snackbar.service';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -17,20 +19,29 @@ export class LoginComponent implements OnInit {
 
   isLoading = false;
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(
+    private snackbarService: SnackbarService,
+    private loginService: LoginService,
+    private router: Router) {}
 
   ngOnInit() {
   }
 
   login() {
     this.isLoading = true;
-    this.loginService.login(this.username, this.password).subscribe(loggedIn => {
-      this.isLoading = false;
-      if (loggedIn) {
-        const url = this.loginService.redirectUrl ? this.loginService.redirectUrl : '/home';
-        this.router.navigate([url]);
-      }
-    });
+    this.loginService.login(this.username, this.password)
+      .pipe(finalize(() => this.isLoading = false))
+      .subscribe(
+        loggedIn => {
+          if (loggedIn) {
+            const url = this.loginService.redirectUrl ? this.loginService.redirectUrl : '/home';
+            this.router.navigate([url]);
+          }
+        },
+        () => {
+          console.log('Login failed');
+          this.snackbarService.show('Username and/or password incorrect');
+        });
   }
 
   private get username(): string {
