@@ -11,7 +11,10 @@ export const CONSTANTS = {
     LOGIN_URL: 'login',
     GREETINGS_URL: 'greetings',
     USERS_URL: 'users',
+    RESERVATIONS: 'reservations',
     MY_RESERVATIONS: 'reservations/me',
-    GYMS: 'gyms'
+    GYMS: 'gyms',
+    ASSETS: 'assets',
+    TIMETABLES: 'timetables',
 };
 

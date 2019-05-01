@@ -1,3 +1,4 @@
-export enum AssetKind {
-
+export interface AssetKind {
+    id: number;
+    name: string;
 }
