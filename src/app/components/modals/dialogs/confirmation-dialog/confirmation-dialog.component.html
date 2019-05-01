@@ -1,0 +1,13 @@
+<div fxLayout="column" fxLayoutAlign="center" class="mat-typography" fxLayoutGap="1rem">
+  <h2>{{data.title}}</h2>
+  <h3>{{data.message}}</h3>
+  <div [ngClass]="{'vertical' : data.vertical, 'horizontal': !data.vertical}">
+    <button mat-button [color]="data.cancelColor" (click)="cancel()">
+      {{data.cancelAction | uppercase}}
+    </button>
+
+    <button mat-button [color]="data.confirmColor" (click)="confirm()">
+      {{data.confirmAction | uppercase}}
+    </button>
+  </div>
+</div>

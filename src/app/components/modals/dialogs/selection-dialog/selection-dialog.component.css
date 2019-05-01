@@ -1,0 +1,12 @@
+cdk-virtual-scroll-viewport {
+  height: 15.5rem;
+}
+
+mat-radio-group {
+  padding: 2rem;
+}
+
+h2, .footer {
+  padding: 1rem;
+  margin: 0;
+}
