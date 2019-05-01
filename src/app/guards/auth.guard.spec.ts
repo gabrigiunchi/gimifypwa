@@ -1,7 +1,7 @@
-import {TestBed, inject} from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 import {AuthGuard} from './auth.guard';
 import {HttpClientModule} from '@angular/common/http';
-import {RouterModule, Router} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import {LoginService} from '../services/server-communication/login.service';
 import {SessionService} from '../services/session.service';
 import {of} from 'rxjs';
@@ -38,7 +38,8 @@ describe('AuthGuard', () => {
     const sessionService: SessionService = TestBed.get(SessionService);
     sessionService.clear();
     spyOnProperty(loginService, 'isLoggedIn', 'get').and.returnValue(false);
-    spyOn(TestBed.get(Router), 'navigateByUrl').and.callFake(() => {});
+    spyOn(TestBed.get(Router), 'navigateByUrl').and.callFake(() => {
+    });
     guard.checkLogin('abcde').subscribe(result => {
       expect(result).toBe(false);
       expect(loginService.redirectUrl).toBe('abcde');

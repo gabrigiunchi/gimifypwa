@@ -3,9 +3,9 @@ import {Schedule} from './schedule';
 import {DateInterval} from './date-interval';
 
 export interface Timetable {
-    gym: Gym;
-    openings: Schedule[];
-    closingDays: DateInterval[];
-    exceptionalOpenings: DateInterval[];
-    recurringExceptions: string;
+  gym: Gym;
+  openings: Schedule[];
+  closingDays: DateInterval[];
+  exceptionalOpenings: DateInterval[];
+  recurringExceptions: string;
 }

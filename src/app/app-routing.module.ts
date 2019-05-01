@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {HomepageComponent} from './components/pages/homepage/homepage.component';
 import {ProfilePageComponent} from './components/pages/profile-page/profile-page.component';
 import {AuthGuard} from './guards/auth.guard';
@@ -27,4 +27,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

@@ -13,7 +13,8 @@ import {AssetKind} from 'src/app/model/entities/asset-kind';
 })
 export class AssetService {
 
-  constructor(private http: HttpClient, private urlService: UrlService) {}
+  constructor(private http: HttpClient, private urlService: UrlService) {
+  }
 
   getAssets(page: number, size: number): Observable<Page<Asset>> {
     const url = this.urlService.getRestUrl(`${CONSTANTS.ASSETS}/page/${page}/size/${size}`);

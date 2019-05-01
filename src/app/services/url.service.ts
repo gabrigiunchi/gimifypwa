@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { CONSTANTS } from '../constants';
+import {Injectable} from '@angular/core';
+import {CONSTANTS} from '../constants';
 import {SessionService} from './session.service';
 import {HttpHeaders} from '@angular/common/http';
 
@@ -8,16 +8,17 @@ import {HttpHeaders} from '@angular/common/http';
 })
 export class UrlService {
 
-  constructor(private sessionService: SessionService) { }
+  constructor(private sessionService: SessionService) {
+  }
 
   getRestUrl(suffix: string): string {
     return CONSTANTS.BASE_URL + suffix;
   }
 
-  get authenticationHeader(): {headers: HttpHeaders} {
+  get authenticationHeader(): { headers: HttpHeaders } {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
+        'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.sessionService.token
       })
     };

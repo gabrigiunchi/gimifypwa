@@ -11,7 +11,8 @@ import {City} from 'src/app/model/entities/city';
 })
 export class GymService {
 
-  constructor(private http: HttpClient, private urlService: UrlService) {}
+  constructor(private http: HttpClient, private urlService: UrlService) {
+  }
 
   get gyms(): Observable<Gym[]> {
     return this.http.get<Gym[]>(this.urlService.getRestUrl(CONSTANTS.GYMS), this.urlService.authenticationHeader);

@@ -14,7 +14,8 @@ export class GymDetailsComponent implements OnInit {
   gym$: Observable<Gym>;
   rating$: Observable<number>;
 
-  constructor(private gymService: GymService, private route: ActivatedRoute) {}
+  constructor(private gymService: GymService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');

@@ -15,7 +15,8 @@ import {City} from 'src/app/model/entities/city';
 })
 export class ReservationService {
 
-  constructor(private http: HttpClient, private urlService: UrlService) {}
+  constructor(private http: HttpClient, private urlService: UrlService) {
+  }
 
   get myFutureReservations(): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(this.urlService.getRestUrl(CONSTANTS.MY_RESERVATIONS), this.urlService.authenticationHeader);

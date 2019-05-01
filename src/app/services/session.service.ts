@@ -6,7 +6,8 @@ import {LocalStorageKey} from '../model/local-storage-key';
 })
 export class SessionService {
 
-  constructor() {}
+  constructor() {
+  }
 
   set token(token: string) {
     localStorage.setItem(LocalStorageKey.token, token);

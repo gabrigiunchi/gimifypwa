@@ -12,7 +12,8 @@ export class GymsPageComponent implements OnInit {
 
   gyms$: Observable<Gym[]>;
 
-  constructor(private gymService: GymService) {}
+  constructor(private gymService: GymService) {
+  }
 
   ngOnInit() {
     this.gyms$ = this.gymService.gyms;

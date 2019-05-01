@@ -8,7 +8,8 @@ import {LoginService} from './services/server-communication/login.service';
 })
 export class AppComponent {
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService) {
+  }
 
   get isLoading(): boolean {
     return this.loginService.isLoading;

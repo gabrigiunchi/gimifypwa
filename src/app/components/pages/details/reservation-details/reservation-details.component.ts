@@ -13,7 +13,8 @@ export class ReservationDetailsComponent implements OnInit {
 
   reservation$: Observable<Reservation>;
 
-  constructor(private reservationService: ReservationService, private route: ActivatedRoute) {}
+  constructor(private reservationService: ReservationService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');

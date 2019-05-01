@@ -3,7 +3,6 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ReservationDetailsComponent} from './reservation-details.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
-import {MatListModule} from '@angular/material';
 
 describe('ReservationDetailsComponent', () => {
   let component: ReservationDetailsComponent;

@@ -3,7 +3,6 @@ import {HomepageComponent} from './homepage.component';
 import {MatIconModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
-import {ProfilePageComponent} from '../profile-page/profile-page.component';
 
 describe('HomepageComponent', () => {
   let component: HomepageComponent;

@@ -1,4 +1,4 @@
 export interface AssetKind {
-    id: number;
-    name: string;
+  id: number;
+  name: string;
 }

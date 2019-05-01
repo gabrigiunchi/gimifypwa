@@ -11,7 +11,8 @@ export enum SnackbarMessage {
 })
 export class SnackbarService {
 
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(private snackBar: MatSnackBar) {
+  }
 
   show(message: SnackbarMessage | string, action = '', duration = 2000): void {
     this.snackBar.open(message, action, {duration: duration});

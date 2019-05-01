@@ -1,4 +1,4 @@
 export interface Token {
-    username: string;
-    token: string;
+  username: string;
+  token: string;
 }

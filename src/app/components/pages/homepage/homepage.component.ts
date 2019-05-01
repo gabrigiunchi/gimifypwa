@@ -13,7 +13,8 @@ export class HomepageComponent {
   message = '';
   readonly version = CONSTANTS.VERSION;
 
-  constructor(private aliveService: AliveService, private loginService: LoginService) {}
+  constructor(private aliveService: AliveService, private loginService: LoginService) {
+  }
 
   fetchData() {
     this.aliveService.check().subscribe(

@@ -11,7 +11,8 @@ import {CONSTANTS} from 'src/app/constants';
 })
 export class TimetableService {
 
-  constructor(private http: HttpClient, private urlService: UrlService) {}
+  constructor(private http: HttpClient, private urlService: UrlService) {
+  }
 
   getTimetableOfGym(gym: Gym): Observable<Timetable> {
     const url = this.urlService.getRestUrl(`${CONSTANTS.TIMETABLES}/by_gym/${gym.id}`);

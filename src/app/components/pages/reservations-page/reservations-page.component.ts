@@ -12,7 +12,8 @@ export class ReservationsPageComponent implements OnInit {
 
   reservations$: Observable<Reservation[]>;
 
-  constructor(private reservationService: ReservationService) {}
+  constructor(private reservationService: ReservationService) {
+  }
 
   ngOnInit() {
     this.reservations$ = this.reservationService.myFutureReservations;

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, Validators, FormControl} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoginService} from 'src/app/services/server-communication/login.service';
 import {SnackbarService} from 'src/app/services/snackbar.service';
@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private snackbarService: SnackbarService,
     private loginService: LoginService,
-    private router: Router) {}
+    private router: Router) {
+  }
 
   ngOnInit() {
   }

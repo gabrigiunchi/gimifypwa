@@ -17,6 +17,7 @@ import {
   MatDialogModule,
   MatDividerModule,
   MatExpansionModule,
+  MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
   MatInputModule,
@@ -40,7 +41,6 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
-  MatFormFieldModule,
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ProfilePageComponent} from './components/pages/profile-page/profile-page.component';
@@ -50,14 +50,14 @@ import {environment} from '../environments/environment';
 import {LoginComponent} from './components/pages/login/login.component';
 import {WaitingPageComponent} from './components/pages/waiting-page/waiting-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { ToolbarComponent } from './components/layout/toolbar/toolbar.component';
-import { DatePipe } from './pipes/date.pipe';
-import { FooterComponent } from './components/layout/footer/footer.component';
-import { SearchPageComponent } from './components/pages/search-page/search-page.component';
-import { GymsPageComponent } from './components/pages/gyms-page/gyms-page.component';
-import { ReservationsPageComponent } from './components/pages/reservations-page/reservations-page.component';
-import { GymDetailsComponent } from './components/pages/details/gym-details/gym-details.component';
-import { ReservationDetailsComponent } from './components/pages/details/reservation-details/reservation-details.component';
+import {ToolbarComponent} from './components/layout/toolbar/toolbar.component';
+import {DatePipe} from './pipes/date.pipe';
+import {FooterComponent} from './components/layout/footer/footer.component';
+import {SearchPageComponent} from './components/pages/search-page/search-page.component';
+import {GymsPageComponent} from './components/pages/gyms-page/gyms-page.component';
+import {ReservationsPageComponent} from './components/pages/reservations-page/reservations-page.component';
+import {GymDetailsComponent} from './components/pages/details/gym-details/gym-details.component';
+import {ReservationDetailsComponent} from './components/pages/details/reservation-details/reservation-details.component';
 
 @NgModule({
   declarations: [
@@ -124,4 +124,5 @@ import { ReservationDetailsComponent } from './components/pages/details/reservat
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

@@ -1,11 +1,11 @@
 .container {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 mat-form-field {
-    width: 100%;
+  width: 100%;
 }
 
 button {
-    width: 10rem;
+  width: 10rem;
 }

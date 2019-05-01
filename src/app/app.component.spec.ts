@@ -1,7 +1,7 @@
-import {TestBed, async} from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
-import {MatIconModule, MatProgressSpinnerModule, MatInputModule, MatToolbarModule} from '@angular/material';
+import {MatIconModule, MatInputModule, MatProgressSpinnerModule, MatToolbarModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {HomepageComponent} from './components/pages/homepage/homepage.component';
 import {WaitingPageComponent} from './components/pages/waiting-page/waiting-page.component';

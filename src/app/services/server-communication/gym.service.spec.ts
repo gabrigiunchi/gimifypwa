@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { GymService } from './gym.service';
+import {GymService} from './gym.service';
 import {HttpClientModule} from '@angular/common/http';
 
 describe('GymService', () => {

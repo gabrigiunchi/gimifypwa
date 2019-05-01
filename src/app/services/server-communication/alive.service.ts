@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {UrlService} from '../url.service';
 import {HttpClient} from '@angular/common/http';
@@ -13,7 +13,8 @@ export interface AliveApiResponse {
 })
 export class AliveService {
 
-  constructor(private urlService: UrlService, private http: HttpClient) { }
+  constructor(private urlService: UrlService, private http: HttpClient) {
+  }
 
   check(): Observable<AliveApiResponse> {
     return this.http.get<AliveApiResponse>(this.urlService.getRestUrl(CONSTANTS.ALIVE_URL));

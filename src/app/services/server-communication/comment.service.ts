@@ -11,7 +11,8 @@ import {CommentDTO} from 'src/app/model/dto/commentDTO';
 })
 export class CommentService {
 
-  constructor(private http: HttpClient, private urlService: UrlService) {}
+  constructor(private http: HttpClient, private urlService: UrlService) {
+  }
 
   getCommentsByGym(gym: Gym, page: number, size: number): Observable<Comment[]> {
     const url = this.urlService.getRestUrl(`${CONSTANTS.COMMENTS}/by_gym/${gym.id}/page/${page}/size/${size}`);
