@@ -3,7 +3,7 @@ import {UrlService} from '../url.service';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {CONSTANTS} from 'src/app/constants';
-import {User} from 'src/app/model/User';
+import {User} from 'src/app/model/entities/user';
 
 @Injectable({
   providedIn: 'root'
