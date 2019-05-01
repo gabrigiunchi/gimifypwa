@@ -1,10 +1,8 @@
 <div class="container">
   <div fxFlex="grow" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="1rem">
-    <h1 class="mat-display-1">Hello world!</h1>
-    <h3>This is a beautiful app made by Gabriele Giunchi</h3>
     <div>Version: {{version}}</div>
 
-    <button mat-flat-button color="primary" (click)="fetchData()">Press to see some magic</button>
+    <button mat-flat-button color="primary" (click)="fetchData()">Ping server</button>
     <div *ngIf="message.length > 0" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0.5rem">
       <h1>{{message}}</h1>
       <mat-icon>face</mat-icon>

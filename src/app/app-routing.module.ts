@@ -10,6 +10,7 @@ import {ReservationsPageComponent} from './components/pages/reservations-page/re
 import {GymsPageComponent} from './components/pages/gyms-page/gyms-page.component';
 import {GymDetailsComponent} from './components/pages/details/gym-details/gym-details.component';
 import {ReservationDetailsComponent} from './components/pages/details/reservation-details/reservation-details.component';
+import {PlaygroundComponent} from './components/pages/playground/playground.component';
 
 const routes: Routes = [
   {path: 'home', component: HomepageComponent, canActivate: [AuthGuard]},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'reservations/:id', component: ReservationDetailsComponent, canActivate: [AuthGuard]},
   {path: 'reservations', component: ReservationsPageComponent, canActivate: [AuthGuard]},
   {path: 'search', component: SearchPageComponent, canActivate: [AuthGuard]},
+  {path: 'playground', component: PlaygroundComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 

@@ -58,6 +58,13 @@ import {GymsPageComponent} from './components/pages/gyms-page/gyms-page.componen
 import {ReservationsPageComponent} from './components/pages/reservations-page/reservations-page.component';
 import {GymDetailsComponent} from './components/pages/details/gym-details/gym-details.component';
 import {ReservationDetailsComponent} from './components/pages/details/reservation-details/reservation-details.component';
+import {InfoDialogComponent} from './components/modals/dialogs/info-dialog/info-dialog.component';
+import {ConfirmationDialogComponent} from './components/modals/dialogs/confirmation-dialog/confirmation-dialog.component';
+import {MessageComponent} from './components/layout/message/message.component';
+import {LoadingComponent} from './components/layout/loading/loading.component';
+import {PlaygroundComponent} from './components/pages/playground/playground.component';
+import {SelectionDialogComponent} from './components/modals/dialogs/selection-dialog/selection-dialog.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -73,7 +80,13 @@ import {ReservationDetailsComponent} from './components/pages/details/reservatio
     GymsPageComponent,
     ReservationsPageComponent,
     GymDetailsComponent,
-    ReservationDetailsComponent
+    ReservationDetailsComponent,
+    InfoDialogComponent,
+    ConfirmationDialogComponent,
+    MessageComponent,
+    LoadingComponent,
+    PlaygroundComponent,
+    SelectionDialogComponent
   ],
   imports: [
     FormsModule,
@@ -94,6 +107,7 @@ import {ReservationDetailsComponent} from './components/pages/details/reservatio
     MatDialogModule,
     MatDividerModule,
     MatExpansionModule,
+    ScrollingModule,
     MatGridListModule,
     MatIconModule,
     MatInputModule,
@@ -122,7 +136,12 @@ import {ReservationDetailsComponent} from './components/pages/details/reservatio
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ConfirmationDialogComponent,
+    InfoDialogComponent,
+    SelectionDialogComponent
+  ]
 })
 export class AppModule {
 }
