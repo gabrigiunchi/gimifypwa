@@ -57,6 +57,7 @@ import { SearchPageComponent } from './components/pages/search-page/search-page.
 import { GymsPageComponent } from './components/pages/gyms-page/gyms-page.component';
 import { ReservationsPageComponent } from './components/pages/reservations-page/reservations-page.component';
 import { GymDetailsComponent } from './components/pages/details/gym-details/gym-details.component';
+import { ReservationDetailsComponent } from './components/pages/details/reservation-details/reservation-details.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { GymDetailsComponent } from './components/pages/details/gym-details/gym-
     SearchPageComponent,
     GymsPageComponent,
     ReservationsPageComponent,
-    GymDetailsComponent
+    GymDetailsComponent,
+    ReservationDetailsComponent
   ],
   imports: [
     FormsModule,

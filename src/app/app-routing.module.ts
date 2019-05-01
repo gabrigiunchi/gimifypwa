@@ -9,6 +9,7 @@ import {SearchPageComponent} from './components/pages/search-page/search-page.co
 import {ReservationsPageComponent} from './components/pages/reservations-page/reservations-page.component';
 import {GymsPageComponent} from './components/pages/gyms-page/gyms-page.component';
 import {GymDetailsComponent} from './components/pages/details/gym-details/gym-details.component';
+import {ReservationDetailsComponent} from './components/pages/details/reservation-details/reservation-details.component';
 
 const routes: Routes = [
   {path: 'home', component: HomepageComponent, canActivate: [AuthGuard]},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
   {path: 'gyms', component: GymsPageComponent, canActivate: [AuthGuard]},
   {path: 'gyms/:id', component: GymDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'reservations/:id', component: ReservationDetailsComponent, canActivate: [AuthGuard]},
   {path: 'reservations', component: ReservationsPageComponent, canActivate: [AuthGuard]},
   {path: 'search', component: SearchPageComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: '/home', pathMatch: 'full'}

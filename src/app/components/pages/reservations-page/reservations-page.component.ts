@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ReservationService} from 'src/app/services/server-communication/reservation.service';
+import {Observable} from 'rxjs';
+import {Reservation} from 'src/app/model/entities/reservation';
 
 @Component({
   selector: 'app-reservations-page',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservationsPageComponent implements OnInit {
 
-  constructor() { }
+  reservations$: Observable<Reservation[]>;
+
+  constructor(private reservationService: ReservationService) {}
 
   ngOnInit() {
+    this.reservations$ = this.reservationService.myFutureReservations;
   }
 
 }

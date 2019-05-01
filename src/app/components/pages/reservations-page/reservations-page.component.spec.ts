@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReservationsPageComponent } from './reservations-page.component';
+import {RouterModule} from '@angular/router';
+import {MatListModule} from '@angular/material';
+import {HttpClientModule} from '@angular/common/http';
 
 describe('ReservationsPageComponent', () => {
   let component: ReservationsPageComponent;
@@ -8,7 +11,12 @@ describe('ReservationsPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReservationsPageComponent ]
+      declarations: [ ReservationsPageComponent ],
+      imports: [
+        MatListModule,
+        RouterModule.forRoot([]),
+        HttpClientModule
+      ]
     })
     .compileComponents();
   }));

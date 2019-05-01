@@ -21,7 +21,7 @@ export class ReservationService {
     return this.http.get<Reservation[]>(this.urlService.getRestUrl(CONSTANTS.MY_RESERVATIONS), this.urlService.authenticationHeader);
   }
 
-  getMyFutureReservationById(id: number): Observable<Reservation> {
+  getMyReservationById(id: number): Observable<Reservation> {
     const url = this.urlService.getRestUrl(`${CONSTANTS.MY_RESERVATIONS}/${id}`);
     return this.http.get<Reservation>(url, this.urlService.authenticationHeader);
   }
