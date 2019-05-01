@@ -1,0 +1,7 @@
+<h1>Gyms</h1>
+
+<mat-nav-list *ngIf="gyms$ | async as gyms">
+  <a mat-list-item *ngFor="let gym of gyms" routerLink="/gyms/{{gym.id}}">
+    {{gym.name}}
+  </a>
+</mat-nav-list>

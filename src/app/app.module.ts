@@ -53,6 +53,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ToolbarComponent } from './components/layout/toolbar/toolbar.component';
 import { DatePipe } from './pipes/date.pipe';
 import { FooterComponent } from './components/layout/footer/footer.component';
+import { SearchPageComponent } from './components/pages/search-page/search-page.component';
+import { GymsPageComponent } from './components/pages/gyms-page/gyms-page.component';
+import { ReservationsPageComponent } from './components/pages/reservations-page/reservations-page.component';
+import { GymDetailsComponent } from './components/pages/details/gym-details/gym-details.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +67,11 @@ import { FooterComponent } from './components/layout/footer/footer.component';
     WaitingPageComponent,
     ToolbarComponent,
     DatePipe,
-    FooterComponent
+    FooterComponent,
+    SearchPageComponent,
+    GymsPageComponent,
+    ReservationsPageComponent,
+    GymDetailsComponent
   ],
   imports: [
     FormsModule,

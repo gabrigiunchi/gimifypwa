@@ -26,8 +26,8 @@ export class GymService {
     return this.http.get<Gym[]>(url, this.urlService.authenticationHeader);
   }
 
-  getRatingOfGym(gym: Gym): Observable<number> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.GYMS}/${gym.id}/rating`);
+  getRatingOfGym(gymId: number): Observable<number> {
+    const url = this.urlService.getRestUrl(`${CONSTANTS.GYMS}/${gymId}/rating`);
     return this.http.get<number>(url, this.urlService.authenticationHeader);
   }
 }
