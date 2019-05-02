@@ -67,7 +67,6 @@ import {SelectionDialogComponent} from './components/modals/dialogs/selection-di
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {DatepickerComponent} from './components/input/datepicker/datepicker.component';
 import {TimePipe} from './pipes/date/time.pipe';
-import {DatePipe} from './pipes/date.pipe';
 
 @NgModule({
   declarations: [
@@ -92,7 +91,6 @@ import {DatePipe} from './pipes/date.pipe';
     SelectionDialogComponent,
     DatepickerComponent,
     TimePipe,
-    DatePipe
   ],
   imports: [
     FormsModule,
