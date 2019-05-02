@@ -7,7 +7,8 @@ import {DatePipe} from 'src/app/pipes/date.pipe';
 })
 export class DateService {
 
-  constructor() {}
+  constructor() {
+  }
 
   build(date: string, hour: string): string {
     return new DatePipe().transform(`${date} ${hour}`, CONSTANTS.DEFAULT_DATETIME_FORMAT);
