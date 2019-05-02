@@ -51,7 +51,7 @@ import {LoginComponent} from './components/pages/login/login.component';
 import {WaitingPageComponent} from './components/pages/waiting-page/waiting-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ToolbarComponent} from './components/layout/toolbar/toolbar.component';
-import {DatePipe} from './pipes/date.pipe';
+import {DateTimePipe} from './pipes/date/datetime.pipe';
 import {FooterComponent} from './components/layout/footer/footer.component';
 import {SearchPageComponent} from './components/pages/search-page/search-page.component';
 import {GymsPageComponent} from './components/pages/gyms-page/gyms-page.component';
@@ -65,6 +65,9 @@ import {LoadingComponent} from './components/layout/loading/loading.component';
 import {PlaygroundComponent} from './components/pages/playground/playground.component';
 import {SelectionDialogComponent} from './components/modals/dialogs/selection-dialog/selection-dialog.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {DatepickerComponent} from './components/input/datepicker/datepicker.component';
+import {TimePipe} from './pipes/date/time.pipe';
+import {DatePipe} from './pipes/date.pipe';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     LoginComponent,
     WaitingPageComponent,
     ToolbarComponent,
-    DatePipe,
+    DateTimePipe,
     FooterComponent,
     SearchPageComponent,
     GymsPageComponent,
@@ -86,7 +89,10 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MessageComponent,
     LoadingComponent,
     PlaygroundComponent,
-    SelectionDialogComponent
+    SelectionDialogComponent,
+    DatepickerComponent,
+    TimePipe,
+    DatePipe
   ],
   imports: [
     FormsModule,

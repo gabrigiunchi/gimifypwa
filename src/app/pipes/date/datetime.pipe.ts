@@ -1,11 +1,11 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {CONSTANTS} from '../constants';
+import {CONSTANTS} from '../../constants';
 import {DateTime} from 'luxon';
 
 @Pipe({
-  name: 'appDate'
+  name: 'dateTime'
 })
-export class DatePipe implements PipeTransform {
+export class DateTimePipe implements PipeTransform {
 
   transform(date: string, format: string, zoneId: string = CONSTANTS.DEFAULT_TIMEZONE): string {
     return DateTime.fromISO(date, {zone: zoneId}).toFormat(format);
