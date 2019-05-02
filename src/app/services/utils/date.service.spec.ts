@@ -14,4 +14,10 @@ describe('DateService', () => {
     const result = service.build('2019-05-02', '10:00');
     expect(result).toBe('2019-05-02T10:00:00+0200');
   });
+
+  it('should build a date from the localdate and the localtime and the zoneId', () => {
+    const service: DateService = TestBed.get(DateService);
+    const result = service.build('2019-05-02', '10:00', 'UTC');
+    expect(result).toBe('2019-05-02T10:00:00+0000');
+  });
 });

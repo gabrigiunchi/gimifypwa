@@ -7,8 +7,8 @@ import {DateTime} from 'luxon';
 })
 export class DatePipe implements PipeTransform {
 
-  transform(date: string, format: string, zone: string = CONSTANTS.DEFAULT_TIMEZONE): string {
-    return DateTime.fromISO(date).setZone(zone).toFormat(format);
+  transform(date: string, format: string, zoneId: string = CONSTANTS.DEFAULT_TIMEZONE): string {
+    return DateTime.fromISO(date, {zone: zoneId}).toFormat(format);
   }
 
 }
