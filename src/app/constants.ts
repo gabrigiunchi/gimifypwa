@@ -4,7 +4,7 @@ export const CONSTANTS = {
   VERSION: p.version,
 
   DEFAULT_TIMEZONE: 'Europe/Rome',
-  DEFAULT_DATETIME_FORMAT: 'YYYY-MM-DDTHH:mm:ssZZ',
+  DEFAULT_DATETIME_FORMAT: `yyyy-MM-dd'T'TTZZZ`,
 
   BASE_URL: 'https://backendtesi.eu-gb.mybluemix.net/api/v1/',
   ALIVE_URL: 'alive',

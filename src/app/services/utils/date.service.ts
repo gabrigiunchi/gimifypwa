@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CONSTANTS} from 'src/app/constants';
-import {DatePipe} from 'src/app/pipes/date.pipe';
+import {DateTime} from 'luxon';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,9 @@ export class DateService {
   }
 
   build(date: string, hour: string): string {
-    return new DatePipe().transform(`${date} ${hour}`, CONSTANTS.DEFAULT_DATETIME_FORMAT);
+    return DateTime
+      .fromFormat(`${date} ${hour}`, 'yyyy-MM-dd HH:mm')
+      .setZone(CONSTANTS.DEFAULT_TIMEZONE)
+      .toFormat(CONSTANTS.DEFAULT_DATETIME_FORMAT);
   }
 }
