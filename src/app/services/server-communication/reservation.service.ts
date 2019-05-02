@@ -9,13 +9,17 @@ import {Asset} from 'src/app/model/entities/asset';
 import {AssetKind} from 'src/app/model/entities/asset-kind';
 import {Gym} from 'src/app/model/entities/gym';
 import {City} from 'src/app/model/entities/city';
+import {DateService} from '../utils/date.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationService {
 
-  constructor(private http: HttpClient, private urlService: UrlService) {
+  constructor(
+    private dateService: DateService,
+    private http: HttpClient,
+    private urlService: UrlService) {
   }
 
   get myFutureReservations(): Observable<Reservation[]> {
@@ -27,7 +31,19 @@ export class ReservationService {
     return this.http.get<Reservation>(url, this.urlService.authenticationHeader);
   }
 
-  addReservation(reservationDTO: ReservationDTO): Observable<Reservation> {
+  addReservation(
+    assetId: number,
+    date: string,
+    startHour: string,
+    endHour: string): Observable<Reservation> {
+
+    const reservationDTO: ReservationDTO = {
+      userID: -1,
+      assetID: assetId,
+      start: this.dateService.build(date, startHour),
+      end: this.dateService.build(date, endHour),
+    };
+
     return this.http.post<Reservation>(
       this.urlService.getRestUrl(CONSTANTS.MY_RESERVATIONS),
       reservationDTO,
