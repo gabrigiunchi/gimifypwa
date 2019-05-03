@@ -43,4 +43,23 @@ describe('SelectionDialogComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call the custom toString if provided', () => {
+    component.data = {
+      choices: [1, 2, 3, 4],
+      title: 'Select numbers',
+      toStringFunction: n => `number${n}`
+    };
+
+    expect(component.toString(1)).toBe('number1');
+  });
+
+  it('should call the default toString if not provided', () => {
+    component.data = {
+      choices: [1, 2, 3, 4],
+      title: 'Select numbers',
+    };
+
+    expect(component.toString(1)).toBe('1');
+  });
 });
