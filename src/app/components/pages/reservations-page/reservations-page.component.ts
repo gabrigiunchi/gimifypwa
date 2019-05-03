@@ -1,22 +1,45 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
-import {Observable} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {Reservation} from 'src/app/model/entities/reservation';
+import {CacheService} from 'src/app/services/cache.service';
 
 @Component({
   selector: 'app-reservations-page',
   templateUrl: './reservations-page.component.html',
   styleUrls: ['./reservations-page.component.css']
 })
-export class ReservationsPageComponent implements OnInit {
+export class ReservationsPageComponent implements OnInit, OnDestroy {
 
-  reservations$: Observable<Reservation[]>;
+  reservations: Reservation[];
+  private subscriptions: Subscription[] = [];
+  private clearCache = true;
 
-  constructor(private reservationService: ReservationService) {
+  constructor(
+    private cacheService: CacheService<Reservation[]>,
+    private reservationService: ReservationService) {
   }
 
   ngOnInit() {
-    this.reservations$ = this.reservationService.myFutureReservations;
+    if (this.cacheService.isPresent) {
+      console.log('Loaded reservations from cache');
+      this.reservations = this.cacheService.element;
+    } else {
+      console.log('Loading reservations from server...');
+      this.reservationService.myFutureReservations.subscribe(reservations => this.reservations = reservations);
+    }
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
+    if (this.clearCache) {
+      this.cacheService.clear();
+    }
+  }
+
+  onReservationClick() {
+    this.cacheService.element = this.reservations;
+    this.clearCache = false;
   }
 
 }

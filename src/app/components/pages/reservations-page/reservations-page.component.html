@@ -1,6 +1,6 @@
 <h1>Reservations</h1>
 
-<div *ngIf="reservations$ | async as reservations">
+<div *ngIf="reservations; else loading">
   <mat-nav-list>
     <a mat-list-item *ngFor="let reservation of reservations" routerLink="/reservations/{{reservation.id}}">
       {{reservation.id}} {{reservation.start}}
@@ -11,3 +11,7 @@
     <h3>No reservations</h3>
   </div>
 </div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>
