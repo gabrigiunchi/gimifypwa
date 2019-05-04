@@ -27,6 +27,10 @@ export class SelectLocationFormComponent {
     this.openDialog({city: this.result.city, gym: this.result.gym, step: SelectLocatioStep.gym});
   }
 
+  get isValid(): boolean {
+    return !!this.result;
+  }
+
   private openDialog(data: SelectLocationInput): void {
     this.dialog.open(SelectLocationComponent, {
       minWidth: '100%',

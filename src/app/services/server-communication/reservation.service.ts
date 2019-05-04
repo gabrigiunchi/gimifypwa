@@ -11,6 +11,15 @@ import {Gym} from 'src/app/model/entities/gym';
 import {City} from 'src/app/model/entities/city';
 import {DateService} from '../utils/date.service';
 import {Page} from 'src/app/model/page';
+import {SelectLocationResult} from 'src/app/components/modals/dialogs/select-location/select-location.component';
+
+export interface ReservationSearchParams {
+  location: SelectLocationResult;
+  date: string;
+  startHour: string;
+  endHour: string;
+  kind: AssetKind;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +77,20 @@ export class ReservationService {
   }
 
   /**************************************** ASSET AVAILABILITY **************************************************************/
+
+  searchAssets(params: ReservationSearchParams): Observable<Asset[]> {
+    const kind = params.kind;
+    const from = this.dateService.build(params.date, params.startHour);
+    const to = this.dateService.build(params.date, params.endHour);
+
+    if (params.location && params.location.gym) {
+      return this.getAvailableAssetsInGym(kind, params.location.gym, from, to);
+    } else if (params.location && params.location.city) {
+      return this.getAvailableAssetsInCity(kind, params.location.city, from, to);
+    }
+
+    return this.getAvailableAssets(kind, from, to);
+  }
 
   getAvailableAssets(kind: AssetKind, from: string, to: string): Observable<Asset[]> {
     const url = this.urlService.getRestUrl(`${CONSTANTS.RESERVATIONS}/available/kind/${kind.id}/from/${from}/to/${to}`);

@@ -1,7 +1,13 @@
-<form [formGroup]="form">
-  <mat-form-field [style.width]="width">
-    <input matInput type="date" formControlName="date" #datepicker [errorStateMatcher]="errorStateMatcher"
-           [placeholder]="placeholder">
-    <mat-error *ngIf="form.invalid">Must be in the future</mat-error>
-  </mat-form-field>
-</form>
+<div class="form-item" fxLayout="row" fxLayoutAlign="start center" (click)="datepicker.click()" matRipple>
+  <div fxFlex="grow" fxLayoutAlign="start center">
+    <mat-icon>calendar_today</mat-icon>
+    <div>Date</div>
+  </div>
+  <form [formGroup]="form">
+    <mat-form-field [style.width]="width">
+      <input matInput type="date" formControlName="date" #datepicker [errorStateMatcher]="errorStateMatcher"
+        [placeholder]="placeholder">
+      <mat-error *ngIf="form.invalid">Must be in the future</mat-error>
+    </mat-form-field>
+  </form>
+</div>

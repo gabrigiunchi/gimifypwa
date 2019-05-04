@@ -17,6 +17,7 @@ export const CONSTANTS = {
   ASSETS: 'assets',
   TIMETABLES: 'timetables',
   COMMENTS: 'comments',
-  CITIES: 'cities'
+  CITIES: 'cities',
+  ASSET_KINDS: 'asset_kinds'
 };
 

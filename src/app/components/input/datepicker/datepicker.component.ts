@@ -67,4 +67,8 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges {
   click(): void {
     this.input.nativeElement.click();
   }
+
+  get isValid(): boolean {
+    return this.form.valid;
+  }
 }

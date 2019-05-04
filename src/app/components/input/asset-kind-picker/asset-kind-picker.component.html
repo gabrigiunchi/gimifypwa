@@ -1,0 +1,14 @@
+<div class="form-item" fxLayout="row" fxLayoutAlign="start center" matRipple (click)="openDialog()">
+  <div fxFlex="50" fxLayoutAlign="start center">
+    <mat-icon class="mr">device_unknown</mat-icon>
+    <div>Kind</div>
+  </div>
+  <div fxFlex="50" fxLayoutAlign="end">
+    <div *ngIf="result; else elseBlock">
+      <span>{{result.name}}</span>
+    </div>
+    <ng-template #elseBlock>
+      <mat-error>Required</mat-error>
+    </ng-template>
+  </div>
+</div>

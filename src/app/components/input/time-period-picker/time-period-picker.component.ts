@@ -82,6 +82,10 @@ export class TimePeriodPickerComponent implements OnInit, OnDestroy, OnChanges {
     this.subscription.unsubscribe();
   }
 
+  get isValid(): boolean {
+    return this.form.valid;
+  }
+
   private get validator(): ValidatorFn {
     return hourValidator(this.min, this.maxDuration);
   }
