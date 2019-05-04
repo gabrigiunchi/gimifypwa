@@ -1,13 +1,11 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef, MatStepper} from '@angular/material';
+import {Component, OnInit, ViewChild, Inject} from '@angular/core';
+import {MatDialogRef, MatStepper, MAT_DIALOG_DATA} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {City} from 'src/app/model/entities/city';
 import {Gym} from 'src/app/model/entities/gym';
-import {Asset} from 'src/app/model/entities/asset';
 import {GymService} from 'src/app/services/server-communication/gym.service';
-import {Observable, of} from 'rxjs';
 import {CityService} from 'src/app/services/server-communication/city.service';
-import {catchError, finalize, tap} from 'rxjs/operators';
+import {finalize} from 'rxjs/operators';
 
 export interface SelectLocationResult {
   city: City;
@@ -30,8 +28,8 @@ export class SelectLocationComponent implements OnInit {
   errorLoadingCities = false;
   errorLoadingGyms = false;
 
-  cities$: Observable<City[]>;
-  gyms$: Observable<Gym[]>;
+  cities: City[];
+  gyms: Gym[];
 
   @ViewChild('stepper') stepper: MatStepper;
 
@@ -39,7 +37,8 @@ export class SelectLocationComponent implements OnInit {
     private cityService: CityService,
     private gymService: GymService,
     private formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<SelectLocationComponent>) {
+    private dialogRef: MatDialogRef<SelectLocationComponent>,
+    @Inject(MAT_DIALOG_DATA) public defaultParams: SelectLocationResult) {
 
     this.cityFormGroup = this.formBuilder.group({
       city: [undefined, Validators.required]
@@ -99,25 +98,42 @@ export class SelectLocationComponent implements OnInit {
 
   private loadCities() {
     this.isLoadingCities = true;
-    this.cities$ = this.cityService.cities
-      .pipe(
-        finalize(() => this.isLoadingCities = false),
-        catchError(error => {
+    this.cityService.cities
+      .pipe(finalize(() => this.isLoadingCities = false))
+      .subscribe(
+        cities => {
+          this.cities = cities;
+          if (!!(this.defaultParams && this.defaultParams.city)) {
+            this.selectedCity = this.cities.find(c => c.id === this.defaultParams.city.id);
+            this.loadGymsOfCity(this.selectedCity, true);
+          }
+        },
+        error => {
           console.log(error);
           this.errorLoadingCities = true;
-          return of([]);
-        }));
+        }
+      );
   }
 
-  private loadGymsOfCity(city: City) {
+  private loadGymsOfCity(city: City, stepperNext = false) {
     this.isLoadingGyms = true;
-    this.gyms$ = this.gymService.getGymsByCity(city)
-      .pipe(
-        finalize(() => this.isLoadingGyms = false),
-        catchError(error => {
+    this.gymService.getGymsByCity(city)
+      .pipe(finalize(() => this.isLoadingGyms = false))
+      .subscribe(
+        gyms => {
+          this.gyms = gyms;
+          if (!!(this.defaultParams && this.defaultParams.gym)) {
+            this.selectedGym = this.gyms.find(g => g.id === this.defaultParams.gym.id);
+          }
+
+          if (stepperNext) {
+            this.stepper.next();
+          }
+        },
+        error => {
           console.log(error);
           this.errorLoadingGyms = true;
-          return of([]);
-        }));
+        }
+      );
   }
 }

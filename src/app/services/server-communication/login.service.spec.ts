@@ -1,7 +1,7 @@
-import {TestBed, async} from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 import {LoginService} from './login.service';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
-import {RouterModule, Router} from '@angular/router';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {Router, RouterModule} from '@angular/router';
 import {of} from 'rxjs';
 import {Token} from 'src/app/model/dto/token';
 import {SessionService} from '../session.service';

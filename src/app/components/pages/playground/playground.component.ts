@@ -22,11 +22,16 @@ export class PlaygroundComponent implements OnInit {
 
 
   openDialog() {
+    const dialogData: SelectLocationResult = {
+      city: {id: 1, name: 'MILANO'},
+      gym: {name: 'gym1', city: {id: 1, name: 'MILANO'}, address: 'Via1', id: 12, zoneId: 'Europe/Rome'}
+    };
     this.dialog.open(SelectLocationComponent, {
       minWidth: '100%',
       height: '100%',
       autoFocus: false,
       restoreFocus: false,
+      data: dialogData
     })
     .afterClosed().subscribe((result: SelectLocationResult) => {
       console.log(result);

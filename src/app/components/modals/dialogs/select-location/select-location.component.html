@@ -7,8 +7,8 @@
     <mat-step [stepControl]="cityFormGroup">
       <ng-template matStepLabel>Select city</ng-template>
 
-      <cdk-virtual-scroll-viewport *ngIf="cities$ | async as cities; else elseCity" [itemSize]="cities.length">
-        <mat-radio-group (change)="onCitySelected($event.value)" fxLayout="column"
+      <cdk-virtual-scroll-viewport *ngIf="cities; else elseCity" [itemSize]="cities.length">
+        <mat-radio-group (change)="onCitySelected($event.value)" [value]="selectedCity" fxLayout="column"
           fxLayoutGap="2rem">
           <mat-radio-button [value]="undefined">Any</mat-radio-button>
           <mat-radio-button *cdkVirtualFor="let city of cities" [value]="city">{{city.name}}</mat-radio-button>
@@ -29,8 +29,8 @@
     <mat-step [stepControl]="gymFormGroup">
       <ng-template matStepLabel>Select gym</ng-template>
 
-      <cdk-virtual-scroll-viewport *ngIf="gyms$ | async as gyms; else elseGym" [itemSize]="gyms.length">
-        <mat-radio-group (change)="onGymSelected($event.value)" fxLayout="column"
+      <cdk-virtual-scroll-viewport *ngIf="gyms; else elseGym" [itemSize]="gyms.length">
+        <mat-radio-group (change)="onGymSelected($event.value)" [value]="selectedGym" fxLayout="column"
           fxLayoutGap="2rem">
           <mat-radio-button *ngIf="gyms.length > 0" [value]="undefined">Any</mat-radio-button>
           <mat-radio-button *cdkVirtualFor="let gym of gyms" [value]="gym">{{gym.name}}</mat-radio-button>

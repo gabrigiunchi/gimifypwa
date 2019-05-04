@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SelectLocationComponent} from './select-location.component';
-import {MatProgressSpinnerModule, MatIconModule, MatStepperModule, MatRadioModule, MatDialogModule, MatDialogRef} from '@angular/material';
+import {MatDialogModule, MatDialogRef, MatIconModule, MatProgressSpinnerModule, MatRadioModule, MatStepperModule} from '@angular/material';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CityService} from 'src/app/services/server-communication/city.service';
 import {of} from 'rxjs';
