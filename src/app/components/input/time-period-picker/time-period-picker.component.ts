@@ -24,10 +24,10 @@ class EndHourErrorMatcher implements ErrorStateMatcher {
   }
 }
 
-function hourValidator(min: string, maxDuration: Duration, start: string, end: string): ValidatorFn {
+function hourValidator(min: string, maxDuration: Duration): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} | null => {
-    const s = DateTime.fromFormat(start, 'HH:mm');
-    const e = DateTime.fromFormat(end, 'HH:mm');
+    const s = DateTime.fromFormat(control.get('start').value, 'HH:mm');
+    const e = DateTime.fromFormat(control.get('end').value, 'HH:mm');
 
     if (DateTime.fromFormat(min, 'HH:mm') > s) {
       return {'invalidStartTime': true};
@@ -91,7 +91,7 @@ export class TimePeriodPickerComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   private get validator(): ValidatorFn {
-    return hourValidator(this.min, this.maxDuration, this.start, this.end);
+    return hourValidator(this.min, this.maxDuration);
   }
 
 }
