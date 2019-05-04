@@ -1,6 +1,13 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SelectLocationComponent} from './select-location.component';
-import {MatDialogModule, MatDialogRef, MatIconModule, MatProgressSpinnerModule, MatRadioModule, MatStepperModule} from '@angular/material';
+import {
+  MatDialogModule,
+  MatDialogRef, MatIconModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatStepperModule,
+  MAT_DIALOG_DATA
+} from '@angular/material';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CityService} from 'src/app/services/server-communication/city.service';
 import {of} from 'rxjs';
@@ -28,7 +35,8 @@ describe('SelectLocationComponent', () => {
         MatDialogModule
       ],
       providers: [
-        {provide: MatDialogRef, useValue: {}}
+        {provide: MatDialogRef, useValue: {}},
+        {provide: MAT_DIALOG_DATA, useValue: {gym: undefined, city: undefined}}
       ]
     })
       .compileComponents();

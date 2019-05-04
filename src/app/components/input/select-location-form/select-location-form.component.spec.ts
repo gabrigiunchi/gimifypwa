@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SelectLocationFormComponent } from './select-location-form.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {SelectLocationFormComponent} from './select-location-form.component';
+import {MatIconModule, MatDialogModule} from '@angular/material';
 
 describe('SelectLocationFormComponent', () => {
   let component: SelectLocationFormComponent;
@@ -8,9 +8,13 @@ describe('SelectLocationFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectLocationFormComponent ]
+      declarations: [SelectLocationFormComponent],
+      imports: [
+        MatIconModule,
+        MatDialogModule
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
