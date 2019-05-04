@@ -2,7 +2,7 @@
 <app-datepicker #datepicker [(date)]="searchParams.date"></app-datepicker>
 <app-time-period-picker #timepicker [(start)]="searchParams.startHour" [(end)]="searchParams.endHour" [maxDuration]="maxDuration">
 </app-time-period-picker>
-<app-select-location-form #locationpicker [(result)]="searchParams.location"></app-select-location-form>
+<app-location-picker #locationpicker [(result)]="searchParams.location"></app-location-picker>
 
 <div class="footer" fxLayout="row" fxLayoutAlign="center center">
   <button mat-flat-button color="primary" (click)="search()"

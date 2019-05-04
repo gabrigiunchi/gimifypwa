@@ -1,13 +1,13 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SelectLocationComponent} from './select-location.component';
 import {
+  MAT_DIALOG_DATA,
   MatDialogModule,
-  MatDialogRef, MatIconModule,
+  MatDialogRef,
+  MatIconModule,
   MatProgressSpinnerModule,
   MatRadioModule,
-  MatStepperModule,
-  MAT_DIALOG_DATA,
-  MatInputModule
+  MatStepperModule
 } from '@angular/material';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CityService} from 'src/app/services/server-communication/city.service';

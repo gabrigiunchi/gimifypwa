@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SelectionDialogComponent, SelectionDialogData} from './selection-dialog.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {FormsModule} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef, MatDividerModule, NativeDateModule, MatIconModule} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef, MatDividerModule, MatIconModule, NativeDateModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 

@@ -1,14 +1,14 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {SelectLocationFormComponent} from './select-location-form.component';
-import {MatIconModule, MatDialogModule, MatInputModule} from '@angular/material';
+import {LocationPickerComponent} from './location-picker.component';
+import {MatDialogModule, MatIconModule, MatInputModule} from '@angular/material';
 
-describe('SelectLocationFormComponent', () => {
-  let component: SelectLocationFormComponent;
-  let fixture: ComponentFixture<SelectLocationFormComponent>;
+describe('LocationPickerComponent', () => {
+  let component: LocationPickerComponent;
+  let fixture: ComponentFixture<LocationPickerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SelectLocationFormComponent],
+      declarations: [LocationPickerComponent],
       imports: [
         MatIconModule,
         MatDialogModule,
@@ -19,7 +19,7 @@ describe('SelectLocationFormComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SelectLocationFormComponent);
+    fixture = TestBed.createComponent(LocationPickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

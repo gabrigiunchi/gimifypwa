@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {ReservationService, ReservationSearchParams} from './reservation.service';
+import {ReservationSearchParams, ReservationService} from './reservation.service';
 import {HttpClientModule} from '@angular/common/http';
 import {of} from 'rxjs';
 

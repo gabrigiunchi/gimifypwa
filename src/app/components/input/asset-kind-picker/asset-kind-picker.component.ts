@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AssetKind} from 'src/app/model/entities/asset-kind';
 import {AssetKindService} from 'src/app/services/server-communication/asset-kind.service';
 import {SelectionDialogComponent, SelectionDialogData} from '../../modals/dialogs/selection-dialog/selection-dialog.component';

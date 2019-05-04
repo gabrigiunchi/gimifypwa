@@ -69,8 +69,8 @@ import {DatepickerComponent} from './components/input/datepicker/datepicker.comp
 import {TimePipe} from './pipes/date/time.pipe';
 import {SelectLocationComponent} from './components/modals/dialogs/select-location/select-location.component';
 import {TimePeriodPickerComponent} from './components/input/time-period-picker/time-period-picker.component';
-import { SelectLocationFormComponent } from './components/input/select-location-form/select-location-form.component';
-import { AssetKindPickerComponent } from './components/input/asset-kind-picker/asset-kind-picker.component';
+import {LocationPickerComponent} from './components/input/select-location-form/location-picker.component';
+import {AssetKindPickerComponent} from './components/input/asset-kind-picker/asset-kind-picker.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +97,7 @@ import { AssetKindPickerComponent } from './components/input/asset-kind-picker/a
     TimePipe,
     SelectLocationComponent,
     TimePeriodPickerComponent,
-    SelectLocationFormComponent,
+    LocationPickerComponent,
     AssetKindPickerComponent,
   ],
   imports: [

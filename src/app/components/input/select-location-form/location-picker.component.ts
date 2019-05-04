@@ -1,18 +1,18 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {
-  SelectLocationResult,
   SelectLocationComponent,
   SelectLocationInput,
+  SelectLocationResult,
   SelectLocatioStep
 } from '../../modals/dialogs/select-location/select-location.component';
 import {MatDialog} from '@angular/material';
 
 @Component({
-  selector: 'app-select-location-form',
-  templateUrl: './select-location-form.component.html',
-  styleUrls: ['./select-location-form.component.css']
+  selector: 'app-location-picker',
+  templateUrl: './location-picker.component.html',
+  styleUrls: ['./location-picker.component.css']
 })
-export class SelectLocationFormComponent {
+export class LocationPickerComponent {
 
   @Input() result: SelectLocationResult = {city: undefined, gym: undefined};
   @Output() resultChange = new EventEmitter<SelectLocationResult>();

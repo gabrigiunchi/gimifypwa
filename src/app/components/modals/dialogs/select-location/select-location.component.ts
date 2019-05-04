@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild, Inject} from '@angular/core';
-import {MatDialogRef, MatStepper, MAT_DIALOG_DATA} from '@angular/material';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {City} from 'src/app/model/entities/city';
 import {Gym} from 'src/app/model/entities/gym';

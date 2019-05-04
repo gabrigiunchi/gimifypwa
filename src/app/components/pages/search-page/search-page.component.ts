@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ReservationService, ReservationSearchParams} from 'src/app/services/server-communication/reservation.service';
+import {ReservationSearchParams, ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {DateTime, Duration} from 'luxon';
 
 @Component({
