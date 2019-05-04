@@ -1,0 +1,25 @@
+<form [formGroup]="form">
+  <div class="form-item" fxLayout="row" fxLayoutAlign="start center" (click)="startPicker.click()" matRipple>
+    <div fxFlex="grow" fxLayoutAlign="start center">
+      <mat-icon>access_time</mat-icon>
+      <div>Start</div>
+    </div>
+    <mat-form-field>
+      <input #startPicker matInput type="time" formControlName="start" [errorStateMatcher]="startHourErrorMatcher">
+      <mat-error *ngIf="form.hasError('invalidStartTime')">Start time must be in the future</mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-divider></mat-divider>
+  <div class="form-item" fxLayout="row" fxLayoutAlign="start center" (click)="endPicker.click()" matRipple>
+    <div fxFlex="grow" fxLayoutAlign="start center">
+      <mat-icon>access_time</mat-icon>
+      <div>End</div>
+    </div>
+    <mat-form-field>
+      <input matInput type="time" formControlName="end" #endPicker [errorStateMatcher]="endHourErrorMatcher">
+      <mat-error *ngIf="form.hasError('invalidEndTime')">Must be after the start time</mat-error>
+      <mat-error *ngIf="form.hasError('invalidDuration')">The max duration is {{maxDuration.as('minutes')}} minutes</mat-error>
+    </mat-form-field>
+  </div>
+</form>

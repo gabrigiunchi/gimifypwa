@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {SelectLocationComponent, SelectLocationResult} from '../../modals/dialogs/select-location/select-location.component';
+import {Duration} from 'luxon';
 
 @Component({
   selector: 'app-playground',
@@ -8,6 +9,10 @@ import {SelectLocationComponent, SelectLocationResult} from '../../modals/dialog
   styleUrls: ['./playground.component.css']
 })
 export class PlaygroundComponent implements OnInit {
+
+  start = '16:20';
+  end = '16:21';
+  max = Duration.fromObject({minutes: 20});
 
   constructor(private dialog: MatDialog) {
   }
