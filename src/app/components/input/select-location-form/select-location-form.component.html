@@ -1,0 +1,27 @@
+<div>
+  <div class="form-item" fxLayout="row" fxLayoutAlign="start center" matRipple (click)="changeCity()">
+    <div fxFlex="50" fxLayoutAlign="start center">
+      <mat-icon class="mr">location_city</mat-icon>
+      <div>City</div>
+    </div>
+    <div fxFlex="50" fxLayoutAlign="end">
+      <div *ngIf="result.city; else elseCity">
+        <span>{{result.city.name}}</span>
+      </div>
+      <ng-template #elseCity>Any</ng-template>
+    </div>
+  </div>
+
+  <div *ngIf="result.city" class="form-item" fxLayout="row" fxLayoutAlign="start center" matRipple (click)="changeGym()">
+    <div fxFlex="50" fxLayoutAlign="start center">
+      <mat-icon class="mr">fitness_center</mat-icon>
+      <div>Gym</div>
+    </div>
+    <div fxFlex="50" fxLayoutAlign="end">
+      <div *ngIf="result.gym; else elseGym">
+        <span>{{result.gym.name}}</span>
+      </div>
+      <ng-template #elseGym>Any</ng-template>
+    </div>
+  </div>
+</div>

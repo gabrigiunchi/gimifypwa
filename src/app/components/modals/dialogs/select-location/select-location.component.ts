@@ -7,9 +7,18 @@ import {GymService} from 'src/app/services/server-communication/gym.service';
 import {CityService} from 'src/app/services/server-communication/city.service';
 import {finalize} from 'rxjs/operators';
 
+export enum SelectLocatioStep {
+  city = 0,
+  gym = 1
+}
+
 export interface SelectLocationResult {
   city: City;
   gym: Gym;
+}
+
+export interface SelectLocationInput extends SelectLocationResult {
+  step: SelectLocatioStep;
 }
 
 @Component({
@@ -31,14 +40,14 @@ export class SelectLocationComponent implements OnInit {
   cities: City[];
   gyms: Gym[];
 
-  @ViewChild('stepper') stepper: MatStepper;
+  currentStep = 0;
 
   constructor(
     private cityService: CityService,
     private gymService: GymService,
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<SelectLocationComponent>,
-    @Inject(MAT_DIALOG_DATA) public defaultParams: SelectLocationResult) {
+    @Inject(MAT_DIALOG_DATA) public input: SelectLocationInput) {
 
     this.cityFormGroup = this.formBuilder.group({
       city: [undefined, Validators.required]
@@ -47,6 +56,8 @@ export class SelectLocationComponent implements OnInit {
     this.gymFormGroup = this.formBuilder.group({
       gym: [undefined]
     });
+
+    this.currentStep = this.input.step;
   }
 
   ngOnInit() {
@@ -59,7 +70,7 @@ export class SelectLocationComponent implements OnInit {
 
     if (city !== undefined) {
       this.loadGymsOfCity(city);
-      this.stepper.next();
+      this.currentStep = SelectLocatioStep.gym;
     }
   }
 
@@ -77,7 +88,7 @@ export class SelectLocationComponent implements OnInit {
   }
 
   abort() {
-    this.dialogRef.close({city: undefined, gym: undefined});
+    this.dialogRef.close();
   }
 
   get selectedCity(): City {
@@ -103,9 +114,11 @@ export class SelectLocationComponent implements OnInit {
       .subscribe(
         cities => {
           this.cities = cities;
-          if (!!(this.defaultParams && this.defaultParams.city)) {
-            this.selectedCity = this.cities.find(c => c.id === this.defaultParams.city.id);
-            this.loadGymsOfCity(this.selectedCity, true);
+          if (!!(this.input && this.input.city)) {
+            this.selectedCity = this.cities.find(c => c.id === this.input.city.id);
+            this.loadGymsOfCity(this.selectedCity);
+          } else {
+            this.selectedCity = undefined;
           }
         },
         error => {
@@ -115,19 +128,17 @@ export class SelectLocationComponent implements OnInit {
       );
   }
 
-  private loadGymsOfCity(city: City, stepperNext = false) {
+  private loadGymsOfCity(city: City) {
     this.isLoadingGyms = true;
     this.gymService.getGymsByCity(city)
       .pipe(finalize(() => this.isLoadingGyms = false))
       .subscribe(
         gyms => {
           this.gyms = gyms;
-          if (!!(this.defaultParams && this.defaultParams.gym)) {
-            this.selectedGym = this.gyms.find(g => g.id === this.defaultParams.gym.id);
-          }
-
-          if (stepperNext) {
-            this.stepper.next();
+          if (!!(this.input && this.input.gym)) {
+            this.selectedGym = this.gyms.find(g => g.id === this.input.gym.id);
+          } else {
+            this.selectedGym = undefined;
           }
         },
         error => {
