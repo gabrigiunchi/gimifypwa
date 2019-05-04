@@ -4,8 +4,11 @@ import {LoginComponent} from './login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule, MatProgressSpinnerModule, MatSnackBarModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
-import {RouterModule} from '@angular/router';
+import {RouterModule, Router} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {LoginService} from 'src/app/services/server-communication/login.service';
+import {of} from 'rxjs';
+import {SnackbarService} from 'src/app/services/snackbar.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -36,5 +39,21 @@ describe('LoginComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should login', () => {
+    const spy = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    spyOn(TestBed.get(LoginService), 'login').and.returnValue(of(true));
+    component.login();
+    expect(spy).toHaveBeenCalledWith(['/home']);
+  });
+
+  it('should login and redirect', () => {
+    const loginService: LoginService = TestBed.get(LoginService);
+    loginService.redirectUrl = '/page';
+    const spy = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    spyOn(loginService, 'login').and.returnValue(of(true));
+    component.login();
+    expect(spy).toHaveBeenCalledWith(['/page']);
   });
 });

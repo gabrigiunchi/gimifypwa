@@ -21,7 +21,8 @@ export class LoginService {
   constructor(
     private router: Router,
     private sessionService: SessionService,
-    private urlService: UrlService, private http: HttpClient) {
+    private urlService: UrlService,
+    private http: HttpClient) {
   }
 
   get isLoggedIn(): boolean {
