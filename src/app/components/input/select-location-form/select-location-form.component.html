@@ -8,7 +8,9 @@
       <div *ngIf="result.city; else elseCity">
         <span>{{result.city.name}}</span>
       </div>
-      <ng-template #elseCity>Any</ng-template>
+      <ng-template #elseCity>
+        <mat-error>Required</mat-error>
+      </ng-template>
     </div>
   </div>
 

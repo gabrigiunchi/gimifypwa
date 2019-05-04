@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SelectLocationFormComponent} from './select-location-form.component';
-import {MatIconModule, MatDialogModule} from '@angular/material';
+import {MatIconModule, MatDialogModule, MatInputModule} from '@angular/material';
 
 describe('SelectLocationFormComponent', () => {
   let component: SelectLocationFormComponent;
@@ -11,7 +11,8 @@ describe('SelectLocationFormComponent', () => {
       declarations: [SelectLocationFormComponent],
       imports: [
         MatIconModule,
-        MatDialogModule
+        MatDialogModule,
+        MatInputModule
       ]
     })
       .compileComponents();

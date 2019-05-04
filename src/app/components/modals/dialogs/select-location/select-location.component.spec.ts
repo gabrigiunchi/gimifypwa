@@ -6,7 +6,8 @@ import {
   MatProgressSpinnerModule,
   MatRadioModule,
   MatStepperModule,
-  MAT_DIALOG_DATA
+  MAT_DIALOG_DATA,
+  MatInputModule
 } from '@angular/material';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CityService} from 'src/app/services/server-communication/city.service';
