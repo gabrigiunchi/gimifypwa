@@ -1,0 +1,21 @@
+.virtual-scroll-container, cdk-virtual-scroll-viewport {
+  height: 20rem;
+}
+
+mat-radio-group {
+  padding: 1rem;
+}
+
+.spinner-container {
+  padding: 0.5rem 1rem 1rem 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-vertical-stepper {
+  flex-grow: 1;
+}

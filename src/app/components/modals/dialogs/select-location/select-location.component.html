@@ -1,0 +1,57 @@
+<div class="container mat-typography">
+  <button mat-icon-button (click)="abort()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <mat-vertical-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="cityFormGroup">
+      <ng-template matStepLabel>Select city</ng-template>
+
+      <cdk-virtual-scroll-viewport *ngIf="cities$ | async as cities; else elseCity" [itemSize]="cities.length">
+        <mat-radio-group (change)="onCitySelected($event.value)" fxLayout="column"
+          fxLayoutGap="2rem">
+          <mat-radio-button [value]="undefined">Any</mat-radio-button>
+          <mat-radio-button *cdkVirtualFor="let city of cities" [value]="city">{{city.name}}</mat-radio-button>
+        </mat-radio-group>
+      </cdk-virtual-scroll-viewport>
+
+      <ng-template #elseCity>
+        <div class="spinner-container" *ngIf="isLoadingCities">
+          <mat-spinner diameter="30"></mat-spinner>
+        </div>
+        <div *ngIf="errorLoadingCities">
+          <h2>Error loading cities</h2>
+        </div>
+      </ng-template>
+
+    </mat-step>
+
+    <mat-step [stepControl]="gymFormGroup">
+      <ng-template matStepLabel>Select gym</ng-template>
+
+      <cdk-virtual-scroll-viewport *ngIf="gyms$ | async as gyms; else elseGym" [itemSize]="gyms.length">
+        <mat-radio-group (change)="onGymSelected($event.value)" fxLayout="column"
+          fxLayoutGap="2rem">
+          <mat-radio-button *ngIf="gyms.length > 0" [value]="undefined">Any</mat-radio-button>
+          <mat-radio-button *cdkVirtualFor="let gym of gyms" [value]="gym">{{gym.name}}</mat-radio-button>
+        </mat-radio-group>
+
+        <h3 *ngIf="gyms.length === 0">No gyms in the selected city</h3>
+      </cdk-virtual-scroll-viewport>
+
+      <ng-template #elseGym>
+        <div class="spinner-container" *ngIf="isLoadingGyms">
+          <mat-spinner diameter="30"></mat-spinner>
+        </div>
+        <div *ngIf="errorLoadingGyms">
+          <h2>Error loading gyms</h2>
+        </div>
+      </ng-template>
+    </mat-step>
+  </mat-vertical-stepper>
+
+  <div fxLayout="row" fxLayoutAlign="end">
+    <button mat-button color="primary" (click)="abort()">Cancel</button>
+    <button mat-button color="primary" (click)="submit()" [disabled]="cityFormGroup.invalid">Confirm</button>
+  </div>
+</div>
