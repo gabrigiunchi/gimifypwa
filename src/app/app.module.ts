@@ -72,6 +72,7 @@ import {TimePeriodPickerComponent} from './components/input/time-period-picker/t
 import {LocationPickerComponent} from './components/input/select-location-form/location-picker.component';
 import {AssetKindPickerComponent} from './components/input/asset-kind-picker/asset-kind-picker.component';
 import { GymFilterComponent } from './components/modals/gym-filter/gym-filter.component';
+import { SearchbarComponent } from './components/input/searchbar/searchbar.component';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { GymFilterComponent } from './components/modals/gym-filter/gym-filter.co
     LocationPickerComponent,
     AssetKindPickerComponent,
     GymFilterComponent,
+    SearchbarComponent,
   ],
   imports: [
     FormsModule,

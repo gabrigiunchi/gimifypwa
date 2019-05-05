@@ -1,11 +1,38 @@
-<h1>Gyms</h1>
+<div>
+  <div class="header">
+    <h1>Gyms</h1>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <app-searchbar [(value)]="nameFilter" fxFlex="grow"></app-searchbar>
+      <button mat-icon-button (click)="openFilterDialog()">
+        <mat-icon>filter_list</mat-icon>
+      </button>
+    </div>
+    <mat-chip-list *ngIf="cityFilter">
+      <mat-chip removable="true"  (removed)="cityFilter=undefined">
+        {{cityFilter.name}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
 
-<mat-nav-list *ngIf="gyms; else loading">
-  <a mat-list-item *ngFor="let gym of gyms" routerLink="/gyms/{{gym.id}}" (click)="onGymClick(gym)">
-    {{gym.name}}
-  </a>
-</mat-nav-list>
+  </div>
+  <div *ngIf="result; else loading">
+      <mat-nav-list >
+    <mat-list-item *ngFor="let gym of result; last as isLast" routerLink="/gyms/{{gym.id}}" (click)="onGymClick(gym)">
+      <h3 matLine>{{gym.name}}</h3>
+      <p matLine>
+        <span class="mat-small">{{gym.city.name | titlecase}}</span>
+      </p>
+      <mat-divider *ngIf="!isLast"></mat-divider>
+    </mat-list-item>
+  </mat-nav-list>
+  <div *ngIf="result.length === 0" fxLayout="row" fxLayoutAlign="center center">
+    <h1>Nothing found</h1>
+  </div>
 
-<ng-template #loading>
-  <app-loading></app-loading>
-</ng-template>
+  </div>
+
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+
+</div>
