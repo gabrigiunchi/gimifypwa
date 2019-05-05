@@ -18,6 +18,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AssetListComponent} from 'src/app/components/layout/asset-list/asset-list.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MessageComponent} from 'src/app/components/layout/message/message.component';
+import {PhotosTabComponent} from './photos-tab/photos-tab.component';
 
 describe('GymDetailsComponent', () => {
   let component: GymDetailsComponent;
@@ -42,6 +43,7 @@ describe('GymDetailsComponent', () => {
         RatingBarComponent,
         AssetListComponent,
         AssetsTabComponent,
+        PhotosTabComponent,
         MessageComponent,
         CommentsTabComponent,
         CommentListComponent
