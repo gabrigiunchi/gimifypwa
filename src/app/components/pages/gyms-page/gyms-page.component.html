@@ -8,31 +8,28 @@
       </button>
     </div>
     <mat-chip-list *ngIf="cityFilter">
-      <mat-chip removable="true"  (removed)="cityFilter=undefined">
+      <mat-chip removable="true" (removed)="cityFilter=undefined">
         {{cityFilter.name}}
         <mat-icon matChipRemove>cancel</mat-icon>
       </mat-chip>
     </mat-chip-list>
 
   </div>
-  <div *ngIf="result; else loading">
-      <mat-nav-list >
-    <mat-list-item *ngFor="let gym of result; last as isLast" routerLink="/gyms/{{gym.id}}" (click)="onGymClick(gym)">
-      <h3 matLine>{{gym.name}}</h3>
-      <p matLine>
-        <span class="mat-small">{{gym.address}}, {{gym.city.name | titlecase}}</span>
-      </p>
-      <mat-divider *ngIf="!isLast"></mat-divider>
-    </mat-list-item>
-  </mat-nav-list>
-  <div *ngIf="result.length === 0" fxLayout="row" fxLayoutAlign="center center">
-    <h1>Nothing found</h1>
+  <div *ngIf="!isLoading">
+    <mat-nav-list *ngIf="result.length > 0">
+      <mat-list-item *ngFor="let gym of result; last as isLast" routerLink="/gyms/{{gym.id}}" (click)="onGymClick(gym)">
+        <h3 matLine>{{gym.name}}</h3>
+        <p matLine>
+          <span class="mat-small">{{gym.address}}, {{gym.city.name | titlecase}}</span>
+        </p>
+        <mat-divider *ngIf="!isLast"></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
+    <div *ngIf="result.length === 0" fxLayout="row" fxLayoutAlign="center center">
+      <h1>Nothing found</h1>
+    </div>
   </div>
 
-  </div>
-
-  <ng-template #loading>
-    <app-loading></app-loading>
-  </ng-template>
+  <app-loading *ngIf="isLoading"></app-loading>
 
 </div>

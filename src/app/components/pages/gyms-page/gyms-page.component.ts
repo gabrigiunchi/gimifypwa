@@ -7,6 +7,7 @@ import {MatDialog} from '@angular/material';
 import {GymFilterComponent, GymFilterResult} from '../../modals/gym-filter/gym-filter.component';
 import {FilterResult} from 'src/app/model/filter-result';
 import {City} from 'src/app/model/entities/city';
+import {finalize} from 'rxjs/operators';
 
 export interface GymFilterParams {
   name: string;
@@ -26,6 +27,7 @@ export class GymsPageComponent implements OnInit, OnDestroy {
     result: [],
     params: {city: undefined, name: '', ratingGreaterThan: 0}
   };
+  isLoading = false;
   private subscriptions: Subscription[] = [];
   private clearCache = true;
 
@@ -40,11 +42,14 @@ export class GymsPageComponent implements OnInit, OnDestroy {
       console.log('Loaded gyms from cache');
       this.filterResult = this.cacheService.element;
     } else {
+      this.isLoading = true;
       console.log('Loading gyms from server...');
-      this.gymService.gyms.subscribe(gyms => {
-        this.filterResult.content = gyms;
-        this.result = gyms;
-      });
+      this.gymService.gyms
+        .pipe(finalize(() => this.isLoading = false))
+        .subscribe(gyms => {
+          this.filterResult.content = gyms;
+          this.result = gyms;
+        });
     }
   }
 
