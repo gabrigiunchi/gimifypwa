@@ -3,10 +3,18 @@ import {GymDetailsComponent} from './gym-details.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {RatingBarComponent} from 'src/app/components/layout/rating-bar/rating-bar.component';
-import {MatIconModule} from '@angular/material';
+import {MatIconModule, MatListModule, MatProgressSpinnerModule, MatTableModule, MatTabsModule} from '@angular/material';
 import {GymService} from 'src/app/services/server-communication/gym.service';
 import {of} from 'rxjs';
 import {Gym} from 'src/app/model/entities/gym';
+import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';
+import {TimePipe} from 'src/app/pipes/date/time.pipe';
+import {TimetableDetailsComponent} from 'src/app/components/layout/timetable-details/timetable-details.component';
+import {DetailsTabComponent} from './details-tab/details-tab.component';
+import {AssetsTabComponent} from './assets-tab/assets-tab.component';
+import {CommentsTabComponent} from './comments-tab/comments-tab.component';
+import {CommentListComponent} from 'src/app/components/layout/comment-list/comment-list.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('GymDetailsComponent', () => {
   let component: GymDetailsComponent;
@@ -22,11 +30,26 @@ describe('GymDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [GymDetailsComponent, RatingBarComponent],
+      declarations: [
+        GymDetailsComponent,
+        LoadingComponent,
+        TimePipe,
+        TimetableDetailsComponent,
+        DetailsTabComponent,
+        RatingBarComponent,
+        AssetsTabComponent,
+        CommentsTabComponent,
+        CommentListComponent
+      ],
       imports: [
+        BrowserAnimationsModule,
         HttpClientModule,
         RouterModule.forRoot([]),
-        MatIconModule
+        MatIconModule,
+        MatListModule,
+        MatTabsModule,
+        MatProgressSpinnerModule,
+        MatTableModule
       ]
     })
       .compileComponents();

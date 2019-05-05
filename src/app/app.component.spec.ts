@@ -10,6 +10,7 @@ import {ProfilePageComponent} from './components/pages/profile-page/profile-page
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ToolbarComponent} from './components/layout/toolbar/toolbar.component';
 import {FooterComponent} from './components/layout/footer/footer.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -28,6 +29,7 @@ describe('AppComponent', () => {
         MatIconModule,
         MatToolbarModule,
         HttpClientModule,
+        ScrollingModule,
         MatProgressSpinnerModule,
         FormsModule,
         ReactiveFormsModule,

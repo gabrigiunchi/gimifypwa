@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PhotosTabComponent } from './photos-tab.component';
+import {PhotosTabComponent} from './photos-tab.component';
 
 describe('PhotosTabComponent', () => {
   let component: PhotosTabComponent;

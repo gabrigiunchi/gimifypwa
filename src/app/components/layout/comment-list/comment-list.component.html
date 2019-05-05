@@ -1,15 +1,17 @@
-<mat-list *ngIf="comments" role="list" dense>
-  <mat-list-item *ngFor="let comment of comments" role="listitem">
-    <img matListAvatar src="../../../../assets/img/avatars/penguin.png" alt="avatar">
-    <div matLine fxLayout="row" fxLayoutAlign="start center">
-      <div [style.paddingRight]="'0.5rem'">{{comment.user.username}}</div>
-      <app-rating-bar [value]="comment.rating" [size]="'0.5rem'"></app-rating-bar>
-    </div>
-    <p matLine>
-      <span class="title">{{comment.title}}</span>
-    </p>
-    <p matLine>
+<mat-list *ngIf="comments" role="list">
+  <div *ngFor="let comment of comments">
+    <mat-list-item role="listitem">
+      <img matListAvatar src="../../../../assets/img/avatars/penguin.png" alt="avatar">
+      <div matLine fxLayout="row" fxLayoutAlign="start center">
+        <div [style.paddingRight]="'0.5rem'">{{comment.user.username}}</div>
+        <app-rating-bar [value]="comment.rating" [size]="'0.5rem'"></app-rating-bar>
+      </div>
+      <p matLine>
+        <span class="title">{{comment.title}}</span>
+      </p>
+    </mat-list-item>
+    <div class="message">
       {{comment.message}}
-    </p>
-  </mat-list-item>
+    </div>
+  </div>
 </mat-list>

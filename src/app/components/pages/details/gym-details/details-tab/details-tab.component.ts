@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Gym} from 'src/app/model/entities/gym';
 import {Timetable} from 'src/app/model/entities/timetable';

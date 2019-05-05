@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnDestroy} from '@angular/core';
 import {Gym} from 'src/app/model/entities/gym';
 import {CommentService} from 'src/app/services/server-communication/comment.service';
-import {Observable, Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {Page} from 'src/app/model/page';
 import {Comment} from 'src/app/model/entities/comment';
 import {finalize} from 'rxjs/operators';

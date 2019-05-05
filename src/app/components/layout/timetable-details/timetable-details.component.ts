@@ -1,7 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Timetable} from 'src/app/model/entities/timetable';
 import {Schedule} from 'src/app/model/entities/schedule';
-import {DayOfWeek} from 'src/app/model/day-of-week';
 
 @Component({
   selector: 'app-timetable-details',

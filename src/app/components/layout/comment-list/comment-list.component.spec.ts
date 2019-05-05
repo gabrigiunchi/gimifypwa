@@ -1,6 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CommentListComponent } from './comment-list.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {CommentListComponent} from './comment-list.component';
+import {MatIconModule, MatListModule} from '@angular/material';
+import {RatingBarComponent} from '../rating-bar/rating-bar.component';
 
 describe('CommentListComponent', () => {
   let component: CommentListComponent;
@@ -8,9 +9,13 @@ describe('CommentListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CommentListComponent ]
+      declarations: [CommentListComponent, RatingBarComponent],
+      imports: [
+        MatListModule,
+        MatIconModule
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
