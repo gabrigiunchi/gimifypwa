@@ -4,6 +4,7 @@ export const CONSTANTS = {
   VERSION: p.version,
 
   MAIN_PAGES: [
+    '/home',
     '/gyms',
     '/profile',
     '/assets',
@@ -11,6 +12,9 @@ export const CONSTANTS = {
     '/search',
     '/playground'
   ],
+
+  ASSET_PAGE_SIZE: 5,
+  COMMENT_PAGE_SIZE: 5,
 
   DEFAULT_TIMEZONE: 'Europe/Rome',
   DEFAULT_DATETIME_FORMAT: `yyyy-MM-dd'T'TTZZZ`,

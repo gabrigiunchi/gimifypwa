@@ -2,7 +2,7 @@
   <div fxFlex="grow">
     <app-asset-list *ngIf="!isLoading && assets.length > 0" [assets]="assets" (assetSelected)="onAssetSelected($event)"
     [showGymDetails]="false" fxFlex="grow"></app-asset-list>
-    <app-loading *ngIf="isLoading"></app-loading>
+    <app-loading [style.width]="'100%'" *ngIf="isLoading"></app-loading>
     <app-message *ngIf="!isLoading && assets.length === 0" title="No assets"></app-message>
   </div>
   <mat-paginator hidePageSize="true" [style.width]="'100%'" (page)="pageChange($event.pageIndex)" [length]="length"

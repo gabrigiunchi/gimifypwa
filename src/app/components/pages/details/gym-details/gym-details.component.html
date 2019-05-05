@@ -18,14 +18,16 @@
       <app-assets-tab [gym]="gym"></app-assets-tab>
     </mat-tab>
 
-    <!-- <mat-tab label="Photos">
-          <ng-template matTabContent>
-            <app-photos-tab></app-photos-tab>
-          </ng-template>
-        </mat-tab> -->
-
     <mat-tab label="Comments">
       <app-comments-tab [gym]="gym"></app-comments-tab>
     </mat-tab>
+
+    <mat-tab label="Photos">
+      <ng-template matTabContent>
+        <app-photos-tab></app-photos-tab>
+      </ng-template>
+    </mat-tab>
+
   </mat-tab-group>
+
 </div>

@@ -6,6 +6,7 @@ import {Gym} from 'src/app/model/entities/gym';
 import {Page} from 'src/app/model/page';
 import {AssetDTO} from 'src/app/model/dto/assetDTO';
 import {Router} from '@angular/router';
+import {CONSTANTS} from 'src/app/constants';
 
 @Component({
   selector: 'app-assets-tab',
@@ -14,7 +15,7 @@ import {Router} from '@angular/router';
 })
 export class AssetsTabComponent implements OnChanges {
 
-  readonly pageSize = 1;
+  readonly pageSize = CONSTANTS.ASSET_PAGE_SIZE;
   @Input() gym: Gym;
   currentPage: Page<AssetDTO>;
   private currentDownload: Subscription;

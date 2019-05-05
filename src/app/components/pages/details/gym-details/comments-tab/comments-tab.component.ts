@@ -5,6 +5,7 @@ import {Subscription} from 'rxjs';
 import {Page} from 'src/app/model/page';
 import {Comment} from 'src/app/model/entities/comment';
 import {finalize} from 'rxjs/operators';
+import {CONSTANTS} from 'src/app/constants';
 
 @Component({
   selector: 'app-comments-tab',
@@ -13,7 +14,7 @@ import {finalize} from 'rxjs/operators';
 })
 export class CommentsTabComponent implements OnChanges, OnDestroy {
 
-  readonly pageSize = 2;
+  readonly pageSize = CONSTANTS.COMMENT_PAGE_SIZE;
 
   @Input() gym: Gym;
   comments: Comment[] = [];
