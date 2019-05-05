@@ -1,0 +1,31 @@
+<div class="mat-typography">
+  <button mat-icon-button (click)="cancel()"><mat-icon>close</mat-icon></button>
+  <h1>Filter by</h1>
+
+  <div class="form-item" fxLayout="row" fxLayoutAlign="start center" matRipple (click)="pickCity()">
+    <div fxFlex="50" fxLayoutAlign="start center">
+      <mat-icon class="mr">location_city</mat-icon>
+      <div>City</div>
+    </div>
+    <div fxFlex="50" fxLayoutAlign="end">
+      <div *ngIf="result.city; else elseBlock">
+        <span>{{result.city.name}}</span>
+      </div>
+      <ng-template #elseBlock>Any</ng-template>
+    </div>
+  </div>
+
+  <div class="form-item" fxLayout="row" fxLayoutAlign="start center">
+      <div fxFlex="50" fxLayoutAlign="start center">
+        <mat-icon class="mr">star_rate</mat-icon>
+        <div>Rating</div>
+      </div>
+      <div fxFlex="50" fxLayoutAlign="end">
+          <mat-slider step="1" min="0" max="5" [(value)]="result.ratingGreaterThan" thumbLabel="true"></mat-slider>
+      </div>
+    </div>
+
+    <div class="footer" fxLayout="row" fxLayoutAlign="center center">
+      <button mat-flat-button color="primary" (click)="submit()">Filter</button>
+    </div>
+</div>

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {SelectLocationComponent, SelectLocationResult} from '../../modals/dialogs/select-location/select-location.component';
 import {Duration} from 'luxon';
+import {GymFilterComponent, GymFilterResult} from '../../modals/gym-filter/gym-filter.component';
 
 @Component({
   selector: 'app-playground',
@@ -22,18 +23,13 @@ export class PlaygroundComponent implements OnInit {
 
 
   openDialog() {
-    const dialogData: SelectLocationResult = {
-      city: {id: 1, name: 'MILANO'},
-      gym: {name: 'gym1', city: {id: 1, name: 'MILANO'}, address: 'Via1', id: 12, zoneId: 'Europe/Rome'}
-    };
-    this.dialog.open(SelectLocationComponent, {
+    this.dialog.open(GymFilterComponent, {
       minWidth: '100%',
       height: '100%',
       autoFocus: false,
       restoreFocus: false,
-      data: dialogData
     })
-    .afterClosed().subscribe((result: SelectLocationResult) => {
+    .afterClosed().subscribe((result: GymFilterResult) => {
       console.log(result);
     });
   }
