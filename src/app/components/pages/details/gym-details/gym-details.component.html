@@ -1,4 +1,19 @@
-<div class="header" *ngIf="gym$ | async as gym" fxLayout="row"fxLayoutAlign="start center">
-  <h1>{{gym.name}}</h1>
+<div class="header" *ngIf="gym" fxLayout="row" fxLayoutAlign="center center">
+  <h1 class="title">{{gym.name}}</h1>
   <app-rating-bar [value]="rating$ | async"></app-rating-bar>
 </div>
+<mat-tab-group>
+  <mat-tab label="Details">
+    <app-details-tab [gym]="gym"></app-details-tab>
+  </mat-tab>
+  <mat-tab label="Assets">
+    <ng-template matTabContent>
+      <app-assets-tab></app-assets-tab>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Photos">
+    <ng-template matTabContent>
+      <app-photos-tab></app-photos-tab>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

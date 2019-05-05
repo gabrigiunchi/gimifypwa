@@ -74,6 +74,11 @@ import {AssetKindPickerComponent} from './components/input/asset-kind-picker/ass
 import {GymFilterComponent} from './components/modals/gym-filter/gym-filter.component';
 import {SearchbarComponent} from './components/input/searchbar/searchbar.component';
 import {RatingBarComponent} from './components/layout/rating-bar/rating-bar.component';
+import { DetailsTabComponent } from './components/pages/details/gym-details/details-tab/details-tab.component';
+import { AssetsTabComponent } from './components/pages/details/gym-details/assets-tab/assets-tab.component';
+import { PhotosTabComponent } from './components/pages/details/gym-details/photos-tab/photos-tab.component';
+import { CommentsTabComponent } from './components/pages/details/gym-details/comments-tab/comments-tab.component';
+import { TimetableDetailsComponent } from './components/layout/timetable-details/timetable-details.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +110,11 @@ import {RatingBarComponent} from './components/layout/rating-bar/rating-bar.comp
     GymFilterComponent,
     SearchbarComponent,
     RatingBarComponent,
+    DetailsTabComponent,
+    AssetsTabComponent,
+    PhotosTabComponent,
+    CommentsTabComponent,
+    TimetableDetailsComponent,
   ],
   imports: [
     FormsModule,

@@ -11,7 +11,7 @@ import {Gym} from 'src/app/model/entities/gym';
 })
 export class GymDetailsComponent implements OnInit {
 
-  gym$: Observable<Gym>;
+  gym: Gym;
   rating$: Observable<number>;
 
   constructor(private gymService: GymService, private route: ActivatedRoute) {
@@ -19,7 +19,7 @@ export class GymDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.gym$ = this.gymService.getGymById(id);
+    this.gymService.getGymById(id).subscribe(gym => this.gym = gym);
     this.rating$ = this.gymService.getRatingOfGym(id);
   }
 

@@ -5,6 +5,8 @@ import {Gym} from 'src/app/model/entities/gym';
 import {Observable} from 'rxjs';
 import {CONSTANTS} from 'src/app/constants';
 import {CommentDTO} from 'src/app/model/dto/commentDTO';
+import {Page} from 'src/app/model/page';
+import {Comment} from 'src/app/model/entities/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +16,9 @@ export class CommentService {
   constructor(private http: HttpClient, private urlService: UrlService) {
   }
 
-  getCommentsByGym(gym: Gym, page: number, size: number): Observable<Comment[]> {
+  getCommentsByGym(gym: Gym, page: number, size: number): Observable<Page<Comment>> {
     const url = this.urlService.getRestUrl(`${CONSTANTS.COMMENTS}/by_gym/${gym.id}/page/${page}/size/${size}`);
-    return this.http.get<Comment[]>(url, this.urlService.authenticationHeader);
+    return this.http.get<Page<Comment>>(url, this.urlService.authenticationHeader);
   }
 
   postComment(comment: CommentDTO): Observable<Comment> {
