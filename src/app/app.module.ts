@@ -79,6 +79,7 @@ import { AssetsTabComponent } from './components/pages/details/gym-details/asset
 import { PhotosTabComponent } from './components/pages/details/gym-details/photos-tab/photos-tab.component';
 import { CommentsTabComponent } from './components/pages/details/gym-details/comments-tab/comments-tab.component';
 import { TimetableDetailsComponent } from './components/layout/timetable-details/timetable-details.component';
+import { CommentListComponent } from './components/layout/comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -115,6 +116,7 @@ import { TimetableDetailsComponent } from './components/layout/timetable-details
     PhotosTabComponent,
     CommentsTabComponent,
     TimetableDetailsComponent,
+    CommentListComponent,
   ],
   imports: [
     FormsModule,

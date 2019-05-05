@@ -3,17 +3,26 @@
   <app-rating-bar [value]="rating$ | async"></app-rating-bar>
 </div>
 <mat-tab-group>
+
   <mat-tab label="Details">
     <app-details-tab [gym]="gym"></app-details-tab>
   </mat-tab>
+
   <mat-tab label="Assets">
     <ng-template matTabContent>
       <app-assets-tab></app-assets-tab>
     </ng-template>
   </mat-tab>
-  <mat-tab label="Photos">
+
+  <!-- <mat-tab label="Photos">
     <ng-template matTabContent>
       <app-photos-tab></app-photos-tab>
+    </ng-template>
+  </mat-tab> -->
+
+  <mat-tab label="Comments">
+    <ng-template matTabContent>
+      <app-comments-tab [gym]="gym"></app-comments-tab>
     </ng-template>
   </mat-tab>
 </mat-tab-group>

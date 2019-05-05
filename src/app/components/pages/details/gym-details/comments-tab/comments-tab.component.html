@@ -1,3 +1,9 @@
-<p>
-  comments-tab works!
-</p>
+<div *ngIf="currentPage !== undefined && !loading">
+  <app-comment-list [comments]="comments"></app-comment-list>
+
+  <div class="load-more-container" fxLayout="row" fxLayoutAlign="center center">
+    <button *ngIf="!last" mat-button color="primary" (click)="loadMore()">Load more</button>
+  </div>
+</div>
+
+<app-loading *ngIf="loading"></app-loading>
