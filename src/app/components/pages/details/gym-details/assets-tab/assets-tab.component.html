@@ -1,3 +1,8 @@
-<p>
-  assets-tab works!
-</p>
+<div fxLayout="column" class="container">
+  <div fxFlex="grow">
+    <app-asset-list *ngIf="!isLoading" [assets]="assets"></app-asset-list>
+    <app-loading *ngIf="isLoading"></app-loading>
+  </div>
+  <mat-paginator hidePageSize="true" [style.width]="'100%'" (page)="pageChange($event.pageIndex)" [length]="length"
+    [pageSize]="pageSize"></mat-paginator>
+</div>

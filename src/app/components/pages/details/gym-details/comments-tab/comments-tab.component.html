@@ -1,9 +1,8 @@
-<div *ngIf="currentPage !== undefined && !loading">
+<div *ngIf="currentPage !== undefined">
   <app-comment-list [comments]="comments"></app-comment-list>
 
   <div class="load-more-container" fxLayout="row" fxLayoutAlign="center center">
-    <button *ngIf="!last" mat-button color="primary" (click)="loadMore()">Load more</button>
+    <button *ngIf="!last && !isLoading" mat-button color="primary" (click)="loadMore()">Load more</button>
+    <mat-spinner diameter="25" *ngIf="isLoading"></mat-spinner>
   </div>
 </div>
-
-<app-loading *ngIf="loading"></app-loading>

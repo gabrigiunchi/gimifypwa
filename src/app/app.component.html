@@ -3,7 +3,7 @@
     <!-- <app-toolbar></app-toolbar> -->
     <div fxFlex="grow">
       <cdk-virtual-scroll-viewport class="full-height" itemSize="1">
-        <router-outlet></router-outlet>
+          <router-outlet [style.height]="'100%'"></router-outlet>
       </cdk-virtual-scroll-viewport>
     </div>
     <app-footer *ngIf="isLoggedIn" id="footer"></app-footer>

@@ -1,28 +1,26 @@
-<div class="header" *ngIf="gym" fxLayout="row" fxLayoutAlign="center center">
-  <h1 class="title">{{gym.name}}</h1>
-  <app-rating-bar [value]="rating$ | async"></app-rating-bar>
-</div>
-<mat-tab-group>
+<div fxLayout="column" fxFlex="grow">
+  <div class="header" *ngIf="gym" fxLayout="row" fxLayoutAlign="center center">
+    <h1 class="title">{{gym.name}}</h1>
+    <app-rating-bar [value]="rating$ | async"></app-rating-bar>
+  </div>
+  <mat-tab-group>
 
-  <mat-tab label="Details">
-    <app-details-tab [gym]="gym"></app-details-tab>
-  </mat-tab>
+    <mat-tab label="Details">
+      <app-details-tab [gym]="gym"></app-details-tab>
+    </mat-tab>
 
-  <mat-tab label="Assets">
-    <ng-template matTabContent>
+    <mat-tab label="Assets">
       <app-assets-tab></app-assets-tab>
-    </ng-template>
-  </mat-tab>
+    </mat-tab>
 
-  <!-- <mat-tab label="Photos">
-    <ng-template matTabContent>
-      <app-photos-tab></app-photos-tab>
-    </ng-template>
-  </mat-tab> -->
+    <!-- <mat-tab label="Photos">
+          <ng-template matTabContent>
+            <app-photos-tab></app-photos-tab>
+          </ng-template>
+        </mat-tab> -->
 
-  <mat-tab label="Comments">
-    <ng-template matTabContent>
+    <mat-tab label="Comments">
       <app-comments-tab [gym]="gym"></app-comments-tab>
-    </ng-template>
-  </mat-tab>
-</mat-tab-group>
+    </mat-tab>
+  </mat-tab-group>
+</div>
