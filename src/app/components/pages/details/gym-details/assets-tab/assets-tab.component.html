@@ -1,7 +1,11 @@
-<div fxLayout="column" class="container">
+<div fxLayout="column" fxFlexFill>
   <div fxFlex="grow">
-    <app-asset-list *ngIf="!isLoading" [assets]="assets"></app-asset-list>
+    <app-asset-list *ngIf="!isLoading" [assets]="assets" fxFlex="grow"></app-asset-list>
     <app-loading *ngIf="isLoading"></app-loading>
+    <div *ngIf="!isLoading && assets.length === 0" 
+    fxFlex="grow"
+    fxLayout="row" 
+    fxLayoutAlign="center center">No assets</div>
   </div>
   <mat-paginator hidePageSize="true" [style.width]="'100%'" (page)="pageChange($event.pageIndex)" [length]="length"
     [pageSize]="pageSize"></mat-paginator>

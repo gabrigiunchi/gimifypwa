@@ -1,5 +1,11 @@
-<mat-nav-list role="navigation" *ngIf="assets">
-  <mat-list-item *ngFor="let asset of assets">
-    {{asset.name}}
-  </mat-list-item>
-</mat-nav-list>
+<cdk-virtual-scroll-viewport fxFlexFill *ngIf="assets" itemSize="assets.length">
+  <mat-nav-list role="navigation">
+    <mat-list-item *ngFor="let asset of assets">
+      <mat-icon matListIcon>{{getIcon(asset)}}</mat-icon>
+      <h3 matLine>{{asset.name}}</h3>
+      <p matLine>
+        <span>{{asset.gymName}}</span>
+      </p>
+    </mat-list-item>
+  </mat-nav-list>
+</cdk-virtual-scroll-viewport>

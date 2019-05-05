@@ -1,3 +1,13 @@
 .full-height {
   height: 100%;
 }
+
+cdk-virtual-scroll-viewport {
+  height: 100%;
+}
+
+.hidden-router {
+  flex: 1 1 auto;
+  display: flex;
+  overflow: hidden;
+}

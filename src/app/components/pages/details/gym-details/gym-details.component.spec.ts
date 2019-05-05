@@ -3,7 +3,7 @@ import {GymDetailsComponent} from './gym-details.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {RatingBarComponent} from 'src/app/components/layout/rating-bar/rating-bar.component';
-import {MatIconModule, MatListModule, MatProgressSpinnerModule, MatTableModule, MatTabsModule} from '@angular/material';
+import {MatIconModule, MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatTableModule, MatTabsModule} from '@angular/material';
 import {GymService} from 'src/app/services/server-communication/gym.service';
 import {of} from 'rxjs';
 import {Gym} from 'src/app/model/entities/gym';
@@ -15,6 +15,8 @@ import {AssetsTabComponent} from './assets-tab/assets-tab.component';
 import {CommentsTabComponent} from './comments-tab/comments-tab.component';
 import {CommentListComponent} from 'src/app/components/layout/comment-list/comment-list.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AssetListComponent} from 'src/app/components/layout/asset-list/asset-list.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 describe('GymDetailsComponent', () => {
   let component: GymDetailsComponent;
@@ -37,6 +39,7 @@ describe('GymDetailsComponent', () => {
         TimetableDetailsComponent,
         DetailsTabComponent,
         RatingBarComponent,
+        AssetListComponent,
         AssetsTabComponent,
         CommentsTabComponent,
         CommentListComponent
@@ -49,7 +52,9 @@ describe('GymDetailsComponent', () => {
         MatListModule,
         MatTabsModule,
         MatProgressSpinnerModule,
-        MatTableModule
+        MatTableModule,
+        ScrollingModule,
+        MatPaginatorModule
       ]
     })
       .compileComponents();

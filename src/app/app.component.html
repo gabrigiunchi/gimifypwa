@@ -1,12 +1,10 @@
 <div class="mat-typography full-height">
-  <div *ngIf="!isLoading" fxLayout="column" class="full-height">
+  <div *ngIf="!isLoading" fxLayout="column" fxFlexFill>
     <!-- <app-toolbar></app-toolbar> -->
     <div fxFlex="grow">
-      <cdk-virtual-scroll-viewport class="full-height" itemSize="1">
-          <router-outlet [style.height]="'100%'"></router-outlet>
-      </cdk-virtual-scroll-viewport>
+      <router-outlet class="hidden-router"></router-outlet>
     </div>
-    <app-footer *ngIf="isLoggedIn" id="footer"></app-footer>
+    <app-footer *ngIf="showFooter" id="footer"></app-footer>
   </div>
   <app-waiting-page *ngIf="isLoading" [style.height]="'100%'"></app-waiting-page>
 </div>

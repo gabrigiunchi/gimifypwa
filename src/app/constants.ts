@@ -3,6 +3,15 @@ import * as p from '../../package.json';
 export const CONSTANTS = {
   VERSION: p.version,
 
+  MAIN_PAGES: [
+    '/gyms',
+    '/profile',
+    '/assets',
+    '/reservations',
+    '/search',
+    '/playground'
+  ],
+
   DEFAULT_TIMEZONE: 'Europe/Rome',
   DEFAULT_DATETIME_FORMAT: `yyyy-MM-dd'T'TTZZZ`,
 

@@ -1,6 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AssetListComponent } from './asset-list.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {AssetListComponent} from './asset-list.component';
+import {MatIconModule, MatListModule} from '@angular/material';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('AssetListComponent', () => {
   let component: AssetListComponent;
@@ -8,9 +10,15 @@ describe('AssetListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AssetListComponent ]
+      declarations: [AssetListComponent],
+      imports: [
+        ScrollingModule,
+        MatListModule,
+        MatIconModule,
+        HttpClientTestingModule
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -80,7 +80,7 @@ import {PhotosTabComponent} from './components/pages/details/gym-details/photos-
 import {CommentsTabComponent} from './components/pages/details/gym-details/comments-tab/comments-tab.component';
 import {TimetableDetailsComponent} from './components/layout/timetable-details/timetable-details.component';
 import {CommentListComponent} from './components/layout/comment-list/comment-list.component';
-import { AssetListComponent } from './components/layout/asset-list/asset-list.component';
+import {AssetListComponent} from './components/layout/asset-list/asset-list.component';
 
 @NgModule({
   declarations: [

@@ -9,3 +9,7 @@ h1 {
 .title {
   padding: 0 0.5rem;
 }
+
+mat-tab-group {
+  height: 100%;
+}

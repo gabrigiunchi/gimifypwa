@@ -1,29 +1,31 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {AssetService} from 'src/app/services/server-communication/asset.service';
-import {Subscribable, Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import {Gym} from 'src/app/model/entities/gym';
 import {Page} from 'src/app/model/page';
-import {Asset} from 'src/app/model/entities/asset';
+import {AssetDTO} from 'src/app/model/dto/assetDTO';
 
 @Component({
   selector: 'app-assets-tab',
   templateUrl: './assets-tab.component.html',
   styleUrls: ['./assets-tab.component.css']
 })
-export class AssetsTabComponent implements OnInit {
+export class AssetsTabComponent implements OnChanges {
 
-  readonly pageSize = 5;
+  readonly pageSize = 1;
   @Input() gym: Gym;
-  currentPage: Page<Asset>;
+  currentPage: Page<AssetDTO>;
   private currentDownload: Subscription;
   isLoading = false;
 
   constructor(private assetService: AssetService) {}
 
-  ngOnInit() {
+  ngOnChanges() {
+    if (this.gym) {
+      this.downloadPage(0);
+    }
   }
-
 
   downloadPage(page: number): void {
     if (this.currentDownload) {
@@ -47,7 +49,7 @@ export class AssetsTabComponent implements OnInit {
       );
   }
 
-  get assets(): Asset[] {
+  get assets(): AssetDTO[] {
     return this.currentPage ? this.currentPage.content : [];
   }
 
