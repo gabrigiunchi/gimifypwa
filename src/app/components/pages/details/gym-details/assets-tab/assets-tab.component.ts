@@ -5,6 +5,7 @@ import {finalize} from 'rxjs/operators';
 import {Gym} from 'src/app/model/entities/gym';
 import {Page} from 'src/app/model/page';
 import {AssetDTO} from 'src/app/model/dto/assetDTO';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-assets-tab',
@@ -19,12 +20,18 @@ export class AssetsTabComponent implements OnChanges {
   private currentDownload: Subscription;
   isLoading = false;
 
-  constructor(private assetService: AssetService) {}
+  constructor(
+    private router: Router,
+    private assetService: AssetService) {}
 
   ngOnChanges() {
     if (this.gym) {
       this.downloadPage(0);
     }
+  }
+
+  onAssetSelected(asset: AssetDTO) {
+    this.router.navigate(['/assets', asset.id]);
   }
 
   downloadPage(page: number): void {

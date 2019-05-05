@@ -9,6 +9,7 @@ import {AssetDTO} from 'src/app/model/dto/assetDTO';
 })
 export class AssetListComponent {
 
+  @Input() showGymDetails = true;
   @Input() assets: AssetDTO[];
   @Output() assetSelected = new EventEmitter<AssetDTO>();
 
@@ -20,5 +21,9 @@ export class AssetListComponent {
 
   getIcon(asset: AssetDTO): string {
     return this.assetService.getIcon(asset);
+  }
+
+  getKindName(asset: AssetDTO): string {
+    return asset.kind.name.replace('_', ' ');
   }
 }

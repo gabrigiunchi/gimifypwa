@@ -18,6 +18,8 @@ const routes: Routes = [
   {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
   {path: 'gyms', component: GymsPageComponent, canActivate: [AuthGuard]},
   {path: 'gyms/:id', component: GymDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'assets', component: PlaygroundComponent, canActivate: [AuthGuard]},
+  {path: 'assets/:id', component: PlaygroundComponent, canActivate: [AuthGuard]},
   {path: 'reservations/:id', component: ReservationDetailsComponent, canActivate: [AuthGuard]},
   {path: 'reservations', component: ReservationsPageComponent, canActivate: [AuthGuard]},
   {path: 'search', component: SearchPageComponent, canActivate: [AuthGuard]},

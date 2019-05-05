@@ -5,6 +5,8 @@ import {MatIconModule, MatListModule, MatPaginatorModule, MatProgressSpinnerModu
 import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {MessageComponent} from 'src/app/components/layout/message/message.component';
+import {RouterModule} from '@angular/router';
 
 describe('AssetsTabComponent', () => {
   let component: AssetsTabComponent;
@@ -16,6 +18,7 @@ describe('AssetsTabComponent', () => {
         AssetsTabComponent,
         AssetListComponent,
         LoadingComponent,
+        MessageComponent
       ],
       imports: [
         MatListModule,
@@ -23,7 +26,8 @@ describe('AssetsTabComponent', () => {
         MatPaginatorModule,
         ScrollingModule,
         MatProgressSpinnerModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        RouterModule.forRoot([])
       ]
     })
       .compileComponents();

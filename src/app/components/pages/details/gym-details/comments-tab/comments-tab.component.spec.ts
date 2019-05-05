@@ -5,6 +5,7 @@ import {MatIconModule, MatListModule, MatProgressSpinnerModule} from '@angular/m
 import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';
 import {RatingBarComponent} from 'src/app/components/layout/rating-bar/rating-bar.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {MessageComponent} from 'src/app/components/layout/message/message.component';
 
 describe('CommentsTabComponent', () => {
   let component: CommentsTabComponent;
@@ -16,6 +17,7 @@ describe('CommentsTabComponent', () => {
         CommentsTabComponent,
         CommentListComponent,
         LoadingComponent,
+        MessageComponent,
         RatingBarComponent
       ],
       imports: [
