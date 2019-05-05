@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {GymsPageComponent, GymFilterParams} from './gyms-page.component';
-import {MatListModule, MatProgressSpinnerModule, MatIconModule, MatInputModule, MatDialogModule, MatChipsModule} from '@angular/material';
+import {GymFilterParams, GymsPageComponent} from './gyms-page.component';
+import {MatChipsModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule, MatProgressSpinnerModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {LoadingComponent} from '../../layout/loading/loading.component';
@@ -12,7 +12,6 @@ import {FilterResult} from 'src/app/model/filter-result';
 import {SearchbarComponent} from '../../input/searchbar/searchbar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ExpectedConditions} from 'protractor';
 
 describe('GymsPageComponent', () => {
   let component: GymsPageComponent;

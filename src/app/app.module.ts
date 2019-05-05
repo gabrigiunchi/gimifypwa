@@ -71,8 +71,9 @@ import {SelectLocationComponent} from './components/modals/dialogs/select-locati
 import {TimePeriodPickerComponent} from './components/input/time-period-picker/time-period-picker.component';
 import {LocationPickerComponent} from './components/input/select-location-form/location-picker.component';
 import {AssetKindPickerComponent} from './components/input/asset-kind-picker/asset-kind-picker.component';
-import { GymFilterComponent } from './components/modals/gym-filter/gym-filter.component';
-import { SearchbarComponent } from './components/input/searchbar/searchbar.component';
+import {GymFilterComponent} from './components/modals/gym-filter/gym-filter.component';
+import {SearchbarComponent} from './components/input/searchbar/searchbar.component';
+import {RatingBarComponent} from './components/layout/rating-bar/rating-bar.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { SearchbarComponent } from './components/input/searchbar/searchbar.compo
     AssetKindPickerComponent,
     GymFilterComponent,
     SearchbarComponent,
+    RatingBarComponent,
   ],
   imports: [
     FormsModule,

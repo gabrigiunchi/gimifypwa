@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {MatDialogRef, MatDialog} from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import {CityService} from 'src/app/services/server-communication/city.service';
 import {City} from 'src/app/model/entities/city';
-import {SelectionDialogData, SelectionDialogComponent} from '../dialogs/selection-dialog/selection-dialog.component';
+import {SelectionDialogComponent, SelectionDialogData} from '../dialogs/selection-dialog/selection-dialog.component';
 
 export interface GymFilterResult {
   city: City;

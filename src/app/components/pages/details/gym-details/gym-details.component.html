@@ -1,4 +1,4 @@
-<div *ngIf="gym$ | async as gym">
+<div class="header" *ngIf="gym$ | async as gym" fxLayout="row"fxLayoutAlign="start center">
   <h1>{{gym.name}}</h1>
-  <h2>{{rating$ | async}}</h2>
+  <app-rating-bar [value]="rating$ | async"></app-rating-bar>
 </div>

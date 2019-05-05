@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
-import {SelectLocationComponent, SelectLocationResult} from '../../modals/dialogs/select-location/select-location.component';
 import {Duration} from 'luxon';
 import {GymFilterComponent, GymFilterResult} from '../../modals/gym-filter/gym-filter.component';
 

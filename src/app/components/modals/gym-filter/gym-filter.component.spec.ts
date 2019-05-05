@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {GymFilterComponent} from './gym-filter.component';
-import {MatIconModule, MatSliderModule, MatDialogModule, MatDialogRef} from '@angular/material';
+import {MatDialogModule, MatDialogRef, MatIconModule, MatSliderModule} from '@angular/material';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('GymFilterComponent', () => {
