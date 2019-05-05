@@ -20,7 +20,7 @@
     <mat-list-item *ngFor="let gym of result; last as isLast" routerLink="/gyms/{{gym.id}}" (click)="onGymClick(gym)">
       <h3 matLine>{{gym.name}}</h3>
       <p matLine>
-        <span class="mat-small">{{gym.city.name | titlecase}}</span>
+        <span class="mat-small">{{gym.address}}, {{gym.city.name | titlecase}}</span>
       </p>
       <mat-divider *ngIf="!isLast"></mat-divider>
     </mat-list-item>
