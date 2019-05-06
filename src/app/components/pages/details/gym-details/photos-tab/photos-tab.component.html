@@ -1,3 +1,5 @@
-<p>
-  photos-tab works!
-</p>
+<mat-grid-list *ngIf="photos$ | async as photos" cols="1" rowHeight="2:1">
+  <mat-grid-tile *ngFor="let photo of photos">
+    <img [src]="photo">
+  </mat-grid-tile>
+</mat-grid-list>

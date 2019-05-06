@@ -24,6 +24,6 @@ export class AppComponent {
   }
 
   get showFooter(): boolean {
-    return this.isLoggedIn &&  CONSTANTS.MAIN_PAGES.includes(this.router.url);
+    return CONSTANTS.MAIN_PAGES.includes(this.router.url);
   }
 }

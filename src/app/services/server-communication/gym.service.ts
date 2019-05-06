@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {UrlService} from '../url.service';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {Gym} from 'src/app/model/entities/gym';
 import {CONSTANTS} from 'src/app/constants';
 import {City} from 'src/app/model/entities/city';
@@ -30,5 +30,17 @@ export class GymService {
   getRatingOfGym(gymId: number): Observable<number> {
     const url = this.urlService.getRestUrl(`${CONSTANTS.GYMS}/${gymId}/rating`);
     return this.http.get<number>(url, this.urlService.authenticationHeader);
+  }
+
+  getPhotosOfGym(gym: Gym): Observable<string[]> {
+    return of([
+      '/assets/img/mock_gyms/gym1.png',
+      '/assets/img/mock_gyms/gym1.png',
+      '/assets/img/mock_gyms/gym1.png',
+      '/assets/img/mock_gyms/gym1.png',
+      '/assets/img/mock_gyms/gym1.png'
+    ]);
+    // const url = this.urlService.getRestUrl(`${CONSTANTS.GYMS}/${gym.id}/photos`);
+    // return this.http.get<string[]>(url, this.urlService.authenticationHeader);
   }
 }

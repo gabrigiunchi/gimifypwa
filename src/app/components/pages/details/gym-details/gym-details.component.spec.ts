@@ -3,7 +3,7 @@ import {GymDetailsComponent} from './gym-details.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {RatingBarComponent} from 'src/app/components/layout/rating-bar/rating-bar.component';
-import {MatIconModule, MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatTableModule, MatTabsModule} from '@angular/material';
+import {MatIconModule, MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatTableModule, MatTabsModule, MatGridListModule} from '@angular/material';
 import {GymService} from 'src/app/services/server-communication/gym.service';
 import {of} from 'rxjs';
 import {Gym} from 'src/app/model/entities/gym';
@@ -54,6 +54,7 @@ describe('GymDetailsComponent', () => {
         RouterModule.forRoot([]),
         MatIconModule,
         MatListModule,
+        MatGridListModule,
         MatTabsModule,
         MatProgressSpinnerModule,
         MatTableModule,

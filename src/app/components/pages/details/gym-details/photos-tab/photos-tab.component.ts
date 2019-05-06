@@ -1,15 +1,24 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
+import {Gym} from 'src/app/model/entities/gym';
+import {GymService} from 'src/app/services/server-communication/gym.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-photos-tab',
   templateUrl: './photos-tab.component.html',
   styleUrls: ['./photos-tab.component.css']
 })
-export class PhotosTabComponent implements OnInit {
+export class PhotosTabComponent implements OnChanges {
 
-  constructor() { }
+  @Input() gym: Gym;
+  photos$: Observable<string[]>;
 
-  ngOnInit() {
+  constructor(private gymService: GymService) {}
+
+  ngOnChanges() {
+    if (this.gym) {
+      this.photos$ = this.gymService.getPhotosOfGym(this.gym);
+    }
   }
 
 }

@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {PhotosTabComponent} from './photos-tab.component';
+import {MatGridListModule} from '@angular/material';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('PhotosTabComponent', () => {
   let component: PhotosTabComponent;
@@ -8,9 +9,13 @@ describe('PhotosTabComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PhotosTabComponent ]
+      declarations: [PhotosTabComponent],
+      imports: [
+        MatGridListModule,
+        HttpClientTestingModule
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'reservations/:id', component: ReservationDetailsComponent, canActivate: [AuthGuard]},
   {path: 'reservations', component: ReservationsPageComponent, canActivate: [AuthGuard]},
   {path: 'search', component: SearchPageComponent, canActivate: [AuthGuard]},
-  {path: 'playground', component: PlaygroundComponent, canActivate: [AuthGuard]},
+  {path: 'playground', component: PlaygroundComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
