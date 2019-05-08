@@ -42,6 +42,7 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ProfilePageComponent} from './components/pages/profile-page/profile-page.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -81,6 +82,8 @@ import {CommentsTabComponent} from './components/pages/details/gym-details/comme
 import {TimetableDetailsComponent} from './components/layout/timetable-details/timetable-details.component';
 import {CommentListComponent} from './components/layout/comment-list/comment-list.component';
 import {AssetListComponent} from './components/layout/asset-list/asset-list.component';
+import {NewCommentDialogComponent} from './components/modals/dialogs/new-comment-dialog/new-comment-dialog.component';
+import { FabButtonComponent } from './components/layout/fab-button/fab-button.component';
 
 @NgModule({
   declarations: [
@@ -119,6 +122,8 @@ import {AssetListComponent} from './components/layout/asset-list/asset-list.comp
     TimetableDetailsComponent,
     CommentListComponent,
     AssetListComponent,
+    NewCommentDialogComponent,
+    FabButtonComponent,
   ],
   imports: [
     FormsModule,
@@ -162,6 +167,7 @@ import {AssetListComponent} from './components/layout/asset-list/asset-list.comp
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    DragDropModule,
     MatTreeModule,
     FlexLayoutModule,
     HttpClientModule,
@@ -176,6 +182,7 @@ import {AssetListComponent} from './components/layout/asset-list/asset-list.comp
     SelectLocationComponent,
     GymFilterComponent,
     GymDetailsComponent,
+    NewCommentDialogComponent,
   ]
 })
 export class AppModule {

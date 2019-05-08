@@ -11,5 +11,5 @@ h1 {
 }
 
 mat-tab-group {
-  height: 100%;
+  flex-grow: 1;
 }

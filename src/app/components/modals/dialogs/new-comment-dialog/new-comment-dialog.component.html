@@ -1,0 +1,38 @@
+<div class="mat-typography" fxFlayout="column">
+  <div class="header" fxLayout="row">
+    <button mat-icon-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <div class="title" fxLayout="row" fxFlex="grow" fxLayoutAlign="center center">
+      <h1>New Comment</h1>
+    </div>
+  </div>
+
+  <form [formGroup]="form">
+    <h2>Rate your experience!</h2>
+    <mat-slider color="primary" min="1" max="5" step="1" formControlName="rating" thumbLabel="true"></mat-slider>
+
+    <mat-form-field>
+      <input matInput placeholder="title" formControlName="title">
+      <div [style.padding]="'0.5rem 1rem 0 0'" fxLayout="row" fxLayoutAlign="end center"
+        [ngClass]="{'red': title.length > maxTitleLength}">
+        {{maxTitleLength - title.length}}
+      </div>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="message" formControlName="message"></textarea>
+
+      <div [style.paddingRight]="'1rem'" fxLayout="row" fxLayoutAlign="end center"
+        [ngClass]="{'red': message.length > maxMessageLength}">
+        {{maxMessageLength - message.length}}
+      </div>
+    </mat-form-field>
+  </form>
+
+  <div class="footer" fxLayout="row" fxLayoutAlign="end center">
+    <button mat-flat-button color="primary" [disabled]="form.invalid" *ngIf="!isPosting" (click)="submit()">Post</button>
+    <mat-spinner diameter="25" *ngIf="isPosting"></mat-spinner>
+  </div>
+
+</div>

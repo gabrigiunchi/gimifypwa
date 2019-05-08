@@ -3,7 +3,15 @@ import {GymDetailsComponent} from './gym-details.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {RatingBarComponent} from 'src/app/components/layout/rating-bar/rating-bar.component';
-import {MatIconModule, MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatTableModule, MatTabsModule, MatGridListModule} from '@angular/material';
+import {
+  MatGridListModule,
+  MatIconModule,
+  MatListModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatTableModule,
+  MatTabsModule
+} from '@angular/material';
 import {GymService} from 'src/app/services/server-communication/gym.service';
 import {of} from 'rxjs';
 import {Gym} from 'src/app/model/entities/gym';
@@ -19,6 +27,7 @@ import {AssetListComponent} from 'src/app/components/layout/asset-list/asset-lis
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MessageComponent} from 'src/app/components/layout/message/message.component';
 import {PhotosTabComponent} from './photos-tab/photos-tab.component';
+import {FabButtonComponent} from 'src/app/components/layout/fab-button/fab-button.component';
 
 describe('GymDetailsComponent', () => {
   let component: GymDetailsComponent;
@@ -36,6 +45,7 @@ describe('GymDetailsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         GymDetailsComponent,
+        FabButtonComponent,
         LoadingComponent,
         TimePipe,
         TimetableDetailsComponent,

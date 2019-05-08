@@ -6,6 +6,8 @@ import {Page} from 'src/app/model/page';
 import {Comment} from 'src/app/model/entities/comment';
 import {finalize} from 'rxjs/operators';
 import {CONSTANTS} from 'src/app/constants';
+import {MatDialog} from '@angular/material';
+import {NewCommentDialogComponent} from 'src/app/components/modals/dialogs/new-comment-dialog/new-comment-dialog.component';
 
 @Component({
   selector: 'app-comments-tab',
@@ -22,7 +24,7 @@ export class CommentsTabComponent implements OnChanges, OnDestroy {
   isLoading = false;
   currentDownload: Subscription;
 
-  constructor(private commentService: CommentService) {}
+  constructor(private dialog: MatDialog, private commentService: CommentService) {}
 
   ngOnChanges() {
     if (this.gym) {
@@ -63,5 +65,19 @@ export class CommentsTabComponent implements OnChanges, OnDestroy {
 
   pageChange(pageIndex: number): void {
     this.downloadPage(pageIndex);
+  }
+
+  newComment() {
+    this.dialog.open(NewCommentDialogComponent, {
+      autoFocus: false,
+      restoreFocus: false,
+      minWidth: '100%',
+      height: '100%',
+      data: this.gym
+    }).afterClosed().subscribe(comment => {
+      if (comment) {
+        this.comments = [comment].concat(this.comments);
+      }
+    });
   }
 }

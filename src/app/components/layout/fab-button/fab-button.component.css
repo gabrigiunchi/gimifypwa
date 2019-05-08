@@ -1,0 +1,8 @@
+button {
+  z-index: 2;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
