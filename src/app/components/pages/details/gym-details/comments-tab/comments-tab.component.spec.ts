@@ -7,6 +7,7 @@ import {RatingBarComponent} from 'src/app/components/layout/rating-bar/rating-ba
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {MessageComponent} from 'src/app/components/layout/message/message.component';
 import {FabButtonComponent} from 'src/app/components/layout/fab-button/fab-button.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 describe('CommentsTabComponent', () => {
   let component: CommentsTabComponent;
@@ -24,6 +25,7 @@ describe('CommentsTabComponent', () => {
       ],
       imports: [
         MatDialogModule,
+        ScrollingModule,
         MatListModule,
         MatIconModule,
         MatProgressSpinnerModule,

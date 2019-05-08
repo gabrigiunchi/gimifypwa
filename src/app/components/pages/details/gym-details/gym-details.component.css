@@ -13,3 +13,8 @@ h1 {
 mat-tab-group {
   flex-grow: 1;
 }
+
+
+app-comments-tab {
+  height: 100%;
+}
