@@ -2,9 +2,15 @@
   <div *ngFor="let comment of comments">
     <mat-list-item role="listitem">
       <img matListAvatar src="../../../../assets/img/avatars/penguin.png" alt="avatar">
-      <div matLine fxLayout="row" fxLayoutAlign="start center">
+      <div class="comment-header" matLine fxLayout="row" fxLayoutAlign="start center">
         <div [style.paddingRight]="'0.5rem'">{{comment.user.username}}</div>
         <app-rating-bar [value]="comment.rating" [size]="'0.5rem'"></app-rating-bar>
+        <div class="delete-button-container" *ngIf="isMyComment(comment)" fxFlex="grow" fxLayout="row" fxLayoutAlign="end center">
+          <button *ngIf="!isDeletingComment" mat-icon-button color="warn" (click)="onDeleteClick(comment)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <mat-spinner diameter="24" *ngIf="isDeletingComment"></mat-spinner>
+        </div>
       </div>
       <p matLine>
         <span class="title">{{comment.title}}</span>

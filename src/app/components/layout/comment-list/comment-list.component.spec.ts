@@ -1,7 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommentListComponent} from './comment-list.component';
-import {MatIconModule, MatListModule} from '@angular/material';
+import {MatDialogModule, MatIconModule, MatListModule, MatProgressSpinnerModule} from '@angular/material';
 import {RatingBarComponent} from '../rating-bar/rating-bar.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('CommentListComponent', () => {
   let component: CommentListComponent;
@@ -12,7 +13,10 @@ describe('CommentListComponent', () => {
       declarations: [CommentListComponent, RatingBarComponent],
       imports: [
         MatListModule,
-        MatIconModule
+        MatIconModule,
+        MatProgressSpinnerModule,
+        HttpClientTestingModule,
+        MatDialogModule
       ]
     })
       .compileComponents();

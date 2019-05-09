@@ -28,8 +28,8 @@ export class CommentService {
       this.urlService.authenticationHeader);
   }
 
-  deleteMyComment(id: number): Observable<{}> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.COMMENTS}/me/${id}`);
-    return this.http.delete<Comment>(url, this.urlService.authenticationHeader);
+  deleteMyComment(comment: Comment): Observable<{}> {
+    const url = this.urlService.getRestUrl(`${CONSTANTS.COMMENTS}/me/${comment.id}`);
+    return this.http.delete(url, this.urlService.authenticationHeader);
   }
 }
