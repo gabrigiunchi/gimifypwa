@@ -1,4 +1,4 @@
-<div *ngIf="gym" class="container" cdkScrollable>
+<div *ngIf="gym && timetable$ | async as timetable; else loading" class="container" cdkScrollable>
   <h2>Address</h2>
   <div>{{gym.address}}</div>
 
@@ -6,5 +6,9 @@
   <div>{{gym.city.name | titlecase}}</div>
 
   <h2 [style.marginBottom]="'1rem'">Timetable</h2>
-  <app-timetable-details *ngIf="timetable$ | async as timetable" [timetable]="timetable"></app-timetable-details>
+  <app-timetable-details [timetable]="timetable"></app-timetable-details>
 </div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

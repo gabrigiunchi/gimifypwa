@@ -1,5 +1,5 @@
 <app-fab-button icon="comment" (click)="newComment()"></app-fab-button>
-<div *ngIf="currentPage !== undefined" class="body">
+<div *ngIf="currentPage !== undefined; else loading" class="body">
   <cdk-virtual-scroll-viewport itemSize="comments.length">
     <app-comment-list [comments]="comments"></app-comment-list>
     <app-message *ngIf="!isLoading && comments.length === 0" title="No comments"></app-message>
@@ -10,3 +10,6 @@
     </div>
   </cdk-virtual-scroll-viewport>
 </div>
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

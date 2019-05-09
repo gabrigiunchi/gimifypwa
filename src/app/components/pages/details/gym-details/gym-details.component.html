@@ -1,9 +1,9 @@
 <div fxLayout="column" fxFlexFill>
-  <div class="header" *ngIf="gym" fxLayout="row" fxLayoutAlign="start center">
+  <div class="header" fxLayout="row" fxLayoutAlign="start center">
     <button mat-icon-button (click)="back()">
       <mat-icon>chevron_left</mat-icon>
     </button>
-    <div fxFlex="grow" fxLayoutAlign="center center" [style.paddingRight]="'1rem'">
+    <div *ngIf="gym" fxFlex="grow" fxLayoutAlign="center center" [style.paddingRight]="'1rem'">
       <h1 class="title">{{gym.name}}</h1>
       <app-rating-bar [value]="rating$ | async"></app-rating-bar>
     </div>
