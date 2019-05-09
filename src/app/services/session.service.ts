@@ -7,15 +7,21 @@ import {User} from '../model/entities/user';
 })
 export class SessionService {
 
-  constructor() {
-  }
-
   set token(token: string) {
     localStorage.setItem(LocalStorageKey.token, token);
   }
 
   get token(): string {
     return localStorage.getItem(LocalStorageKey.token);
+  }
+
+  set user(user: User) {
+    console.log('Saving user\'s info in cache', user);
+    localStorage.setItem(LocalStorageKey.user, JSON.stringify(user));
+  }
+
+  get user(): User {
+    return JSON.parse(localStorage.getItem(LocalStorageKey.user));
   }
 
   clear() {

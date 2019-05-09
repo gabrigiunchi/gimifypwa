@@ -6,8 +6,10 @@ import {of} from 'rxjs';
 import {Token} from 'src/app/model/dto/token';
 import {SessionService} from '../session.service';
 import {UrlService} from '../url.service';
+import {TestConstants} from 'src/app/test-constants';
 
 describe('LoginService', () => {
+
   beforeEach(() => TestBed.configureTestingModule({
     imports: [HttpClientModule, RouterModule.forRoot([])]
   }));
@@ -17,16 +19,19 @@ describe('LoginService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should save the token on login success', async(() => {
+  it('should save the token and the user on login success', async(() => {
     const sessionService: SessionService = TestBed.get(SessionService);
     const service: LoginService = TestBed.get(LoginService);
-    const token: Token = {token: 'djsadsad', username: 'gabrigiunchi'};
+    const token: Token = {token: 'djsadsad', user: TestConstants.mockUser};
     spyOn(TestBed.get(HttpClient), 'post').and.returnValue(of(token));
     spyOn(TestBed.get(UrlService), 'getRestUrl').and.returnValue('server/login');
     service.login('gabrigiunchi', 'password').subscribe(() => {
       expect(service.isLoggedIn).toBe(true);
       expect(service.isLoading).toBe(false);
       expect(sessionService.token).toBe(token.token);
+      expect(sessionService.user.id).toBe(token.user.id);
+      expect(sessionService.user.username).toBe(token.user.username);
+      expect(sessionService.user.notificationsEnabled).toBe(token.user.notificationsEnabled);
     });
   }));
 

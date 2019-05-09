@@ -7,6 +7,7 @@ import {User} from 'src/app/model/entities/user';
 import {City} from 'src/app/model/entities/city';
 import {SessionService} from '../session.service';
 import {LocalStorageKey} from 'src/app/model/local-storage-key';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +20,14 @@ export class UserService {
     private urlService: UrlService) {
   }
 
-
   get userInfo(): Observable<User> {
     const url = this.urlService.getRestUrl(`${CONSTANTS.USERS_URL}/me`);
-    return this.http.get<User>(url, this.urlService.authenticationHeader);
+    return this.http.get<User>(url, this.urlService.authenticationHeader)
+      .pipe(tap((user: User) => this.sessionService.user = user));
+  }
+
+  isLoggedUser(userId: number): boolean {
+    return !!(this.sessionService.user && this.sessionService.user.id === userId);
   }
 
   setNotifications(enabled: boolean): Observable<{}> {

@@ -83,7 +83,7 @@ import {TimetableDetailsComponent} from './components/layout/timetable-details/t
 import {CommentListComponent} from './components/layout/comment-list/comment-list.component';
 import {AssetListComponent} from './components/layout/asset-list/asset-list.component';
 import {NewCommentDialogComponent} from './components/modals/dialogs/new-comment-dialog/new-comment-dialog.component';
-import { FabButtonComponent } from './components/layout/fab-button/fab-button.component';
+import {FabButtonComponent} from './components/layout/fab-button/fab-button.component';
 
 @NgModule({
   declarations: [

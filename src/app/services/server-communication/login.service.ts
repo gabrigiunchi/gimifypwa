@@ -43,6 +43,7 @@ export class LoginService {
         console.log('Login successful');
         console.log(result.token);
         this.sessionService.token = result.token;
+        this.sessionService.user = result.user;
         this._isLoggedIn = true;
       }));
   }

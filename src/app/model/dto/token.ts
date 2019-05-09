@@ -1,4 +1,6 @@
+import {User} from '../entities/user';
+
 export interface Token {
-  username: string;
+  user: User;
   token: string;
 }
