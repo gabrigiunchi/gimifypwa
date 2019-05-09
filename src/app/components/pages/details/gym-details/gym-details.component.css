@@ -17,3 +17,12 @@ mat-tab-group {
 app-comments-tab {
   height: 100%;
 }
+
+.header-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1rem;
+}
