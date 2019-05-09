@@ -84,6 +84,8 @@ import {CommentListComponent} from './components/layout/comment-list/comment-lis
 import {AssetListComponent} from './components/layout/asset-list/asset-list.component';
 import {NewCommentDialogComponent} from './components/modals/dialogs/new-comment-dialog/new-comment-dialog.component';
 import {FabButtonComponent} from './components/layout/fab-button/fab-button.component';
+import {DataUrlPipe} from './pipes/data-url.pipe';
+import {SafeUrlPipe} from './pipes/safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -124,6 +126,8 @@ import {FabButtonComponent} from './components/layout/fab-button/fab-button.comp
     AssetListComponent,
     NewCommentDialogComponent,
     FabButtonComponent,
+    DataUrlPipe,
+    SafeUrlPipe,
   ],
   imports: [
     FormsModule,

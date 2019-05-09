@@ -1,7 +1,9 @@
 import {Component, Input, OnChanges} from '@angular/core';
 import {Gym} from 'src/app/model/entities/gym';
-import {GymService} from 'src/app/services/server-communication/gym.service';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {GymImageServiceService} from 'src/app/services/server-communication/gym-image-service.service';
+import {ImageMetadata} from 'src/app/model/entities/images-metadata';
 
 @Component({
   selector: 'app-photos-tab',
@@ -11,13 +13,14 @@ import {Observable} from 'rxjs';
 export class PhotosTabComponent implements OnChanges {
 
   @Input() gym: Gym;
-  photos$: Observable<string[]>;
+  photos$: Observable<Observable<ArrayBuffer>[]>;
 
-  constructor(private gymService: GymService) {}
+  constructor(private gymImageService: GymImageServiceService) {}
 
   ngOnChanges() {
     if (this.gym) {
-      this.photos$ = this.gymService.getPhotosOfGym(this.gym);
+      this.photos$ = this.gymImageService.getPhotoMetadataOfGym(this.gym)
+        .pipe(map((metadata: ImageMetadata[]) => metadata.map(m => this.gymImageService.getPhotoOfGym(m.id))));
     }
   }
 

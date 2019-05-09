@@ -17,7 +17,7 @@
   </div>
   <div *ngIf="!isLoading">
     <mat-nav-list *ngIf="result.length > 0">
-      <mat-list-item *ngFor="let gym of result; last as isLast" routerLink="/gyms/{{gym.id}}" (click)="onGymClick(gym)">
+      <mat-list-item *ngFor="let gym of result; last as isLast" routerLink="/gyms/{{gym.id}}" (click)="onGymClick()">
         <h3 matLine>{{gym.name}}</h3>
         <p matLine>
           <span class="mat-small">{{gym.address}}, {{gym.city.name | titlecase}}</span>

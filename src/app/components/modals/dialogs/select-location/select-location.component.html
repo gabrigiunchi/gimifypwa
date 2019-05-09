@@ -3,7 +3,7 @@
     <mat-icon>close</mat-icon>
   </button>
 
-  <mat-vertical-stepper [linear]="true" #stepper [selectedIndex]="currentStep">
+  <mat-vertical-stepper [linear]="true" [selectedIndex]="currentStep">
     <mat-step [stepControl]="cityFormGroup">
       <ng-template matStepLabel>Select city</ng-template>
 

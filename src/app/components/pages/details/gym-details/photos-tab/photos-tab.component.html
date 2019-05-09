@@ -1,7 +1,7 @@
 <cdk-virtual-scroll-viewport *ngIf="photos$ | async as photos" itemSize="photos.length">
   <mat-grid-list cols="1" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let photo of photos">
-      <img [src]="photo">
+    <mat-grid-tile *ngFor="let photo$ of photos">
+      <img [src]="photo$ | async | dataUrl | safeUrl">
     </mat-grid-tile>
   </mat-grid-list>
 </cdk-virtual-scroll-viewport>

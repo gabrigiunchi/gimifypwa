@@ -1,4 +1,4 @@
-.virtual-scroll-container, cdk-virtual-scroll-viewport {
+cdk-virtual-scroll-viewport {
   height: 20rem;
 }
 

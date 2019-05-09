@@ -28,6 +28,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MessageComponent} from 'src/app/components/layout/message/message.component';
 import {PhotosTabComponent} from './photos-tab/photos-tab.component';
 import {FabButtonComponent} from 'src/app/components/layout/fab-button/fab-button.component';
+import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
+import {DataUrlPipe} from 'src/app/pipes/data-url.pipe';
 
 describe('GymDetailsComponent', () => {
   let component: GymDetailsComponent;
@@ -56,6 +58,8 @@ describe('GymDetailsComponent', () => {
         PhotosTabComponent,
         MessageComponent,
         CommentsTabComponent,
+        SafeUrlPipe,
+        DataUrlPipe,
         CommentListComponent
       ],
       imports: [
