@@ -1,13 +1,10 @@
-<div *ngIf="gym" class="container">
+<div *ngIf="gym" class="container" cdkScrollable>
+  <h2>Address</h2>
+  <div>{{gym.address}}</div>
 
-  <div class="padding">
-    <h2>Address</h2>
-    <div>{{gym.address}}</div>
+  <h2>City</h2>
+  <div>{{gym.city.name | titlecase}}</div>
 
-    <h2>City</h2>
-    <div>{{gym.city.name | titlecase}}</div>
-
-    <h2>Timetable</h2>
-  </div>
+  <h2 [style.marginBottom]="'1rem'">Timetable</h2>
   <app-timetable-details *ngIf="timetable$ | async as timetable" [timetable]="timetable"></app-timetable-details>
 </div>

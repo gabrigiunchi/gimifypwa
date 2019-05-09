@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {LocalStorageKey} from '../model/local-storage-key';
+import {User} from '../model/entities/user';
 
 @Injectable({
   providedIn: 'root'
