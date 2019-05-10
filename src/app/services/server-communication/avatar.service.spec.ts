@@ -95,7 +95,7 @@ describe('AvatarService', () => {
     const content = 'dajnjdans';
     const spyOnSavedAvatar = spyOnProperty(avatarService, 'cachedAvatar', 'get').and.returnValue(content);
     const spyOnDownloadAvatar = spyOn(avatarService, 'downloadMyAvatar').and.returnValue(of(''));
-    avatarService.loadAvatar().subscribe(avatar => expect(avatar).toBe(content));
+    avatarService.myAvatar.subscribe(avatar => expect(avatar).toBe(content));
     expect(spyOnSavedAvatar).toHaveBeenCalled();
     expect(spyOnDownloadAvatar).not.toHaveBeenCalled();
   }));
@@ -104,7 +104,7 @@ describe('AvatarService', () => {
     const avatarFromServer = 'djsanda';
     spyOnProperty(avatarService, 'cachedAvatar', 'get').and.returnValue(undefined);
     const spyOnDownloadAvatar = spyOn(avatarService, 'downloadMyAvatar').and.returnValue(of(avatarFromServer));
-    avatarService.loadAvatar().subscribe(avatar => expect(avatar).toBe(avatarFromServer));
+    avatarService.myAvatar.subscribe(avatar => expect(avatar).toBe(avatarFromServer));
     expect(spyOnDownloadAvatar).toHaveBeenCalled();
   }));
 

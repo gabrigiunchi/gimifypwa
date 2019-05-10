@@ -32,4 +32,10 @@ export class CommentService {
     const url = this.urlService.getRestUrl(`${CONSTANTS.COMMENTS}/me/${comment.id}`);
     return this.http.delete(url, this.urlService.authenticationHeader);
   }
+
+  get myCommentsCount(): Observable<number> {
+    return this.http.get<number>(
+      this.urlService.getRestUrl(`${CONSTANTS.COMMENTS}/me/count`),
+      this.urlService.authenticationHeader);
+  }
 }

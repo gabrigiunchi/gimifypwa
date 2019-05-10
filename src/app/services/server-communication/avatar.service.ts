@@ -93,7 +93,7 @@ export class AvatarService {
     }));
   }
 
-  loadAvatar(): Observable<string> {
+  get myAvatar(): Observable<string> {
     if (this.cachedAvatar) {
       return of(this.cachedAvatar);
     }
@@ -138,8 +138,9 @@ export class AvatarService {
   }
 
   loadMyAvatarMetadata(): Observable<ImageMetadata> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.MY_AVATAR}/metadata`);
-    return this.http.get<ImageMetadata>(url);
+    return this.http.get<ImageMetadata>(
+      this.urlService.getRestUrl(`${CONSTANTS.MY_AVATAR}/metadata`),
+      this.urlService.authenticationHeader);
   }
 
   get avatarMetadata(): ImageMetadata {

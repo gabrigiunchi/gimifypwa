@@ -1,4 +1,48 @@
-<div fxLayout="column" *ngIf="userInfo$ | async as userInfo">
-  <div>{{userInfo.name}}</div>
-  <div>{{userInfo.surname}}</div>
+<div fxFlexFill class="container" fxLayout="column" *ngIf="userInfo$ | async as userInfo; else loading">
+
+  <div class="avatar-container" fxLayout="row" fxLayoutAlign="center center">
+    <app-avatar routerLink="/profile/avatar" [avatar]="avatar$ | async"></app-avatar>
+  </div>
+
+  <div class="info" fxLayout="column" fxLayoutAlign="center center">
+    <div class="name">{{userInfo.name}} {{userInfo.surname}}</div>
+    <div>{{userInfo.email}}</div>
+
+    <div class="count" fxLayout="row" fxLayoutGap="5rem">
+      <div class="count-item">
+        <div class="count-item-title">Reservations</div>
+        <div class="count-item-value">
+          <div class="count-item-value">
+            {{reservationsCount$ | async }}</div>
+        </div>
+      </div>
+      <div class="count-item">
+        <div class="count-item-title">Comments</div>
+        <div class="count-item-value">
+          {{commentsCount$ | async}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div fxFlex="grow" fxLayout="column" class="settings">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <div style="height: 3rem;" fxFlex="grow" fxLayoutAlign="start center">Email notifications</div>
+      <mat-slide-toggle *ngIf="!isUpdatingSettings" [checked]="userInfo.notificationsEnabled"
+        (change)="onToggleChange($event)"></mat-slide-toggle>
+      <div *ngIf="isUpdatingSettings" fxFlex="3rem" fxLayoutAlign="end center">
+        <mat-spinner diameter="23"></mat-spinner>
+      </div>
+    </div>
+  </div>
+
+  <div class="logout" fxLayout="row" fxLayoutAlign="center center">
+    <button mat-flat-button color="warn" (click)="logout()">Logout</button>
+  </div>
+
 </div>
+
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

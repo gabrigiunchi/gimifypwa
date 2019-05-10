@@ -30,9 +30,11 @@ export class UserService {
     return !!(this.sessionService.user && this.sessionService.user.id === userId);
   }
 
-  setNotifications(enabled: boolean): Observable<{}> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.USERS_URL}/me/notifications/active/${enabled}`);
-    return this.http.patch<{}>(url, this.urlService.authenticationHeader);
+  setNotifications(enabled: boolean): Observable<User> {
+    return this.http.patch<User>(
+      this.urlService.getRestUrl(`${CONSTANTS.USERS_URL}/me/notifications/active/${enabled}`),
+      {},
+      this.urlService.authenticationHeader);
   }
 
   set defaultCity(city: City) {

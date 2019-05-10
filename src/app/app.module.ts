@@ -87,6 +87,7 @@ import {FabButtonComponent} from './components/layout/fab-button/fab-button.comp
 import {DataUrlPipe} from './pipes/data-url.pipe';
 import {SafeUrlPipe} from './pipes/safe-url.pipe';
 import {AvatarPipe} from './pipes/avatar.pipe';
+import {AvatarComponent} from './components/layout/avatar/avatar.component';
 
 @NgModule({
   declarations: [
@@ -130,6 +131,7 @@ import {AvatarPipe} from './pipes/avatar.pipe';
     DataUrlPipe,
     SafeUrlPipe,
     AvatarPipe,
+    AvatarComponent,
   ],
   imports: [
     FormsModule,

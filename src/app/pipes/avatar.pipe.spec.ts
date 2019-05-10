@@ -1,6 +1,6 @@
 import {AvatarPipe} from './avatar.pipe';
 import {AvatarService} from '../services/server-communication/avatar.service';
-import {TestBed, async} from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('AvatarPipe', () => {

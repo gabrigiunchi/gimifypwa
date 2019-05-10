@@ -76,6 +76,12 @@ export class ReservationService {
     return this.http.get<Reservation[]>(url, this.urlService.authenticationHeader);
   }
 
+  get myReservationsCount(): Observable<number> {
+    return this.http.get<number>(
+      this.urlService.getRestUrl(`${CONSTANTS.RESERVATIONS}/me/count`),
+      this.urlService.authenticationHeader);
+  }
+
   /**************************************** ASSET AVAILABILITY **************************************************************/
 
   searchAssets(params: ReservationSearchParams): Observable<Asset[]> {

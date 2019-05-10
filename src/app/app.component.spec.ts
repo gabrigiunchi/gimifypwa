@@ -1,7 +1,7 @@
 import {async, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
-import {MatIconModule, MatInputModule, MatProgressSpinnerModule, MatToolbarModule} from '@angular/material';
+import {MatIconModule, MatInputModule, MatProgressSpinnerModule, MatSlideToggleModule, MatToolbarModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {HomepageComponent} from './components/pages/homepage/homepage.component';
 import {WaitingPageComponent} from './components/pages/waiting-page/waiting-page.component';
@@ -11,6 +11,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ToolbarComponent} from './components/layout/toolbar/toolbar.component';
 import {FooterComponent} from './components/layout/footer/footer.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {AvatarComponent} from './components/layout/avatar/avatar.component';
+import {SafeUrlPipe} from './pipes/safe-url.pipe';
+import {LoadingComponent} from './components/layout/loading/loading.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -22,7 +25,10 @@ describe('AppComponent', () => {
         LoginComponent,
         ProfilePageComponent,
         ToolbarComponent,
-        FooterComponent
+        FooterComponent,
+        AvatarComponent,
+        SafeUrlPipe,
+        LoadingComponent
       ],
       imports: [
         RouterTestingModule,
@@ -32,6 +38,7 @@ describe('AppComponent', () => {
         ScrollingModule,
         MatProgressSpinnerModule,
         FormsModule,
+        MatSlideToggleModule,
         ReactiveFormsModule,
         MatInputModule,
       ],

@@ -1,0 +1,47 @@
+.container {
+  padding: 1rem;
+}
+
+.info {
+  padding: 1rem 0;
+}
+
+.info .name {
+  font-size: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.settings {
+  padding-top: 2rem;
+}
+
+.logout {
+  padding-bottom: 2rem;
+}
+
+.count {
+  height: 10rem;
+}
+
+.count-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  line-height: 2rem;
+}
+
+.count-item-value {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  font-size: 1.2rem;
+  height: 2rem;
+}
+
+.count-item-title {
+  font-weight: bold;
+  color: blue;
+  font-size: 1.4rem;
+}
