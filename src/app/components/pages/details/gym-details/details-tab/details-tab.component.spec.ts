@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {DetailsTabComponent} from './details-tab.component';
 import {TimetableDetailsComponent} from 'src/app/components/layout/timetable-details/timetable-details.component';
-import {MatTableModule, MatProgressSpinnerModule} from '@angular/material';
+import {MatProgressSpinnerModule, MatTableModule} from '@angular/material';
 import {TimePipe} from 'src/app/pipes/date/time.pipe';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';

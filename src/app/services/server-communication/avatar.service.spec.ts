@@ -122,7 +122,7 @@ describe('AvatarService', () => {
     const content: ArrayBuffer = strToArrayBuffer('content');
     const spyOnDownload = spyOn(avatarService, 'download').and.returnValue(of(content));
     const spyOnFileSaver = spyOn(TestBed.get(FileSaverService), 'saveImage').and.returnValue(of({}));
-    avatarService.downloadMyAvatar().subscribe(result => {
+    avatarService.downloadMyAvatar().subscribe(() => {
       expect(spyOnDownload).toHaveBeenCalled();
       expect(spyOnFileSaver).toHaveBeenCalled();
     });

@@ -19,7 +19,7 @@ describe('SessionService', () => {
     expect(localStorage.getItem(LocalStorageKey.token)).toBe('abcde');
   });
 
-  it('should cler the localstorage', () => {
+  it('should clear the localstorage', () => {
     const service: SessionService = TestBed.get(SessionService);
     service.clear();
     expect(localStorage.length).toBe(0);

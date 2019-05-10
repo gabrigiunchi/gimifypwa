@@ -7,7 +7,7 @@ import {GymService} from 'src/app/services/server-communication/gym.service';
 import {CityService} from 'src/app/services/server-communication/city.service';
 import {finalize} from 'rxjs/operators';
 
-export enum SelectLocatioStep {
+export enum SelectLocationStep {
   city = 0,
   gym = 1
 }
@@ -18,7 +18,7 @@ export interface SelectLocationResult {
 }
 
 export interface SelectLocationInput extends SelectLocationResult {
-  step: SelectLocatioStep;
+  step: SelectLocationStep;
 }
 
 @Component({
@@ -70,7 +70,7 @@ export class SelectLocationComponent implements OnInit {
 
     if (city !== undefined) {
       this.loadGymsOfCity(city);
-      this.currentStep = SelectLocatioStep.gym;
+      this.currentStep = SelectLocationStep.gym;
     }
   }
 

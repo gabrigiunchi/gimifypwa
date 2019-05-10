@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 import {Observable} from 'rxjs';
 import {AvatarService} from '../services/server-communication/avatar.service';
 

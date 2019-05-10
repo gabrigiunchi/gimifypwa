@@ -16,7 +16,6 @@ export class GymImageServiceService {
   getPhotoOfGym(id: string): Observable<ArrayBuffer> {
     console.log(`Get photo ${id}`);
     const url = this.urlService.getRestUrl(`${CONSTANTS.GYMS}/photos/${id}`);
-    const header = this.urlService.authenticationHeader;
     return this.http.get<ArrayBuffer>(url, this.urlService.authenticationHeaderForImages);
   }
 

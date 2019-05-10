@@ -19,10 +19,6 @@ export class AppComponent {
     return this.loginService.isLoading;
   }
 
-  get isLoggedIn(): boolean {
-    return this.loginService.isLoggedIn;
-  }
-
   get showFooter(): boolean {
     return CONSTANTS.MAIN_PAGES.includes(this.router.url);
   }

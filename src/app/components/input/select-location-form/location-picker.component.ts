@@ -3,7 +3,7 @@ import {
   SelectLocationComponent,
   SelectLocationInput,
   SelectLocationResult,
-  SelectLocatioStep
+  SelectLocationStep
 } from '../../modals/dialogs/select-location/select-location.component';
 import {MatDialog} from '@angular/material';
 
@@ -20,11 +20,11 @@ export class LocationPickerComponent {
   constructor(private dialog: MatDialog) {}
 
   changeCity() {
-    this.openDialog({city: this.result.city, gym: undefined, step: SelectLocatioStep.city});
+    this.openDialog({city: this.result.city, gym: undefined, step: SelectLocationStep.city});
   }
 
   changeGym() {
-    this.openDialog({city: this.result.city, gym: this.result.gym, step: SelectLocatioStep.gym});
+    this.openDialog({city: this.result.city, gym: this.result.gym, step: SelectLocationStep.gym});
   }
 
   get isValid(): boolean {
