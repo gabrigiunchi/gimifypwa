@@ -86,6 +86,7 @@ import {NewCommentDialogComponent} from './components/modals/dialogs/new-comment
 import {FabButtonComponent} from './components/layout/fab-button/fab-button.component';
 import {DataUrlPipe} from './pipes/data-url.pipe';
 import {SafeUrlPipe} from './pipes/safe-url.pipe';
+import { AvatarPipe } from './pipes/avatar.pipe';
 
 @NgModule({
   declarations: [
@@ -128,6 +129,7 @@ import {SafeUrlPipe} from './pipes/safe-url.pipe';
     FabButtonComponent,
     DataUrlPipe,
     SafeUrlPipe,
+    AvatarPipe,
   ],
   imports: [
     FormsModule,

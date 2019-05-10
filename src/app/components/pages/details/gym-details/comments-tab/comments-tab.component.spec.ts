@@ -8,6 +8,9 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {MessageComponent} from 'src/app/components/layout/message/message.component';
 import {FabButtonComponent} from 'src/app/components/layout/fab-button/fab-button.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
+import {DataUrlPipe} from 'src/app/pipes/data-url.pipe';
+import {AvatarPipe} from 'src/app/pipes/avatar.pipe';
 
 describe('CommentsTabComponent', () => {
   let component: CommentsTabComponent;
@@ -21,7 +24,10 @@ describe('CommentsTabComponent', () => {
         LoadingComponent,
         MessageComponent,
         RatingBarComponent,
-        FabButtonComponent
+        FabButtonComponent,
+        SafeUrlPipe,
+        DataUrlPipe,
+        AvatarPipe
       ],
       imports: [
         MatDialogModule,

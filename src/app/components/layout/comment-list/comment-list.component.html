@@ -1,7 +1,7 @@
 <mat-list *ngIf="comments" role="list">
   <div *ngFor="let comment of comments">
     <mat-list-item role="listitem">
-      <img matListAvatar src="../../../../assets/img/avatars/penguin.png" alt="avatar">
+      <img matListAvatar [src]="comment.user.username | avatar | async | dataUrl | safeUrl" alt="avatar">
       <div class="comment-header" matLine fxLayout="row" fxLayoutAlign="start center">
         <div [style.paddingRight]="'0.5rem'">{{comment.user.username}}</div>
         <app-rating-bar [value]="comment.rating" [size]="'0.5rem'"></app-rating-bar>

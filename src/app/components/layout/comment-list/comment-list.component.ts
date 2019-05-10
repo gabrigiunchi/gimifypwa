@@ -41,10 +41,10 @@ export class CommentListComponent {
     this.isDeletingComment = true;
     this.commentService.deleteMyComment(comment)
       .pipe(finalize(() => this.isDeletingComment = false))
-      .subscribe(() => this.removeCommenFromList(comment));
+      .subscribe(() => this.removeCommentFromList(comment));
   }
 
-  private removeCommenFromList(comment: Comment) {
+  private removeCommentFromList(comment: Comment) {
     this.comments = this.comments.filter(c => c.id !== comment.id);
   }
 

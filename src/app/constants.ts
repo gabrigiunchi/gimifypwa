@@ -33,6 +33,9 @@ export const CONSTANTS = {
   TIMETABLES: 'timetables',
   COMMENTS: 'comments',
   CITIES: 'cities',
-  ASSET_KINDS: 'asset_kinds'
+  ASSET_KINDS: 'asset_kinds',
+  AVATARS: 'avatars',
+  MY_AVATAR: 'avatars/me',
+  PRESET_AVATARS: 'presets',
 };
 
