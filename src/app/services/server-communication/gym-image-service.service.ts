@@ -11,7 +11,8 @@ import {CONSTANTS} from 'src/app/constants';
 })
 export class GymImageServiceService {
 
-  constructor(private http: HttpClient, private urlService: UrlService) { }
+  constructor(private http: HttpClient, private urlService: UrlService) {
+  }
 
   getPhotoOfGym(id: string): Observable<ArrayBuffer> {
     console.log(`Get photo ${id}`);

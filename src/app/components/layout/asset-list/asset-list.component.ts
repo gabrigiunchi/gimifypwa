@@ -13,7 +13,8 @@ export class AssetListComponent {
   @Input() assets: AssetDTO[];
   @Output() assetSelected = new EventEmitter<AssetDTO>();
 
-  constructor(private assetService: AssetService) {}
+  constructor(private assetService: AssetService) {
+  }
 
   onAssetClick(asset: AssetDTO) {
     this.assetSelected.emit(asset);

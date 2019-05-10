@@ -1,0 +1,17 @@
+<div fxFlexFill fxLayout="column">
+  <mat-toolbar fxLayout="row">
+    <button mat-icon-button (click)="back()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <div fxFlex="grow" fxLayoutAlign="center center">Avatar</div>
+    <button mat-icon-button (click)="openBottomSheet()">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="grow">
+
+    <app-avatar *ngIf="!isLoading" [size]="18" [avatar]="avatar"></app-avatar>
+    <app-loading paddingTop="0" *ngIf="isLoading"></app-loading>
+    <input id="filePicker" type="file" (change)="onFileSelected($event)" [style.visibility]="'hidden'">
+  </div>
+</div>

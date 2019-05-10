@@ -10,7 +10,8 @@ import {Observable} from 'rxjs';
 })
 export class AssetKindService {
 
-  constructor(private http: HttpClient, private urlService: UrlService) {}
+  constructor(private http: HttpClient, private urlService: UrlService) {
+  }
 
   get assetKinds(): Observable<AssetKind[]> {
     return this.http.get<AssetKind[]>(this.urlService.getRestUrl(CONSTANTS.ASSET_KINDS), this.urlService.authenticationHeader);

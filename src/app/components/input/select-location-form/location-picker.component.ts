@@ -17,7 +17,8 @@ export class LocationPickerComponent {
   @Input() result: SelectLocationResult = {city: undefined, gym: undefined};
   @Output() resultChange = new EventEmitter<SelectLocationResult>();
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) {
+  }
 
   changeCity() {
     this.openDialog({city: this.result.city, gym: undefined, step: SelectLocationStep.city});

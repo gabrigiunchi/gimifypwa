@@ -11,11 +11,11 @@ export class UrlService {
   constructor(private sessionService: SessionService) {
   }
 
-  getRestUrl(suffix: string, ): string {
+  getRestUrl(suffix: string): string {
     return `${CONSTANTS.BASE_URL}${suffix}`;
   }
 
-  get authenticationHeader(): {headers: HttpHeaders} {
+  get authenticationHeader(): { headers: HttpHeaders } {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -26,7 +26,17 @@ export class UrlService {
     return httpOptions;
   }
 
-  get authenticationHeaderForImages(): {headers: HttpHeaders} {
+  get token(): { headers: HttpHeaders } {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.sessionService.token
+      })
+    };
+
+    return httpOptions;
+  }
+
+  get authenticationHeaderForImages(): { headers: HttpHeaders } {
     const httpOptions = {
       responseType: 'arraybuffer',
       headers: new HttpHeaders({

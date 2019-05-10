@@ -7,4 +7,5 @@ import {Component, Input} from '@angular/core';
 })
 export class LoadingComponent {
   @Input() size = 40;
+  @Input() paddingTop = '10rem';
 }

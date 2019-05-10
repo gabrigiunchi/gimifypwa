@@ -22,7 +22,8 @@ export class GymFilterComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private cityService: CityService,
-    private dialogRef: MatDialogRef<GymFilterComponent>) {}
+    private dialogRef: MatDialogRef<GymFilterComponent>) {
+  }
 
   ngOnInit() {
     this.cityService.cities.subscribe(c => this.cities = c);

@@ -7,7 +7,8 @@ import {AvatarService} from '../services/server-communication/avatar.service';
 })
 export class AvatarPipe implements PipeTransform {
 
-  constructor(private avatarService: AvatarService) {}
+  constructor(private avatarService: AvatarService) {
+  }
 
   transform(username: string): Observable<ArrayBuffer> {
     return this.avatarService.downloadAvatarOfUser(username);

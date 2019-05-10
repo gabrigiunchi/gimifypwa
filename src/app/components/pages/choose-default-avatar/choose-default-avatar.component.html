@@ -1,0 +1,9 @@
+<div fxLayout="column" class="container">
+  <div fxLayout="row" fxLayoutAlign="center" fxFlex="grow" *ngIf="isLoading">
+    <mat-spinner [diameter]="50"></mat-spinner>
+  </div>
+  <div fxLayout="row wrap" fxLayoutAlign="center">
+    <app-avatar *ngFor="let item of gallery" [avatar]="item.dataUrl" (avatarClick)="avatarSelected(item.id)" size="5">
+    </app-avatar>
+  </div>
+</div>

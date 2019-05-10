@@ -23,7 +23,8 @@ export class AssetsTabComponent implements OnChanges {
 
   constructor(
     private router: Router,
-    private assetService: AssetService) {}
+    private assetService: AssetService) {
+  }
 
   ngOnChanges() {
     if (this.gym) {

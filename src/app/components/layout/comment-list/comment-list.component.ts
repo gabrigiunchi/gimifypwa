@@ -19,7 +19,8 @@ export class CommentListComponent {
   constructor(
     private commentService: CommentService,
     private userService: UserService,
-    private dialog: MatDialog) {}
+    private dialog: MatDialog) {
+  }
 
   isMyComment(comment: Comment): boolean {
     return this.userService.isLoggedUser(comment.user.id);
@@ -31,10 +32,10 @@ export class CommentListComponent {
     dialogData.message = 'Are you sure you want to delete your comment?';
     this.dialog.open(ConfirmationDialogComponent, {autoFocus: false, restoreFocus: false, data: dialogData})
       .afterClosed().subscribe(confirmed => {
-        if (confirmed) {
-          this.deleteComment(comment);
-        }
-      });
+      if (confirmed) {
+        this.deleteComment(comment);
+      }
+    });
   }
 
   deleteComment(comment: Comment) {

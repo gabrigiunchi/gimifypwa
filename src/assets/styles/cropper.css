@@ -1,0 +1,14 @@
+/*
+ *
+ * Overrides the cropperjs style, making the cropper round and the outline black
+ *
+*/
+
+.cropper-crop-box, .cropper-view-box {
+  border-radius: 50%;
+}
+
+.cropper-view-box {
+  box-shadow: 0 0 0 1px black;
+  outline: 0 !important;
+}

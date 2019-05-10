@@ -11,11 +11,17 @@ import {GymsPageComponent} from './components/pages/gyms-page/gyms-page.componen
 import {GymDetailsComponent} from './components/pages/details/gym-details/gym-details.component';
 import {ReservationDetailsComponent} from './components/pages/details/reservation-details/reservation-details.component';
 import {PlaygroundComponent} from './components/pages/playground/playground.component';
+import {AvatarPageComponent} from './components/pages/avatar-page/avatar-page.component';
+import {ChooseDefaultAvatarComponent} from './components/pages/choose-default-avatar/choose-default-avatar.component';
+import {AvatarEditorComponent} from './components/pages/avatar-editor/avatar-editor.component';
 
 const routes: Routes = [
   {path: 'home', component: HomepageComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
   {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
+  {path: 'profile/avatar', component: AvatarPageComponent, canActivate: [AuthGuard]},
+  {path: 'profile/avatar/modify', component: AvatarEditorComponent, canActivate: [AuthGuard]},
+  {path: 'profile/avatar/defaults', component: ChooseDefaultAvatarComponent, canActivate: [AuthGuard]},
   {path: 'gyms', component: GymsPageComponent, canActivate: [AuthGuard]},
   {path: 'gyms/:id', component: GymDetailsComponent, canActivate: [AuthGuard]},
   {path: 'assets', component: PlaygroundComponent, canActivate: [AuthGuard]},

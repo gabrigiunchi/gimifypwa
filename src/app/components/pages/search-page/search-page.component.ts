@@ -17,7 +17,8 @@ export class SearchPageComponent implements OnInit {
     location: {city: undefined, gym: undefined},
   };
 
-  constructor(private reservationService: ReservationService) {}
+  constructor(private reservationService: ReservationService) {
+  }
 
   ngOnInit() {
   }

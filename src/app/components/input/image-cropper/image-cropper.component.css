@@ -1,0 +1,20 @@
+.buttons-container {
+  padding: 1rem;
+  width: 100%;
+}
+
+.fixed-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.cropper-mobile {
+  height: 100%;
+  overflow: hidden;
+}
+
+.cropper-desktop {
+  width: 250px;
+}

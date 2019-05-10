@@ -58,7 +58,8 @@ describe('LoginService', () => {
   it('should logout', () => {
     const sessionService: SessionService = TestBed.get(SessionService);
     const service: LoginService = TestBed.get(LoginService);
-    const spy = spyOn(TestBed.get(Router), 'navigateByUrl').and.callFake(() => {});
+    const spy = spyOn(TestBed.get(Router), 'navigateByUrl').and.callFake(() => {
+    });
     sessionService.token = 'jadjsadas';
     service.logout();
     expect(spy).toHaveBeenCalledWith('/login');

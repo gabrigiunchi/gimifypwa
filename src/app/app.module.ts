@@ -88,6 +88,12 @@ import {DataUrlPipe} from './pipes/data-url.pipe';
 import {SafeUrlPipe} from './pipes/safe-url.pipe';
 import {AvatarPipe} from './pipes/avatar.pipe';
 import {AvatarComponent} from './components/layout/avatar/avatar.component';
+import {AvatarPageComponent} from './components/pages/avatar-page/avatar-page.component';
+import {EditAvatarBottomSheetComponent} from './components/modals/edit-avatar-bottom-sheet/edit-avatar-bottom-sheet.component';
+import {ChooseDefaultAvatarComponent} from './components/pages/choose-default-avatar/choose-default-avatar.component';
+import {AvatarEditorComponent} from './components/pages/avatar-editor/avatar-editor.component';
+import {ImageCropperComponent} from './components/input/image-cropper/image-cropper.component';
+import {NgxCropperjsModule} from 'ngx-cropperjs';
 
 @NgModule({
   declarations: [
@@ -132,6 +138,11 @@ import {AvatarComponent} from './components/layout/avatar/avatar.component';
     SafeUrlPipe,
     AvatarPipe,
     AvatarComponent,
+    AvatarPageComponent,
+    EditAvatarBottomSheetComponent,
+    ChooseDefaultAvatarComponent,
+    AvatarEditorComponent,
+    ImageCropperComponent,
   ],
   imports: [
     FormsModule,
@@ -145,6 +156,7 @@ import {AvatarComponent} from './components/layout/avatar/avatar.component';
     MatBottomSheetModule,
     MatButtonModule,
     MatButtonToggleModule,
+    NgxCropperjsModule,
     MatCardModule,
     MatCheckboxModule,
     MatChipsModule,
@@ -191,6 +203,7 @@ import {AvatarComponent} from './components/layout/avatar/avatar.component';
     GymFilterComponent,
     GymDetailsComponent,
     NewCommentDialogComponent,
+    EditAvatarBottomSheetComponent
   ]
 })
 export class AppModule {

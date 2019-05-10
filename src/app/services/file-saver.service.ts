@@ -8,7 +8,8 @@ import {Subject} from 'rxjs/internal/Subject';
 })
 export class FileSaverService {
 
-  constructor() {}
+  constructor() {
+  }
 
   /**
    * Encode a file in base64 and save it in the local storage

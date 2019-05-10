@@ -14,7 +14,8 @@ export class DetailsTabComponent implements OnChanges {
   @Input() gym: Gym;
   timetable$: Observable<Timetable>;
 
-  constructor(private timetableService: TimetableService) {}
+  constructor(private timetableService: TimetableService) {
+  }
 
   ngOnChanges() {
     if (this.gym) {

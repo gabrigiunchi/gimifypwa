@@ -24,7 +24,8 @@ export class CommentsTabComponent implements OnChanges, OnDestroy {
   isLoading = false;
   currentDownload: Subscription;
 
-  constructor(private dialog: MatDialog, private commentService: CommentService) {}
+  constructor(private dialog: MatDialog, private commentService: CommentService) {
+  }
 
   ngOnChanges() {
     if (this.gym) {

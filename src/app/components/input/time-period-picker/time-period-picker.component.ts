@@ -17,7 +17,7 @@ class EndHourErrorMatcher implements ErrorStateMatcher {
 }
 
 function hourValidator(min: string, maxDuration: Duration): ValidatorFn {
-  return (control: AbstractControl): {[key: string]: any} | null => {
+  return (control: AbstractControl): { [key: string]: any } | null => {
     const s = DateTime.fromFormat(control.get('start').value, 'HH:mm');
     const e = DateTime.fromFormat(control.get('end').value, 'HH:mm');
 

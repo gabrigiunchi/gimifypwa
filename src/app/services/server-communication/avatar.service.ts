@@ -114,7 +114,7 @@ export class AvatarService {
     formData.set('avatar', file);
     const url = this.urlService.getRestUrl(CONSTANTS.MY_AVATAR);
 
-    return this.http.put<ImageMetadata>(url, formData, this.urlService.authenticationHeader)
+    return this.http.put<ImageMetadata>(url, formData, this.urlService.token)
       .pipe(tap(metadata => {
         console.log('Avatar uploaded');
         console.log('Received updated metadata: ', metadata);

@@ -15,7 +15,8 @@ export class PhotosTabComponent implements OnChanges {
   @Input() gym: Gym;
   photos$: Observable<Observable<ArrayBuffer>[]>;
 
-  constructor(private gymImageService: GymImageServiceService) {}
+  constructor(private gymImageService: GymImageServiceService) {
+  }
 
   ngOnChanges() {
     if (this.gym) {

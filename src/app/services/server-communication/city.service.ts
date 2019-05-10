@@ -10,7 +10,8 @@ import {CONSTANTS} from 'src/app/constants';
 })
 export class CityService {
 
-  constructor(private http: HttpClient, private urlService: UrlService) {}
+  constructor(private http: HttpClient, private urlService: UrlService) {
+  }
 
   get cities(): Observable<City[]> {
     return this.http.get<City[]>(this.urlService.getRestUrl(CONSTANTS.CITIES), this.urlService.authenticationHeader);

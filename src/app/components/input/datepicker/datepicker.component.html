@@ -6,7 +6,7 @@
   <form [formGroup]="form">
     <mat-form-field [style.width]="width">
       <input matInput type="date" formControlName="date" #datepicker [errorStateMatcher]="errorStateMatcher"
-        [placeholder]="placeholder">
+             [placeholder]="placeholder">
       <mat-error *ngIf="form.invalid">Must be in the future</mat-error>
     </mat-form-field>
   </form>

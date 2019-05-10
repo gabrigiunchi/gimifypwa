@@ -5,7 +5,8 @@
       <div class="comment-header" matLine fxLayout="row" fxLayoutAlign="start center">
         <div [style.paddingRight]="'0.5rem'">{{comment.user.username}}</div>
         <app-rating-bar [value]="comment.rating" [size]="'0.5rem'"></app-rating-bar>
-        <div class="delete-button-container" *ngIf="isMyComment(comment)" fxFlex="grow" fxLayout="row" fxLayoutAlign="end center">
+        <div class="delete-button-container" *ngIf="isMyComment(comment)" fxFlex="grow" fxLayout="row"
+             fxLayoutAlign="end center">
           <button *ngIf="!isDeletingComment" mat-icon-button color="warn" (click)="onDeleteClick(comment)">
             <mat-icon>delete</mat-icon>
           </button>

@@ -6,7 +6,8 @@ import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 })
 export class SafeUrlPipe implements PipeTransform {
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer) {
+  }
 
   transform(url: string): SafeUrl {
     return url ? this.sanitizer.bypassSecurityTrustResourceUrl(url.replace('watch?v=', 'embed/')) : '';

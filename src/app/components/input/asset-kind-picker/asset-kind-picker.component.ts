@@ -16,7 +16,8 @@ export class AssetKindPickerComponent implements OnInit {
 
   private assetKinds: AssetKind[];
 
-  constructor(private assetKindService: AssetKindService, private dialog: MatDialog) {}
+  constructor(private assetKindService: AssetKindService, private dialog: MatDialog) {
+  }
 
   ngOnInit() {
     this.assetKindService.assetKinds.subscribe(a => this.assetKinds = a);

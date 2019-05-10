@@ -29,7 +29,7 @@
     <div fxLayout="row" fxLayoutAlign="start center">
       <div style="height: 3rem;" fxFlex="grow" fxLayoutAlign="start center">Email notifications</div>
       <mat-slide-toggle *ngIf="!isUpdatingSettings" [checked]="userInfo.notificationsEnabled"
-        (change)="onToggleChange($event)"></mat-slide-toggle>
+                        (change)="onToggleChange($event)"></mat-slide-toggle>
       <div *ngIf="isUpdatingSettings" fxFlex="3rem" fxLayoutAlign="end center">
         <mat-spinner diameter="23"></mat-spinner>
       </div>

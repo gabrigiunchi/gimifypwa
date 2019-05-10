@@ -41,7 +41,8 @@ describe('LoginComponent', () => {
   });
 
   it('should login', () => {
-    const spy = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    const spy = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {
+    });
     spyOn(TestBed.get(LoginService), 'login').and.returnValue(of(true));
     component.login();
     expect(spy).toHaveBeenCalledWith(['/home']);
@@ -50,7 +51,8 @@ describe('LoginComponent', () => {
   it('should login and redirect', () => {
     const loginService: LoginService = TestBed.get(LoginService);
     loginService.redirectUrl = '/page';
-    const spy = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    const spy = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {
+    });
     spyOn(loginService, 'login').and.returnValue(of(true));
     component.login();
     expect(spy).toHaveBeenCalledWith(['/page']);

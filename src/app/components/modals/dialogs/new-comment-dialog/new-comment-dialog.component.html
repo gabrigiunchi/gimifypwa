@@ -15,7 +15,7 @@
     <mat-form-field>
       <input matInput placeholder="title" formControlName="title">
       <div [style.padding]="'0.5rem 1rem 0 0'" fxLayout="row" fxLayoutAlign="end center"
-        [ngClass]="{'red': title.length > maxTitleLength}">
+           [ngClass]="{'red': title.length > maxTitleLength}">
         {{maxTitleLength - title.length}}
       </div>
     </mat-form-field>
@@ -24,14 +24,15 @@
       <textarea matInput placeholder="message" formControlName="message"></textarea>
 
       <div [style.paddingRight]="'1rem'" fxLayout="row" fxLayoutAlign="end center"
-        [ngClass]="{'red': message.length > maxMessageLength}">
+           [ngClass]="{'red': message.length > maxMessageLength}">
         {{maxMessageLength - message.length}}
       </div>
     </mat-form-field>
   </form>
 
   <div class="footer" fxLayout="row" fxLayoutAlign="end center">
-    <button mat-flat-button color="primary" [disabled]="form.invalid" *ngIf="!isPosting" (click)="submit()">Post</button>
+    <button mat-flat-button color="primary" [disabled]="form.invalid" *ngIf="!isPosting" (click)="submit()">Post
+    </button>
     <mat-spinner diameter="25" *ngIf="isPosting"></mat-spinner>
   </div>
 

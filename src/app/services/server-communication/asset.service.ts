@@ -44,9 +44,12 @@ export class AssetService {
 
   getIcon(asset: Asset | AssetDTO): string {
     switch (AssetKindEnum[asset.kind.name]) {
-      case AssetKindEnum.PRESSA: return 'fitness_center';
-      case AssetKindEnum.TAPIS_ROULANT: return 'fitness_center';
-      default: return 'fitness_center';
+      case AssetKindEnum.PRESSA:
+        return 'fitness_center';
+      case AssetKindEnum.TAPIS_ROULANT:
+        return 'fitness_center';
+      default:
+        return 'fitness_center';
     }
   }
 }

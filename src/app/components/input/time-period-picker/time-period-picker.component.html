@@ -19,7 +19,8 @@
     <mat-form-field>
       <input matInput type="time" formControlName="end" #endPicker [errorStateMatcher]="endHourErrorMatcher">
       <mat-error *ngIf="form.hasError('invalidEndTime')">Must be after the start time</mat-error>
-      <mat-error *ngIf="form.hasError('invalidDuration')">The max duration is {{maxDuration.as('minutes')}} minutes</mat-error>
+      <mat-error *ngIf="form.hasError('invalidDuration')">The max duration is {{maxDuration.as('minutes')}}minutes
+      </mat-error>
     </mat-form-field>
   </div>
 </form>

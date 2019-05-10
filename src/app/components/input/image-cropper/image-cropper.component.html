@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign="1rem">
+
+  <div fxLayout="row" [ngClass]="{'fixed-bottom': !isDesktop, 'buttons-container': true}">
+    <div fxFlex="50">
+      <button mat-button (click)="abort()">Cancel</button>
+    </div>
+    <div fxFlex="50" fxLayoutAlign="end">
+      <button mat-button (click)="crop()">Confirm</button>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxFlex="grow" fxLayoutAlign="center">
+    <div [ngClass]="{'cropper-mobile': !isDesktop, 'cropper-desktop': isDesktop}">
+      <ngx-cropperjs #angularCropper [cropperOptions]="config" [imageUrl]="image | safeUrl"></ngx-cropperjs>
+    </div>
+  </div>
+
+</div>

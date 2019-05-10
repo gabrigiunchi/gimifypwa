@@ -35,7 +35,8 @@ describe('ProfilePageComponent', () => {
   beforeEach(() => {
     const avatarService = TestBed.get(AvatarService);
     spyOnProperty(avatarService, 'myAvatar', 'get').and.returnValue(of(''));
-    spyOn(avatarService, 'checkAvatar').and.callFake(() => {});
+    spyOn(avatarService, 'checkAvatar').and.callFake(() => {
+    });
     fixture = TestBed.createComponent(ProfilePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
