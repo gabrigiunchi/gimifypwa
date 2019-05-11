@@ -38,6 +38,7 @@ export class SearchPageComponent {
       url += `/gym/${this.searchParams.location.gym.id}`;
     }
 
+    this.cacheService.element = this.searchParams;
     this.router.navigate([url]);
   }
 
