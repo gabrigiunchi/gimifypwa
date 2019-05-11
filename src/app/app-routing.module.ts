@@ -14,6 +14,7 @@ import {PlaygroundComponent} from './components/pages/playground/playground.comp
 import {AvatarPageComponent} from './components/pages/avatar-page/avatar-page.component';
 import {ChooseDefaultAvatarComponent} from './components/pages/choose-default-avatar/choose-default-avatar.component';
 import {AvatarEditorComponent} from './components/pages/avatar-editor/avatar-editor.component';
+import {ResultPageComponent} from './components/pages/result-page/result-page.component';
 
 const routes: Routes = [
   {path: 'home', component: HomepageComponent, canActivate: [AuthGuard]},
@@ -28,6 +29,8 @@ const routes: Routes = [
   {path: 'assets/:id', component: PlaygroundComponent, canActivate: [AuthGuard]},
   {path: 'reservations/:id', component: ReservationDetailsComponent, canActivate: [AuthGuard]},
   {path: 'reservations', component: ReservationsPageComponent, canActivate: [AuthGuard]},
+  {path: 'search/kind/:kind/date/:date/from/:from/to/:to/city/:city', component: ResultPageComponent, canActivate: [AuthGuard]},
+  {path: 'search/kind/:kind/date/:date/from/:from/to/:to/city/:city/gym/:gym', component: ResultPageComponent, canActivate: [AuthGuard]},
   {path: 'search', component: SearchPageComponent, canActivate: [AuthGuard]},
   {path: 'playground', component: PlaygroundComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}

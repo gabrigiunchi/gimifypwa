@@ -31,6 +31,10 @@ export const CONSTANTS = {
   DEFAULT_TIMEZONE: 'Europe/Rome',
   DEFAULT_DATETIME_FORMAT: `yyyy-MM-dd'T'TTZZZ`,
 
+  NEW_RESERVATION_MIN_TIME: '00:00',
+  NEW_RESERVATION_MAX_TIME: '23:40',
+  RESERVATION_TIME_SLOT_IN_MINUTES: 20,
+
   BASE_URL: 'https://backendtesi.eu-gb.mybluemix.net/api/v1/',
   ALIVE_URL: 'alive',
   LOGIN_URL: 'login',

@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ToolbarComponent} from './toolbar.component';
-import {MatToolbarModule} from '@angular/material';
+import {MatIconModule, MatToolbarModule} from '@angular/material';
+import {RouterModule} from '@angular/router';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
@@ -11,6 +12,8 @@ describe('ToolbarComponent', () => {
       declarations: [ToolbarComponent],
       imports: [
         MatToolbarModule,
+        MatIconModule,
+        RouterModule.forRoot([])
       ]
     })
       .compileComponents();

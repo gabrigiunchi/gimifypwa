@@ -7,8 +7,6 @@ import {CONSTANTS} from 'src/app/constants';
 import {ReservationDTO} from 'src/app/model/dto/reservationDTO';
 import {Asset} from 'src/app/model/entities/asset';
 import {AssetKind} from 'src/app/model/entities/asset-kind';
-import {Gym} from 'src/app/model/entities/gym';
-import {City} from 'src/app/model/entities/city';
 import {DateService} from '../utils/date.service';
 import {Page} from 'src/app/model/page';
 import {SelectLocationResult} from 'src/app/components/modals/dialogs/select-location/select-location.component';
@@ -90,9 +88,9 @@ export class ReservationService {
     const to = this.dateService.build(params.date, params.endHour);
 
     if (params.location && params.location.gym) {
-      return this.getAvailableAssetsInGym(kind, params.location.gym, from, to);
+      return this.getAvailableAssetsInGym(kind.id, params.location.gym.id, from, to);
     } else if (params.location && params.location.city) {
-      return this.getAvailableAssetsInCity(kind, params.location.city, from, to);
+      return this.getAvailableAssetsInCity(kind.id, params.location.city.id, from, to);
     }
 
     return this.getAvailableAssets(kind, from, to);
@@ -103,13 +101,13 @@ export class ReservationService {
     return this.http.get<Asset[]>(url, this.urlService.authenticationHeader);
   }
 
-  getAvailableAssetsInGym(kind: AssetKind, gym: Gym, from: string, to: string): Observable<Asset[]> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.RESERVATIONS}/available/kind/${kind.id}/from/${from}/to/${to}/gym/${gym.id}`);
+  getAvailableAssetsInGym(kindId: number, gymId: number, from: string, to: string): Observable<Asset[]> {
+    const url = this.urlService.getRestUrl(`${CONSTANTS.RESERVATIONS}/available/kind/${kindId}/from/${from}/to/${to}/gym/${gymId}`);
     return this.http.get<Asset[]>(url, this.urlService.authenticationHeader);
   }
 
-  getAvailableAssetsInCity(kind: AssetKind, city: City, from: string, to: string): Observable<Asset[]> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.RESERVATIONS}/available/kind/${kind.id}/from/${from}/to/${to}/city/${city.id}`);
+  getAvailableAssetsInCity(kindId: number, cityId: number, from: string, to: string): Observable<Asset[]> {
+    const url = this.urlService.getRestUrl(`${CONSTANTS.RESERVATIONS}/available/kind/${kindId}/from/${from}/to/${to}/city/${cityId}`);
     return this.http.get<Asset[]>(url, this.urlService.authenticationHeader);
   }
 

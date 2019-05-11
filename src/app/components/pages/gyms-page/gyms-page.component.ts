@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {GymService} from 'src/app/services/server-communication/gym.service';
 import {Gym} from 'src/app/model/entities/gym';
-import {Subscription} from 'rxjs';
 import {CacheService} from 'src/app/services/cache.service';
 import {MatDialog} from '@angular/material';
 import {GymFilterComponent, GymFilterResult} from '../../modals/gym-filter/gym-filter.component';
@@ -28,7 +27,6 @@ export class GymsPageComponent implements OnInit, OnDestroy {
     params: {city: undefined, name: '', ratingGreaterThan: 0}
   };
   isLoading = false;
-  private subscriptions: Subscription[] = [];
   private clearCache = true;
 
   constructor(
@@ -54,7 +52,6 @@ export class GymsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach(s => s.unsubscribe());
     if (this.clearCache) {
       this.cacheService.clear();
     }

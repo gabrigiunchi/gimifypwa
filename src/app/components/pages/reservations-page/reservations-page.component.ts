@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
-import {Subscription} from 'rxjs';
 import {Reservation} from 'src/app/model/entities/reservation';
 import {CacheService} from 'src/app/services/cache.service';
 
@@ -12,7 +11,6 @@ import {CacheService} from 'src/app/services/cache.service';
 export class ReservationsPageComponent implements OnInit, OnDestroy {
 
   reservations: Reservation[];
-  private subscriptions: Subscription[] = [];
   private clearCache = true;
 
   constructor(
@@ -31,7 +29,6 @@ export class ReservationsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach(s => s.unsubscribe());
     if (this.clearCache) {
       this.cacheService.clear();
     }

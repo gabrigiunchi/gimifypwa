@@ -1,13 +1,13 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef, ThemePalette} from '@angular/material';
 
 export interface ConfirmationDialogData {
   title: string;
   message: string;
   confirmAction: string;
   cancelAction: string;
-  confirmColor: string;
-  cancelColor: string;
+  confirmColor: ThemePalette;
+  cancelColor: ThemePalette;
   vertical: boolean;
 }
 

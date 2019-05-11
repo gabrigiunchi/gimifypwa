@@ -94,6 +94,10 @@ import {ChooseDefaultAvatarComponent} from './components/pages/choose-default-av
 import {AvatarEditorComponent} from './components/pages/avatar-editor/avatar-editor.component';
 import {ImageCropperComponent} from './components/input/image-cropper/image-cropper.component';
 import {NgxCropperjsModule} from 'ngx-cropperjs';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import {MaxEndTimePipe} from './pipes/date/max-end-time.pipe';
+import {MinEndTimePipe} from './pipes/date/min-end-time.pipe';
+import {ResultPageComponent} from './components/pages/result-page/result-page.component';
 
 @NgModule({
   declarations: [
@@ -143,6 +147,9 @@ import {NgxCropperjsModule} from 'ngx-cropperjs';
     ChooseDefaultAvatarComponent,
     AvatarEditorComponent,
     ImageCropperComponent,
+    MaxEndTimePipe,
+    MinEndTimePipe,
+    ResultPageComponent,
   ],
   imports: [
     FormsModule,
@@ -161,6 +168,7 @@ import {NgxCropperjsModule} from 'ngx-cropperjs';
     MatCheckboxModule,
     MatChipsModule,
     MatDatepickerModule,
+    NgxMaterialTimepickerModule,
     MatDialogModule,
     MatDividerModule,
     MatExpansionModule,

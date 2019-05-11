@@ -27,13 +27,11 @@ export class UrlService {
   }
 
   get token(): { headers: HttpHeaders } {
-    const httpOptions = {
+    return {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.sessionService.token
       })
     };
-
-    return httpOptions;
   }
 
   get authenticationHeaderForImages(): { headers: HttpHeaders } {
