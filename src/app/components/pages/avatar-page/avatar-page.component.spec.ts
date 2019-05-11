@@ -18,6 +18,7 @@ import {ImageCropperService} from 'src/app/services/image-cropper.service';
 import {ImageMetadata} from 'src/app/model/entities/images-metadata';
 import {LoadingComponent} from '../../layout/loading/loading.component';
 import {RouterModule} from '@angular/router';
+import {ToolbarComponent} from '../../layout/toolbar/toolbar.component';
 
 describe('AvatarPageComponent', () => {
   let component: AvatarPageComponent;
@@ -34,6 +35,7 @@ describe('AvatarPageComponent', () => {
         AvatarPageComponent,
         AvatarComponent,
         SafeUrlPipe,
+        ToolbarComponent,
         LoadingComponent
       ],
       imports: [
