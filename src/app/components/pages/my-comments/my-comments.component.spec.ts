@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {MyCommentsComponent} from './my-comments.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {ToolbarComponent} from '../../layout/toolbar/toolbar.component';
-import {MatIconModule, MatProgressSpinnerModule, MatToolbarModule, MatListModule} from '@angular/material';
+import {MatIconModule, MatListModule, MatProgressSpinnerModule, MatToolbarModule} from '@angular/material';
 import {LoadingComponent} from '../../layout/loading/loading.component';
 import {CommentListComponent} from '../../layout/comment-list/comment-list.component';
 import {MessageComponent} from '../../layout/message/message.component';

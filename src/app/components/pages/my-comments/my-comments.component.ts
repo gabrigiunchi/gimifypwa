@@ -1,8 +1,7 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CommentService} from 'src/app/services/server-communication/comment.service';
 import {Page} from 'src/app/model/page';
 import {Subscription} from 'rxjs';
-import {MatDialog} from '@angular/material';
 import {finalize} from 'rxjs/operators';
 import {CONSTANTS} from 'src/app/constants';
 import {Comment} from 'src/app/model/entities/comment';

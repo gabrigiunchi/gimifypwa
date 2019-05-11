@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ConfirmReservationDialogComponent, ConfirmReservationDialogData} from './confirm-reservation-dialog.component';
-import {MatIconModule, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef, MatIconModule} from '@angular/material';
 import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 import {TestConstants} from 'src/app/test-constants';
 

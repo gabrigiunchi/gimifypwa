@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Comment} from 'src/app/model/entities/comment';
 import {UserService} from 'src/app/services/server-communication/user.service';
 import {MatDialog} from '@angular/material';

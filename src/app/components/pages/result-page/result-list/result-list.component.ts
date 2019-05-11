@@ -2,10 +2,10 @@ import {Component, Input} from '@angular/core';
 import {Asset} from 'src/app/model/entities/asset';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
-import {InfoDialogData, InfoDialogComponent} from 'src/app/components/modals/dialogs/info-dialog/info-dialog.component';
+import {InfoDialogComponent, InfoDialogData} from 'src/app/components/modals/dialogs/info-dialog/info-dialog.component';
 import {
-  ConfirmReservationDialogData,
-  ConfirmReservationDialogComponent
+  ConfirmReservationDialogComponent,
+  ConfirmReservationDialogData
 } from 'src/app/components/modals/dialogs/confirm-reservation-dialog/confirm-reservation-dialog.component';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {finalize} from 'rxjs/operators';
