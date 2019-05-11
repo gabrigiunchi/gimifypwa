@@ -102,6 +102,7 @@ import {ResultListComponent} from './components/pages/result-page/result-list/re
 import {ResultMapComponent} from './components/pages/result-page/result-map/result-map.component';
 import {ResultListItemComponent} from './components/pages/result-page/result-list/result-list-item/result-list-item.component';
 import {AssetKindNamePipe} from './pipes/asset-kind-name.pipe';
+import { MyCommentsComponent } from './components/pages/my-comments/my-comments.component';
 
 @NgModule({
   declarations: [
@@ -158,6 +159,7 @@ import {AssetKindNamePipe} from './pipes/asset-kind-name.pipe';
     ResultMapComponent,
     ResultListItemComponent,
     AssetKindNamePipe,
+    MyCommentsComponent,
   ],
   imports: [
     FormsModule,

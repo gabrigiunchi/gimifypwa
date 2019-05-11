@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Location} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
@@ -9,11 +10,12 @@ import {Location} from '@angular/common';
 export class ToolbarComponent {
 
   @Input() title = '';
+  @Input() back = './';
 
-  constructor(private location: Location) {}
+  constructor(private router: Router) {}
 
   onBackClick() {
-    this.location.back();
+    this.router.navigate([this.back]);
   }
 
 }

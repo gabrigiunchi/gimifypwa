@@ -21,6 +21,11 @@ export class CommentService {
     return this.http.get<Page<Comment>>(url, this.urlService.authenticationHeader);
   }
 
+  getMyComments(page: number, size: number): Observable<Page<Comment>> {
+    const url = this.urlService.getRestUrl(`${CONSTANTS.COMMENTS}/me/page/${page}/size/${size}`);
+    return this.http.get<Page<Comment>>(url, this.urlService.authenticationHeader);
+  }
+
   postComment(comment: CommentDTO): Observable<Comment> {
     return this.http.post<Comment>(
       this.urlService.getRestUrl(`${CONSTANTS.COMMENTS}/me`),

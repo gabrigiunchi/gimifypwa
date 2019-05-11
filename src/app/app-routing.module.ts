@@ -15,11 +15,13 @@ import {AvatarPageComponent} from './components/pages/avatar-page/avatar-page.co
 import {ChooseDefaultAvatarComponent} from './components/pages/choose-default-avatar/choose-default-avatar.component';
 import {AvatarEditorComponent} from './components/pages/avatar-editor/avatar-editor.component';
 import {ResultPageComponent} from './components/pages/result-page/result-page.component';
+import {MyCommentsComponent} from './components/pages/my-comments/my-comments.component';
 
 const routes: Routes = [
   {path: 'home', component: HomepageComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
   {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
+  {path: 'profile/comments', component: MyCommentsComponent, canActivate: [AuthGuard]},
   {path: 'profile/avatar', component: AvatarPageComponent, canActivate: [AuthGuard]},
   {path: 'profile/avatar/modify', component: AvatarEditorComponent, canActivate: [AuthGuard]},
   {path: 'profile/avatar/defaults', component: ChooseDefaultAvatarComponent, canActivate: [AuthGuard]},

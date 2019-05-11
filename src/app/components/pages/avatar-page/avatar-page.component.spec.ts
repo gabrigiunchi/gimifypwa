@@ -35,7 +35,6 @@ describe('AvatarPageComponent', () => {
         AvatarPageComponent,
         AvatarComponent,
         SafeUrlPipe,
-        ToolbarComponent,
         LoadingComponent
       ],
       imports: [

@@ -1,0 +1,8 @@
+.load-more-container {
+  width: 100%;
+  padding: 1rem;
+}
+
+cdk-virtual-scroll-viewport, .body {
+  height: 100%;
+}
