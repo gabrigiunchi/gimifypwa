@@ -4,7 +4,7 @@
       <mat-icon matListIcon>{{getIcon(asset)}}</mat-icon>
       <h3 matLine>{{asset.name}}</h3>
       <p matLine>
-        <span class="mat-small">{{getKindName(asset) | titlecase}}</span>
+        <span class="mat-small">{{asset.kind | assetKindName | titlecase}}</span>
       </p>
       <p matLine *ngIf="showGymDetails">
         <span class="mat-small">{{asset.gymName}}</span>

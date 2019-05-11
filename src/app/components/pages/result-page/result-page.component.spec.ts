@@ -3,11 +3,14 @@ import {ResultPageComponent} from './result-page.component';
 import {RouterModule} from '@angular/router';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {ToolbarComponent} from '../../layout/toolbar/toolbar.component';
-import {MatIconModule, MatTabsModule, MatToolbarModule, MatProgressSpinnerModule} from '@angular/material';
+import {MatIconModule, MatTabsModule, MatToolbarModule, MatProgressSpinnerModule, MatCardModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ResultMapComponent} from './result-map/result-map.component';
 import {ResultListComponent} from './result-list/result-list.component';
 import {LoadingComponent} from '../../layout/loading/loading.component';
+import {ResultListItemComponent} from './result-list/result-list-item/result-list-item.component';
+import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 describe('ResultPageComponent', () => {
   let component: ResultPageComponent;
@@ -20,16 +23,20 @@ describe('ResultPageComponent', () => {
         ToolbarComponent,
         ResultListComponent,
         LoadingComponent,
-        ResultMapComponent
+        ResultMapComponent,
+        ResultListItemComponent,
+        AssetKindNamePipe
       ],
       imports: [
         BrowserAnimationsModule,
         RouterModule.forRoot([]),
         HttpClientTestingModule,
+        MatCardModule,
         MatToolbarModule,
         MatIconModule,
         MatProgressSpinnerModule,
-        MatTabsModule
+        MatTabsModule,
+        ScrollingModule
       ]
     })
       .compileComponents();

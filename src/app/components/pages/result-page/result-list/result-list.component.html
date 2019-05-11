@@ -1,0 +1,7 @@
+<div class="container">
+  <cdk-virtual-scroll-viewport itemSize="result.length">
+    <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="1rem">
+      <app-result-list-item *cdkVirtualFor="let item of result" [asset]="item"></app-result-list-item>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</div>

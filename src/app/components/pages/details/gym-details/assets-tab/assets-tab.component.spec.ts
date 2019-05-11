@@ -7,6 +7,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {MessageComponent} from 'src/app/components/layout/message/message.component';
 import {RouterModule} from '@angular/router';
+import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 
 describe('AssetsTabComponent', () => {
   let component: AssetsTabComponent;
@@ -18,7 +19,8 @@ describe('AssetsTabComponent', () => {
         AssetsTabComponent,
         AssetListComponent,
         LoadingComponent,
-        MessageComponent
+        MessageComponent,
+        AssetKindNamePipe
       ],
       imports: [
         MatListModule,

@@ -3,6 +3,7 @@ import {AssetListComponent} from './asset-list.component';
 import {MatIconModule, MatListModule} from '@angular/material';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 
 describe('AssetListComponent', () => {
   let component: AssetListComponent;
@@ -10,7 +11,7 @@ describe('AssetListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AssetListComponent],
+      declarations: [AssetListComponent, AssetKindNamePipe],
       imports: [
         ScrollingModule,
         MatListModule,

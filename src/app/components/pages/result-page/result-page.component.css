@@ -1,0 +1,7 @@
+mat-tab-group {
+  flex-grow: 1;
+}
+
+.container, app-result-list, app-result-map {
+  height: 100%;
+}

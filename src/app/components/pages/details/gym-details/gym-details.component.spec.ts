@@ -31,6 +31,7 @@ import {FabButtonComponent} from 'src/app/components/layout/fab-button/fab-butto
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {DataUrlPipe} from 'src/app/pipes/data-url.pipe';
 import {AvatarPipe} from 'src/app/pipes/avatar.pipe';
+import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 
 describe('GymDetailsComponent', () => {
   let component: GymDetailsComponent;
@@ -59,6 +60,7 @@ describe('GymDetailsComponent', () => {
         PhotosTabComponent,
         MessageComponent,
         CommentsTabComponent,
+        AssetKindNamePipe,
         AvatarPipe,
         SafeUrlPipe,
         DataUrlPipe,

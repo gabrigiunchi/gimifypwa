@@ -23,8 +23,4 @@ export class AssetListComponent {
   getIcon(asset: AssetDTO): string {
     return this.assetService.getIcon(asset);
   }
-
-  getKindName(asset: AssetDTO): string {
-    return asset.kind.name.replace('_', ' ');
-  }
 }
