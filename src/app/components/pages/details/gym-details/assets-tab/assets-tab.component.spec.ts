@@ -8,6 +8,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {MessageComponent} from 'src/app/components/layout/message/message.component';
 import {RouterModule} from '@angular/router';
 import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
+import {KindIconPipe} from 'src/app/pipes/kind-icon.pipe';
 
 describe('AssetsTabComponent', () => {
   let component: AssetsTabComponent;
@@ -20,7 +21,8 @@ describe('AssetsTabComponent', () => {
         AssetListComponent,
         LoadingComponent,
         MessageComponent,
-        AssetKindNamePipe
+        AssetKindNamePipe,
+        KindIconPipe
       ],
       imports: [
         MatListModule,

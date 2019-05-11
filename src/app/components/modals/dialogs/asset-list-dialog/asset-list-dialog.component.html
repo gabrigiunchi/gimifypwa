@@ -3,18 +3,24 @@
     <button mat-icon-button (click)="dismiss()">
       <mat-icon>close</mat-icon>
     </button>
-    <div fxFlex="grow" style="padding-right: 2.5rem" fxLayout="row" fxLayoutAlign="center center">
+    <h1 fxFlex="grow" style="padding-right: 2.5rem" fxLayout="row" fxLayoutAlign="center center">
       {{gymName}}
-    </div>
+    </h1>
   </div>
 
-  <div class="body" fxFlex="grow" *ngIf="!isLoading && !success">
-    <cdk-virtual-scroll-viewport itemSize="data.assets.length">
-      <div *cdkVirtualFor="let asset of data.assets" (click)="onBookingClick(asset)">
-        {{asset.name}}
-      </div>
-    </cdk-virtual-scroll-viewport>
-  </div>
+  <cdk-virtual-scroll-viewport fxFlex="grow" *ngIf="!isLoading && data.assets.length > 0" itemSize="data.assets.length">
+    <mat-list role="navigation">
+      <mat-list-item *cdkVirtualFor="let asset of data.assets">
+        <mat-icon matListIcon>{{asset.kind | kindIcon}}</mat-icon>
+        <h3 matLine>{{asset.name}}</h3>
+        <p matLine>
+          <span class="mat-small">{{asset.kind | assetKindName | titlecase}}</span>
+        </p>
+        <button mat-button color="primary" (click)="onBookingClick(asset)">Book</button>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </cdk-virtual-scroll-viewport>
 
   <app-loading *ngIf="isLoading"></app-loading>
 

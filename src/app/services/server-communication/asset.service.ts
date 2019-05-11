@@ -7,7 +7,6 @@ import {CONSTANTS} from 'src/app/constants';
 import {Gym} from 'src/app/model/entities/gym';
 import {Page} from 'src/app/model/page';
 import {AssetKind} from 'src/app/model/entities/asset-kind';
-import {AssetKindEnum} from 'src/app/model/entities/type/asset-kind-enum';
 import {AssetDTO} from 'src/app/model/dto/assetDTO';
 
 @Injectable({
@@ -40,16 +39,5 @@ export class AssetService {
   getAssetsByGymAndKind(gym: Gym, kind: AssetKind): Observable<AssetDTO[]> {
     const url = this.urlService.getRestUrl(`${CONSTANTS.ASSETS}/by_gym/${gym.id}/by_kind/${kind.id}`);
     return this.http.get<AssetDTO[]>(url, this.urlService.authenticationHeader);
-  }
-
-  getIcon(asset: Asset | AssetDTO): string {
-    switch (AssetKindEnum[asset.kind.name]) {
-      case AssetKindEnum.PRESSA:
-        return 'fitness_center';
-      case AssetKindEnum.TAPIS_ROULANT:
-        return 'fitness_center';
-      default:
-        return 'fitness_center';
-    }
   }
 }

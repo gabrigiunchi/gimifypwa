@@ -12,6 +12,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MaxEndTimePipe} from '../../../pipes/date/max-end-time.pipe';
 import {MinEndTimePipe} from '../../../pipes/date/min-end-time.pipe';
 import {Router, RouterModule} from '@angular/router';
+import {TestConstants} from 'src/app/test-constants';
 
 describe('SearchPageComponent', () => {
   let component: SearchPageComponent;
@@ -69,7 +70,7 @@ describe('SearchPageComponent', () => {
 
   it('should search assets in a gym based on parameters', () => {
     const spy = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
-    component.searchParams.location.gym = {id: 1, name: '', address: '', zoneId: '', city: component.searchParams.location.city};
+    component.searchParams.location.gym = TestConstants.mockGym;
     component.search();
     expect(spy).toHaveBeenCalledWith(['/search/kind/1/date/2019-05-04/from/10:00/to/10:20/city/1/gym/1']);
   });

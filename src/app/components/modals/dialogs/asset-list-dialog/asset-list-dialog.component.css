@@ -2,6 +2,6 @@
   height: 100%;
 }
 
-.body {
+cdk-virtual-scroll-viewport {
   margin-top: 2rem;
 }

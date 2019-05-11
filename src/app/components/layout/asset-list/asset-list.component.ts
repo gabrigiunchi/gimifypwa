@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {AssetService} from 'src/app/services/server-communication/asset.service';
 import {AssetDTO} from 'src/app/model/dto/assetDTO';
 
 @Component({
@@ -13,14 +12,7 @@ export class AssetListComponent {
   @Input() assets: AssetDTO[];
   @Output() assetSelected = new EventEmitter<AssetDTO>();
 
-  constructor(private assetService: AssetService) {
-  }
-
   onAssetClick(asset: AssetDTO) {
     this.assetSelected.emit(asset);
-  }
-
-  getIcon(asset: AssetDTO): string {
-    return this.assetService.getIcon(asset);
   }
 }

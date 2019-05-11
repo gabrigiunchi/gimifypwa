@@ -32,6 +32,7 @@ import {DataUrlPipe} from 'src/app/pipes/data-url.pipe';
 import {AvatarPipe} from 'src/app/pipes/avatar.pipe';
 import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 import {TestConstants} from 'src/app/test-constants';
+import {KindIconPipe} from 'src/app/pipes/kind-icon.pipe';
 
 describe('GymDetailsComponent', () => {
   let component: GymDetailsComponent;
@@ -55,6 +56,7 @@ describe('GymDetailsComponent', () => {
         AssetKindNamePipe,
         AvatarPipe,
         SafeUrlPipe,
+        KindIconPipe,
         DataUrlPipe,
         CommentListComponent
       ],

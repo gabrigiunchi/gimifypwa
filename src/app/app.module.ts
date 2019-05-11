@@ -107,6 +107,7 @@ import {AgmCoreModule} from '@agm/core';
 // tslint:disable-next-line: max-line-length
 import {ConfirmReservationDialogComponent} from './components/modals/dialogs/confirm-reservation-dialog/confirm-reservation-dialog.component';
 import {AssetListDialogComponent} from './components/modals/dialogs/asset-list-dialog/asset-list-dialog.component';
+import {KindIconPipe} from './pipes/kind-icon.pipe';
 
 @NgModule({
   declarations: [
@@ -166,6 +167,7 @@ import {AssetListDialogComponent} from './components/modals/dialogs/asset-list-d
     MyCommentsComponent,
     ConfirmReservationDialogComponent,
     AssetListDialogComponent,
+    KindIconPipe,
   ],
   imports: [
     FormsModule,
