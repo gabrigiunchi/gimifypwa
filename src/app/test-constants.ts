@@ -17,7 +17,9 @@ export class TestConstants {
     city: {id: 1, name:  'MILANO'},
     id: 1,
     name: 'gym',
-    zoneId: 'Europe/Rome'
+    zoneId: 'Europe/Rome',
+    latitude: 45.0,
+    longitude: 10.0
   };
 
   static readonly mockAsset: Asset = {

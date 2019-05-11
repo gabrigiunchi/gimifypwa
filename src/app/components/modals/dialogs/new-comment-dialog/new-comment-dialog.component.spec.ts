@@ -5,18 +5,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {Gym} from 'src/app/model/entities/gym';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TestConstants} from 'src/app/test-constants';
 
 describe('NewCommentDialogComponent', () => {
   let component: NewCommentDialogComponent;
   let fixture: ComponentFixture<NewCommentDialogComponent>;
-
-  const mockGym: Gym = {
-    id: 1,
-    name: 'gym',
-    address: 'address',
-    city: {id: 1, name: 'MILANO'},
-    zoneId: 'Europe/RomeD'
-  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,7 +26,7 @@ describe('NewCommentDialogComponent', () => {
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},
-        {provide: MAT_DIALOG_DATA, useValue: mockGym}
+        {provide: MAT_DIALOG_DATA, useValue: TestConstants.mockGym}
       ]
     })
       .compileComponents();

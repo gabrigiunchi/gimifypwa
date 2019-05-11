@@ -51,5 +51,8 @@ export const CONSTANTS = {
   AVATARS: 'avatars',
   MY_AVATAR: 'avatars/me',
   PRESET_AVATARS: 'avatars/presets',
+
+  MY_POSITION_ICON: '/assets/icons/bluecircle.png',
+  PLACE_ICON: '/assets/img/icons/svg/place.svg'
 };
 

@@ -12,6 +12,7 @@ import {ResultListItemComponent} from './result-list/result-list-item/result-lis
 import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MessageComponent} from '../../layout/message/message.component';
+import {AgmCoreModule} from '@agm/core';
 
 describe('ResultPageComponent', () => {
   let component: ResultPageComponent;
@@ -38,7 +39,10 @@ describe('ResultPageComponent', () => {
         MatIconModule,
         MatProgressSpinnerModule,
         MatTabsModule,
-        ScrollingModule
+        ScrollingModule,
+        AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyBiClW-tzn_XUpFDNs6c5PjwGtE61xaW6A'
+        }),
       ]
     })
       .compileComponents();

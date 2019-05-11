@@ -6,4 +6,6 @@ export interface Gym {
   address: string;
   zoneId: string;
   city: City;
+  latitude: number;
+  longitude: number;
 }

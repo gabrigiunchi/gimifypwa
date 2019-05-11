@@ -103,6 +103,7 @@ import {ResultMapComponent} from './components/pages/result-page/result-map/resu
 import {ResultListItemComponent} from './components/pages/result-page/result-list/result-list-item/result-list-item.component';
 import {AssetKindNamePipe} from './pipes/asset-kind-name.pipe';
 import {MyCommentsComponent} from './components/pages/my-comments/my-comments.component';
+import { AgmCoreModule } from '@agm/core';
 // tslint:disable-next-line: max-line-length
 import {ConfirmReservationDialogComponent} from './components/modals/dialogs/confirm-reservation-dialog/confirm-reservation-dialog.component';
 
@@ -211,6 +212,9 @@ import {ConfirmReservationDialogComponent} from './components/modals/dialogs/con
     DragDropModule,
     MatTreeModule,
     FlexLayoutModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBiClW-tzn_XUpFDNs6c5PjwGtE61xaW6A'
+    }),
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
   ],

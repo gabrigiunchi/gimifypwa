@@ -32,18 +32,11 @@ import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {DataUrlPipe} from 'src/app/pipes/data-url.pipe';
 import {AvatarPipe} from 'src/app/pipes/avatar.pipe';
 import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
+import {TestConstants} from 'src/app/test-constants';
 
 describe('GymDetailsComponent', () => {
   let component: GymDetailsComponent;
   let fixture: ComponentFixture<GymDetailsComponent>;
-
-  const mockGym: Gym = {
-    id: 1,
-    address: '',
-    city: {id: 1, name: 'MILANO'},
-    name: '',
-    zoneId: 'Europe/Rome'
-  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -86,7 +79,7 @@ describe('GymDetailsComponent', () => {
   beforeEach(() => {
     const gymService: GymService = TestBed.get(GymService);
     spyOn(gymService, 'getRatingOfGym').and.returnValue(of(1));
-    spyOn(gymService, 'getGymById').and.returnValue(of(mockGym));
+    spyOn(gymService, 'getGymById').and.returnValue(of(TestConstants.mockGym));
     fixture = TestBed.createComponent(GymDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
