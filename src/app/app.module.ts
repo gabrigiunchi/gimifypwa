@@ -102,7 +102,9 @@ import {ResultListComponent} from './components/pages/result-page/result-list/re
 import {ResultMapComponent} from './components/pages/result-page/result-map/result-map.component';
 import {ResultListItemComponent} from './components/pages/result-page/result-list/result-list-item/result-list-item.component';
 import {AssetKindNamePipe} from './pipes/asset-kind-name.pipe';
-import { MyCommentsComponent } from './components/pages/my-comments/my-comments.component';
+import {MyCommentsComponent} from './components/pages/my-comments/my-comments.component';
+// tslint:disable-next-line: max-line-length
+import {ConfirmReservationDialogComponent} from './components/modals/dialogs/confirm-reservation-dialog/confirm-reservation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -160,6 +162,7 @@ import { MyCommentsComponent } from './components/pages/my-comments/my-comments.
     ResultListItemComponent,
     AssetKindNamePipe,
     MyCommentsComponent,
+    ConfirmReservationDialogComponent,
   ],
   imports: [
     FormsModule,
@@ -221,7 +224,8 @@ import { MyCommentsComponent } from './components/pages/my-comments/my-comments.
     GymFilterComponent,
     GymDetailsComponent,
     NewCommentDialogComponent,
-    EditAvatarBottomSheetComponent
+    EditAvatarBottomSheetComponent,
+    ConfirmReservationDialogComponent,
   ]
 })
 export class AppModule {

@@ -11,6 +11,7 @@ import {LoadingComponent} from '../../layout/loading/loading.component';
 import {ResultListItemComponent} from './result-list/result-list-item/result-list-item.component';
 import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MessageComponent} from '../../layout/message/message.component';
 
 describe('ResultPageComponent', () => {
   let component: ResultPageComponent;
@@ -25,7 +26,8 @@ describe('ResultPageComponent', () => {
         LoadingComponent,
         ResultMapComponent,
         ResultListItemComponent,
-        AssetKindNamePipe
+        AssetKindNamePipe,
+        MessageComponent
       ],
       imports: [
         BrowserAnimationsModule,

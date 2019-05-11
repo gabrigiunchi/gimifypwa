@@ -1,0 +1,33 @@
+<div fxLayout="column" class="mat-typography" fxLayoutGap="2rem" *ngIf="data">
+  <h2 fxLayout="row" fxLayoutAlign="center">Confirm reservation</h2>
+  <div fxLayout="column" fxLayoutGap="1rem">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
+      <mat-icon>fitness_center</mat-icon>
+      <div>{{data.asset.name}}</div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
+      <mat-icon>location_city</mat-icon>
+      <div>{{data.asset.gym.name}}</div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
+      <mat-icon>place</mat-icon>
+      <div>{{data.asset.gym.address}}, {{data.asset.gym.city.name}}</div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
+      <mat-icon>calendar_today</mat-icon>
+      <div>{{data.date | dateTime: 'EEEE dd MMMM yyyy'}}</div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
+      <mat-icon>access_time</mat-icon>
+      <div>{{data.from}}-{{data.to}}</div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="0.5rem">
+    <button mat-button color="primary" (click)="dismiss()">
+      {{'Cancel' | uppercase}}
+    </button>
+    <button mat-button color="primary" (click)="onConfirm()">
+      {{'Book' | uppercase}}
+    </button>
+  </div>
+</div>

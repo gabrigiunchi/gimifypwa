@@ -1,15 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {Asset} from 'src/app/model/entities/asset';
 
 @Component({
   selector: 'app-result-map',
   templateUrl: './result-map.component.html',
   styleUrls: ['./result-map.component.css']
 })
-export class ResultMapComponent implements OnInit {
+export class ResultMapComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  @Input() result: Asset[] = [];
+  @Input() date: string;
+  @Input() from: string;
+  @Input() to: string;
 
 }

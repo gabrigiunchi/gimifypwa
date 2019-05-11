@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {Asset} from 'src/app/model/entities/asset';
 import {DateService} from 'src/app/services/utils/date.service';
 
+
 @Component({
   selector: 'app-result-page',
   templateUrl: './result-page.component.html',

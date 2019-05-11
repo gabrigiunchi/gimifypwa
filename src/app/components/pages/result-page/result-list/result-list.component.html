@@ -1,7 +1,11 @@
 <div class="container">
-  <cdk-virtual-scroll-viewport itemSize="result.length">
-    <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="1rem">
-      <app-result-list-item *cdkVirtualFor="let item of result" [asset]="item"></app-result-list-item>
+  <cdk-virtual-scroll-viewport itemSize="result.length" *ngIf="result.length > 0 && !isLoading && !success">
+    <div fxLayout="column" style="padding: 1rem" fxLayoutAlign="start center" fxLayoutGap="1rem">
+      <app-result-list-item *cdkVirtualFor="let item of result" [asset]="item" [date]="date" [from]="from" [to]="to"
+      (bookingClick)="onBookingClick($event)">
+      </app-result-list-item>
     </div>
   </cdk-virtual-scroll-viewport>
+  <app-loading *ngIf="isLoading"></app-loading>
+  <app-message *ngIf="!isLoading && result.length === 0" title="Nothing found"></app-message>
 </div>
