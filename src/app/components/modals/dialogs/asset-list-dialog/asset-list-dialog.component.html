@@ -1,0 +1,21 @@
+<div class="container mat-typography" fxLayout="column">
+  <div class="header">
+    <button mat-icon-button (click)="dismiss()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <div fxFlex="grow" style="padding-right: 2.5rem" fxLayout="row" fxLayoutAlign="center center">
+      {{gymName}}
+    </div>
+  </div>
+
+  <div class="body" fxFlex="grow" *ngIf="!isLoading && !success">
+    <cdk-virtual-scroll-viewport itemSize="data.assets.length">
+      <div *cdkVirtualFor="let asset of data.assets" (click)="onBookingClick(asset)">
+        {{asset.name}}
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+
+  <app-loading *ngIf="isLoading"></app-loading>
+
+</div>

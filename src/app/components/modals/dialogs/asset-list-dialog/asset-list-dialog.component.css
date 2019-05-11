@@ -1,0 +1,7 @@
+.container, cdk-virtual-scroll-viewport {
+  height: 100%;
+}
+
+.body {
+  margin-top: 2rem;
+}

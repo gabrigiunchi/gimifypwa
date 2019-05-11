@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ResultMapComponent} from './result-map.component';
 import {AgmCoreModule} from '@agm/core';
+import {MatIconModule, MatDialogModule} from '@angular/material';
 
 describe('ResultMapComponent', () => {
   let component: ResultMapComponent;
@@ -13,6 +14,8 @@ describe('ResultMapComponent', () => {
         AgmCoreModule.forRoot({
           apiKey: 'AIzaSyBiClW-tzn_XUpFDNs6c5PjwGtE61xaW6A'
         }),
+        MatIconModule,
+        MatDialogModule
       ]
     })
       .compileComponents();

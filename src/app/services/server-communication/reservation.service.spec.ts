@@ -48,7 +48,7 @@ describe('ReservationService', () => {
   it('should search assets in a gym based on parameters', () => {
     const service: ReservationService = TestBed.get(ReservationService);
     const spy = spyOn(service, 'getAvailableAssetsInGym').and.returnValue(of([]));
-    params.location.gym = {id: 1, name: '', address: '', zoneId: '', city: params.location.city};
+    params.location.gym = {id: 1, name: '', address: '', zoneId: '', city: params.location.city, latitude: 45.0, longitude: 10.0};
     service.searchAssets(params);
     expect(spy).toHaveBeenCalledWith(params.kind.id, params.location.gym.id, '2019-05-04T10:00:00+0200', '2019-05-04T10:20:00+0200');
   });

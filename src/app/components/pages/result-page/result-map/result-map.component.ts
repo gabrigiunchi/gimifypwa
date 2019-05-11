@@ -3,6 +3,11 @@ import {Gym} from 'src/app/model/entities/gym';
 import {OnChanges, Input, Component, SimpleChanges, AfterViewInit, OnDestroy, ViewChild} from '@angular/core';
 import {LatLngLiteral, AgmMap} from '@agm/core';
 import {CONSTANTS} from 'src/app/constants';
+import {MatDialog} from '@angular/material';
+import {
+  AssetListDialogData,
+  AssetListDialogComponent
+} from 'src/app/components/modals/dialogs/asset-list-dialog/asset-list-dialog.component';
 
 @Component({
   selector: 'app-result-map',
@@ -25,6 +30,8 @@ export class ResultMapComponent implements OnChanges, AfterViewInit, OnDestroy {
   lat = 45.006273;
   lng = 10.603579;
   private watchId: number; // subscription to navigator.geolocation
+
+  constructor(private dialog: MatDialog) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['result']) {
@@ -56,10 +63,23 @@ export class ResultMapComponent implements OnChanges, AfterViewInit, OnDestroy {
 
   onGymClick(gym: Gym) {
     const assetsInGym = this.result.filter(asset => asset.gym.id === gym.id);
-    console.log(assetsInGym);
+    const dialogData: AssetListDialogData = {
+      assets: assetsInGym,
+      date: this.date,
+      from: this.from,
+      to: this.to
+    };
+
+    this.dialog.open(AssetListDialogComponent, {
+      autoFocus: false,
+      restoreFocus: false,
+      data: dialogData,
+      minWidth: '100%',
+      height: '100%'
+    });
   }
 
-  private centerMapToCurrentLocation() {
+  centerMapToCurrentLocation() {
     if (this.myPosition) {
       this.lat = this.myPosition.lat;
       this.lng = this.myPosition.lng;
