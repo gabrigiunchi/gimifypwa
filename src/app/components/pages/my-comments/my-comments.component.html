@@ -1,7 +1,7 @@
 <app-toolbar title="My Comments" back="/profile"></app-toolbar>
 <div *ngIf="currentPage !== undefined; else loading" class="body">
   <cdk-virtual-scroll-viewport itemSize="comments.length">
-    <app-comment-list [comments]="comments"></app-comment-list>
+    <app-comment-list [(comments)]="comments"></app-comment-list>
     <app-message *ngIf="!isLoading && comments.length === 0" title="No comments"></app-message>
 
     <div class="load-more-container" fxLayout="row" fxLayoutAlign="center center">

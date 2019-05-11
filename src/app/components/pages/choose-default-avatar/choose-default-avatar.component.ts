@@ -59,7 +59,7 @@ export class ChooseDefaultAvatarComponent implements OnInit, OnDestroy {
 
   private download(metadata: ImageMetadata): void {
     // Download the avatar and put it in the gallery
-    this.subscriptions.push(this.avatarService.download(metadata.id)
+    this.subscriptions.push(this.avatarService.downloadAvatar(metadata.id)
       .subscribe(binaries => {
         const newItem: GalleryItem = {id: metadata.id, dataUrl: new DataUrlPipe().transform(binaries)};
         this._gallery.set(metadata.id, newItem);

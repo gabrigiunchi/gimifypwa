@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Comment} from 'src/app/model/entities/comment';
 import {UserService} from 'src/app/services/server-communication/user.service';
 import {MatDialog} from '@angular/material';
@@ -14,6 +14,7 @@ import {finalize} from 'rxjs/operators';
 export class CommentListComponent {
 
   @Input() comments: Comment[];
+  @Output() commentsChange = new EventEmitter<Comment[]>();
   isDeletingComment = false;
 
   constructor(
@@ -47,6 +48,7 @@ export class CommentListComponent {
 
   private removeCommentFromList(comment: Comment) {
     this.comments = this.comments.filter(c => c.id !== comment.id);
+    this.commentsChange.emit(this.comments);
   }
 
 }

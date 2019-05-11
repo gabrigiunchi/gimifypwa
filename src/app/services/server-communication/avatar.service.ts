@@ -35,6 +35,10 @@ export class AvatarService {
     return this.http.get<ArrayBuffer>(endpoint, this.urlService.authenticationHeaderForImages);
   }
 
+  downloadAvatar(id: string): Observable<ArrayBuffer> {
+    return this.download(this.urlService.getRestUrl(`${CONSTANTS.AVATARS}/${id}`));
+  }
+
   clearCache(): void {
     console.log('Clearing avatar cache...');
     localStorage.removeItem(LocalStorageKey.avatar);
