@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ChooseDefaultAvatarComponent} from './choose-default-avatar.component';
 import {of} from 'rxjs/internal/observable/of';
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
-import {MatProgressSpinnerModule, MatToolbarModule, MatIconModule} from '@angular/material';
+import {MatIconModule, MatProgressSpinnerModule, MatToolbarModule} from '@angular/material';
 import {AvatarService} from 'src/app/services/server-communication/avatar.service';
 import {AvatarComponent} from '../../layout/avatar/avatar.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';

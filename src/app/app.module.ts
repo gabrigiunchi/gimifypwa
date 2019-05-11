@@ -98,10 +98,10 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MaxEndTimePipe} from './pipes/date/max-end-time.pipe';
 import {MinEndTimePipe} from './pipes/date/min-end-time.pipe';
 import {ResultPageComponent} from './components/pages/result-page/result-page.component';
-import { ResultListComponent } from './components/pages/result-page/result-list/result-list.component';
-import { ResultMapComponent } from './components/pages/result-page/result-map/result-map.component';
-import { ResultListItemComponent } from './components/pages/result-page/result-list/result-list-item/result-list-item.component';
-import { AssetKindNamePipe } from './pipes/asset-kind-name.pipe';
+import {ResultListComponent} from './components/pages/result-page/result-list/result-list.component';
+import {ResultMapComponent} from './components/pages/result-page/result-map/result-map.component';
+import {ResultListItemComponent} from './components/pages/result-page/result-list/result-list-item/result-list-item.component';
+import {AssetKindNamePipe} from './pipes/asset-kind-name.pipe';
 
 @NgModule({
   declarations: [

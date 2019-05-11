@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ResultMapComponent } from './result-map.component';
+import {ResultMapComponent} from './result-map.component';
 
 describe('ResultMapComponent', () => {
   let component: ResultMapComponent;

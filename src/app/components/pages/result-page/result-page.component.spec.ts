@@ -3,7 +3,7 @@ import {ResultPageComponent} from './result-page.component';
 import {RouterModule} from '@angular/router';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {ToolbarComponent} from '../../layout/toolbar/toolbar.component';
-import {MatIconModule, MatTabsModule, MatToolbarModule, MatProgressSpinnerModule, MatCardModule} from '@angular/material';
+import {MatCardModule, MatIconModule, MatProgressSpinnerModule, MatTabsModule, MatToolbarModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ResultMapComponent} from './result-map/result-map.component';
 import {ResultListComponent} from './result-list/result-list.component';

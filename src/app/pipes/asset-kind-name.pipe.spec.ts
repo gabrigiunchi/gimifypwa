@@ -1,4 +1,4 @@
-import { AssetKindNamePipe } from './asset-kind-name.pipe';
+import {AssetKindNamePipe} from './asset-kind-name.pipe';
 
 describe('AssetKindNamePipe', () => {
   it('create an instance', () => {
