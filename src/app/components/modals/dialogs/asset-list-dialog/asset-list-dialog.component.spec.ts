@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {AssetListDialogComponent, AssetListDialogData} from './asset-list-dialog.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {MatIconModule, MatDialogRef, MAT_DIALOG_DATA, MatProgressSpinnerModule, MatDialogModule} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef, MatIconModule, MatProgressSpinnerModule} from '@angular/material';
 import {TestConstants} from 'src/app/test-constants';
 import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';
 import {RouterModule} from '@angular/router';

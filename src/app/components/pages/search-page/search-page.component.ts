@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {ReservationSearchParams} from 'src/app/services/server-communication/reservation.service';
 import {DateTime, Duration} from 'luxon';
 import {DateService} from 'src/app/services/utils/date.service';
@@ -6,7 +6,6 @@ import {CONSTANTS} from 'src/app/constants';
 import {CacheService} from 'src/app/services/cache.service';
 import {Router} from '@angular/router';
 import {AssetKind} from 'src/app/model/entities/asset-kind';
-import {TimePeriodPickerComponent} from '../../input/time-period-picker/time-period-picker.component';
 
 @Component({
   selector: 'app-search-page',

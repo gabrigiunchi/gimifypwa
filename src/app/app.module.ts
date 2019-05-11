@@ -103,10 +103,10 @@ import {ResultMapComponent} from './components/pages/result-page/result-map/resu
 import {ResultListItemComponent} from './components/pages/result-page/result-list/result-list-item/result-list-item.component';
 import {AssetKindNamePipe} from './pipes/asset-kind-name.pipe';
 import {MyCommentsComponent} from './components/pages/my-comments/my-comments.component';
-import { AgmCoreModule } from '@agm/core';
+import {AgmCoreModule} from '@agm/core';
 // tslint:disable-next-line: max-line-length
 import {ConfirmReservationDialogComponent} from './components/modals/dialogs/confirm-reservation-dialog/confirm-reservation-dialog.component';
-import { AssetListDialogComponent } from './components/modals/dialogs/asset-list-dialog/asset-list-dialog.component';
+import {AssetListDialogComponent} from './components/modals/dialogs/asset-list-dialog/asset-list-dialog.component';
 
 @NgModule({
   declarations: [

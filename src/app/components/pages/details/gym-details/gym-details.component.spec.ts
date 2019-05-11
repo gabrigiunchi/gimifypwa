@@ -14,7 +14,6 @@ import {
 } from '@angular/material';
 import {GymService} from 'src/app/services/server-communication/gym.service';
 import {of} from 'rxjs';
-import {Gym} from 'src/app/model/entities/gym';
 import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';
 import {TimePipe} from 'src/app/pipes/date/time.pipe';
 import {TimetableDetailsComponent} from 'src/app/components/layout/timetable-details/timetable-details.component';

@@ -1,12 +1,12 @@
 import {Component, Inject} from '@angular/core';
 import {Asset} from 'src/app/model/entities/asset';
-import {MAT_DIALOG_DATA, MatDialogRef, MatDialog} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {
-  ConfirmReservationDialogData,
-  ConfirmReservationDialogComponent
+  ConfirmReservationDialogComponent,
+  ConfirmReservationDialogData
 } from '../confirm-reservation-dialog/confirm-reservation-dialog.component';
-import {InfoDialogData, InfoDialogComponent} from '../info-dialog/info-dialog.component';
+import {InfoDialogComponent, InfoDialogData} from '../info-dialog/info-dialog.component';
 import {HttpErrorResponse} from '@angular/common/http';
 import {finalize} from 'rxjs/operators';
 import {Router} from '@angular/router';

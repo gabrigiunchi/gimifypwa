@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ResultMapComponent} from './result-map.component';
 import {AgmCoreModule} from '@agm/core';
-import {MatIconModule, MatDialogModule} from '@angular/material';
+import {MatDialogModule, MatIconModule} from '@angular/material';
 
 describe('ResultMapComponent', () => {
   let component: ResultMapComponent;
