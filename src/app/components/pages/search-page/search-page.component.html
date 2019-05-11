@@ -1,5 +1,5 @@
 <h1 style="margin-bottom: 1rem" class="mat-display-1">Find a free asset</h1>
-<app-asset-kind-picker #kindpicker [(result)]="searchParams.kind"></app-asset-kind-picker>
+<app-asset-kind-picker #kindpicker (resultChange)="onKindSelected($event)" [result]="searchParams.kind"></app-asset-kind-picker>
 <app-datepicker #datepicker [(date)]="searchParams.date"></app-datepicker>
 <app-time-period-picker #timepicker [(start)]="searchParams.startHour" [(end)]="searchParams.endHour"
                         [maxDuration]="maxDuration">

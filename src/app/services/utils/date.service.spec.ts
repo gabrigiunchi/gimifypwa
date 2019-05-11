@@ -1,8 +1,11 @@
 import {TestBed} from '@angular/core/testing';
 import {DateService} from './date.service';
+import {Duration} from 'luxon';
 
 describe('DateService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
+
+  const duration = (minutes: number) => Duration.fromObject({minutes: minutes});
 
   it('should be created', () => {
     const service: DateService = TestBed.get(DateService);
@@ -36,6 +39,21 @@ describe('DateService', () => {
     expect(service.round('10:25', 15)).toBe('10:30');
     expect(service.round('10:15', 15)).toBe('10:15');
     expect(service.round('10:45', 20)).toBe('11:00');
+  });
+
+  it('should say if a range is valid', () => {
+    const service: DateService = TestBed.get(DateService);
+    expect(service.isRangeValid('10:00', '10:20', duration(30))).toBe(true);
+    expect(service.isRangeValid('10:00', '10:20', duration(20))).toBe(true);
+    expect(service.isRangeValid('10:50', '11:10', duration(20))).toBe(true);
+    expect(service.isRangeValid('10:00', '11:20', duration(120))).toBe(true);
+  });
+
+  it('should say if a range is not valid', () => {
+    const service: DateService = TestBed.get(DateService);
+    expect(service.isRangeValid('10:00', '10:31', duration(30))).toBe(false);
+    expect(service.isRangeValid('10:00', '10:20', duration(19))).toBe(false);
+    expect(service.isRangeValid('10:00', '12:00', duration(60))).toBe(false);
   });
 
 });

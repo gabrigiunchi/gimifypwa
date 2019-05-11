@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CONSTANTS} from 'src/app/constants';
-import {DateTime} from 'luxon';
+import {DateTime, Duration} from 'luxon';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,10 @@ export class DateService {
     return DateTime
       .fromFormat(`${date} ${hour}`, 'yyyy-MM-dd HH:mm', {zone: zoneId})
       .toFormat(CONSTANTS.DEFAULT_DATETIME_FORMAT);
+  }
+
+  isRangeValid(start: string, end: string, maxDuration: Duration): boolean {
+    return Duration.fromMillis(DateTime.fromISO(end).toMillis() - DateTime.fromISO(start).toMillis()) <= maxDuration;
   }
 
   /**
