@@ -1,5 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import {AssetKind} from '../model/entities/asset-kind';
+import {TitleCasePipe} from '@angular/common';
 
 @Pipe({
   name: 'assetKindName'
@@ -7,7 +8,7 @@ import {AssetKind} from '../model/entities/asset-kind';
 export class AssetKindNamePipe implements PipeTransform {
 
   transform(kind: AssetKind): string {
-    return kind.name.replace('_', ' ');
+    return new TitleCasePipe().transform(kind.name.replace('_', ' '));
   }
 
 }

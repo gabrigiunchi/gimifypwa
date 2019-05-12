@@ -14,6 +14,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {AvatarComponent} from './components/layout/avatar/avatar.component';
 import {SafeUrlPipe} from './pipes/safe-url.pipe';
 import {LoadingComponent} from './components/layout/loading/loading.component';
+import {FooterSectionColorPipe} from './pipes/footer-section-color.pipe';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -28,7 +29,8 @@ describe('AppComponent', () => {
         FooterComponent,
         AvatarComponent,
         SafeUrlPipe,
-        LoadingComponent
+        LoadingComponent,
+        FooterSectionColorPipe,
       ],
       imports: [
         RouterTestingModule,

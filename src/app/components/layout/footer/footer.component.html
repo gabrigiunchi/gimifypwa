@@ -1,31 +1,7 @@
 <mat-toolbar>
-  <div fxFlex="grow" fxLayout="row" fxLayoutAlign="center center">
-    <button mat-icon-button routerLink="/search">
-      <mat-icon>search</mat-icon>
-    </button>
-  </div>
-
-  <div fxFlex="grow" fxLayout="row" fxLayoutAlign="center center">
-    <button mat-icon-button routerLink="/reservations">
-      <mat-icon>book</mat-icon>
-    </button>
-  </div>
-
-  <div fxFlex="grow" fxLayout="row" fxLayoutAlign="center center">
-    <button mat-icon-button routerLink="/gyms">
-      <mat-icon>location_city</mat-icon>
-    </button>
-  </div>
-
-  <div fxFlex="grow" fxLayout="row" fxLayoutAlign="center center">
-    <button mat-icon-button routerLink="/profile">
-      <mat-icon>person</mat-icon>
-    </button>
-  </div>
-
-  <div fxFlex="grow" fxLayout="row" fxLayoutAlign="center center">
-    <button mat-icon-button routerLink="/playground">
-      <mat-icon>whatshot</mat-icon>
+  <div *ngFor="let section of sections" fxFlex="grow" fxLayout="row" fxLayoutAlign="center center">
+    <button mat-icon-button [routerLink]="section.link">
+      <mat-icon [color]="section | footerSectionColor">{{section.icon}}</mat-icon>
     </button>
   </div>
 </mat-toolbar>

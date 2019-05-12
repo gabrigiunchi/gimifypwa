@@ -112,6 +112,7 @@ import {ReservationListComponent} from './components/layout/reservation-list/res
 import {ReservationsByDayPipe} from './pipes/reservations-by-day.pipe';
 import {AssetDetailsDialogComponent} from './components/modals/dialogs/asset-details-dialog/asset-details-dialog.component';
 import {SelectCityDialogComponent} from './components/modals/dialogs/select-city-dialog/select-city-dialog.component';
+import { FooterSectionColorPipe } from './pipes/footer-section-color.pipe';
 
 @NgModule({
   declarations: [
@@ -176,6 +177,7 @@ import {SelectCityDialogComponent} from './components/modals/dialogs/select-city
     ReservationsByDayPipe,
     AssetDetailsDialogComponent,
     SelectCityDialogComponent,
+    FooterSectionColorPipe,
   ],
   imports: [
     FormsModule,
