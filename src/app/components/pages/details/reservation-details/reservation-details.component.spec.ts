@@ -3,7 +3,7 @@ import {ReservationDetailsComponent} from './reservation-details.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {AgmCoreModule} from '@agm/core';
-import {MatIconModule, MatToolbarModule, MatListModule, MatProgressSpinnerModule, MatDialogModule} from '@angular/material';
+import {MatDialogModule, MatIconModule, MatListModule, MatProgressSpinnerModule, MatToolbarModule} from '@angular/material';
 import {ToolbarComponent} from 'src/app/components/layout/toolbar/toolbar.component';
 import {MapComponent} from 'src/app/components/layout/map/map.component';
 import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';

@@ -1,8 +1,6 @@
 import {Asset} from 'src/app/model/entities/asset';
 import {Gym} from 'src/app/model/entities/gym';
-import {AfterViewInit, Component, Input, OnChanges, OnDestroy, SimpleChanges, ViewChild} from '@angular/core';
-import {AgmMap, LatLngLiteral} from '@agm/core';
-import {CONSTANTS} from 'src/app/constants';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {
   AssetListDialogComponent,

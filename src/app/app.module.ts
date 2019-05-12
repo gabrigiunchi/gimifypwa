@@ -112,9 +112,10 @@ import {ReservationListComponent} from './components/layout/reservation-list/res
 import {ReservationsByDayPipe} from './pipes/reservations-by-day.pipe';
 import {AssetDetailsDialogComponent} from './components/modals/dialogs/asset-details-dialog/asset-details-dialog.component';
 import {SelectCityDialogComponent} from './components/modals/dialogs/select-city-dialog/select-city-dialog.component';
-import { FooterSectionColorPipe } from './pipes/footer-section-color.pipe';
-import { MapComponent } from './components/layout/map/map.component';
-import { ErrorDialogComponent } from './components/modals/dialogs/error-dialog/error-dialog.component';
+import {FooterSectionColorPipe} from './pipes/footer-section-color.pipe';
+import {MapComponent} from './components/layout/map/map.component';
+import {ErrorDialogComponent} from './components/modals/dialogs/error-dialog/error-dialog.component';
+import {LazySelectionDialogComponent} from './components/modals/dialogs/lazy-selection-dialog/lazy-selection-dialog.component';
 
 @NgModule({
   declarations: [
@@ -182,6 +183,7 @@ import { ErrorDialogComponent } from './components/modals/dialogs/error-dialog/e
     FooterSectionColorPipe,
     MapComponent,
     ErrorDialogComponent,
+    LazySelectionDialogComponent,
   ],
   imports: [
     FormsModule,
@@ -251,7 +253,8 @@ import { ErrorDialogComponent } from './components/modals/dialogs/error-dialog/e
     AssetListDialogComponent,
     AssetDetailsDialogComponent,
     SelectCityDialogComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    LazySelectionDialogComponent
   ]
 })
 export class AppModule {

@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 import {AppSection} from '../components/layout/footer/footer.component';
 import {ThemePalette} from '@angular/material';
 import {Router} from '@angular/router';

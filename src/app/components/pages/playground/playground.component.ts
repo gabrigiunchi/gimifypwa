@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
-import {AssetListDialogComponent, AssetListDialogData} from '../../modals/dialogs/asset-list-dialog/asset-list-dialog.component';
+import {AssetListDialogData} from '../../modals/dialogs/asset-list-dialog/asset-list-dialog.component';
 import {TestConstants} from 'src/app/test-constants';
 import {ErrorDialogComponent} from '../../modals/dialogs/error-dialog/error-dialog.component';
 

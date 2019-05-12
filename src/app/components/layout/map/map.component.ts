@@ -1,5 +1,5 @@
-import {Component, OnDestroy, AfterViewInit, Input, ViewChild, Output, EventEmitter} from '@angular/core';
-import {LatLngLiteral, AgmMap} from '@agm/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, ViewChild} from '@angular/core';
+import {AgmMap, LatLngLiteral} from '@agm/core';
 import {CONSTANTS} from 'src/app/constants';
 import {Gym} from 'src/app/model/entities/gym';
 import {Reservation} from 'src/app/model/entities/reservation';

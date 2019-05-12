@@ -4,7 +4,6 @@ import {AssetKindService} from 'src/app/services/server-communication/asset-kind
 import {SelectionDialogComponent, SelectionDialogData} from '../../modals/dialogs/selection-dialog/selection-dialog.component';
 import {MatDialog} from '@angular/material';
 import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
-import {TitleCasePipe} from '@angular/common';
 
 @Component({
   selector: 'app-asset-kind-picker',
