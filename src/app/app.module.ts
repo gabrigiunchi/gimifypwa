@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HomepageComponent} from './components/pages/homepage/homepage.component';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -122,7 +121,6 @@ import {DefaultGymPickerComponent} from './components/input/default-gym-picker/d
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent,
     ProfilePageComponent,
     LoginComponent,
     WaitingPageComponent,

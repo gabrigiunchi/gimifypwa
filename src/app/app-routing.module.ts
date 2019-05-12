@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HomepageComponent} from './components/pages/homepage/homepage.component';
 import {ProfilePageComponent} from './components/pages/profile-page/profile-page.component';
 import {AuthGuard} from './guards/auth.guard';
 import {LoginComponent} from './components/pages/login/login.component';
@@ -18,7 +17,6 @@ import {ResultPageComponent} from './components/pages/result-page/result-page.co
 import {MyCommentsComponent} from './components/pages/my-comments/my-comments.component';
 
 const routes: Routes = [
-  {path: 'home', component: HomepageComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
   {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
   {path: 'profile/comments', component: MyCommentsComponent, canActivate: [AuthGuard]},
@@ -34,7 +32,7 @@ const routes: Routes = [
   {path: 'search/kind/:kind/date/:date/from/:from/to/:to/city/:city/gym/:gym', component: ResultPageComponent, canActivate: [AuthGuard]},
   {path: 'search', component: SearchPageComponent, canActivate: [AuthGuard]},
   {path: 'playground', component: PlaygroundComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'}
+  {path: '', redirectTo: '/reservations', pathMatch: 'full'}
 ];
 
 @NgModule({

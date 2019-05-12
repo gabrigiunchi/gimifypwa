@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {CONSTANTS} from 'src/app/constants';
 
 export interface AppSection {
   icon: string;
@@ -12,11 +13,5 @@ export interface AppSection {
 })
 export class FooterComponent {
 
-  readonly sections: AppSection[] = [
-    {icon: 'search', link: '/search'},
-    {icon: 'book', link: '/reservations'},
-    {icon: 'fitness_center', link: '/gyms'},
-    {icon: 'person', link: '/profile'},
-    {icon: 'whatshot', link: '/playground'},
-  ];
+  readonly sections: AppSection[] = CONSTANTS.SECTIONS;
 }

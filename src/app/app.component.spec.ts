@@ -10,7 +10,6 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
-import {HomepageComponent} from './components/pages/homepage/homepage.component';
 import {WaitingPageComponent} from './components/pages/waiting-page/waiting-page.component';
 import {LoginComponent} from './components/pages/login/login.component';
 import {ProfilePageComponent} from './components/pages/profile-page/profile-page.component';
@@ -30,7 +29,6 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        HomepageComponent,
         WaitingPageComponent,
         LoginComponent,
         ProfilePageComponent,

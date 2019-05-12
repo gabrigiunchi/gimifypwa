@@ -13,6 +13,13 @@ export const CONSTANTS = {
     '/playground'
   ],
 
+  SECTIONS: [
+    {icon: 'search', link: '/search'},
+    {icon: 'book', link: '/reservations'},
+    {icon: 'fitness_center', link: '/gyms'},
+    {icon: 'person', link: '/profile'}
+  ],
+
   /**
    * Size of the image cropper
    */
