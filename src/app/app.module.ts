@@ -108,6 +108,8 @@ import {AgmCoreModule} from '@agm/core';
 import {ConfirmReservationDialogComponent} from './components/modals/dialogs/confirm-reservation-dialog/confirm-reservation-dialog.component';
 import {AssetListDialogComponent} from './components/modals/dialogs/asset-list-dialog/asset-list-dialog.component';
 import {KindIconPipe} from './pipes/kind-icon.pipe';
+import { ReservationListComponent } from './components/layout/reservation-list/reservation-list.component';
+import { ReservationsByDayPipe } from './pipes/reservations-by-day.pipe';
 
 @NgModule({
   declarations: [
@@ -168,6 +170,8 @@ import {KindIconPipe} from './pipes/kind-icon.pipe';
     ConfirmReservationDialogComponent,
     AssetListDialogComponent,
     KindIconPipe,
+    ReservationListComponent,
+    ReservationsByDayPipe,
   ],
   imports: [
     FormsModule,

@@ -1,14 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {ReservationsPageComponent} from './reservations-page.component';
 import {RouterModule} from '@angular/router';
-import {MatListModule, MatProgressSpinnerModule} from '@angular/material';
+import {MatListModule, MatProgressSpinnerModule, MatIconModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {CacheService} from 'src/app/services/cache.service';
 import {Reservation} from 'src/app/model/entities/reservation';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {of} from 'rxjs';
 import {LoadingComponent} from '../../layout/loading/loading.component';
+import {ReservationListComponent} from '../../layout/reservation-list/reservation-list.component';
+import {TimePipe} from 'src/app/pipes/date/time.pipe';
+import {ReservationsByDayPipe} from 'src/app/pipes/reservations-by-day.pipe';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
+import {TestConstants} from 'src/app/test-constants';
+import {MessageComponent} from '../../layout/message/message.component';
 
 describe('ReservationsPageComponent', () => {
   let component: ReservationsPageComponent;
@@ -16,11 +22,11 @@ describe('ReservationsPageComponent', () => {
 
   const mockReservations: Reservation[] = [
     {
-      asset: undefined,
+      asset: TestConstants.mockAsset,
       end: '2019-05-02T10:00:00+0200',
       start: '2019-05-02T11:00:00+0200',
       id: 6,
-      user: undefined
+      user: TestConstants.mockUser
     }
   ];
 
@@ -28,8 +34,18 @@ describe('ReservationsPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ReservationsPageComponent, LoadingComponent],
+      declarations: [
+        ReservationsPageComponent,
+        LoadingComponent,
+        ReservationListComponent,
+        DateTimePipe,
+        TimePipe,
+        ReservationsByDayPipe,
+        MessageComponent
+      ],
       imports: [
+        ScrollingModule,
+        MatIconModule,
         MatListModule,
         RouterModule.forRoot([]),
         HttpClientModule,

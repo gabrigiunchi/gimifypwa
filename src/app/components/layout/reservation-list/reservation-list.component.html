@@ -1,0 +1,16 @@
+<cdk-virtual-scroll-viewport itemSize="reservations.length">
+  <mat-nav-list>
+    <div *cdkVirtualFor="let day of reservations | reservationsByDay | keyvalue">
+      <h3 matSubheader>{{day.key | dateTime: 'dd MMMM yyyy'}}</h3>
+      <mat-list-item routerLink="/reservations/{{reservation.id}}" *ngFor="let reservation of day.value">
+        <mat-icon matListIcon>book</mat-icon>
+        <h4 matLine><span class="mat-body-strong">{{reservation.asset.name}}</span></h4>
+        <p matLine>{{reservation.start | time}} - {{reservation.end | time}}</p>
+        <p matLine>
+          <span>{{reservation.asset.gym.name}},{{reservation.asset.gym.address}}
+            {{reservation.asset.gym.city.name | titlecase}}</span>
+        </p>
+      </mat-list-item>
+    </div>
+  </mat-nav-list>
+</cdk-virtual-scroll-viewport>

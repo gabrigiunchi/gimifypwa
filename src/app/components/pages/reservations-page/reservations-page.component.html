@@ -1,17 +1,13 @@
-<h1>Reservations</h1>
+<div class="container" fxLayout="column">
+  <h1 style="margin: 0" class="title mat-display-1">Reservations</h1>
 
-<div *ngIf="reservations; else loading">
-  <mat-nav-list>
-    <a mat-list-item *ngFor="let reservation of reservations" routerLink="/reservations/{{reservation.id}}">
-      {{reservation.id}} {{reservation.start}}
-    </a>
-  </mat-nav-list>
+  <div fxLayout="column" fxFlex="grow" *ngIf="reservations; else loading">
+    <app-reservation-list style="height: 100%" [reservations]="reservations"></app-reservation-list>
 
-  <div *ngIf="reservations.length === 0">
-    <h3>No reservations</h3>
+    <app-message *ngIf="reservations.length === 0" title="No reservations"></app-message>
   </div>
-</div>
 
-<ng-template #loading>
-  <app-loading></app-loading>
-</ng-template>
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+</div>
