@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {DateService} from './date.service';
-import {Duration} from 'luxon';
+import {DateTime, Duration} from 'luxon';
 
 describe('DateService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
@@ -10,6 +10,14 @@ describe('DateService', () => {
   it('should be created', () => {
     const service: DateService = TestBed.get(DateService);
     expect(service).toBeTruthy();
+  });
+
+  it('should say if a date is today', () => {
+    const service: DateService = TestBed.get(DateService);
+    expect(service.isToday(DateTime.local().toISODate())).toBe(true);
+    expect(service.isToday('2019-05-10')).toBe(false);
+    expect(service.isToday(DateTime.local().plus({days: 1}).toISODate())).toBe(false);
+    expect(service.isToday(DateTime.local().minus({days: 1}).toISODate())).toBe(false);
   });
 
   it('should build a date from the localdate and the localtime', () => {

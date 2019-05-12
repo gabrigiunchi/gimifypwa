@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 import {DateTime} from 'luxon';
 import {DateService} from 'src/app/services/utils/date.service';
 

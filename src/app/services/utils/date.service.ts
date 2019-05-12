@@ -10,6 +10,10 @@ export class DateService {
   constructor() {
   }
 
+  isToday(date: string): boolean {
+    return DateTime.fromISO(date).hasSame(DateTime.local(), 'day');
+  }
+
   build(date: string, hour: string, zoneId: string = CONSTANTS.DEFAULT_TIMEZONE): string {
     return DateTime
       .fromFormat(`${date} ${hour}`, 'yyyy-MM-dd HH:mm', {zone: zoneId})

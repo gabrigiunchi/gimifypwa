@@ -2,12 +2,12 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {DatepickerComponent} from './datepicker.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
+  MatDatepickerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  NativeDateModule,
-  MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  NativeDateModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientTestingModule} from '@angular/common/http/testing';

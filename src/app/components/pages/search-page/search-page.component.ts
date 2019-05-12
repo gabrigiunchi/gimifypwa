@@ -46,21 +46,17 @@ export class SearchPageComponent {
 
   onKindSelected(kind: AssetKind) {
     this.searchParams.kind = kind;
-    this.checkInterval();
+    this.checkDuration();
   }
 
   onStartChange(start: string) {
     this.searchParams.startHour = start;
-    this.checkInterval();
+    this.checkDuration();
   }
 
   onDateChange(date: string) {
     this.searchParams.date = date;
-
-    if (DateTime.fromISO(this.dateService.roundCurrentTime(this.step)) > DateTime.fromISO(this.searchParams.startHour)) {
-      this.searchParams.startHour = this.dateService.roundCurrentTime(this.step);
-      this.searchParams.endHour = DateTime.fromISO(this.searchParams.startHour).plus({minutes: this.step}).toFormat('HH:mm');
-    }
+    this.checkStartTime();
   }
 
   get maxDuration(): Duration {
@@ -80,7 +76,16 @@ export class SearchPageComponent {
     };
   }
 
-  private checkInterval() {
+  private checkStartTime() {
+    if (this.dateService.isToday(this.searchParams.date) &&
+      DateTime.fromISO(this.dateService.roundCurrentTime(this.step)) > DateTime.fromISO(this.searchParams.startHour)) {
+
+      this.searchParams.startHour = this.dateService.roundCurrentTime(this.step);
+      this.searchParams.endHour = DateTime.fromISO(this.searchParams.startHour).plus({minutes: this.step}).toFormat('HH:mm');
+    }
+  }
+
+  private checkDuration() {
     if (!this.dateService.isRangeValid(this.searchParams.startHour, this.searchParams.endHour, this.maxDuration)) {
       this.searchParams.endHour = DateTime.fromISO(this.searchParams.startHour)
         .plus({minutes: this.searchParams.kind.maxReservationTime}).toFormat('HH:mm');
