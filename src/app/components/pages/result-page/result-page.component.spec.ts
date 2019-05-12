@@ -13,6 +13,7 @@ import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MessageComponent} from '../../layout/message/message.component';
 import {AgmCoreModule} from '@agm/core';
+import {MapComponent} from '../../layout/map/map.component';
 
 describe('ResultPageComponent', () => {
   let component: ResultPageComponent;
@@ -26,6 +27,7 @@ describe('ResultPageComponent', () => {
         ResultListComponent,
         LoadingComponent,
         ResultMapComponent,
+        MapComponent,
         ResultListItemComponent,
         AssetKindNamePipe,
         MessageComponent

@@ -1,3 +1,36 @@
-<div *ngIf="reservation$ | async as reservation">
-  {{reservation.id}} {{reservation.asset.name}}
+<div class="container" fxLayout="column" *ngIf="reservation$ | async as reservation; else loading">
+  <app-toolbar title="Reservation #{{reservation.id}}" back="/reservations"></app-toolbar>
+  <app-map [showMyPositionControl]="false" height="15rem" [reservations]="[reservation]"></app-map>
+
+  <mat-list>
+    <mat-list-item>
+      <mat-icon matListIcon>fitness_center</mat-icon>
+      <h3 matLine>{{reservation.asset.name}} ({{reservation.asset.kind | assetKindName}})</h3>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon matListIcon>calendar_today</mat-icon>
+      <h3 matLine>{{reservation.start | dateTime: 'dd MMMM yyyy'}}</h3>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon matListIcon>access_time</mat-icon>
+      <h3 matLine>{{reservation.start | time}} - {{reservation.end | time}}</h3>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon matListIcon>location_city</mat-icon>
+      <h3 matLine>{{reservation.asset.gym.name}}</h3>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon matListIcon>place</mat-icon>
+      <h3 matLine>{{reservation.asset.gym.address}}, {{reservation.asset.gym.city.name | titlecase}}</h3>
+    </mat-list-item>
+  </mat-list>
+
+  <div class="footer" fxLayout="row" fxLayoutAlign="center center">
+    <button *ngIf="!isDeleting" mat-flat-button color="warn" (click)="onDeleteClick(reservation)">DELETE</button>
+    <mat-spinner *ngIf="isDeleting" diameter="25"></mat-spinner>
+  </div>
 </div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

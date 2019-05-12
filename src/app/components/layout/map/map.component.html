@@ -1,0 +1,20 @@
+<agm-map [style.height]="height" [zoom]="15" [fitBounds]="myPosition !== undefined" [zoomControl]="false"
+  [streetViewControl]="false" [latitude]="lat" [longitude]="lng">
+
+  <agm-marker *ngIf="myPosition" [agmFitBounds]="true" [markerClickable]="false" [latitude]="myPosition.lat"
+    [longitude]="myPosition.lng" [iconUrl]="myPositionIcon"></agm-marker>
+
+
+  <agm-marker *ngFor="let gym of gyms" [iconUrl]="gymIcon" [agmFitBounds]="true" (markerClick)="onGymCLick(gym)"
+    [latitude]="gym.latitude" [longitude]="gym.longitude">
+  </agm-marker>
+
+  <agm-marker *ngFor="let reservation of reservations" [iconUrl]="reservationIcon" [agmFitBounds]="true"
+    (markerClick)="onReservationCLick(reservation)" [latitude]="reservation.asset.gym.latitude"
+    [longitude]="reservation.asset.gym.longitude">
+  </agm-marker>
+</agm-map>
+
+<div *ngIf="showMyPositionControl" class="control" matRipple>
+  <mat-icon (click)="centerMapToCurrentLocation()">my_location</mat-icon>
+</div>

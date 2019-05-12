@@ -1,15 +1,1 @@
-<agm-map [zoom]="15" [fitBounds]="myPosition !== undefined" [zoomControl]="false" [streetViewControl]="false"
-  [latitude]="lat" [longitude]="lng">
-
-  <agm-marker *ngIf="myPosition" [agmFitBounds]="true" [markerClickable]="false" [latitude]="myPosition.lat"
-    [longitude]="myPosition.lng" [iconUrl]="myPositionIcon"></agm-marker>
-
-
-  <agm-marker *ngFor="let gym of gyms" [iconUrl]="placeIcon" [agmFitBounds]="true" (markerClick)="onGymClick(gym)"
-    [latitude]="gym.latitude" [longitude]="gym.longitude">
-  </agm-marker>
-</agm-map>
-
-<div class="control" matRipple>
-  <mat-icon (click)="centerMapToCurrentLocation()">my_location</mat-icon>
-</div>
+<app-map [gyms]="gyms" (gymClick)="onGymClick($event)"></app-map>
