@@ -16,29 +16,6 @@ describe('UserService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should set the default city', () => {
-    const service: UserService = TestBed.get(UserService);
-    service.defaultCity = {id: 1, name: 'MILANO'};
-    const result: City = JSON.parse(localStorage.getItem(LocalStorageKey.defaultCity));
-    expect(result.id).toBe(1);
-    expect(result.name).toBe('MILANO');
-  });
-
-  it('should get the default city', () => {
-    const service: UserService = TestBed.get(UserService);
-    localStorage.setItem(LocalStorageKey.defaultCity, JSON.stringify({id: 1, name: 'MILANO'}));
-    const result = service.defaultCity;
-    expect(result.id).toBe(1);
-    expect(result.name).toBe('MILANO');
-  });
-
-  it('should get undefined if the default city is not present in the local storage', () => {
-    const service: UserService = TestBed.get(UserService);
-    localStorage.clear();
-    const result = service.defaultCity;
-    expect(result === undefined).toBe(true);
-  });
-
   it('should say if an id is the logged user\' id', () => {
     const service: UserService = TestBed.get(UserService);
     const sessionService: SessionService = TestBed.get(SessionService);

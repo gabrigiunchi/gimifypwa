@@ -1,7 +1,14 @@
 import {async, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
-import {MatIconModule, MatInputModule, MatProgressSpinnerModule, MatSlideToggleModule, MatToolbarModule} from '@angular/material';
+import {
+  MatIconModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatSlideToggleModule,
+  MatToolbarModule,
+  MatDividerModule
+} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {HomepageComponent} from './components/pages/homepage/homepage.component';
 import {WaitingPageComponent} from './components/pages/waiting-page/waiting-page.component';
@@ -15,6 +22,7 @@ import {AvatarComponent} from './components/layout/avatar/avatar.component';
 import {SafeUrlPipe} from './pipes/safe-url.pipe';
 import {LoadingComponent} from './components/layout/loading/loading.component';
 import {FooterSectionColorPipe} from './pipes/footer-section-color.pipe';
+import {DefaultCityPickerComponent} from './components/input/default-city-picker/default-city-picker.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -31,12 +39,14 @@ describe('AppComponent', () => {
         SafeUrlPipe,
         LoadingComponent,
         FooterSectionColorPipe,
+        DefaultCityPickerComponent
       ],
       imports: [
         RouterTestingModule,
         MatIconModule,
         MatToolbarModule,
         HttpClientModule,
+        MatDividerModule,
         ScrollingModule,
         MatProgressSpinnerModule,
         FormsModule,

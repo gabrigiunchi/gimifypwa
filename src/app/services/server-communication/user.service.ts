@@ -36,13 +36,4 @@ export class UserService {
       {},
       this.urlService.authenticationHeader);
   }
-
-  set defaultCity(city: City) {
-    localStorage.setItem(LocalStorageKey.defaultCity, JSON.stringify(city));
-  }
-
-  get defaultCity(): City {
-    const item = localStorage.getItem(LocalStorageKey.defaultCity);
-    return item == null ? undefined : JSON.parse(item);
-  }
 }

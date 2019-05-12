@@ -6,6 +6,7 @@ import {CONSTANTS} from 'src/app/constants';
 import {CacheService} from 'src/app/services/cache.service';
 import {Router} from '@angular/router';
 import {AssetKind} from 'src/app/model/entities/asset-kind';
+import {SettingsService} from 'src/app/services/settings.service';
 
 @Component({
   selector: 'app-search-page',
@@ -17,6 +18,7 @@ export class SearchPageComponent {
   searchParams: ReservationSearchParams;
 
   constructor(
+    private settingsService: SettingsService,
     private cacheService: CacheService<ReservationSearchParams>,
     private router: Router,
     private dateService: DateService) {
@@ -63,7 +65,7 @@ export class SearchPageComponent {
       startHour: start,
       endHour: end,
       kind: undefined,
-      location: {city: undefined, gym: undefined},
+      location: {city: this.settingsService.defaultCity, gym: undefined},
     };
   }
 
