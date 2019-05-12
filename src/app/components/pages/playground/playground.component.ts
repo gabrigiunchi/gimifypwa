@@ -3,6 +3,7 @@ import {MatDialog} from '@angular/material';
 import {AssetListDialogData} from '../../modals/dialogs/asset-list-dialog/asset-list-dialog.component';
 import {TestConstants} from 'src/app/test-constants';
 import {ErrorDialogComponent} from '../../modals/dialogs/error-dialog/error-dialog.component';
+import {DateTime} from 'luxon';
 
 @Component({
   selector: 'app-playground',
@@ -10,6 +11,9 @@ import {ErrorDialogComponent} from '../../modals/dialogs/error-dialog/error-dial
   styleUrls: ['./playground.component.css']
 })
 export class PlaygroundComponent implements OnInit {
+
+  minDate = DateTime.local().toISODate();
+  maxDate = DateTime.local().plus({days: 14}).toISODate();
 
   constructor(private dialog: MatDialog) {
   }

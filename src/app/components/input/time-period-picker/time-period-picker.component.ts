@@ -5,7 +5,7 @@ import {CONSTANTS} from 'src/app/constants';
 @Component({
   selector: 'app-time-period-picker',
   templateUrl: './time-period-picker.component.html',
-  styleUrls: ['../../../pipes/date/time-period-picker.component.css']
+  styleUrls: ['./time-period-picker.component.css']
 })
 export class TimePeriodPickerComponent {
   @Input() min = CONSTANTS.NEW_RESERVATION_MIN_TIME;

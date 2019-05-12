@@ -1,13 +1,10 @@
-<div class="form-item" fxLayout="row" fxLayoutAlign="start center" (click)="datepicker.click()" matRipple>
+<div class="form-item" fxLayout="row" fxLayoutAlign="start center" (click)="datepicker.open()" matRipple>
   <div fxFlex="grow" fxLayoutAlign="start center">
     <mat-icon>calendar_today</mat-icon>
     <div>Date</div>
+    <div fxFlex="grow" fxLayoutAlign="end center">{{date| dateTime:'dd MMMM yyyy'}}</div>
   </div>
-  <form [formGroup]="form">
-    <mat-form-field [style.width]="width">
-      <input matInput type="date" formControlName="date" #datepicker [errorStateMatcher]="errorStateMatcher"
-             [placeholder]="placeholder">
-      <mat-error *ngIf="form.invalid">Must be in the future</mat-error>
-    </mat-form-field>
-  </form>
+  <input hidden [value]="date" (dateChange)="onDateChange($event)" matInput [min]="min" [max]="max"
+    [matDatepicker]="picker">
+  <mat-datepicker #datepicker touchUi #picker></mat-datepicker>
 </div>

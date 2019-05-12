@@ -37,9 +37,12 @@ import {
   MatStepperModule,
   MatTableModule,
   MatTabsModule,
+  NativeDateModule,
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
+  MAT_DATE_LOCALE,
+  MAT_DATE_FORMATS,
 } from '@angular/material';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -117,6 +120,7 @@ import {ErrorDialogComponent} from './components/modals/dialogs/error-dialog/err
 import {LazySelectionDialogComponent} from './components/modals/dialogs/lazy-selection-dialog/lazy-selection-dialog.component';
 import {DefaultCityPickerComponent} from './components/input/default-city-picker/default-city-picker.component';
 import {DefaultGymPickerComponent} from './components/input/default-gym-picker/default-gym-picker.component';
+import {CONSTANTS} from './constants';
 
 @NgModule({
   declarations: [
@@ -213,6 +217,7 @@ import {DefaultGymPickerComponent} from './components/input/default-gym-picker/d
     MatIconModule,
     MatInputModule,
     MatListModule,
+    NativeDateModule,
     MatMenuModule,
     MatNativeDateModule,
     MatPaginatorModule,
@@ -240,7 +245,8 @@ import {DefaultGymPickerComponent} from './components/input/default-gym-picker/d
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     ConfirmationDialogComponent,

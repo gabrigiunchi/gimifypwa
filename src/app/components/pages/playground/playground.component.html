@@ -1,3 +1,5 @@
-<button mat-button (click)="open()">open</button>
-<app-asset-kind-picker></app-asset-kind-picker>
-<app-default-gym-picker></app-default-gym-picker>
+<mat-form-field class="example-full-width">
+  <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker touchUi #picker></mat-datepicker>
+</mat-form-field>

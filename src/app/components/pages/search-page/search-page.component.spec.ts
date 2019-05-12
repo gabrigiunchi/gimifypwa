@@ -3,7 +3,14 @@ import {SearchPageComponent} from './search-page.component';
 import {TimePeriodPickerComponent} from '../../input/time-period-picker/time-period-picker.component';
 import {DatepickerComponent} from '../../input/datepicker/datepicker.component';
 import {LocationPickerComponent} from '../../input/location-picker/location-picker.component';
-import {MatDialogModule, MatDividerModule, MatIconModule, MatInputModule} from '@angular/material';
+import {
+  MatDialogModule,
+  MatDividerModule,
+  MatIconModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule
+} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -13,6 +20,7 @@ import {MaxEndTimePipe} from '../../../pipes/date/max-end-time.pipe';
 import {MinEndTimePipe} from '../../../pipes/date/min-end-time.pipe';
 import {Router, RouterModule} from '@angular/router';
 import {TestConstants} from 'src/app/test-constants';
+import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 
 describe('SearchPageComponent', () => {
   let component: SearchPageComponent;
@@ -23,6 +31,7 @@ describe('SearchPageComponent', () => {
       declarations: [
         SearchPageComponent,
         TimePeriodPickerComponent,
+        DateTimePipe,
         DatepickerComponent,
         LocationPickerComponent,
         AssetKindPickerComponent,
@@ -36,6 +45,8 @@ describe('SearchPageComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         MatDividerModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
         NgxMaterialTimepickerModule,
         HttpClientTestingModule,
         MatDialogModule,
