@@ -1,0 +1,10 @@
+<div *ngIf="data" class="mat-typography">
+  <div class="title-container" fxLayout="row" fxLayoutAlign="start center">
+    <h2 class="title">Error</h2>
+    <mat-icon color="warn">error</mat-icon>
+  </div>
+  <h3>{{message}}</h3>
+  <div fxLayout="row" fxLayoutAlign="end">
+    <button mat-button color="primary" (click)="dismiss()">OK</button>
+  </div>
+</div>

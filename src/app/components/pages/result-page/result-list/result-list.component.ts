@@ -10,6 +10,7 @@ import {
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {finalize} from 'rxjs/operators';
 import {HttpErrorResponse} from '@angular/common/http';
+import {ErrorDialogComponent} from 'src/app/components/modals/dialogs/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-result-list',
@@ -61,8 +62,7 @@ export class ResultListComponent {
 
   private onError(error: HttpErrorResponse) {
     console.log('Could not make a reservation', error);
-    const dialogData: InfoDialogData = {title: 'Error', message: error.error[0].message};
-    this.dialog.open(InfoDialogComponent, {data: dialogData});
+    this.dialog.open(ErrorDialogComponent, {data: error, autoFocus: false, restoreFocus: false});
   }
 
   private onReservationConfirmed() {

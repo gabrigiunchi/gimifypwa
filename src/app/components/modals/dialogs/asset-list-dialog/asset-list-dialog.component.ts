@@ -10,6 +10,7 @@ import {InfoDialogComponent, InfoDialogData} from '../info-dialog/info-dialog.co
 import {HttpErrorResponse} from '@angular/common/http';
 import {finalize} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {ErrorDialogComponent} from '../error-dialog/error-dialog.component';
 
 export interface AssetListDialogData {
   assets: Asset[];
@@ -75,8 +76,7 @@ export class AssetListDialogComponent {
 
   private onError(error: HttpErrorResponse) {
     console.log('Could not make a reservation', error);
-    const dialogData: InfoDialogData = {title: 'Error', message: error.error[0].message};
-    this.dialog.open(InfoDialogComponent, {data: dialogData});
+    this.dialog.open(ErrorDialogComponent, {data: error, autoFocus: false, restoreFocus: false});
   }
 
   private onReservationConfirmed() {

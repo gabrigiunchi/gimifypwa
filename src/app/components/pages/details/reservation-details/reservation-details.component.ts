@@ -8,7 +8,7 @@ import {MatDialog} from '@angular/material';
 import {ConfirmationDialogComponent} from 'src/app/components/modals/dialogs/confirmation-dialog/confirmation-dialog.component';
 import {finalize} from 'rxjs/operators';
 import {HttpErrorResponse} from '@angular/common/http';
-import {InfoDialogComponent} from 'src/app/components/modals/dialogs/info-dialog/info-dialog.component';
+import {ErrorDialogComponent} from 'src/app/components/modals/dialogs/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-reservation-details',
@@ -58,7 +58,7 @@ export class ReservationDetailsComponent implements OnInit {
   }
 
   private handleError(error: HttpErrorResponse) {
-    this.dialog.open(InfoDialogComponent, {data: {title: 'Error', message: error.error[0].message}});
+    this.dialog.open(ErrorDialogComponent, {data: error, autoFocus: false, restoreFocus: false});
   }
 
 }

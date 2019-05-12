@@ -114,6 +114,7 @@ import {AssetDetailsDialogComponent} from './components/modals/dialogs/asset-det
 import {SelectCityDialogComponent} from './components/modals/dialogs/select-city-dialog/select-city-dialog.component';
 import { FooterSectionColorPipe } from './pipes/footer-section-color.pipe';
 import { MapComponent } from './components/layout/map/map.component';
+import { ErrorDialogComponent } from './components/modals/dialogs/error-dialog/error-dialog.component';
 
 @NgModule({
   declarations: [
@@ -180,6 +181,7 @@ import { MapComponent } from './components/layout/map/map.component';
     SelectCityDialogComponent,
     FooterSectionColorPipe,
     MapComponent,
+    ErrorDialogComponent,
   ],
   imports: [
     FormsModule,
@@ -248,7 +250,8 @@ import { MapComponent } from './components/layout/map/map.component';
     ConfirmReservationDialogComponent,
     AssetListDialogComponent,
     AssetDetailsDialogComponent,
-    SelectCityDialogComponent
+    SelectCityDialogComponent,
+    ErrorDialogComponent
   ]
 })
 export class AppModule {
