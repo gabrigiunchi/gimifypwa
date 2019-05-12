@@ -9,7 +9,7 @@
   </div>
 
 
-  <mat-vertical-stepper [linear]="true" [selectedIndex]="currentStep">
+  <mat-vertical-stepper [linear]="true" [selectedIndex]="currentStep" (selectionChange)="onSelectionChange($event)">
     <mat-step [stepControl]="cityFormGroup">
       <ng-template matStepLabel>Select city</ng-template>
 

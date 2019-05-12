@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SearchPageComponent} from './search-page.component';
 import {TimePeriodPickerComponent} from '../../input/time-period-picker/time-period-picker.component';
 import {DatepickerComponent} from '../../input/datepicker/datepicker.component';
-import {LocationPickerComponent} from '../../input/select-location-form/location-picker.component';
+import {LocationPickerComponent} from '../../input/location-picker/location-picker.component';
 import {MatDialogModule, MatDividerModule, MatIconModule, MatInputModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientTestingModule} from '@angular/common/http/testing';

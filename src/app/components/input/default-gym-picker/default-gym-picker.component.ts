@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {SettingsService} from 'src/app/services/settings.service';
 import {MatDialog} from '@angular/material';
 import {
-  SelectLocationComponent,
+  SelectLocationDialogComponent,
   SelectLocationInput,
   SelectLocationResult,
   SelectLocationStep
-} from '../../modals/dialogs/select-location/select-location.component';
+} from '../../modals/dialogs/select-location-dialog/select-location-dialog.component';
 import {Gym} from 'src/app/model/entities/gym';
 
 @Component({
@@ -30,7 +30,7 @@ export class DefaultGymPickerComponent {
       anyValid: false,
       title: 'Select gym'
     };
-    this.dialog.open(SelectLocationComponent, {
+    this.dialog.open(SelectLocationDialogComponent, {
       autoFocus: false,
       restoreFocus: false,
       height: '100%',

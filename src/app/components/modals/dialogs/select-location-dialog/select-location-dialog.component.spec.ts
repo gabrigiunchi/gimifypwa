@@ -1,5 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {SelectLocationComponent} from './select-location.component';
+import {SelectLocationDialogComponent} from './select-location-dialog.component';
 import {
   MAT_DIALOG_DATA,
   MatDialogModule,
@@ -16,13 +16,13 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-describe('SelectLocationComponent', () => {
-  let component: SelectLocationComponent;
-  let fixture: ComponentFixture<SelectLocationComponent>;
+describe('SelectLocationDialogComponent', () => {
+  let component: SelectLocationDialogComponent;
+  let fixture: ComponentFixture<SelectLocationDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SelectLocationComponent],
+      declarations: [SelectLocationDialogComponent],
       imports: [
         BrowserAnimationsModule,
         MatProgressSpinnerModule,
@@ -45,7 +45,7 @@ describe('SelectLocationComponent', () => {
 
   beforeEach(() => {
     spyOnProperty(TestBed.get(CityService), 'cities', 'get').and.returnValue(of([]));
-    fixture = TestBed.createComponent(SelectLocationComponent);
+    fixture = TestBed.createComponent(SelectLocationDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

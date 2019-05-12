@@ -6,6 +6,7 @@ import {Gym} from 'src/app/model/entities/gym';
 import {GymService} from 'src/app/services/server-communication/gym.service';
 import {CityService} from 'src/app/services/server-communication/city.service';
 import {finalize} from 'rxjs/operators';
+import {StepperSelectionEvent} from '@angular/cdk/stepper';
 
 export enum SelectLocationStep {
   city = 0,
@@ -25,10 +26,10 @@ export interface SelectLocationInput extends SelectLocationResult {
 
 @Component({
   selector: 'app-select-location',
-  templateUrl: './select-location.component.html',
-  styleUrls: ['./select-location.component.css']
+  templateUrl: './select-location-dialog.component.html',
+  styleUrls: ['./select-location-dialog.component.css']
 })
-export class SelectLocationComponent implements OnInit {
+export class SelectLocationDialogComponent implements OnInit {
 
   cityFormGroup: FormGroup;
   gymFormGroup: FormGroup;
@@ -48,7 +49,7 @@ export class SelectLocationComponent implements OnInit {
     private cityService: CityService,
     private gymService: GymService,
     private formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<SelectLocationComponent>,
+    private dialogRef: MatDialogRef<SelectLocationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public input: SelectLocationInput) {
 
     this.cityFormGroup = this.formBuilder.group({
@@ -64,6 +65,10 @@ export class SelectLocationComponent implements OnInit {
 
   ngOnInit() {
     this.loadCities();
+  }
+
+  onSelectionChange(stepperSelectionEvent: StepperSelectionEvent) {
+    this.currentStep = stepperSelectionEvent.selectedIndex;
   }
 
   onCitySelected(city: City) {

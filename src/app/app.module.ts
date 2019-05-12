@@ -68,9 +68,9 @@ import {SelectionDialogComponent} from './components/modals/dialogs/selection-di
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {DatepickerComponent} from './components/input/datepicker/datepicker.component';
 import {TimePipe} from './pipes/date/time.pipe';
-import {SelectLocationComponent} from './components/modals/dialogs/select-location/select-location.component';
+import {SelectLocationDialogComponent} from './components/modals/dialogs/select-location-dialog/select-location-dialog.component';
 import {TimePeriodPickerComponent} from './components/input/time-period-picker/time-period-picker.component';
-import {LocationPickerComponent} from './components/input/select-location-form/location-picker.component';
+import {LocationPickerComponent} from './components/input/location-picker/location-picker.component';
 import {AssetKindPickerComponent} from './components/input/asset-kind-picker/asset-kind-picker.component';
 import {GymFilterComponent} from './components/modals/gym-filter/gym-filter.component';
 import {SearchbarComponent} from './components/input/searchbar/searchbar.component';
@@ -142,7 +142,7 @@ import {DefaultGymPickerComponent} from './components/input/default-gym-picker/d
     SelectionDialogComponent,
     DatepickerComponent,
     TimePipe,
-    SelectLocationComponent,
+    SelectLocationDialogComponent,
     TimePeriodPickerComponent,
     LocationPickerComponent,
     AssetKindPickerComponent,
@@ -248,7 +248,7 @@ import {DefaultGymPickerComponent} from './components/input/default-gym-picker/d
     ConfirmationDialogComponent,
     InfoDialogComponent,
     SelectionDialogComponent,
-    SelectLocationComponent,
+    SelectLocationDialogComponent,
     GymFilterComponent,
     GymDetailsComponent,
     NewCommentDialogComponent,

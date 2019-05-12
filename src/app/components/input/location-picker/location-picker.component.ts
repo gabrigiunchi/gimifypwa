@@ -1,10 +1,10 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {
-  SelectLocationComponent,
+  SelectLocationDialogComponent,
   SelectLocationInput,
   SelectLocationResult,
   SelectLocationStep
-} from '../../modals/dialogs/select-location/select-location.component';
+} from '../../modals/dialogs/select-location-dialog/select-location-dialog.component';
 import {MatDialog} from '@angular/material';
 
 @Component({
@@ -33,7 +33,7 @@ export class LocationPickerComponent {
   }
 
   private openDialog(data: SelectLocationInput): void {
-    this.dialog.open(SelectLocationComponent, {
+    this.dialog.open(SelectLocationDialogComponent, {
       minWidth: '100%',
       height: '100%',
       autoFocus: false,
