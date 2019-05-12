@@ -3,7 +3,6 @@ import {ReservationsPageComponent} from './reservations-page.component';
 import {RouterModule} from '@angular/router';
 import {MatIconModule, MatListModule, MatProgressSpinnerModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
-import {CacheService} from 'src/app/services/cache.service';
 import {Reservation} from 'src/app/model/entities/reservation';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {of} from 'rxjs';
@@ -64,50 +63,5 @@ describe('ReservationsPageComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should save the reservations in cache if one of them is selected', () => {
-    const cacheService: CacheService<Reservation[]> = TestBed.get(CacheService);
-    cacheService.clear();
-    component.reservations = mockReservations;
-
-    component.onReservationClick();
-
-    expect(cacheService.element).toBeTruthy();
-    expect(cacheService.element.length).toBe(1);
-    expect(cacheService.element[0].id).toBe(6);
-  });
-
-  it('should load the reservations from cache if present', () => {
-    expect(spy).toHaveBeenCalledTimes(1);
-    const cacheService: CacheService<Reservation[]> = TestBed.get(CacheService);
-    cacheService.element = mockReservations;
-    component.ngOnInit();
-    expect(spy).not.toHaveBeenCalledTimes(2);
-  });
-
-  it('should load the reservations from server if the cache does not contain anything', () => {
-    expect(spy).toHaveBeenCalledTimes(1);
-    const cacheService: CacheService<Reservation[]> = TestBed.get(CacheService);
-    cacheService.clear();
-    component.ngOnInit();
-    expect(spy).toHaveBeenCalledTimes(2);
-  });
-
-  it('should clear the cache', () => {
-    const cacheService: CacheService<Reservation[]> = TestBed.get(CacheService);
-    const spyOnCache = spyOn(cacheService, 'clear').and.callThrough();
-    component.ngOnDestroy();
-    expect(spyOnCache).toHaveBeenCalled();
-    expect(cacheService.isPresent).toBe(false);
-  });
-
-  it('should not clear the cache if a reservation is selected', () => {
-    const cacheService: CacheService<Reservation[]> = TestBed.get(CacheService);
-    const spyOnCache = spyOn(cacheService, 'clear').and.callThrough();
-    component.onReservationClick();
-    component.ngOnDestroy();
-    expect(spyOnCache).not.toHaveBeenCalled();
-    expect(cacheService.isPresent).toBe(true);
   });
 });

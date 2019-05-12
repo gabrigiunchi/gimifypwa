@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,10 +10,12 @@ export class ToolbarComponent {
 
   @Input() title = '';
   @Input() back = './';
+  @Output() backClick = new EventEmitter();
 
   constructor(private router: Router) {}
 
   onBackClick() {
+    this.backClick.emit();
     this.router.navigate([this.back]);
   }
 

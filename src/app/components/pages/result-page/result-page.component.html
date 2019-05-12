@@ -1,5 +1,5 @@
 <div class="container" fxLayout="column">
-  <app-toolbar title="Result" back="/search"></app-toolbar>
+  <app-toolbar title="Result" back="/search" (backClick)="onBackClick()"></app-toolbar>
   <mat-tab-group mat-align-tabs="center" dynamicHeight="true" *ngIf="result$ | async as result; else loading">
     <mat-tab label="List">
       <app-result-list [result]="result" [date]="date" [from]="from" [to]="to"></app-result-list>

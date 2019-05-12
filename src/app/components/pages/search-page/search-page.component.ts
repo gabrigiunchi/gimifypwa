@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {ReservationSearchParams} from 'src/app/services/server-communication/reservation.service';
 import {DateTime, Duration} from 'luxon';
 import {DateService} from 'src/app/services/utils/date.service';
@@ -13,10 +13,11 @@ import {SettingsService} from 'src/app/services/settings.service';
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.css']
 })
-export class SearchPageComponent {
+export class SearchPageComponent implements OnDestroy {
 
   searchParams: ReservationSearchParams;
   step = CONSTANTS.RESERVATION_TIME_SLOT_IN_MINUTES;
+  clearCache = true;
 
   constructor(
     private settingsService: SettingsService,
@@ -31,6 +32,12 @@ export class SearchPageComponent {
     }
   }
 
+  ngOnDestroy() {
+    if (this.clearCache) {
+      this.cacheService.clear();
+    }
+  }
+
   search() {
     let url = `/search/kind/${this.searchParams.kind.id}` +
       `/date/${this.searchParams.date}/from/${this.searchParams.startHour}/to/${this.searchParams.endHour}` +
@@ -40,6 +47,7 @@ export class SearchPageComponent {
       url += `/gym/${this.searchParams.location.gym.id}`;
     }
 
+    this.clearCache = false;
     this.cacheService.element = this.searchParams;
     this.router.navigate([url]);
   }

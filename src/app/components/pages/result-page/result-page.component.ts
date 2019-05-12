@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {Observable} from 'rxjs';
 import {Asset} from 'src/app/model/entities/asset';
 import {DateService} from 'src/app/services/utils/date.service';
+import {CacheService} from 'src/app/services/cache.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import {DateService} from 'src/app/services/utils/date.service';
   templateUrl: './result-page.component.html',
   styleUrls: ['./result-page.component.css']
 })
-export class ResultPageComponent implements OnInit {
+export class ResultPageComponent implements OnInit, OnDestroy {
 
   readonly cityId: string;
   readonly gymId: string;
@@ -21,8 +22,10 @@ export class ResultPageComponent implements OnInit {
   readonly kindId: string;
 
   result$: Observable<Asset[]>;
+  clearCache = true;
 
   constructor(
+    private cacheService: CacheService<unknown>,
     private dateService: DateService,
     private activatedRoute: ActivatedRoute,
     private reservationService: ReservationService) {
@@ -42,6 +45,16 @@ export class ResultPageComponent implements OnInit {
     this.result$ = this.gymId !== undefined ?
       this.reservationService.getAvailableAssetsInGym(+this.kindId, +this.gymId, completeStartDate, completeEndDate) :
       this.reservationService.getAvailableAssetsInCity(+this.kindId, +this.cityId, completeStartDate, completeEndDate);
+  }
+
+  ngOnDestroy() {
+    if (this.clearCache) {
+      this.cacheService.clear();
+    }
+  }
+
+  onBackClick() {
+    this.clearCache = false;
   }
 
   private getParam(key: string): string {
