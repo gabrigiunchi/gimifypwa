@@ -7,6 +7,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {Duration} from 'luxon';
 import {MaxEndTimePipe} from '../../../pipes/date/max-end-time.pipe';
 import {MinEndTimePipe} from '../../../pipes/date/min-end-time.pipe';
+import {MinStartTimePipe} from 'src/app/pipes/date/min-start-time.pipe';
 
 describe('TimePeriodPickerComponent', () => {
   let component: TimePeriodPickerComponent;
@@ -17,7 +18,8 @@ describe('TimePeriodPickerComponent', () => {
       declarations: [
         TimePeriodPickerComponent,
         MaxEndTimePipe,
-        MinEndTimePipe
+        MinEndTimePipe,
+        MinStartTimePipe,
       ],
       imports: [
         BrowserAnimationsModule,

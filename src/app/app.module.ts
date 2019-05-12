@@ -121,6 +121,7 @@ import {LazySelectionDialogComponent} from './components/modals/dialogs/lazy-sel
 import {DefaultCityPickerComponent} from './components/input/default-city-picker/default-city-picker.component';
 import {DefaultGymPickerComponent} from './components/input/default-gym-picker/default-gym-picker.component';
 import {CONSTANTS} from './constants';
+import { MinStartTimePipe } from './pipes/date/min-start-time.pipe';
 
 @NgModule({
   declarations: [
@@ -190,6 +191,7 @@ import {CONSTANTS} from './constants';
     LazySelectionDialogComponent,
     DefaultCityPickerComponent,
     DefaultGymPickerComponent,
+    MinStartTimePipe,
   ],
   imports: [
     FormsModule,

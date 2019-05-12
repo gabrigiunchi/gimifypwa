@@ -21,6 +21,7 @@ import {MinEndTimePipe} from '../../../pipes/date/min-end-time.pipe';
 import {Router, RouterModule} from '@angular/router';
 import {TestConstants} from 'src/app/test-constants';
 import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
+import {MinStartTimePipe} from 'src/app/pipes/date/min-start-time.pipe';
 
 describe('SearchPageComponent', () => {
   let component: SearchPageComponent;
@@ -37,6 +38,7 @@ describe('SearchPageComponent', () => {
         AssetKindPickerComponent,
         MaxEndTimePipe,
         MinEndTimePipe,
+        MinStartTimePipe
       ],
       imports: [
         BrowserAnimationsModule,

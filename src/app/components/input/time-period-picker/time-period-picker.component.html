@@ -5,7 +5,7 @@
   </div>
   <div class="hour-label">{{start}}</div>
 </div>
-<input [max]="max" readonly [min]="min" hidden [ngxTimepicker]="startPicker" [value]="start" [format]="24" type="time">
+<input [max]="max" readonly [min]="min | minStartTime:currentDate:step" hidden [ngxTimepicker]="startPicker" [value]="start" [format]="24" type="time">
 <ngx-material-timepicker #startPicker (timeSet)="startSet($event)" [minutesGap]="step"></ngx-material-timepicker>
 
 <div class="form-item" fxLayout="row" fxLayoutAlign="start center" (click)="endPicker.open()" matRipple>

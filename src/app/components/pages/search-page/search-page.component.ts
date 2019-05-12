@@ -16,6 +16,7 @@ import {SettingsService} from 'src/app/services/settings.service';
 export class SearchPageComponent {
 
   searchParams: ReservationSearchParams;
+  step = CONSTANTS.RESERVATION_TIME_SLOT_IN_MINUTES;
 
   constructor(
     private settingsService: SettingsService,
@@ -45,10 +46,20 @@ export class SearchPageComponent {
 
   onKindSelected(kind: AssetKind) {
     this.searchParams.kind = kind;
+    this.checkInterval();
+  }
 
-    if (!this.dateService.isRangeValid(this.searchParams.startHour, this.searchParams.endHour, this.maxDuration)) {
-      this.searchParams.endHour = DateTime.fromISO(this.searchParams.startHour)
-        .plus({minutes: kind.maxReservationTime}).toFormat('HH:mm');
+  onStartChange(start: string) {
+    this.searchParams.startHour = start;
+    this.checkInterval();
+  }
+
+  onDateChange(date: string) {
+    this.searchParams.date = date;
+
+    if (DateTime.fromISO(this.dateService.roundCurrentTime(this.step)) > DateTime.fromISO(this.searchParams.startHour)) {
+      this.searchParams.startHour = this.dateService.roundCurrentTime(this.step);
+      this.searchParams.endHour = DateTime.fromISO(this.searchParams.startHour).plus({minutes: this.step}).toFormat('HH:mm');
     }
   }
 
@@ -67,6 +78,13 @@ export class SearchPageComponent {
       kind: undefined,
       location: {city: this.settingsService.defaultCity, gym: this.settingsService.defaultGym},
     };
+  }
+
+  private checkInterval() {
+    if (!this.dateService.isRangeValid(this.searchParams.startHour, this.searchParams.endHour, this.maxDuration)) {
+      this.searchParams.endHour = DateTime.fromISO(this.searchParams.startHour)
+        .plus({minutes: this.searchParams.kind.maxReservationTime}).toFormat('HH:mm');
+    }
   }
 
 }
