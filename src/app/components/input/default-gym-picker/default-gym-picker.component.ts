@@ -3,8 +3,8 @@ import {SettingsService} from 'src/app/services/settings.service';
 import {MatDialog} from '@angular/material';
 import {
   SelectLocationComponent,
-  SelectLocationResult,
   SelectLocationInput,
+  SelectLocationResult,
   SelectLocationStep
 } from '../../modals/dialogs/select-location/select-location.component';
 import {Gym} from 'src/app/model/entities/gym';
@@ -23,7 +23,13 @@ export class DefaultGymPickerComponent {
   }
 
   pickGym() {
-    const dialogData: SelectLocationInput = {city: undefined, gym: undefined, step: SelectLocationStep.city, anyValid: false};
+    const dialogData: SelectLocationInput = {
+      city: undefined,
+      gym: undefined,
+      step: SelectLocationStep.city,
+      anyValid: false,
+      title: 'Select gym'
+    };
     this.dialog.open(SelectLocationComponent, {
       autoFocus: false,
       restoreFocus: false,
@@ -36,7 +42,8 @@ export class DefaultGymPickerComponent {
         if (result) {
           console.log('Set default gym', result.gym);
           this.gym = result.gym;
-          this.settingsService.defaultCity = result.gym;
+          this.settingsService.defaultGym = result.gym;
+          this.settingsService.defaultCity = result.city;
         }
       });
   }

@@ -1,5 +1,7 @@
 <div class="container" fxLayout="row" fxLayoutAlign="start center" matRipple (click)="pickGym()">
-  <mat-icon>location_city</mat-icon>
+  <mat-icon color="primary">favorite</mat-icon>
   <div style="padding: 0 0.5rem" fxFlex="grow">Favorite gym</div>
-  <div *ngIf="gym">{{gym.name | titlecase}}</div>
+  <div *ngIf="gym">
+    {{gym.name | titlecase}}
+  </div>
 </div>

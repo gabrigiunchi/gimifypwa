@@ -28,7 +28,7 @@
   <mat-divider></mat-divider>
   <div fxFlex="grow" fxLayout="column" class="settings">
     <div fxLayout="row" style="height: 3rem;" fxLayoutAlign="start center">
-      <mat-icon>email</mat-icon>
+      <mat-icon color="primary">email</mat-icon>
       <div style="padding: 0 0.5rem" fxFlex="grow" fxLayoutAlign="start center">Email notifications</div>
       <mat-slide-toggle *ngIf="!isUpdatingSettings" [checked]="userInfo.notificationsEnabled"
         (change)="onToggleChange($event)"></mat-slide-toggle>
@@ -36,7 +36,7 @@
         <mat-spinner diameter="23"></mat-spinner>
       </div>
     </div>
-    <app-default-city-picker></app-default-city-picker>
+    <!-- <app-default-city-picker></app-default-city-picker> -->
     <app-default-gym-picker></app-default-gym-picker>
   </div>
 

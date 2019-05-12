@@ -33,4 +33,15 @@ describe('SettingsService', () => {
     const result = service.defaultCity;
     expect(result === undefined).toBe(true);
   });
+
+  it('should enable the default gym', () => {
+    const service: SettingsService = TestBed.get(SettingsService);
+    localStorage.clear();
+
+    service.defaultGymEnabled = true;
+    expect(service.defaultGymEnabled).toBe(true);
+
+    service.defaultGymEnabled = false;
+    expect(service.defaultGymEnabled).toBe(false);
+  });
 });

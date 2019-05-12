@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {CityService} from 'src/app/services/server-communication/city.service';
+import {Component} from '@angular/core';
 import {SettingsService} from 'src/app/services/settings.service';
 import {MatDialog} from '@angular/material';
 import {City} from 'src/app/model/entities/city';

@@ -19,7 +19,11 @@ export class SettingsService {
 
   set defaultCity(city: City) {
     this.subject.next(SettingsEvent.favoriteCitySet);
-    localStorage.setItem(LocalStorageKey.defaultCity, JSON.stringify(city));
+    if (city === undefined || city == null) {
+      localStorage.removeItem(LocalStorageKey.defaultCity);
+    } else {
+      localStorage.setItem(LocalStorageKey.defaultCity, JSON.stringify(city));
+    }
   }
 
   get defaultCity(): City {
@@ -29,11 +33,23 @@ export class SettingsService {
 
   set defaultGym(gym: Gym) {
     this.subject.next(SettingsEvent.favoriteGymSet);
-    localStorage.setItem(LocalStorageKey.defaultGym, JSON.stringify(gym));
+    if (gym === undefined || gym == null) {
+      localStorage.removeItem(LocalStorageKey.defaultGym);
+    } else {
+      localStorage.setItem(LocalStorageKey.defaultGym, JSON.stringify(gym));
+    }
   }
 
   get defaultGym(): Gym {
     const item = localStorage.getItem(LocalStorageKey.defaultGym);
     return item == null ? undefined : JSON.parse(item);
+  }
+
+  set defaultGymEnabled(enabled: boolean) {
+    localStorage.setItem(LocalStorageKey.defaultGymEnabled, JSON.stringify(enabled));
+  }
+
+  get defaultGymEnabled(): boolean {
+    return JSON.parse(localStorage.getItem(LocalStorageKey.defaultGymEnabled));
   }
 }

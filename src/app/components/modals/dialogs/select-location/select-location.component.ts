@@ -20,6 +20,7 @@ export interface SelectLocationResult {
 export interface SelectLocationInput extends SelectLocationResult {
   step: SelectLocationStep;
   anyValid: boolean;
+  title: string;
 }
 
 @Component({

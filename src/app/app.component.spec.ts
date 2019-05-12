@@ -2,12 +2,12 @@ import {async, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppComponent} from './app.component';
 import {
+  MatDividerModule,
   MatIconModule,
   MatInputModule,
   MatProgressSpinnerModule,
   MatSlideToggleModule,
-  MatToolbarModule,
-  MatDividerModule
+  MatToolbarModule
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {HomepageComponent} from './components/pages/homepage/homepage.component';

@@ -5,7 +5,7 @@ import {AvatarService} from 'src/app/services/server-communication/avatar.servic
 import {of} from 'rxjs';
 import {AvatarComponent} from '../../layout/avatar/avatar.component';
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
-import {MatProgressSpinnerModule, MatSlideToggleModule, MatSnackBarModule, MatDividerModule, MatIconModule} from '@angular/material';
+import {MatDividerModule, MatIconModule, MatProgressSpinnerModule, MatSlideToggleModule, MatSnackBarModule} from '@angular/material';
 import {LoadingComponent} from '../../layout/loading/loading.component';
 import {RouterModule} from '@angular/router';
 import {DefaultCityPickerComponent} from '../../input/default-city-picker/default-city-picker.component';

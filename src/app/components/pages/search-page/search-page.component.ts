@@ -65,7 +65,7 @@ export class SearchPageComponent {
       startHour: start,
       endHour: end,
       kind: undefined,
-      location: {city: this.settingsService.defaultCity, gym: undefined},
+      location: {city: this.settingsService.defaultCity, gym: this.settingsService.defaultGym},
     };
   }
 

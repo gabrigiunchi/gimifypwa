@@ -1,8 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {UserService} from './user.service';
 import {HttpClientModule} from '@angular/common/http';
-import {LocalStorageKey} from 'src/app/model/local-storage-key';
-import {City} from 'src/app/model/entities/city';
 import {SessionService} from '../session.service';
 import {TestConstants} from 'src/app/test-constants';
 
