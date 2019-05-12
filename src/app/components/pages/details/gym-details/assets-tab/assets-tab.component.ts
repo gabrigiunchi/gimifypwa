@@ -7,6 +7,8 @@ import {Page} from 'src/app/model/page';
 import {AssetDTO} from 'src/app/model/dto/assetDTO';
 import {Router} from '@angular/router';
 import {CONSTANTS} from 'src/app/constants';
+import {MatDialog} from '@angular/material';
+import {AssetDetailsDialogComponent} from 'src/app/components/modals/dialogs/asset-details-dialog/asset-details-dialog.component';
 
 @Component({
   selector: 'app-assets-tab',
@@ -17,12 +19,13 @@ export class AssetsTabComponent implements OnChanges {
 
   readonly pageSize = CONSTANTS.ASSET_PAGE_SIZE;
   @Input() gym: Gym;
-  currentPage: Page<AssetDTO>;
-  private currentDownload: Subscription;
   isLoading = false;
+  currentPage: Page<AssetDTO>;
+  assets: AssetDTO[] = [];
+  private currentDownload: Subscription;
 
   constructor(
-    private router: Router,
+    private dialog: MatDialog,
     private assetService: AssetService) {
   }
 
@@ -33,7 +36,13 @@ export class AssetsTabComponent implements OnChanges {
   }
 
   onAssetSelected(asset: AssetDTO) {
-    this.router.navigate(['/assets', asset.id]);
+    this.dialog.open(AssetDetailsDialogComponent, {
+      autoFocus: false,
+      restoreFocus: false,
+      height: '100%',
+      minWidth: '100%',
+      data: asset
+    });
   }
 
   downloadPage(page: number): void {
@@ -54,12 +63,9 @@ export class AssetsTabComponent implements OnChanges {
         newPage => {
           console.log('Downloaded page', newPage);
           this.currentPage = newPage;
+          this.assets = newPage.content;
         }
       );
-  }
-
-  get assets(): AssetDTO[] {
-    return this.currentPage ? this.currentPage.content : [];
   }
 
   get length(): number {

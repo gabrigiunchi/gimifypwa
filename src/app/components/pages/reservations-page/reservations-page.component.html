@@ -2,7 +2,7 @@
   <h1 style="margin: 0" class="title mat-display-1">Reservations</h1>
 
   <div fxLayout="column" fxFlex="grow" *ngIf="reservations; else loading">
-    <app-reservation-list style="height: 100%" [reservations]="reservations"></app-reservation-list>
+    <app-reservation-list *ngIf="reservations.length > 0" style="height: 100%" [reservations]="reservations"></app-reservation-list>
 
     <app-message *ngIf="reservations.length === 0" title="No reservations"></app-message>
   </div>

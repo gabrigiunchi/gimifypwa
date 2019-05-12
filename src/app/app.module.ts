@@ -110,6 +110,7 @@ import {AssetListDialogComponent} from './components/modals/dialogs/asset-list-d
 import {KindIconPipe} from './pipes/kind-icon.pipe';
 import { ReservationListComponent } from './components/layout/reservation-list/reservation-list.component';
 import { ReservationsByDayPipe } from './pipes/reservations-by-day.pipe';
+import { AssetDetailsDialogComponent } from './components/modals/dialogs/asset-details-dialog/asset-details-dialog.component';
 
 @NgModule({
   declarations: [
@@ -172,6 +173,7 @@ import { ReservationsByDayPipe } from './pipes/reservations-by-day.pipe';
     KindIconPipe,
     ReservationListComponent,
     ReservationsByDayPipe,
+    AssetDetailsDialogComponent,
   ],
   imports: [
     FormsModule,
@@ -238,7 +240,8 @@ import { ReservationsByDayPipe } from './pipes/reservations-by-day.pipe';
     NewCommentDialogComponent,
     EditAvatarBottomSheetComponent,
     ConfirmReservationDialogComponent,
-    AssetListDialogComponent
+    AssetListDialogComponent,
+    AssetDetailsDialogComponent
   ]
 })
 export class AppModule {

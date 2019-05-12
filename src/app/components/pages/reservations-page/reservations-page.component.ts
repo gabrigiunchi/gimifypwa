@@ -25,9 +25,7 @@ export class ReservationsPageComponent implements OnInit, OnDestroy {
       this.reservations = this.cacheService.element;
     } else {
       console.log('Loading reservations from server...');
-      // TODO(gabriele): remove mock
-      this.reservationService.myFutureReservations
-        .subscribe(reservations => this.reservations = reservations.concat(TestConstants.mockReservations));
+      this.reservationService.myFutureReservations.subscribe(reservations => this.reservations = reservations);
     }
   }
 

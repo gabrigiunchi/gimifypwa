@@ -28,7 +28,6 @@ const routes: Routes = [
   {path: 'gyms', component: GymsPageComponent, canActivate: [AuthGuard]},
   {path: 'gyms/:id', component: GymDetailsComponent, canActivate: [AuthGuard]},
   {path: 'assets', component: PlaygroundComponent, canActivate: [AuthGuard]},
-  {path: 'assets/:id', component: PlaygroundComponent, canActivate: [AuthGuard]},
   {path: 'reservations/:id', component: ReservationDetailsComponent, canActivate: [AuthGuard]},
   {path: 'reservations', component: ReservationsPageComponent, canActivate: [AuthGuard]},
   {path: 'search/kind/:kind/date/:date/from/:from/to/:to/city/:city', component: ResultPageComponent, canActivate: [AuthGuard]},
