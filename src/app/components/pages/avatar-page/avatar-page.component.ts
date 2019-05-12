@@ -54,7 +54,7 @@ export class AvatarPageComponent implements OnInit, OnDestroy {
   }
 
   openBottomSheet(): void {
-    this.bottomSheet.open(EditAvatarBottomSheetComponent)
+    this.bottomSheet.open(EditAvatarBottomSheetComponent, {autoFocus: false, restoreFocus: false})
       .afterDismissed()
       .subscribe(action => this.handleBottomSheetAction(action));
   }

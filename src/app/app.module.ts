@@ -116,7 +116,8 @@ import {FooterSectionColorPipe} from './pipes/footer-section-color.pipe';
 import {MapComponent} from './components/layout/map/map.component';
 import {ErrorDialogComponent} from './components/modals/dialogs/error-dialog/error-dialog.component';
 import {LazySelectionDialogComponent} from './components/modals/dialogs/lazy-selection-dialog/lazy-selection-dialog.component';
-import { DefaultCityPickerComponent } from './components/input/default-city-picker/default-city-picker.component';
+import {DefaultCityPickerComponent} from './components/input/default-city-picker/default-city-picker.component';
+import {DefaultGymPickerComponent} from './components/input/default-gym-picker/default-gym-picker.component';
 
 @NgModule({
   declarations: [
@@ -186,6 +187,7 @@ import { DefaultCityPickerComponent } from './components/input/default-city-pick
     ErrorDialogComponent,
     LazySelectionDialogComponent,
     DefaultCityPickerComponent,
+    DefaultGymPickerComponent,
   ],
   imports: [
     FormsModule,

@@ -19,6 +19,7 @@ export interface SelectLocationResult {
 
 export interface SelectLocationInput extends SelectLocationResult {
   step: SelectLocationStep;
+  anyValid: boolean;
 }
 
 @Component({

@@ -9,6 +9,7 @@ import {MatProgressSpinnerModule, MatSlideToggleModule, MatSnackBarModule, MatDi
 import {LoadingComponent} from '../../layout/loading/loading.component';
 import {RouterModule} from '@angular/router';
 import {DefaultCityPickerComponent} from '../../input/default-city-picker/default-city-picker.component';
+import {DefaultGymPickerComponent} from '../../input/default-gym-picker/default-gym-picker.component';
 
 describe('ProfilePageComponent', () => {
   let component: ProfilePageComponent;
@@ -21,7 +22,8 @@ describe('ProfilePageComponent', () => {
         AvatarComponent,
         SafeUrlPipe,
         DefaultCityPickerComponent,
-        LoadingComponent
+        LoadingComponent,
+        DefaultGymPickerComponent
       ],
       imports: [
         HttpClientModule,

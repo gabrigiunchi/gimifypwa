@@ -9,7 +9,6 @@ import {MatSlideToggleChange} from '@angular/material';
 import {finalize} from 'rxjs/operators';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {CommentService} from 'src/app/services/server-communication/comment.service';
-import {SettingsService} from 'src/app/services/settings.service';
 
 @Component({
   selector: 'app-profile-page',

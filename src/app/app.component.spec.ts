@@ -23,6 +23,7 @@ import {SafeUrlPipe} from './pipes/safe-url.pipe';
 import {LoadingComponent} from './components/layout/loading/loading.component';
 import {FooterSectionColorPipe} from './pipes/footer-section-color.pipe';
 import {DefaultCityPickerComponent} from './components/input/default-city-picker/default-city-picker.component';
+import {DefaultGymPickerComponent} from './components/input/default-gym-picker/default-gym-picker.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -39,7 +40,8 @@ describe('AppComponent', () => {
         SafeUrlPipe,
         LoadingComponent,
         FooterSectionColorPipe,
-        DefaultCityPickerComponent
+        DefaultCityPickerComponent,
+        DefaultGymPickerComponent
       ],
       imports: [
         RouterTestingModule,

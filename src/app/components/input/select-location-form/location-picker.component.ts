@@ -21,11 +21,11 @@ export class LocationPickerComponent {
   }
 
   changeCity() {
-    this.openDialog({city: this.result.city, gym: undefined, step: SelectLocationStep.city});
+    this.openDialog({city: this.result.city, gym: undefined, step: SelectLocationStep.city, anyValid: true});
   }
 
   changeGym() {
-    this.openDialog({city: this.result.city, gym: this.result.gym, step: SelectLocationStep.gym});
+    this.openDialog({city: this.result.city, gym: this.result.gym, step: SelectLocationStep.gym, anyValid: true});
   }
 
   get isValid(): boolean {

@@ -31,7 +31,7 @@
       <cdk-virtual-scroll-viewport *ngIf="gyms; else elseGym" [itemSize]="gyms.length">
         <mat-radio-group (change)="onGymSelected($event.value)" [value]="selectedGym" fxLayout="column"
                          fxLayoutGap="2rem">
-          <mat-radio-button *ngIf="gyms.length > 0" [value]="undefined">Any</mat-radio-button>
+          <mat-radio-button *ngIf="gyms.length > 0 && input.anyValid" [value]="undefined">Any</mat-radio-button>
           <mat-radio-button *cdkVirtualFor="let gym of gyms" [value]="gym">{{gym.name}}</mat-radio-button>
         </mat-radio-group>
 
