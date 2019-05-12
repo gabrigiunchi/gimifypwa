@@ -3,6 +3,7 @@ import {MatDialog, MatDialogRef} from '@angular/material';
 import {CityService} from 'src/app/services/server-communication/city.service';
 import {City} from 'src/app/model/entities/city';
 import {SelectionDialogComponent, SelectionDialogData} from '../dialogs/selection-dialog/selection-dialog.component';
+import {TitleCasePipe} from '@angular/common';
 
 export interface GymFilterResult {
   city: City;
@@ -41,7 +42,7 @@ export class GymFilterComponent implements OnInit {
     const dialogData: SelectionDialogData = {
       choices: this.cities,
       title: 'Select city',
-      toStringFunction: (city: City) => city.name
+      toStringFunction: (city: City) => new TitleCasePipe().transform(city.name)
     };
     this.dialog.open(SelectionDialogComponent, {
       restoreFocus: false,

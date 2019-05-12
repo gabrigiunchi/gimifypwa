@@ -3,10 +3,10 @@ import {GymService} from 'src/app/services/server-communication/gym.service';
 import {Gym} from 'src/app/model/entities/gym';
 import {CacheService} from 'src/app/services/cache.service';
 import {MatDialog} from '@angular/material';
-import {GymFilterComponent, GymFilterResult} from '../../modals/gym-filter/gym-filter.component';
 import {FilterResult} from 'src/app/model/filter-result';
 import {City} from 'src/app/model/entities/city';
 import {finalize} from 'rxjs/operators';
+import {SelectCityDialogComponent} from '../../modals/dialogs/select-city-dialog/select-city-dialog.component';
 
 export interface GymFilterParams {
   name: string;
@@ -75,17 +75,16 @@ export class GymsPageComponent implements OnInit, OnDestroy {
     }
   }
 
-  openFilterDialog() {
-    this.dialog.open(GymFilterComponent, {
-      minWidth: '100%',
-      height: '100%',
+  pickCity() {
+    this.dialog.open(SelectCityDialogComponent, {
+      restoreFocus: false,
       autoFocus: false,
-      restoreFocus: false
-    }).afterClosed().subscribe((result: GymFilterResult) => {
+      minWidth: '100%',
+      height: '100%'
+    }).afterClosed().subscribe((result: City) => {
       if (result) {
-        this.filterResult.params.city = result.city;
-        this.filterResult.params.ratingGreaterThan = result.ratingGreaterThan;
-        this.filter();
+        this.cityFilter = result;
+        console.log('Selected city', result);
       }
     });
   }

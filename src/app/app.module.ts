@@ -108,9 +108,10 @@ import {AgmCoreModule} from '@agm/core';
 import {ConfirmReservationDialogComponent} from './components/modals/dialogs/confirm-reservation-dialog/confirm-reservation-dialog.component';
 import {AssetListDialogComponent} from './components/modals/dialogs/asset-list-dialog/asset-list-dialog.component';
 import {KindIconPipe} from './pipes/kind-icon.pipe';
-import { ReservationListComponent } from './components/layout/reservation-list/reservation-list.component';
-import { ReservationsByDayPipe } from './pipes/reservations-by-day.pipe';
-import { AssetDetailsDialogComponent } from './components/modals/dialogs/asset-details-dialog/asset-details-dialog.component';
+import {ReservationListComponent} from './components/layout/reservation-list/reservation-list.component';
+import {ReservationsByDayPipe} from './pipes/reservations-by-day.pipe';
+import {AssetDetailsDialogComponent} from './components/modals/dialogs/asset-details-dialog/asset-details-dialog.component';
+import {SelectCityDialogComponent} from './components/modals/dialogs/select-city-dialog/select-city-dialog.component';
 
 @NgModule({
   declarations: [
@@ -174,6 +175,7 @@ import { AssetDetailsDialogComponent } from './components/modals/dialogs/asset-d
     ReservationListComponent,
     ReservationsByDayPipe,
     AssetDetailsDialogComponent,
+    SelectCityDialogComponent,
   ],
   imports: [
     FormsModule,
@@ -241,7 +243,8 @@ import { AssetDetailsDialogComponent } from './components/modals/dialogs/asset-d
     EditAvatarBottomSheetComponent,
     ConfirmReservationDialogComponent,
     AssetListDialogComponent,
-    AssetDetailsDialogComponent
+    AssetDetailsDialogComponent,
+    SelectCityDialogComponent
   ]
 })
 export class AppModule {

@@ -5,7 +5,6 @@ import {finalize} from 'rxjs/operators';
 import {Gym} from 'src/app/model/entities/gym';
 import {Page} from 'src/app/model/page';
 import {AssetDTO} from 'src/app/model/dto/assetDTO';
-import {Router} from '@angular/router';
 import {CONSTANTS} from 'src/app/constants';
 import {MatDialog} from '@angular/material';
 import {AssetDetailsDialogComponent} from 'src/app/components/modals/dialogs/asset-details-dialog/asset-details-dialog.component';

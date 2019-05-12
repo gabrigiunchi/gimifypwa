@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AssetDetailsDialogComponent} from './asset-details-dialog.component';
-import {MatIconModule, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef, MatIconModule} from '@angular/material';
 import {TestConstants} from 'src/app/test-constants';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 

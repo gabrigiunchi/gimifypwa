@@ -11,7 +11,7 @@
     </div>
     <div fxFlex="50" fxLayoutAlign="end">
       <div *ngIf="result.city; else elseBlock">
-        <span>{{result.city.name}}</span>
+        <span>{{result.city.name | titlecase}}</span>
       </div>
       <ng-template #elseBlock>Any</ng-template>
     </div>

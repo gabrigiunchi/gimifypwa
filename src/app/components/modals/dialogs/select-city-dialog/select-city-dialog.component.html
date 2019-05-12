@@ -1,0 +1,27 @@
+<div fxLayout="column" class="mat-typography container">
+  <button mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <h2>Select city</h2>
+
+  <div *ngIf="cities$ | async as cities; else loading" fxFlex="grow">
+    <cdk-virtual-scroll-viewport [itemSize]="cities.length">
+      <mat-radio-group [(ngModel)]="selected" fxLayout="column" fxLayoutGap="2rem">
+        <mat-radio-button *cdkVirtualFor="let city of cities" [value]="city">
+          {{city.name | titlecase}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </cdk-virtual-scroll-viewport>
+  </div>
+
+  <ng-template #loading>
+    <div fxFlex="grow">
+      <app-loading></app-loading>
+    </div>
+  </ng-template>
+
+  <div class="footer" fxLayout="row" fxLayoutAlign="end">
+    <button mat-button color="primary" (click)="close()">CANCEL</button>
+    <button mat-button color="primary" (click)="submit()" [disabled]="selected === undefined">OK</button>
+  </div>
+</div>

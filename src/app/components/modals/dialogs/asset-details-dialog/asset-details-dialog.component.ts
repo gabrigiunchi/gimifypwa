@@ -1,6 +1,6 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {AssetDTO} from 'src/app/model/dto/assetDTO';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {AssetService} from 'src/app/services/server-communication/asset.service';
 
 @Component({

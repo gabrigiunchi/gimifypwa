@@ -11,7 +11,7 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
       <mat-icon>place</mat-icon>
-      <div>{{data.asset.gym.address}}, {{data.asset.gym.city.name}}</div>
+      <div>{{data.asset.gym.address}}, {{data.asset.gym.city.name | titlecase}}</div>
     </div>
     <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
       <mat-icon>calendar_today</mat-icon>
@@ -23,11 +23,7 @@
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="0.5rem">
-    <button mat-button color="primary" (click)="dismiss()">
-      {{'Cancel' | uppercase}}
-    </button>
-    <button mat-button color="primary" (click)="onConfirm()">
-      {{'Book' | uppercase}}
-    </button>
+    <button mat-button color="primary" (click)="dismiss()">CANCEL</button>
+    <button mat-button color="primary" (click)="onConfirm()">BOOK</button>
   </div>
 </div>

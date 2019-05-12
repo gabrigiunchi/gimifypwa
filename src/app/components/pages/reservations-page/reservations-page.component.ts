@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {Reservation} from 'src/app/model/entities/reservation';
 import {CacheService} from 'src/app/services/cache.service';
-import {TestConstants} from 'src/app/test-constants';
 
 @Component({
   selector: 'app-reservations-page',

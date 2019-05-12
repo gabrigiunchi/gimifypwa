@@ -1,6 +1,5 @@
-import {Component, Input, OnChanges} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Reservation} from 'src/app/model/entities/reservation';
-import {DateTime} from 'luxon';
 
 @Component({
   selector: 'app-reservation-list',

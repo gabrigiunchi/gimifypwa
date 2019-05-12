@@ -3,8 +3,8 @@
     <h1>Gyms</h1>
     <div fxLayout="row" fxLayoutAlign="start center">
       <app-searchbar [(value)]="nameFilter" fxFlex="grow"></app-searchbar>
-      <button mat-icon-button (click)="openFilterDialog()">
-        <mat-icon>filter_list</mat-icon>
+      <button mat-icon-button (click)="pickCity()" style="margin-left: 0.5rem">
+        <mat-icon>location_city</mat-icon>
       </button>
     </div>
     <mat-chip-list *ngIf="cityFilter">
