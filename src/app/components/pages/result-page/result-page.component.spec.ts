@@ -14,6 +14,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MessageComponent} from '../../layout/message/message.component';
 import {AgmCoreModule} from '@agm/core';
 import {MapComponent} from '../../layout/map/map.component';
+import {AssetsToGymsPipe} from 'src/app/pipes/assets-to-gyms.pipe';
 
 describe('ResultPageComponent', () => {
   let component: ResultPageComponent;
@@ -30,6 +31,7 @@ describe('ResultPageComponent', () => {
         MapComponent,
         ResultListItemComponent,
         AssetKindNamePipe,
+        AssetsToGymsPipe,
         MessageComponent
       ],
       imports: [

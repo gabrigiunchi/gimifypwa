@@ -10,7 +10,8 @@ import {
   MatPaginatorModule,
   MatProgressSpinnerModule,
   MatTableModule,
-  MatTabsModule
+  MatTabsModule,
+  MatDialogModule
 } from '@angular/material';
 import {GymService} from 'src/app/services/server-communication/gym.service';
 import {of} from 'rxjs';
@@ -71,6 +72,7 @@ describe('GymDetailsComponent', () => {
         MatProgressSpinnerModule,
         MatTableModule,
         ScrollingModule,
+        MatDialogModule,
         MatPaginatorModule
       ]
     })
