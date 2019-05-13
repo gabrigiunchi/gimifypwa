@@ -10,6 +10,7 @@ import {AssetKind} from 'src/app/model/entities/asset-kind';
 import {DateService} from '../utils/date.service';
 import {Page} from 'src/app/model/page';
 import {SelectLocationResult} from 'src/app/components/modals/dialogs/select-location-dialog/select-location-dialog.component';
+import {CacheService} from '../cache.service';
 
 export interface ReservationSearchParams {
   location: SelectLocationResult;
@@ -22,12 +23,13 @@ export interface ReservationSearchParams {
 @Injectable({
   providedIn: 'root'
 })
-export class ReservationService {
+export class ReservationService extends CacheService<ReservationSearchParams> {
 
   constructor(
     private dateService: DateService,
     private http: HttpClient,
     private urlService: UrlService) {
+      super();
   }
 
   getAllMyReservations(page: number, size: number): Observable<Page<Reservation>> {

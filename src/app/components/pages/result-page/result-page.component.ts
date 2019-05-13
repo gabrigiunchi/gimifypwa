@@ -1,10 +1,9 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {Observable} from 'rxjs';
 import {Asset} from 'src/app/model/entities/asset';
 import {DateService} from 'src/app/services/utils/date.service';
-import {CacheService} from 'src/app/services/cache.service';
 
 
 @Component({
@@ -25,7 +24,6 @@ export class ResultPageComponent implements OnInit, OnDestroy {
   clearCache = true;
 
   constructor(
-    private cacheService: CacheService<unknown>,
     private dateService: DateService,
     private activatedRoute: ActivatedRoute,
     private reservationService: ReservationService) {
@@ -49,7 +47,7 @@ export class ResultPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.clearCache) {
-      this.cacheService.clear();
+      this.reservationService.clear();
     }
   }
 

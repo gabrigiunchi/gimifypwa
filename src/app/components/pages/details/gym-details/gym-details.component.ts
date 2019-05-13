@@ -1,9 +1,8 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {GymService} from 'src/app/services/server-communication/gym.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Gym} from 'src/app/model/entities/gym';
-import {CacheService} from 'src/app/services/cache.service';
 
 @Component({
   selector: 'app-gym-details',
@@ -17,7 +16,6 @@ export class GymDetailsComponent implements OnInit, OnDestroy {
   clearCache = true;
 
   constructor(
-    private cacheService: CacheService<Gym[]>,
     private router: Router,
     private gymService: GymService,
     private activatedRoute: ActivatedRoute) {
@@ -36,7 +34,7 @@ export class GymDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.clearCache) {
-      this.cacheService.clear();
+      this.gymService.clear();
     }
   }
 

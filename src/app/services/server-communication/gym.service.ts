@@ -5,13 +5,17 @@ import {Observable} from 'rxjs';
 import {Gym} from 'src/app/model/entities/gym';
 import {CONSTANTS} from 'src/app/constants';
 import {City} from 'src/app/model/entities/city';
+import {CacheService} from '../cache.service';
+import {FilterResult} from 'src/app/model/filter-result';
+import {GymFilterParams} from 'src/app/components/pages/gyms-page/gyms-page.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GymService {
+export class GymService extends CacheService<FilterResult<Gym, GymFilterParams>> {
 
   constructor(private http: HttpClient, private urlService: UrlService) {
+    super();
   }
 
   get gyms(): Observable<Gym[]> {

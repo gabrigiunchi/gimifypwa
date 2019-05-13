@@ -1,9 +1,8 @@
 import {Component, OnDestroy} from '@angular/core';
-import {ReservationSearchParams} from 'src/app/services/server-communication/reservation.service';
+import {ReservationSearchParams, ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {DateTime, Duration} from 'luxon';
 import {DateService} from 'src/app/services/utils/date.service';
 import {CONSTANTS} from 'src/app/constants';
-import {CacheService} from 'src/app/services/cache.service';
 import {Router} from '@angular/router';
 import {AssetKind} from 'src/app/model/entities/asset-kind';
 import {SettingsService} from 'src/app/services/settings.service';
@@ -21,12 +20,12 @@ export class SearchPageComponent implements OnDestroy {
 
   constructor(
     private settingsService: SettingsService,
-    private cacheService: CacheService<ReservationSearchParams>,
+    private reservationService: ReservationService,
     private router: Router,
     private dateService: DateService) {
 
-    if (this.cacheService.isPresent) {
-      this.searchParams = this.cacheService.element;
+    if (this.reservationService.isPresent) {
+      this.searchParams = this.reservationService.element;
     } else {
       this.initParams();
     }
@@ -34,7 +33,7 @@ export class SearchPageComponent implements OnDestroy {
 
   ngOnDestroy() {
     if (this.clearCache) {
-      this.cacheService.clear();
+      this.reservationService.clear();
     }
   }
 
@@ -48,7 +47,7 @@ export class SearchPageComponent implements OnDestroy {
     }
 
     this.clearCache = false;
-    this.cacheService.element = this.searchParams;
+    this.reservationService.element = this.searchParams;
     this.router.navigate([url]);
   }
 

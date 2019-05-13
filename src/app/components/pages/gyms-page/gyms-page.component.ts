@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {GymService} from 'src/app/services/server-communication/gym.service';
 import {Gym} from 'src/app/model/entities/gym';
-import {CacheService} from 'src/app/services/cache.service';
 import {MatDialog} from '@angular/material';
 import {FilterResult} from 'src/app/model/filter-result';
 import {City} from 'src/app/model/entities/city';
@@ -31,14 +30,13 @@ export class GymsPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private dialog: MatDialog,
-    private cacheService: CacheService<FilterResult<Gym, GymFilterParams>>,
     private gymService: GymService) {
   }
 
   ngOnInit() {
-    if (this.cacheService.isPresent) {
+    if (this.gymService.isPresent) {
       console.log('Loaded gyms from cache');
-      this.filterResult = this.cacheService.element;
+      this.filterResult = this.gymService.element;
     } else {
       this.isLoading = true;
       console.log('Loading gyms from server...');
@@ -53,12 +51,12 @@ export class GymsPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.clearCache) {
-      this.cacheService.clear();
+      this.gymService.clear();
     }
   }
 
   onGymClick() {
-    this.cacheService.element = this.filterResult;
+    this.gymService.element = this.filterResult;
     this.clearCache = false;
   }
 

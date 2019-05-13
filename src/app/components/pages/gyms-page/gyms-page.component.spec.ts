@@ -4,7 +4,6 @@ import {MatChipsModule, MatDialogModule, MatIconModule, MatInputModule, MatListM
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {LoadingComponent} from '../../layout/loading/loading.component';
-import {CacheService} from 'src/app/services/cache.service';
 import {Gym} from 'src/app/model/entities/gym';
 import {GymService} from 'src/app/services/server-communication/gym.service';
 import {of} from 'rxjs';
@@ -76,7 +75,7 @@ describe('GymsPageComponent', () => {
 
   it('should load the gyms from cache if present', () => {
     expect(spy).toHaveBeenCalledTimes(1);
-    const cacheService: CacheService<FilterResult<Gym, GymFilterParams>> = TestBed.get(CacheService);
+    const cacheService: GymService = TestBed.get(GymsPageComponent);
     filterResult.content = mockGyms;
     cacheService.element = filterResult;
     component.ngOnInit();
@@ -85,14 +84,14 @@ describe('GymsPageComponent', () => {
 
   it('should load the gyms from server if the cache does not contain anything', () => {
     expect(spy).toHaveBeenCalledTimes(1);
-    const cacheService: CacheService<FilterResult<Gym, GymFilterParams>> = TestBed.get(CacheService);
+    const cacheService: GymService = TestBed.get(GymsPageComponent);
     cacheService.clear();
     component.ngOnInit();
     expect(spy).toHaveBeenCalledTimes(2);
   });
 
   it('should clear the cache', () => {
-    const cacheService: CacheService<FilterResult<Gym, GymFilterParams>> = TestBed.get(CacheService);
+    const cacheService: GymService = TestBed.get(GymsPageComponent);
     const spyOnCache = spyOn(cacheService, 'clear').and.callThrough();
     component.ngOnDestroy();
     expect(spyOnCache).toHaveBeenCalled();
@@ -100,7 +99,7 @@ describe('GymsPageComponent', () => {
   });
 
   it('should not clear the cache if a gym is selected', () => {
-    const cacheService: CacheService<FilterResult<Gym, GymFilterParams>> = TestBed.get(CacheService);
+    const cacheService: GymService = TestBed.get(GymsPageComponent);
     const spyOnCache = spyOn(cacheService, 'clear').and.callThrough();
     component.onGymClick();
     component.ngOnDestroy();
