@@ -1,13 +1,20 @@
 import {Injectable} from '@angular/core';
 import {CONSTANTS} from 'src/app/constants';
-import {DateTime, Duration} from 'luxon';
+import {DateTime, Duration, Settings} from 'luxon';
+import {DateAdapter} from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DateService {
 
-  constructor() {
+  constructor(private dateAdapter: DateAdapter<any>) {}
+
+  init() {
+    console.log(`Setting locale: ${CONSTANTS.DEFAULT_LOCALE}`);
+    Settings.defaultLocale = CONSTANTS.DEFAULT_LOCALE;
+    Settings.defaultZoneName = CONSTANTS.DEFAULT_TIMEZONE;
+    this.dateAdapter.setLocale(CONSTANTS.DEFAULT_LOCALE);
   }
 
   isToday(date: string): boolean {

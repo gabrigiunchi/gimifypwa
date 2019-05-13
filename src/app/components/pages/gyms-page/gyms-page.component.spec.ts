@@ -75,7 +75,7 @@ describe('GymsPageComponent', () => {
 
   it('should load the gyms from cache if present', () => {
     expect(spy).toHaveBeenCalledTimes(1);
-    const cacheService: GymService = TestBed.get(GymsPageComponent);
+    const cacheService: GymService = TestBed.get(GymService);
     filterResult.content = mockGyms;
     cacheService.element = filterResult;
     component.ngOnInit();
@@ -84,14 +84,14 @@ describe('GymsPageComponent', () => {
 
   it('should load the gyms from server if the cache does not contain anything', () => {
     expect(spy).toHaveBeenCalledTimes(1);
-    const cacheService: GymService = TestBed.get(GymsPageComponent);
+    const cacheService: GymService = TestBed.get(GymService);
     cacheService.clear();
     component.ngOnInit();
     expect(spy).toHaveBeenCalledTimes(2);
   });
 
   it('should clear the cache', () => {
-    const cacheService: GymService = TestBed.get(GymsPageComponent);
+    const cacheService: GymService = TestBed.get(GymService);
     const spyOnCache = spyOn(cacheService, 'clear').and.callThrough();
     component.ngOnDestroy();
     expect(spyOnCache).toHaveBeenCalled();
@@ -99,7 +99,7 @@ describe('GymsPageComponent', () => {
   });
 
   it('should not clear the cache if a gym is selected', () => {
-    const cacheService: GymService = TestBed.get(GymsPageComponent);
+    const cacheService: GymService = TestBed.get(GymService);
     const spyOnCache = spyOn(cacheService, 'clear').and.callThrough();
     component.onGymClick();
     component.ngOnDestroy();

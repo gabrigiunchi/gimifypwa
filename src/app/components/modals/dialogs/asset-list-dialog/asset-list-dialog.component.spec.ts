@@ -8,7 +8,8 @@ import {
   MatDividerModule,
   MatIconModule,
   MatListModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  NativeDateModule
 } from '@angular/material';
 import {TestConstants} from 'src/app/test-constants';
 import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';
@@ -44,7 +45,8 @@ describe('AssetListDialogComponent', () => {
         HttpClientTestingModule,
         MatDialogModule,
         MatDividerModule,
-        MatListModule
+        MatListModule,
+        NativeDateModule
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},

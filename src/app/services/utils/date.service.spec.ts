@@ -1,9 +1,12 @@
 import {TestBed} from '@angular/core/testing';
 import {DateService} from './date.service';
 import {DateTime, Duration} from 'luxon';
+import {MatNativeDateModule} from '@angular/material';
 
 describe('DateService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [MatNativeDateModule]
+  }));
 
   const duration = (minutes: number) => Duration.fromObject({minutes: minutes});
 

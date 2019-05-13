@@ -7,7 +7,8 @@ import {
   MatInputModule,
   MatProgressSpinnerModule,
   MatSlideToggleModule,
-  MatToolbarModule
+  MatToolbarModule,
+  NativeDateModule
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {WaitingPageComponent} from './components/pages/waiting-page/waiting-page.component';
@@ -53,6 +54,7 @@ describe('AppComponent', () => {
         MatSlideToggleModule,
         ReactiveFormsModule,
         MatInputModule,
+        NativeDateModule
       ],
 
     }).compileComponents();

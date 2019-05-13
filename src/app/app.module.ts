@@ -244,8 +244,7 @@ import {MinStartTimePipe} from './pipes/date/min-start-time.pipe';
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
   ],
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
     ConfirmationDialogComponent,

@@ -1,9 +1,17 @@
 import {MinStartTimePipe} from './min-start-time.pipe';
-import {TestBed} from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 import {DateService} from 'src/app/services/utils/date.service';
 import {DateTime} from 'luxon';
+import {MatNativeDateModule} from '@angular/material';
 
 describe('MinStartTimePipe', () => {
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [MatNativeDateModule]
+    })
+      .compileComponents();
+  }));
+
   it('create an instance', () => {
     const pipe = new MinStartTimePipe(TestBed.get(DateService));
     expect(pipe).toBeTruthy();

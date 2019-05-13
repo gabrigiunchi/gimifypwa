@@ -2,10 +2,11 @@ import {TestBed} from '@angular/core/testing';
 import {ReservationSearchParams, ReservationService} from './reservation.service';
 import {HttpClientModule} from '@angular/common/http';
 import {of} from 'rxjs';
+import {MatNativeDateModule} from '@angular/material';
 
 describe('ReservationService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [HttpClientModule]
+    imports: [HttpClientModule, MatNativeDateModule]
   }));
 
   let params: ReservationSearchParams;
