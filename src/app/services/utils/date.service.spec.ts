@@ -31,8 +31,9 @@ describe('DateService', () => {
 
   it('should build a date from the localdate and the localtime and the zoneId', () => {
     const service: DateService = TestBed.get(DateService);
-    const result = service.build('2019-05-02', '10:00', 'UTC');
-    expect(result).toBe('2019-05-02T10:00:00+0000');
+    expect(service.build('2019-05-02', '10:00', 'UTC')).toBe('2019-05-02T10:00:00+0000');
+    expect(service.build('2019-05-02', '10:00', 'Europe/Rome')).toBe('2019-05-02T10:00:00+0200');
+    expect(service.build('2019-05-02', '10:00', 'America/New_York')).toBe('2019-05-02T10:00:00-0400');
   });
 
   it('should round up time', () => {

@@ -2,6 +2,7 @@ import {User} from './model/entities/user';
 import {Gym} from './model/entities/gym';
 import {Asset} from './model/entities/asset';
 import {Reservation} from './model/entities/reservation';
+import {City} from './model/entities/city';
 
 export class TestConstants {
   static readonly mockUser: User = {
@@ -13,9 +14,11 @@ export class TestConstants {
     notificationsEnabled: true
   };
 
+  static readonly mockCity: City = {id: 1, name: 'MILANO', zoneId: 'Europe/Rome'};
+
   static readonly mockGym: Gym = {
     address: 'address',
-    city: {id: 1, name: 'MILANO'},
+    city: TestConstants.mockCity,
     id: 1,
     name: 'gym',
     latitude: 45.0,

@@ -3,6 +3,7 @@ import {ReservationSearchParams, ReservationService} from './reservation.service
 import {HttpClientModule} from '@angular/common/http';
 import {of} from 'rxjs';
 import {MatNativeDateModule} from '@angular/material';
+import {TestConstants} from 'src/app/test-constants';
 
 describe('ReservationService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -17,7 +18,7 @@ describe('ReservationService', () => {
       startHour: '10:00',
       endHour: '10:20',
       kind: {id: 1, name: 'PRESSA', maxReservationTime: 20},
-      location: {city: {id: 1, name: 'MILANO'}, gym: undefined}
+      location: {city: TestConstants.mockCity, gym: undefined}
     };
   });
 

@@ -66,7 +66,7 @@ export class AssetListDialogComponent {
 
   private makeReservation(asset: Asset) {
     this.isLoading = true;
-    this.reservationService.addReservation(asset.id, this.data.date, this.data.from, this.data.to)
+    this.reservationService.addReservation(asset, this.data.date, this.data.from, this.data.to)
       .pipe(finalize(() => this.isLoading = false))
       .subscribe(
         () => this.onReservationConfirmed(),

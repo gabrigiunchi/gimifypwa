@@ -69,7 +69,7 @@ describe('SearchPageComponent', () => {
       startHour: '10:00',
       endHour: '10:20',
       kind: {id: 1, name: 'PRESSA', maxReservationTime: 20},
-      location: {city: {id: 1, name: 'MILANO'}, gym: undefined}
+      location: {city: TestConstants.mockCity, gym: undefined}
     };
     component.step = 30;
     fixture.detectChanges();

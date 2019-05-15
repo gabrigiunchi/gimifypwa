@@ -11,6 +11,7 @@ import {FilterResult} from 'src/app/model/filter-result';
 import {SearchbarComponent} from '../../input/searchbar/searchbar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TestConstants} from 'src/app/test-constants';
 
 describe('GymsPageComponent', () => {
   let component: GymsPageComponent;
@@ -20,7 +21,7 @@ describe('GymsPageComponent', () => {
   const mockGyms: Gym[] = [
     {
       address: 'address1',
-      city: {id: 1, name: 'MILANO'},
+      city: TestConstants.mockCity,
       id: 1,
       name: 'gym1',
       latitude: 50,
@@ -28,7 +29,7 @@ describe('GymsPageComponent', () => {
     },
     {
       address: 'address2',
-      city: {id: 2, name: 'TORINO'},
+      city: {id: 2, name: 'TORINO', zoneId: 'Europe/Rome'},
       id: 2,
       name: 'gym2',
       latitude: 0,
@@ -112,7 +113,7 @@ describe('GymsPageComponent', () => {
   });
 
   it('should filter by city', () => {
-    component.cityFilter = {id: 1, name: 'MILANO'};
+    component.cityFilter = TestConstants.mockCity;
     expect(component.result.length).toBe(1);
     expect(component.result[0].id).toBe(1);
   });

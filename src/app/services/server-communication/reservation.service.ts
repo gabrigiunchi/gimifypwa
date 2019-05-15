@@ -48,14 +48,14 @@ export class ReservationService extends CacheService<ReservationSearchParams> {
   }
 
   addReservation(
-    assetId: number,
+    asset: Asset,
     date: string,
     startHour: string,
     endHour: string): Observable<Reservation> {
 
     const reservationDTO: ReservationDTO = {
       userID: -1,
-      assetID: assetId,
+      assetID: asset.id,
       start: this.dateService.build(date, startHour),
       end: this.dateService.build(date, endHour),
     };
