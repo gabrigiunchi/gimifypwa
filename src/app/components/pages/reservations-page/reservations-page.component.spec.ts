@@ -8,12 +8,12 @@ import {ReservationService} from 'src/app/services/server-communication/reservat
 import {of} from 'rxjs';
 import {LoadingComponent} from '../../layout/loading/loading.component';
 import {ReservationListComponent} from '../../layout/reservation-list/reservation-list.component';
-import {TimePipe} from 'src/app/pipes/date/time.pipe';
 import {ReservationsByDayPipe} from 'src/app/pipes/reservations-by-day.pipe';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 import {TestConstants} from 'src/app/test-constants';
 import {MessageComponent} from '../../layout/message/message.component';
+import {ReservationTimePipe} from 'src/app/pipes/date/reservation-time.pipe';
 
 describe('ReservationsPageComponent', () => {
   let component: ReservationsPageComponent;
@@ -38,7 +38,7 @@ describe('ReservationsPageComponent', () => {
         LoadingComponent,
         ReservationListComponent,
         DateTimePipe,
-        TimePipe,
+        ReservationTimePipe,
         ReservationsByDayPipe,
         MessageComponent
       ],

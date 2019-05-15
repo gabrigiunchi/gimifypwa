@@ -4,8 +4,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatIconModule, MatListModule} from '@angular/material';
 import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 import {ReservationsByDayPipe} from 'src/app/pipes/reservations-by-day.pipe';
-import {TimePipe} from 'src/app/pipes/date/time.pipe';
 import {RouterModule} from '@angular/router';
+import {ReservationTimePipe} from 'src/app/pipes/date/reservation-time.pipe';
 
 describe('ReservationListComponent', () => {
   let component: ReservationListComponent;
@@ -16,7 +16,7 @@ describe('ReservationListComponent', () => {
       declarations: [
         ReservationListComponent,
         DateTimePipe,
-        TimePipe,
+        ReservationTimePipe,
         ReservationsByDayPipe
       ],
       imports: [

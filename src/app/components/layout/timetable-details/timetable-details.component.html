@@ -8,7 +8,7 @@
     <th mat-header-cell *matHeaderCellDef>Schedule</th>
     <td mat-cell *matCellDef="let element">
       <div *ngFor="let interval of element.timeIntervals; last as isLast">
-        {{interval.start | time}}-{{interval.end | time}}<span *ngIf="!isLast">,</span>
+        {{interval.start | time: timetable.gym.city.zoneId}}-{{interval.end | time: timetable.gym.city.zoneId}}<span *ngIf="!isLast">,</span>
       </div>
     </td>
   </ng-container>

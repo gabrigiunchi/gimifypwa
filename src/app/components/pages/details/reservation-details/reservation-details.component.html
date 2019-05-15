@@ -9,11 +9,11 @@
     </mat-list-item>
     <mat-list-item>
       <mat-icon matListIcon>calendar_today</mat-icon>
-      <h3 matLine>{{reservation.start | dateTime: 'dd MMMM yyyy'}}</h3>
+      <h3 matLine>{{reservation.start | dateTime: 'dd MMMM yyyy': reservation.asset.gym.city.zoneId}}</h3>
     </mat-list-item>
     <mat-list-item>
       <mat-icon matListIcon>access_time</mat-icon>
-      <h3 matLine>{{reservation.start | time}} - {{reservation.end | time}}</h3>
+      <h3 matLine>{{reservation | reservationTime: ' - '}}</h3>
     </mat-list-item>
     <mat-list-item>
       <mat-icon matListIcon>location_city</mat-icon>

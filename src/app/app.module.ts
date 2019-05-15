@@ -119,7 +119,8 @@ import {LazySelectionDialogComponent} from './components/modals/dialogs/lazy-sel
 import {DefaultCityPickerComponent} from './components/input/default-city-picker/default-city-picker.component';
 import {DefaultGymPickerComponent} from './components/input/default-gym-picker/default-gym-picker.component';
 import {MinStartTimePipe} from './pipes/date/min-start-time.pipe';
-import { AssetsToGymsPipe } from './pipes/assets-to-gyms.pipe';
+import {AssetsToGymsPipe} from './pipes/assets-to-gyms.pipe';
+import {ReservationTimePipe} from './pipes/date/reservation-time.pipe';
 
 @NgModule({
   declarations: [
@@ -191,6 +192,7 @@ import { AssetsToGymsPipe } from './pipes/assets-to-gyms.pipe';
     DefaultGymPickerComponent,
     MinStartTimePipe,
     AssetsToGymsPipe,
+    ReservationTimePipe,
   ],
   imports: [
     FormsModule,

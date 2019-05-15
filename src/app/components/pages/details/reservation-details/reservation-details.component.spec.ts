@@ -14,9 +14,9 @@ import {
 import {ToolbarComponent} from 'src/app/components/layout/toolbar/toolbar.component';
 import {MapComponent} from 'src/app/components/layout/map/map.component';
 import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
-import {TimePipe} from 'src/app/pipes/date/time.pipe';
 import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';
+import {ReservationTimePipe} from 'src/app/pipes/date/reservation-time.pipe';
 
 describe('ReservationDetailsComponent', () => {
   let component: ReservationDetailsComponent;
@@ -29,7 +29,7 @@ describe('ReservationDetailsComponent', () => {
         ToolbarComponent,
         MapComponent,
         AssetKindNamePipe,
-        TimePipe,
+        ReservationTimePipe,
         DateTimePipe,
         LoadingComponent
       ],

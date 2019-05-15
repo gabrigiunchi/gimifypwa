@@ -4,14 +4,14 @@ import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {RatingBarComponent} from 'src/app/components/layout/rating-bar/rating-bar.component';
 import {
+  MatDialogModule,
   MatGridListModule,
   MatIconModule,
   MatListModule,
   MatPaginatorModule,
   MatProgressSpinnerModule,
   MatTableModule,
-  MatTabsModule,
-  MatDialogModule
+  MatTabsModule
 } from '@angular/material';
 import {GymService} from 'src/app/services/server-communication/gym.service';
 import {of} from 'rxjs';
