@@ -4,7 +4,6 @@ export interface Gym {
   id: number;
   name: string;
   address: string;
-  zoneId: string;
   city: City;
   latitude: number;
   longitude: number;

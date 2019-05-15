@@ -23,7 +23,6 @@ describe('GymsPageComponent', () => {
       city: {id: 1, name: 'MILANO'},
       id: 1,
       name: 'gym1',
-      zoneId: 'Europe/Rome',
       latitude: 50,
       longitude: 10
     },
@@ -32,7 +31,6 @@ describe('GymsPageComponent', () => {
       city: {id: 2, name: 'TORINO'},
       id: 2,
       name: 'gym2',
-      zoneId: 'Europe/Rome',
       latitude: 0,
       longitude: 0
     }
