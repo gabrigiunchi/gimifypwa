@@ -1,3 +1,7 @@
 .header {
   padding: 1rem;
 }
+
+app-gym-list {
+  flex-grow: 1;
+}

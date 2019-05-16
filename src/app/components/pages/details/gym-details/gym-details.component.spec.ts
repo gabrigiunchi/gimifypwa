@@ -34,6 +34,8 @@ import {AvatarPipe} from 'src/app/pipes/avatar.pipe';
 import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 import {TestConstants} from 'src/app/test-constants';
 import {KindIconPipe} from 'src/app/pipes/kind-icon.pipe';
+import {AgmCoreModule} from '@agm/core';
+import {MapComponent} from 'src/app/components/layout/map/map.component';
 
 describe('GymDetailsComponent', () => {
   let component: GymDetailsComponent;
@@ -59,11 +61,15 @@ describe('GymDetailsComponent', () => {
         SafeUrlPipe,
         KindIconPipe,
         DataUrlPipe,
-        CommentListComponent
+        CommentListComponent,
+        MapComponent,
       ],
       imports: [
         BrowserAnimationsModule,
         HttpClientModule,
+        AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyBiClW-tzn_XUpFDNs6c5PjwGtE61xaW6A'
+        }),
         RouterModule.forRoot([]),
         MatIconModule,
         MatListModule,

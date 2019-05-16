@@ -1,4 +1,4 @@
-<div>
+<div fxFlexFill fxLayout="column">
   <div class="header">
     <h1>Gyms</h1>
     <div fxLayout="row" fxLayoutAlign="start center">
@@ -15,16 +15,8 @@
     </mat-chip-list>
 
   </div>
-  <div *ngIf="!isLoading">
-    <mat-nav-list *ngIf="result.length > 0">
-      <mat-list-item *ngFor="let gym of result; last as isLast" routerLink="/gyms/{{gym.id}}" (click)="onGymClick()">
-        <h3 matLine>{{gym.name}}</h3>
-        <p matLine>
-          <span class="mat-small">{{gym.address}}, {{gym.city.name | titlecase}}</span>
-        </p>
-        <mat-divider *ngIf="!isLast"></mat-divider>
-      </mat-list-item>
-    </mat-nav-list>
+  <div *ngIf="!isLoading" fxFlex="grow">
+    <app-gym-list [gyms]="result" (gymClick)="onGymClick()"></app-gym-list>
     <div *ngIf="result.length === 0" fxLayout="row" fxLayoutAlign="center center">
       <h1>Nothing found</h1>
     </div>

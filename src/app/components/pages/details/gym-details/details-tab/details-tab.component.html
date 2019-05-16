@@ -1,9 +1,7 @@
 <div *ngIf="gym && timetable$ | async as timetable; else loading" class="container" cdkScrollable>
+  <app-map height="15rem" [gyms]="[gym]" [showMyPositionControl]="false"></app-map>
   <h2>Address</h2>
-  <div>{{gym.address}}</div>
-
-  <h2>City</h2>
-  <div>{{gym.city.name | titlecase}}</div>
+  <div>{{gym.address}}, {{gym.city.name}}</div>
 
   <h2 [style.marginBottom]="'1rem'">Timetable</h2>
   <app-timetable-details [timetable]="timetable"></app-timetable-details>

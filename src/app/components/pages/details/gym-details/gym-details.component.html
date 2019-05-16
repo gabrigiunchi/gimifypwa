@@ -4,12 +4,12 @@
       <mat-icon>chevron_left</mat-icon>
     </button>
     <div fxFlex="grow">
-      <div class="header-content" *ngIf="gym && rating$ | async as rating; else loading">
+      <div fxLayout="column" fxLayoutAlign="center center" *ngIf="gym && rating$ | async as rating; else loading">
         <h1 class="title">{{gym.name}}</h1>
         <app-rating-bar [value]="rating"></app-rating-bar>
       </div>
       <ng-template #loading>
-        <div class="header-content">
+        <div fxLayout="row" fxLayoutAlign="center center">
           <mat-spinner diameter="25"></mat-spinner>
         </div>
       </ng-template>

@@ -12,6 +12,8 @@ import {SearchbarComponent} from '../../input/searchbar/searchbar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TestConstants} from 'src/app/test-constants';
+import {GymListComponent} from '../../layout/gym-list/gym-list.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 describe('GymsPageComponent', () => {
   let component: GymsPageComponent;
@@ -42,13 +44,19 @@ describe('GymsPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [GymsPageComponent, LoadingComponent, SearchbarComponent],
+      declarations: [
+        GymsPageComponent,
+        LoadingComponent,
+        SearchbarComponent,
+        GymListComponent
+      ],
       imports: [
         BrowserAnimationsModule,
         MatListModule,
         RouterModule.forRoot([]),
         HttpClientModule,
         MatProgressSpinnerModule,
+        ScrollingModule,
         MatIconModule,
         MatInputModule,
         FormsModule,

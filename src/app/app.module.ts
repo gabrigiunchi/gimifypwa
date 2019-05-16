@@ -121,6 +121,7 @@ import {DefaultGymPickerComponent} from './components/input/default-gym-picker/d
 import {MinStartTimePipe} from './pipes/date/min-start-time.pipe';
 import {AssetsToGymsPipe} from './pipes/assets-to-gyms.pipe';
 import {ReservationTimePipe} from './pipes/date/reservation-time.pipe';
+import {GymListComponent} from './components/layout/gym-list/gym-list.component';
 
 @NgModule({
   declarations: [
@@ -192,7 +193,8 @@ import {ReservationTimePipe} from './pipes/date/reservation-time.pipe';
     DefaultGymPickerComponent,
     MinStartTimePipe,
     AssetsToGymsPipe,
-    ReservationTimePipe
+    ReservationTimePipe,
+    GymListComponent
   ],
   imports: [
     FormsModule,
