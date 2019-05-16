@@ -6,7 +6,7 @@
     </div>
     <div fxFlex="50" fxLayoutAlign="end">
       <div *ngIf="result.city; else elseCity">
-        <span>{{result.city | cityName}}</span>
+        <span>{{result.city.name}}</span>
       </div>
       <ng-template #elseCity>
         <mat-error>Required</mat-error>

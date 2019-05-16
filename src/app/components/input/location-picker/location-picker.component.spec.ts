@@ -1,7 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {LocationPickerComponent} from './location-picker.component';
 import {MatDialogModule, MatIconModule, MatInputModule} from '@angular/material';
-import {CityNamePipe} from 'src/app/pipes/city-name.pipe';
 
 describe('LocationPickerComponent', () => {
   let component: LocationPickerComponent;
@@ -9,7 +8,7 @@ describe('LocationPickerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LocationPickerComponent, CityNamePipe],
+      declarations: [LocationPickerComponent],
       imports: [
         MatIconModule,
         MatDialogModule,
