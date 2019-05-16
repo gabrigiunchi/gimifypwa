@@ -1,29 +1,23 @@
 import {Injectable} from '@angular/core';
 import {CONSTANTS} from 'src/app/constants';
 import {DateTime, Duration, Settings} from 'luxon';
-import {DateAdapter} from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DateService {
 
-  constructor(private dateAdapter: DateAdapter<any>) {}
-
-  init() {
-    console.log(`Setting locale: ${CONSTANTS.DEFAULT_LOCALE}`);
-    Settings.defaultLocale = CONSTANTS.DEFAULT_LOCALE;
-    Settings.defaultZoneName = CONSTANTS.DEFAULT_TIMEZONE;
-    this.dateAdapter.setLocale(CONSTANTS.DEFAULT_LOCALE);
+  set timezone(zoneId: string) {
+    Settings.defaultZoneName = zoneId;
   }
 
   isToday(date: string): boolean {
     return DateTime.fromISO(date).hasSame(DateTime.local(), 'day');
   }
 
-  build(date: string, hour: string, zoneId: string = CONSTANTS.DEFAULT_TIMEZONE): string {
+  build(date: string, hour: string): string {
     return DateTime
-      .fromFormat(`${date} ${hour}`, 'yyyy-MM-dd HH:mm', {zone: zoneId})
+      .fromFormat(`${date} ${hour}`, 'yyyy-MM-dd HH:mm')
       .toFormat(CONSTANTS.DEFAULT_DATETIME_FORMAT);
   }
 

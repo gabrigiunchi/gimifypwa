@@ -11,13 +11,7 @@ import {DateService} from './services/utils/date.service';
 })
 export class AppComponent {
 
-  constructor(
-    private dateService: DateService,
-    private router: Router,
-    private loginService: LoginService) {
-
-      this.dateService.init();
-  }
+  constructor(private router: Router, private loginService: LoginService) {}
 
   get isLoading(): boolean {
     return this.loginService.isLoading;

@@ -1,4 +1,5 @@
 import {TimePipe} from './time.pipe';
+import {Settings} from 'luxon';
 
 describe('TimePipe', () => {
   it('create an instance', () => {
@@ -8,12 +9,14 @@ describe('TimePipe', () => {
 
   it('should format a time', () => {
     const pipe = new TimePipe();
+    Settings.defaultZoneName = 'Europe/Rome';
     expect(pipe.transform('2019-05-02T10:00:00+0200')).toBe('10:00');
     expect(pipe.transform('2019-05-02T10:00:00+0000')).toBe('12:00');
   });
 
   it('should format a time with timezone', () => {
     const pipe = new TimePipe();
+    Settings.defaultZoneName = 'Europe/Rome';
     expect(pipe.transform('2019-05-02T10:00:00+0200', 'UTC')).toBe('08:00');
     expect(pipe.transform('2019-05-02T10:00:00+0000', 'UTC')).toBe('10:00');
   });

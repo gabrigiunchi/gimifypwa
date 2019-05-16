@@ -6,6 +6,7 @@ import {CONSTANTS} from 'src/app/constants';
 import {Router} from '@angular/router';
 import {AssetKind} from 'src/app/model/entities/asset-kind';
 import {SettingsService} from 'src/app/services/settings.service';
+import {SelectLocationResult} from '../../modals/dialogs/select-location-dialog/select-location-dialog.component';
 
 @Component({
   selector: 'app-search-page',
@@ -29,6 +30,8 @@ export class SearchPageComponent implements OnDestroy {
     } else {
       this.initParams();
     }
+
+    this.initTimezone();
   }
 
   ngOnDestroy() {
@@ -66,6 +69,13 @@ export class SearchPageComponent implements OnDestroy {
     this.checkStartTime();
   }
 
+  onLocationChange(location: SelectLocationResult) {
+    this.searchParams.location = location;
+    this.initTimezone();
+    this.checkDate();
+    this.checkStartTime();
+  }
+
   get maxDuration(): Duration {
     return Duration.fromObject({minutes: this.searchParams.kind ? this.searchParams.kind.maxReservationTime : 1440});
   }
@@ -96,6 +106,18 @@ export class SearchPageComponent implements OnDestroy {
     if (!this.dateService.isRangeValid(this.searchParams.startHour, this.searchParams.endHour, this.maxDuration)) {
       this.searchParams.endHour = DateTime.fromISO(this.searchParams.startHour)
         .plus({minutes: this.searchParams.kind.maxReservationTime}).toFormat('HH:mm');
+    }
+  }
+
+  private checkDate() {
+    if (DateTime.fromISO(this.searchParams.date) < DateTime.local()) {
+      this.searchParams.date = DateTime.local().toISODate();
+    }
+  }
+
+  private initTimezone() {
+    if (this.searchParams.location.city) {
+      this.dateService.timezone = this.searchParams.location.city.zoneId;
     }
   }
 

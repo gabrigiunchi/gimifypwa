@@ -25,6 +25,7 @@ import {MinStartTimePipe} from 'src/app/pipes/date/min-start-time.pipe';
 import {AssetKindEnum} from 'src/app/model/entities/type/asset-kind-enum';
 import {DateTime} from 'luxon';
 import {DateService} from 'src/app/services/utils/date.service';
+import {SelectLocationResult} from '../../modals/dialogs/select-location-dialog/select-location-dialog.component';
 
 describe('SearchPageComponent', () => {
   let component: SearchPageComponent;
@@ -141,5 +142,4 @@ describe('SearchPageComponent', () => {
     expect(component.searchParams.startHour).toBe('10:30');
     expect(component.searchParams.endHour).toBe('11:00');
   });
-
 });
