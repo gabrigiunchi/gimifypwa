@@ -4,7 +4,7 @@
 <app-time-period-picker #timepicker (startChange)="onStartChange($event)" [start]="searchParams.startHour" [(end)]="searchParams.endHour" [currentDate]="searchParams.date"
                         [maxDuration]="maxDuration" [step]="step">
 </app-time-period-picker>
-<app-location-picker #locationpicker [(result)]="searchParams.location"></app-location-picker>
+<app-location-picker #locationpicker (resultChange)="onLocationChange($event)" [result]="searchParams.location"></app-location-picker>
 
 <div class="footer" fxLayout="row" fxLayoutAlign="center center">
   <button mat-flat-button color="primary" (click)="search()"

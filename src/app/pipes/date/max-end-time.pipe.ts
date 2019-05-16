@@ -2,7 +2,8 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {DateTime, Duration} from 'luxon';
 
 @Pipe({
-  name: 'maxEndTime'
+  name: 'maxEndTime',
+  pure: false
 })
 export class MaxEndTimePipe implements PipeTransform {
 

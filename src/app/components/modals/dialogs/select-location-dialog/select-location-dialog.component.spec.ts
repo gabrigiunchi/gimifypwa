@@ -15,6 +15,7 @@ import {of} from 'rxjs';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CityNamePipe} from 'src/app/pipes/city-name.pipe';
 
 describe('SelectLocationDialogComponent', () => {
   let component: SelectLocationDialogComponent;
@@ -22,7 +23,7 @@ describe('SelectLocationDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SelectLocationDialogComponent],
+      declarations: [SelectLocationDialogComponent, CityNamePipe],
       imports: [
         BrowserAnimationsModule,
         MatProgressSpinnerModule,

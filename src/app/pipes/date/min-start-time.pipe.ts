@@ -3,7 +3,8 @@ import {DateTime} from 'luxon';
 import {DateService} from 'src/app/services/utils/date.service';
 
 @Pipe({
-  name: 'minStartTime'
+  name: 'minStartTime',
+  pure: false
 })
 export class MinStartTimePipe implements PipeTransform {
 
