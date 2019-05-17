@@ -1,12 +1,14 @@
 <div class="container" fxLayout="column" fxLayoutGap="2rem">
-  <h1 class="mat-title">Login</h1>
+  <h1>Login</h1>
   <form [formGroup]="loginForm" fxLayout="column" fxLayoutGap="1rem">
-    <mat-form-field>
-      <input matInput placeholder="Username" type="email" formControlName="username">
+    <mat-form-field appearance="standard">
+      <mat-label>Username</mat-label>
+      <input matInput type="email" formControlName="username">
     </mat-form-field>
 
-    <mat-form-field>
-      <input matInput placeholder="Password" type="password" formControlName="password">
+    <mat-form-field appearance="standard">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
     </mat-form-field>
   </form>
 
