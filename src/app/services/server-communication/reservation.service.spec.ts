@@ -4,6 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {of} from 'rxjs';
 import {MatNativeDateModule} from '@angular/material';
 import {TestConstants} from 'src/app/test-constants';
+import {Settings} from 'luxon';
 
 describe('ReservationService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -13,6 +14,7 @@ describe('ReservationService', () => {
   let params: ReservationSearchParams;
 
   beforeEach(() => {
+    Settings.defaultZoneName = 'Europe/Rome';
     params = {
       date: '2019-05-04',
       startHour: '10:00',

@@ -1,4 +1,5 @@
 import * as p from '../../package.json';
+import {Duration} from 'luxon';
 
 export const CONSTANTS = {
   VERSION: p.version,
@@ -53,7 +54,8 @@ export const CONSTANTS = {
   NEW_RESERVATION_MIN_TIME: '00:00',
   NEW_RESERVATION_MAX_TIME: '23:40',
   RESERVATION_TIME_SLOT_IN_MINUTES: 20,
-  RESERVATION_THRESHOLD: 14,
+  RESERVATION_THRESHOLD: Duration.fromObject({days: 14}),
+  RESERVATION_CANCELLATION_LIMIT: Duration.fromObject({minutes: 20}),
 
   BASE_URL: 'https://backendtesi.eu-gb.mybluemix.net/api/v1/',
   ALIVE_URL: 'alive',

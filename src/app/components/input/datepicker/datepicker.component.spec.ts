@@ -12,6 +12,7 @@ import {
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
+import {DateTime, Settings} from 'luxon';
 
 describe('DatepickerComponent', () => {
   let component: DatepickerComponent;
@@ -44,5 +45,13 @@ describe('DatepickerComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should be agnostic to timezones', () => {
+    Settings.defaultZoneName = 'UTC';
+    component.date = DateTime.local().toISODate();
+    const current = DateTime.local().toISODate();
+    Settings.defaultZoneName = 'America/New_York';
+    expect(component.date).toBe(current);
   });
 });

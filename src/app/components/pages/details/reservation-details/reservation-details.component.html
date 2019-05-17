@@ -21,11 +21,11 @@
     </mat-list-item>
     <mat-list-item>
       <mat-icon matListIcon>place</mat-icon>
-      <h3 matLine>{{reservation.asset.gym.address}}, {{reservation.asset.gym.city.name | titlecase}}</h3>
+      <h3 matLine>{{reservation.asset.gym.address}}, {{reservation.asset.gym.city.name}}</h3>
     </mat-list-item>
   </mat-list>
 
-  <div class="footer" fxLayout="row" fxLayoutAlign="center center">
+  <div *ngIf="canDelete(reservation)" class="footer" fxLayout="row" fxLayoutAlign="center center">
     <button *ngIf="!isDeleting" mat-flat-button color="warn" (click)="onDeleteClick(reservation)">DELETE</button>
     <mat-spinner *ngIf="isDeleting" diameter="25"></mat-spinner>
   </div>

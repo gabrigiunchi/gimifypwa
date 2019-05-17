@@ -1,7 +1,12 @@
 import {DateTimePipe} from './datetime.pipe';
 import {CONSTANTS} from '../../constants';
+import {Settings} from 'luxon';
 
 describe('DateTimePipe', () => {
+  beforeEach(() => {
+    Settings.defaultZoneName = 'Europe/Rome';
+  });
+
   it('create an instance', () => {
     const pipe = new DateTimePipe();
     expect(pipe).toBeTruthy();

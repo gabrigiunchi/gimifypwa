@@ -8,7 +8,7 @@
     <cdk-virtual-scroll-viewport [itemSize]="cities.length">
       <mat-radio-group [(ngModel)]="selected" fxLayout="column" fxLayoutGap="2rem">
         <mat-radio-button *cdkVirtualFor="let city of cities" [value]="city">
-          {{city.name | titlecase}}
+          {{city.name}}
         </mat-radio-button>
       </mat-radio-group>
     </cdk-virtual-scroll-viewport>

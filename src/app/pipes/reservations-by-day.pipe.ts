@@ -13,7 +13,7 @@ export class ReservationsByDayPipe implements PipeTransform {
       reservations
         .sort((a, b) => a.start.localeCompare(b.start) * (ascending ? 1 : -1))
         .forEach(reservation => {
-          const day = DateTime.fromISO(reservation.start).setZone(reservation.asset.gym.city.zoneId).toISODate();
+          const day = DateTime.fromISO(reservation.start, {zone: reservation.asset.gym.city.zoneId}).toISODate();
 
           if (!result.has(day)) {
             result.set(day, []);

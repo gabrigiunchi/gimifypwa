@@ -1,6 +1,7 @@
 import {ReservationsByDayPipe} from './reservations-by-day.pipe';
 import {TestConstants} from '../test-constants';
 import {Reservation} from '../model/entities/reservation';
+import {Settings} from 'luxon';
 
 describe('ReservationsByDayPipe', () => {
   let reservations: Reservation[] = [];
@@ -55,6 +56,37 @@ describe('ReservationsByDayPipe', () => {
     expect(result.get('2019-05-14').map(r => r.id)).toEqual([2]);
     expect(result.get('2019-05-15').map(r => r.id)).toEqual([3, 1]);
     expect(result.get('2019-05-16').map(r => r.id)).toEqual([4]);
+  });
+
+  it('the result should be the same regardless of the timezone of the device', () => {
+    reservations[0].asset.gym.city.zoneId = 'Europe/Rome';
+    reservations[1].asset.gym.city.zoneId = 'America/New_York';
+    reservations[2].asset.gym.city.zoneId = 'UTC';
+    reservations[3].asset.gym.city.zoneId = 'UTC';
+    const pipe = new ReservationsByDayPipe();
+
+    const expectFn = (result: Map<string, Reservation[]>) => {
+      expect(result.size).toBe(3);
+      expect(Array.from(result.keys())).toEqual(['2019-05-14', '2019-05-15', '2019-05-16']);
+      expect(result.get('2019-05-14').map(r => r.id)).toEqual([2]);
+      expect(result.get('2019-05-15').map(r => r.id)).toEqual([3, 1]);
+      expect(result.get('2019-05-16').map(r => r.id)).toEqual([4]);
+    };
+
+    Settings.defaultZoneName = 'UTC';
+    expectFn(pipe.transform(reservations));
+
+    Settings.defaultZoneName = 'Europe/London';
+    expectFn(pipe.transform(reservations));
+
+    Settings.defaultZoneName = 'Europe/Rome';
+    expectFn(pipe.transform(reservations));
+
+    Settings.defaultZoneName = 'America/Los_Angeles';
+    expectFn(pipe.transform(reservations));
+
+    Settings.defaultZoneName = 'America/New_York';
+    expectFn(pipe.transform(reservations));
   });
 
   it('should group reservations by day in descending order', () => {

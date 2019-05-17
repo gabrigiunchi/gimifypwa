@@ -11,11 +11,11 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
       <mat-icon>place</mat-icon>
-      <div>{{data.asset.gym.address}}, {{data.asset.gym.city.name | titlecase}}</div>
+      <div>{{data.asset.gym.address}}, {{data.asset.gym.city.name}}</div>
     </div>
     <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
       <mat-icon>calendar_today</mat-icon>
-      <div>{{data.date | dateTime: 'EEEE dd MMMM yyyy'}}</div>
+      <div>{{data.date | dateTime: 'EEEE dd MMMM yyyy':data.asset.gym.city.zoneId}}</div>
     </div>
     <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
       <mat-icon>access_time</mat-icon>

@@ -9,6 +9,8 @@ import {ConfirmationDialogComponent} from 'src/app/components/modals/dialogs/con
 import {finalize} from 'rxjs/operators';
 import {HttpErrorResponse} from '@angular/common/http';
 import {ErrorDialogComponent} from 'src/app/components/modals/dialogs/error-dialog/error-dialog.component';
+import {DateTime} from 'luxon';
+import {CONSTANTS} from 'src/app/constants';
 
 @Component({
   selector: 'app-reservation-details',
@@ -29,8 +31,7 @@ export class ReservationDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
-    // this.reservation$ = this.reservationService.getMyReservationById(id);
-    this.reservation$ = of(TestConstants.mockReservations[0]);
+    this.reservation$ = this.reservationService.getMyReservationById(id);
   }
 
   onDeleteClick(reservation: Reservation) {
@@ -46,6 +47,12 @@ export class ReservationDetailsComponent implements OnInit {
         this.deleteReservation(reservation);
       }
     });
+  }
+
+  canDelete(reservation: Reservation): boolean {
+    const zoneId = reservation.asset.gym.city.zoneId;
+    return DateTime.local().setZone(zoneId).plus(CONSTANTS.RESERVATION_CANCELLATION_LIMIT) <
+      DateTime.fromISO(reservation.start, {zone: zoneId});
   }
 
   private deleteReservation(reservation: Reservation) {
