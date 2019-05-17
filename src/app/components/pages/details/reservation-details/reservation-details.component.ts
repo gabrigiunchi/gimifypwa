@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {Reservation} from 'src/app/model/entities/reservation';
-import {TestConstants} from 'src/app/test-constants';
 import {MatDialog} from '@angular/material';
 import {ConfirmationDialogComponent} from 'src/app/components/modals/dialogs/confirmation-dialog/confirmation-dialog.component';
 import {finalize} from 'rxjs/operators';
