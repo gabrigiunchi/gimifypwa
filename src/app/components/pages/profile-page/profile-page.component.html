@@ -1,4 +1,4 @@
-<div fxFlexFill class="container" fxLayout="column" *ngIf="userInfo$ | async as userInfo; else loading">
+<div class="container" fxLayout="column" *ngIf="userInfo$ | async as userInfo; else loading">
 
   <div class="avatar-container" fxLayout="row" fxLayoutAlign="center center">
     <app-avatar routerLink="/profile/avatar" [avatar]="avatar$ | async"></app-avatar>
@@ -41,7 +41,7 @@
   </div>
 
   <div class="logout" fxLayout="row" fxLayoutAlign="center center">
-    <button mat-flat-button color="warn" (click)="logout()">Logout</button>
+    <button mat-flat-button color="warn" (click)="onLogoutClick()">Logout</button>
   </div>
 
 </div>

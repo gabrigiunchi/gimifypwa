@@ -11,7 +11,8 @@ import {
   MatProgressSpinnerModule,
   MatSlideToggleModule,
   MatSnackBarModule,
-  NativeDateModule
+  NativeDateModule,
+  MatDialogModule
 } from '@angular/material';
 import {LoadingComponent} from '../../layout/loading/loading.component';
 import {RouterModule} from '@angular/router';
@@ -37,6 +38,7 @@ describe('ProfilePageComponent', () => {
         MatIconModule,
         MatSlideToggleModule,
         MatSnackBarModule,
+        MatDialogModule,
         MatDividerModule,
         MatProgressSpinnerModule,
         RouterModule.forRoot([]),

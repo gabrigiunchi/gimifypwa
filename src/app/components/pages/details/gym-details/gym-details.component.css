@@ -15,6 +15,6 @@ mat-tab-group {
   flex-grow: 1;
 }
 
-app-comments-tab {
+app-comments-tab, app-details-tab {
   height: 100%;
 }

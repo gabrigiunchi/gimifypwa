@@ -1,7 +1,7 @@
 <div class="container" fxLayout="row" fxLayoutAlign="start center" matRipple (click)="pickGym()">
   <mat-icon color="primary">favorite</mat-icon>
   <div style="padding: 0 0.5rem" fxFlex="grow">Favorite gym</div>
-  <div *ngIf="gym">
+  <div fxFlex="grow" *ngIf="gym" fxLayout="row" fxLayoutAlign="end center">
     {{gym.name}}
   </div>
 </div>

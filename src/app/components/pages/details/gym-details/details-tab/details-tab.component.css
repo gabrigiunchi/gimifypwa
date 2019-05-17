@@ -6,3 +6,7 @@ h2 {
 .container {
   padding: 1rem;
 }
+
+cdk-virtual-scroll-viewport {
+  height: 100%;
+}
