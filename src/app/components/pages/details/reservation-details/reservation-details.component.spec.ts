@@ -13,7 +13,6 @@ import {
 } from '@angular/material';
 import {ToolbarComponent} from 'src/app/components/layout/toolbar/toolbar.component';
 import {MapComponent} from 'src/app/components/layout/map/map.component';
-import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';
 import {ReservationTimePipe} from 'src/app/pipes/date/reservation-time.pipe';
@@ -28,7 +27,6 @@ describe('ReservationDetailsComponent', () => {
         ReservationDetailsComponent,
         ToolbarComponent,
         MapComponent,
-        AssetKindNamePipe,
         ReservationTimePipe,
         DateTimePipe,
         LoadingComponent

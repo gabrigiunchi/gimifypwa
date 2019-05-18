@@ -9,7 +9,6 @@ import {ResultMapComponent} from './result-map/result-map.component';
 import {ResultListComponent} from './result-list/result-list.component';
 import {LoadingComponent} from '../../layout/loading/loading.component';
 import {ResultListItemComponent} from './result-list/result-list-item/result-list-item.component';
-import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MessageComponent} from '../../layout/message/message.component';
 import {AgmCoreModule} from '@agm/core';
@@ -30,7 +29,6 @@ describe('ResultPageComponent', () => {
         ResultMapComponent,
         MapComponent,
         ResultListItemComponent,
-        AssetKindNamePipe,
         AssetsToGymsPipe,
         MessageComponent
       ],

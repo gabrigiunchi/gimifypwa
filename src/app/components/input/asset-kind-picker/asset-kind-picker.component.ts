@@ -3,7 +3,6 @@ import {AssetKind} from 'src/app/model/entities/asset-kind';
 import {AssetKindService} from 'src/app/services/server-communication/asset-kind.service';
 import {SelectionDialogComponent, SelectionDialogData} from '../../modals/dialogs/selection-dialog/selection-dialog.component';
 import {MatDialog} from '@angular/material';
-import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 
 @Component({
   selector: 'app-asset-kind-picker',
@@ -28,7 +27,7 @@ export class AssetKindPickerComponent implements OnInit {
     const dialogData: SelectionDialogData = {
       choices: this.assetKinds,
       title: 'Select asset kind',
-      toStringFunction: (assetKind: AssetKind) => new AssetKindNamePipe().transform(assetKind)
+      toStringFunction: (assetKind: AssetKind) => assetKind.name
     };
 
     this.dialog.open(SelectionDialogComponent, {

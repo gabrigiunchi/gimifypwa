@@ -31,7 +31,6 @@ import {FabButtonComponent} from 'src/app/components/layout/fab-button/fab-butto
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {DataUrlPipe} from 'src/app/pipes/data-url.pipe';
 import {AvatarPipe} from 'src/app/pipes/avatar.pipe';
-import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 import {TestConstants} from 'src/app/test-constants';
 import {KindIconPipe} from 'src/app/pipes/kind-icon.pipe';
 import {AgmCoreModule} from '@agm/core';
@@ -56,7 +55,6 @@ describe('GymDetailsComponent', () => {
         PhotosTabComponent,
         MessageComponent,
         CommentsTabComponent,
-        AssetKindNamePipe,
         AvatarPipe,
         SafeUrlPipe,
         KindIconPipe,

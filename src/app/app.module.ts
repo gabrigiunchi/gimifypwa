@@ -101,7 +101,6 @@ import {ResultPageComponent} from './components/pages/result-page/result-page.co
 import {ResultListComponent} from './components/pages/result-page/result-list/result-list.component';
 import {ResultMapComponent} from './components/pages/result-page/result-map/result-map.component';
 import {ResultListItemComponent} from './components/pages/result-page/result-list/result-list-item/result-list-item.component';
-import {AssetKindNamePipe} from './pipes/asset-kind-name.pipe';
 import {MyCommentsComponent} from './components/pages/my-comments/my-comments.component';
 import {AgmCoreModule} from '@agm/core';
 // tslint:disable-next-line: max-line-length
@@ -176,7 +175,6 @@ import {GymListComponent} from './components/layout/gym-list/gym-list.component'
     ResultListComponent,
     ResultMapComponent,
     ResultListItemComponent,
-    AssetKindNamePipe,
     MyCommentsComponent,
     ConfirmReservationDialogComponent,
     AssetListDialogComponent,

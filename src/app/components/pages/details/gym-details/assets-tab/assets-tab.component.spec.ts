@@ -6,7 +6,6 @@ import {LoadingComponent} from 'src/app/components/layout/loading/loading.compon
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {MessageComponent} from 'src/app/components/layout/message/message.component';
-import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 import {KindIconPipe} from 'src/app/pipes/kind-icon.pipe';
 
 describe('AssetsTabComponent', () => {
@@ -20,7 +19,6 @@ describe('AssetsTabComponent', () => {
         AssetListComponent,
         LoadingComponent,
         MessageComponent,
-        AssetKindNamePipe,
         KindIconPipe
       ],
       imports: [

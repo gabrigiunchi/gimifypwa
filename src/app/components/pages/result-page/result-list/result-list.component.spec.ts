@@ -3,7 +3,6 @@ import {ResultListComponent} from './result-list.component';
 import {ResultListItemComponent} from './result-list-item/result-list-item.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatCardModule, MatDialogModule, MatIconModule, MatProgressSpinnerModule, NativeDateModule} from '@angular/material';
-import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';
 import {MessageComponent} from 'src/app/components/layout/message/message.component';
 import {RouterModule} from '@angular/router';
@@ -18,7 +17,6 @@ describe('ResultListComponent', () => {
       declarations: [
         ResultListComponent,
          ResultListItemComponent,
-         AssetKindNamePipe,
          LoadingComponent,
          MessageComponent
         ],

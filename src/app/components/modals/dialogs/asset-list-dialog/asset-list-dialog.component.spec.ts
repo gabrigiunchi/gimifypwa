@@ -15,7 +15,6 @@ import {TestConstants} from 'src/app/test-constants';
 import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';
 import {RouterModule} from '@angular/router';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {AssetKindNamePipe} from 'src/app/pipes/asset-kind-name.pipe';
 import {KindIconPipe} from 'src/app/pipes/kind-icon.pipe';
 
 describe('AssetListDialogComponent', () => {
@@ -34,7 +33,6 @@ describe('AssetListDialogComponent', () => {
       declarations: [
         AssetListDialogComponent,
         LoadingComponent,
-        AssetKindNamePipe,
         KindIconPipe
       ],
       imports: [
