@@ -1,4 +1,4 @@
-<agm-map [style.height]="height" [zoom]="15" [fitBounds]="myPosition !== undefined" [zoomControl]="false"
+<agm-map [style.height]="height" [maxZoom]="15" [zoom]="15" [fitBounds]="myPosition !== undefined" [zoomControl]="false"
   [streetViewControl]="false" [latitude]="lat" [longitude]="lng">
 
   <agm-marker *ngIf="myPosition" [agmFitBounds]="true" [markerClickable]="false" [latitude]="myPosition.lat"

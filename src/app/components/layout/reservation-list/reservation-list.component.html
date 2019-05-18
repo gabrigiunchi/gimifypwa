@@ -7,8 +7,7 @@
         <h4 matLine><span class="mat-body-strong">{{reservation.asset.name}}</span></h4>
         <p matLine>{{reservation | reservationTime:' - '}}</p>
         <p matLine>
-          <span>{{reservation.asset.gym.name}},{{reservation.asset.gym.address}}
-            {{reservation.asset.gym.city.name}}</span>
+          <span>{{reservation.asset.gym.name}} ({{reservation.asset.gym.city.name}})</span>
         </p>
       </mat-list-item>
     </div>

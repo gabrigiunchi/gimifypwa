@@ -5,7 +5,7 @@ import {Observable, of} from 'rxjs';
 import {AvatarService} from 'src/app/services/server-communication/avatar.service';
 import {LoginService} from 'src/app/services/server-communication/login.service';
 import {SnackbarService} from 'src/app/services/snackbar.service';
-import {MatSlideToggleChange, MatDialog} from '@angular/material';
+import {MatDialog, MatSlideToggleChange} from '@angular/material';
 import {finalize} from 'rxjs/operators';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {CommentService} from 'src/app/services/server-communication/comment.service';

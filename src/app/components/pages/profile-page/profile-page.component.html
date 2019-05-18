@@ -8,7 +8,7 @@
     <div class="name">{{userInfo.name}} {{userInfo.surname}}</div>
     <div>{{userInfo.email}}</div>
 
-    <div class="count" fxLayout="row" fxLayoutGap="5rem">
+    <div class="count" fxLayout="row" fxLayoutGap="5rem" routerLink="/reservations">
       <div class="count-item">
         <div class="count-item-title">Reservations</div>
         <div class="count-item-value">
@@ -45,7 +45,6 @@
   </div>
 
 </div>
-
 
 <ng-template #loading>
   <app-loading></app-loading>

@@ -7,7 +7,7 @@ import {Component, Input} from '@angular/core';
 })
 export class RatingBarComponent {
 
-  static readonly FILL_COLOR = 'yellow';
+  static readonly FILL_COLOR = '#f4bc42';
   static readonly EMPTY_COLOR = 'grey';
 
   @Input() max = 5;

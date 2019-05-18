@@ -6,13 +6,13 @@ import {of} from 'rxjs';
 import {AvatarComponent} from '../../layout/avatar/avatar.component';
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {
+  MatDialogModule,
   MatDividerModule,
   MatIconModule,
   MatProgressSpinnerModule,
   MatSlideToggleModule,
   MatSnackBarModule,
-  NativeDateModule,
-  MatDialogModule
+  NativeDateModule
 } from '@angular/material';
 import {LoadingComponent} from '../../layout/loading/loading.component';
 import {RouterModule} from '@angular/router';

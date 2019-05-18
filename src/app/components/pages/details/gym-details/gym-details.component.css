@@ -3,6 +3,10 @@
   height: 5.5rem;
 }
 
+.name-container {
+  padding-right: 2.5rem;
+}
+
 h1 {
   margin: 0;
 }
