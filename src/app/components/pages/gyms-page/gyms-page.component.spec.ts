@@ -1,6 +1,14 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {GymFilterParams, GymsPageComponent} from './gyms-page.component';
-import {MatChipsModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule, MatProgressSpinnerModule} from '@angular/material';
+import {
+  MatChipsModule,
+  MatDialogModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatProgressSpinnerModule,
+  MatTabsModule
+} from '@angular/material';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {LoadingComponent} from '../../layout/loading/loading.component';
@@ -14,6 +22,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TestConstants} from 'src/app/test-constants';
 import {GymListComponent} from '../../layout/gym-list/gym-list.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MapComponent} from '../../layout/map/map.component';
+import {AgmCoreModule} from '@agm/core';
 
 describe('GymsPageComponent', () => {
   let component: GymsPageComponent;
@@ -48,7 +58,8 @@ describe('GymsPageComponent', () => {
         GymsPageComponent,
         LoadingComponent,
         SearchbarComponent,
-        GymListComponent
+        GymListComponent,
+        MapComponent
       ],
       imports: [
         BrowserAnimationsModule,
@@ -60,6 +71,10 @@ describe('GymsPageComponent', () => {
         MatIconModule,
         MatInputModule,
         FormsModule,
+        AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyBiClW-tzn_XUpFDNs6c5PjwGtE61xaW6A'
+        }),
+        MatTabsModule,
         ReactiveFormsModule,
         MatDialogModule,
         MatChipsModule
@@ -108,7 +123,7 @@ describe('GymsPageComponent', () => {
   it('should not clear the cache if a gym is selected', () => {
     const cacheService: GymService = TestBed.get(GymService);
     const spyOnCache = spyOn(cacheService, 'clear').and.callThrough();
-    component.onGymClick();
+    component.onGymClick(TestConstants.mockGym);
     component.ngOnDestroy();
     expect(spyOnCache).not.toHaveBeenCalled();
     expect(cacheService.isPresent).toBe(true);

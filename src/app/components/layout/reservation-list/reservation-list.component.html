@@ -4,7 +4,7 @@
       <h3 matSubheader>{{day.key | dateTime: 'dd MMMM yyyy'}}</h3>
       <mat-list-item routerLink="/reservations/{{reservation.id}}" *ngFor="let reservation of day.value">
         <mat-icon matListIcon>book</mat-icon>
-        <h4 matLine><span class="mat-body-strong">{{reservation.asset.name}}</span></h4>
+        <h4 matLine><span class="mat-body-strong">{{reservation.asset.name}} ({{reservation.asset.kind.name}})</span></h4>
         <p matLine>{{reservation | reservationTime:' - '}}</p>
         <p matLine>
           <span>{{reservation.asset.gym.name}} ({{reservation.asset.gym.city.name}})</span>

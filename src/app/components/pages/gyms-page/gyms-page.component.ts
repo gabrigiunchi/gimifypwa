@@ -6,6 +6,7 @@ import {FilterResult} from 'src/app/model/filter-result';
 import {City} from 'src/app/model/entities/city';
 import {finalize} from 'rxjs/operators';
 import {SelectCityDialogComponent} from '../../modals/dialogs/select-city-dialog/select-city-dialog.component';
+import {Router} from '@angular/router';
 
 export interface GymFilterParams {
   name: string;
@@ -29,6 +30,7 @@ export class GymsPageComponent implements OnInit, OnDestroy {
   private clearCache = true;
 
   constructor(
+    private router: Router,
     private dialog: MatDialog,
     private gymService: GymService) {
   }
@@ -55,9 +57,10 @@ export class GymsPageComponent implements OnInit, OnDestroy {
     }
   }
 
-  onGymClick() {
+  onGymClick(gym: Gym) {
     this.gymService.element = this.filterResult;
     this.clearCache = false;
+    this.router.navigate(['/gyms', gym.id]);
   }
 
   filter() {
@@ -111,6 +114,10 @@ export class GymsPageComponent implements OnInit, OnDestroy {
   set cityFilter(city: City) {
     this.filterResult.params.city = city;
     this.filter();
+  }
+
+  get allGyms(): Gym[] {
+    return this.filterResult.content;
   }
 
 }

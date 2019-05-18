@@ -8,6 +8,7 @@ import {Router, RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginService} from 'src/app/services/server-communication/login.service';
 import {of} from 'rxjs';
+import {CONSTANTS} from 'src/app/constants';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -45,7 +46,7 @@ describe('LoginComponent', () => {
     });
     spyOn(TestBed.get(LoginService), 'login').and.returnValue(of(true));
     component.login();
-    expect(spy).toHaveBeenCalledWith(['/home']);
+    expect(spy).toHaveBeenCalledWith([CONSTANTS.HOMEPAGE]);
   });
 
   it('should login and redirect', () => {

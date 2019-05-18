@@ -2,6 +2,15 @@
   padding: 1rem;
 }
 
-app-gym-list {
+.full-height {
+  height: 100%;
+}
+
+.title {
+  padding: 1rem;
+  margin: 0;
+}
+
+app-gym-list, app-map, mat-tab-group {
   flex-grow: 1;
 }

@@ -1,27 +1,40 @@
 <div fxFlexFill fxLayout="column">
-  <div class="header">
-    <h1>Gyms</h1>
-    <div fxLayout="row" fxLayoutAlign="start center">
-      <app-searchbar [(value)]="nameFilter" fxFlex="grow"></app-searchbar>
-      <button mat-icon-button (click)="pickCity()" style="margin-left: 0.5rem">
-        <mat-icon>location_city</mat-icon>
-      </button>
-    </div>
-    <mat-chip-list *ngIf="cityFilter">
-      <mat-chip removable="true" (removed)="cityFilter=undefined">
-        {{cityFilter.name}}
-        <mat-icon matChipRemove>cancel</mat-icon>
-      </mat-chip>
-    </mat-chip-list>
 
-  </div>
-  <div *ngIf="!isLoading" fxFlex="grow">
-    <app-gym-list [gyms]="result" (gymClick)="onGymClick()"></app-gym-list>
-    <div *ngIf="result.length === 0" fxLayout="row" fxLayoutAlign="center center">
-      <h1>Nothing found</h1>
-    </div>
-  </div>
+  <h1 class="title mat-display-1">Gyms</h1>
 
-  <app-loading *ngIf="isLoading"></app-loading>
+  <mat-tab-group dynamicHeight="true" mat-align-tabs="center" fxFlex="grow">
+    <mat-tab label="List">
+      <div class="full-height" fxLayout="column">
+        <div class="header">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <app-searchbar [(value)]="nameFilter" fxFlex="grow"></app-searchbar>
+            <button mat-icon-button (click)="pickCity()" style="margin-left: 0.5rem">
+              <mat-icon>location_city</mat-icon>
+            </button>
+          </div>
+          <mat-chip-list *ngIf="cityFilter">
+            <mat-chip removable="true" (removed)="cityFilter=undefined">
+              {{cityFilter.name}}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+
+        </div>
+        <div *ngIf="!isLoading" fxFlex="grow">
+          <app-gym-list [gyms]="result" (gymClick)="onGymClick($event)"></app-gym-list>
+          <div *ngIf="result.length === 0" fxLayout="row" fxLayoutAlign="center center">
+            <h1>Nothing found</h1>
+          </div>
+        </div>
+
+        <app-loading *ngIf="isLoading"></app-loading>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Map">
+      <app-map [gyms]="allGyms" (gymClick)="onGymClick($event)"></app-map>
+    </mat-tab>
+  </mat-tab-group>
+
 
 </div>
