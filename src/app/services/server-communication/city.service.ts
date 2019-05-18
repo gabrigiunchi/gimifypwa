@@ -16,4 +16,8 @@ export class CityService {
   get cities(): Observable<City[]> {
     return this.http.get<City[]>(this.urlService.getRestUrl(CONSTANTS.CITIES), this.urlService.authenticationHeader);
   }
+
+  getCityById(id: number): Observable<City> {
+    return this.http.get<City>(this.urlService.getRestUrl(`${CONSTANTS.CITIES}/${id}`), this.urlService.authenticationHeader);
+  }
 }

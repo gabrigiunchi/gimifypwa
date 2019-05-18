@@ -4,6 +4,8 @@ import {ReservationService} from 'src/app/services/server-communication/reservat
 import {Observable} from 'rxjs';
 import {Asset} from 'src/app/model/entities/asset';
 import {DateService} from 'src/app/services/utils/date.service';
+import {CityService} from 'src/app/services/server-communication/city.service';
+import {Settings} from 'luxon';
 
 
 @Component({
@@ -24,6 +26,7 @@ export class ResultPageComponent implements OnInit, OnDestroy {
   clearCache = true;
 
   constructor(
+    private cityService: CityService,
     private dateService: DateService,
     private activatedRoute: ActivatedRoute,
     private reservationService: ReservationService) {
@@ -37,12 +40,16 @@ export class ResultPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const completeStartDate = this.dateService.build(this.date, this.from);
-    const completeEndDate = this.dateService.build(this.date, this.to);
+    this.cityService.getCityById(+this.cityId).subscribe(city => {
+      Settings.defaultZoneName = city.zoneId;
+      const completeStartDate = this.dateService.build(this.date, this.from);
+      const completeEndDate = this.dateService.build(this.date, this.to);
 
-    this.result$ = this.gymId !== undefined ?
-      this.reservationService.getAvailableAssetsInGym(+this.kindId, +this.gymId, completeStartDate, completeEndDate) :
-      this.reservationService.getAvailableAssetsInCity(+this.kindId, +this.cityId, completeStartDate, completeEndDate);
+      this.result$ = this.gymId !== undefined ?
+        this.reservationService.getAvailableAssetsInGym(+this.kindId, +this.gymId, completeStartDate, completeEndDate) :
+        this.reservationService.getAvailableAssetsInCity(+this.kindId, +this.cityId, completeStartDate, completeEndDate);
+    });
+
   }
 
   ngOnDestroy() {
