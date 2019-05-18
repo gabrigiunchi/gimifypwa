@@ -4,6 +4,7 @@ import {AssetListDialogData} from '../../modals/dialogs/asset-list-dialog/asset-
 import {TestConstants} from 'src/app/test-constants';
 import {ErrorDialogComponent} from '../../modals/dialogs/error-dialog/error-dialog.component';
 import {DateTime} from 'luxon';
+import {CONSTANTS} from 'src/app/constants';
 
 @Component({
   selector: 'app-playground',
@@ -12,6 +13,7 @@ import {DateTime} from 'luxon';
 })
 export class PlaygroundComponent implements OnInit {
 
+  readonly version = CONSTANTS.VERSION;
   minDate = DateTime.local().toISODate();
   maxDate = DateTime.local().plus({days: 14}).toISODate();
 

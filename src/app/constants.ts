@@ -18,7 +18,8 @@ export const CONSTANTS = {
     {icon: 'search', link: '/search'},
     {icon: 'book', link: '/reservations'},
     {icon: 'fitness_center', link: '/gyms'},
-    {icon: 'person', link: '/profile'}
+    {icon: 'person', link: '/profile'},
+    {icon: 'whatshot', link: '/playground'}
   ],
 
   /**
