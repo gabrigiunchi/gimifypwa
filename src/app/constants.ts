@@ -22,6 +22,8 @@ export const CONSTANTS = {
     {icon: 'whatshot', link: '/playground'}
   ],
 
+  HOMEPAGE: '/reservations',
+
   /**
    * Size of the image cropper
    */

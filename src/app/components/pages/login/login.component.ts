@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {LoginService} from 'src/app/services/server-communication/login.service';
 import {SnackbarService} from 'src/app/services/snackbar.service';
 import {finalize} from 'rxjs/operators';
+import {CONSTANTS} from 'src/app/constants';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         loggedIn => {
           if (loggedIn) {
-            const url = this.loginService.redirectUrl ? this.loginService.redirectUrl : '/home';
+            const url = this.loginService.redirectUrl ? this.loginService.redirectUrl : CONSTANTS.HOMEPAGE;
             this.router.navigate([url]);
           }
         },
