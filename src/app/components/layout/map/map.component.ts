@@ -13,9 +13,6 @@ export class MapComponent implements OnDestroy, AfterViewInit {
 
   readonly myPositionIcon = CONSTANTS.MY_POSITION_ICON;
 
-  @Input() height = '100%';
-  @Input() showMyPositionControl = true;
-
   @Input() gyms: Gym[] = [];
   @Output() gymClick = new EventEmitter<Gym>();
   @Input() gymIcon = CONSTANTS.PLACE_ICON;
@@ -24,10 +21,13 @@ export class MapComponent implements OnDestroy, AfterViewInit {
   @Output() reservationClick = new EventEmitter<Reservation>();
   @Input() reservationIcon = CONSTANTS.PLACE_ICON;
 
+  @Input() height = '100%';
+  @Input() showMyPositionControl = true;
+  @Input() fitBounds = true;
   @ViewChild(AgmMap) map: AgmMap;
   myPosition: LatLngLiteral;
-  lat = 45.006273;
-  lng = 10.603579;
+  @Input() lat = 45.006273;
+  @Input() lng = 10.603579;
   private watchId: number; // subscription to navigator.geolocation
 
   ngAfterViewInit() {

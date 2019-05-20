@@ -1,6 +1,7 @@
 <div class="container" fxLayout="column" *ngIf="reservation$ | async as reservation; else loading">
   <app-toolbar title="Reservation #{{reservation.id}}" back="/reservations"></app-toolbar>
-  <app-map [showMyPositionControl]="false" height="15rem" [reservations]="[reservation]"></app-map>
+  <app-map [lat]="reservation.asset.gym.latitude" [lng]="reservation.asset.gym.longitude"
+    [showMyPositionControl]="false" height="15rem" [reservations]="[reservation]"></app-map>
 
   <mat-list>
     <mat-list-item>

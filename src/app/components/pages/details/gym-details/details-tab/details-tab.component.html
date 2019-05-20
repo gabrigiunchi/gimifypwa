@@ -1,6 +1,6 @@
 <div fxFlex="grow" *ngIf="gym && timetable$ | async as timetable; else loading" class="container">
   <cdk-virtual-scroll-viewport itemSize="1">
-    <app-map height="15rem" [gyms]="[gym]" [showMyPositionControl]="false"></app-map>
+    <app-map [fitBounds]="false" [lat]="gym.latitude" [lng]="gym.longitude" height="15rem" [gyms]="[gym]" [showMyPositionControl]="false"></app-map>
     <h2>Address</h2>
     <div>{{gym.address}}, {{gym.city.name}}</div>
 
