@@ -19,7 +19,7 @@ export const CONSTANTS = {
     {icon: 'book', link: '/reservations'},
     {icon: 'fitness_center', link: '/gyms'},
     {icon: 'person', link: '/profile'},
-    {icon: 'whatshot', link: '/playground'}
+    // {icon: 'whatshot', link: '/playground'}
   ],
 
   HOMEPAGE: '/reservations',
