@@ -16,7 +16,11 @@ export class DatepickerComponent {
   @Input() max = DateTime.local().plus(CONSTANTS.RESERVATION_THRESHOLD).toISODate();
 
   onDateChange(event: MatDatepickerInputEvent<Date>) {
-    this.date = DateTime.fromISO(event.value.toISOString()).toISODate();
+    this.date = this.dateToDateTime(event.value).toISODate();
     this.dateChange.emit(this.date);
+  }
+
+  private dateToDateTime(date: Date): DateTime {
+    return DateTime.fromObject({day: date.getDate(), month: date.getMonth() + 1, year: date.getFullYear()});
   }
 }

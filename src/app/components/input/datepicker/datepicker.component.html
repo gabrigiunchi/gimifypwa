@@ -5,6 +5,6 @@
     <div fxFlex="grow" fxLayoutAlign="end center">{{date| dateTime:'dd MMMM yyyy'}}</div>
   </div>
   <input hidden [value]="date" (dateChange)="onDateChange($event)" matInput [min]="min" [max]="max"
-    [matDatepicker]="picker">
-  <mat-datepicker #datepicker touchUi #picker></mat-datepicker>
+    [matDatepicker]="datepicker">
+  <mat-datepicker #datepicker touchUi></mat-datepicker>
 </div>
