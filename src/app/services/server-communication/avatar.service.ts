@@ -134,7 +134,7 @@ export class AvatarService {
     console.log('Resetting the avatar....');
     this.clearCache();
 
-    return this.http.delete(this.urlService.getRestUrl(CONSTANTS.MY_AVATAR))
+    return this.http.delete(this.urlService.getRestUrl(CONSTANTS.MY_AVATAR), this.urlService.authenticationHeader)
       .pipe(tap(() => {
         console.log('Avatar reset, download the default one....');
         this.downloadMyAvatar().subscribe(result => this.avatarSubject.next(result));

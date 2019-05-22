@@ -1,15 +1,17 @@
-<app-toolbar title="My Comments" back="/profile"></app-toolbar>
-<div *ngIf="currentPage !== undefined; else loading" class="body">
-  <cdk-virtual-scroll-viewport itemSize="comments.length">
-    <app-comment-list [(comments)]="comments"></app-comment-list>
-    <app-message *ngIf="!isLoading && comments.length === 0" message="You have not made any comments"></app-message>
+<div fxFlexFill fxLayout="column">
+  <app-toolbar title="My Comments" back="/profile"></app-toolbar>
+  <div fxFlex="grow" *ngIf="currentPage !== undefined; else loading" class="body">
+    <cdk-virtual-scroll-viewport itemSize="comments.length">
+      <app-comment-list [(comments)]="comments"></app-comment-list>
+      <app-message *ngIf="!isLoading && comments.length === 0" message="You have not made any comments"></app-message>
 
-    <div class="load-more-container" fxLayout="row" fxLayoutAlign="center center">
-      <button *ngIf="!last && !isLoading" mat-button color="primary" (click)="loadMore()">Load more</button>
-      <mat-spinner diameter="25" *ngIf="isLoading"></mat-spinner>
-    </div>
-  </cdk-virtual-scroll-viewport>
+      <div class="load-more-container" fxLayout="row" fxLayoutAlign="center center">
+        <button *ngIf="!last && !isLoading" mat-button color="primary" (click)="loadMore()">Load more</button>
+        <mat-spinner diameter="25" *ngIf="isLoading"></mat-spinner>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
 </div>
-<ng-template #loading>
-  <app-loading></app-loading>
-</ng-template>
