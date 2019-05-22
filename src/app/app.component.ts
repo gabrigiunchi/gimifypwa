@@ -10,7 +10,9 @@ import {CONSTANTS} from './constants';
 })
 export class AppComponent {
 
-  constructor(private router: Router, private loginService: LoginService) {}
+  constructor(private router: Router, private loginService: LoginService) {
+    console.log(`Version ${CONSTANTS.VERSION}`);
+  }
 
   get isLoading(): boolean {
     return this.loginService.isLoading;
