@@ -1,11 +1,8 @@
 import {Gym} from './gym';
-import {Schedule} from './schedule';
-import {DateInterval} from './date-interval';
+import {RepeatedInterval} from './repeated-interval';
 
 export interface Timetable {
   gym: Gym;
-  openings: Schedule[];
-  closingDays: DateInterval[];
-  exceptionalOpenings: DateInterval[];
-  recurringExceptions: string;
+  openings: RepeatedInterval[];
+  closingDays: RepeatedInterval[];
 }

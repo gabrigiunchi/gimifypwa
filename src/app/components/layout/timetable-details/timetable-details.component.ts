@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Timetable} from 'src/app/model/entities/timetable';
-import {Schedule} from 'src/app/model/entities/schedule';
+import {RepeatedInterval} from 'src/app/model/entities/repeated-interval';
 
 @Component({
   selector: 'app-timetable-details',
@@ -12,9 +12,7 @@ export class TimetableDetailsComponent {
   displayedColumns: string[] = ['day', 'schedule'];
   @Input() timetable: Timetable;
 
-  get source(): Schedule[] {
-    return this.timetable.openings.sort((a, b) => a.id - b.id);
+  get source(): RepeatedInterval[] {
+    return this.timetable.openings;
   }
-
-
 }

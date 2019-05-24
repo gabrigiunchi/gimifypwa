@@ -11,6 +11,7 @@ import {DateService} from '../utils/date.service';
 import {Page} from 'src/app/model/page';
 import {SelectLocationResult} from 'src/app/components/modals/dialogs/select-location-dialog/select-location-dialog.component';
 import {CacheService} from '../cache.service';
+import {DateTime} from 'luxon';
 
 export interface ReservationSearchParams {
   location: SelectLocationResult;
@@ -38,7 +39,8 @@ export class ReservationService extends CacheService<ReservationSearchParams> {
   }
 
   get myFutureReservations(): Observable<Reservation[]> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.MY_RESERVATIONS}/future`);
+    const from = DateTime.local().toFormat(CONSTANTS.DEFAULT_DATETIME_FORMAT);
+    const url = this.urlService.getRestUrl(`${CONSTANTS.MY_RESERVATIONS}/from/${from}`);
     return this.http.get<Reservation[]>(url, this.urlService.authenticationHeader);
   }
 

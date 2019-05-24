@@ -34,11 +34,11 @@ describe('ReservationService', () => {
     const spy = spyOn(service, 'getAvailableAssets').and.returnValue(of([]));
     params.location = undefined;
     service.searchAssets(params);
-    expect(spy).toHaveBeenCalledWith(params.kind, '2019-05-04T10:00:00+0200', '2019-05-04T10:20:00+0200');
+    expect(spy).toHaveBeenCalledWith(params.kind, '2019-05-04T10:00:00+02:00', '2019-05-04T10:20:00+02:00');
 
     params.location = {city: undefined, gym: undefined};
     service.searchAssets(params);
-    expect(spy).toHaveBeenCalledWith(params.kind, '2019-05-04T10:00:00+0200', '2019-05-04T10:20:00+0200');
+    expect(spy).toHaveBeenCalledWith(params.kind, '2019-05-04T10:00:00+02:00', '2019-05-04T10:20:00+02:00');
 
   });
 
@@ -46,7 +46,7 @@ describe('ReservationService', () => {
     const service: ReservationService = TestBed.get(ReservationService);
     const spy = spyOn(service, 'getAvailableAssetsInCity').and.returnValue(of([]));
     service.searchAssets(params);
-    expect(spy).toHaveBeenCalledWith(params.kind.id, params.location.city.id, '2019-05-04T10:00:00+0200', '2019-05-04T10:20:00+0200');
+    expect(spy).toHaveBeenCalledWith(params.kind.id, params.location.city.id, '2019-05-04T10:00:00+02:00', '2019-05-04T10:20:00+02:00');
   });
 
   it('should search assets in a gym based on parameters', () => {
@@ -54,6 +54,6 @@ describe('ReservationService', () => {
     const spy = spyOn(service, 'getAvailableAssetsInGym').and.returnValue(of([]));
     params.location.gym = {id: 1, name: '', address: '', city: params.location.city, latitude: 45.0, longitude: 10.0};
     service.searchAssets(params);
-    expect(spy).toHaveBeenCalledWith(params.kind.id, params.location.gym.id, '2019-05-04T10:00:00+0200', '2019-05-04T10:20:00+0200');
+    expect(spy).toHaveBeenCalledWith(params.kind.id, params.location.gym.id, '2019-05-04T10:00:00+02:00', '2019-05-04T10:20:00+02:00');
   });
 });

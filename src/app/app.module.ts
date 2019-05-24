@@ -121,6 +121,7 @@ import {MinStartTimePipe} from './pipes/date/min-start-time.pipe';
 import {AssetsToGymsPipe} from './pipes/assets-to-gyms.pipe';
 import {ReservationTimePipe} from './pipes/date/reservation-time.pipe';
 import {GymListComponent} from './components/layout/gym-list/gym-list.component';
+import { GroupIntervalsByDayOfWeekPipe } from './pipes/group-intervals-by-day-of-week.pipe';
 
 @NgModule({
   declarations: [
@@ -192,7 +193,8 @@ import {GymListComponent} from './components/layout/gym-list/gym-list.component'
     MinStartTimePipe,
     AssetsToGymsPipe,
     ReservationTimePipe,
-    GymListComponent
+    GymListComponent,
+    GroupIntervalsByDayOfWeekPipe
   ],
   imports: [
     FormsModule,

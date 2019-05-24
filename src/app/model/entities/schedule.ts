@@ -1,7 +1,6 @@
 import {TimeInterval} from './time-interval';
 
 export interface Schedule {
-  id: number;
-  dayOfWeek: string;
+  dayOfWeek: number;
   timeIntervals: TimeInterval[];
 }
