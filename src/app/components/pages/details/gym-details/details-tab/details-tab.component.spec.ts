@@ -9,6 +9,8 @@ import {MapComponent} from 'src/app/components/layout/map/map.component';
 import {RouterModule} from '@angular/router';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {AgmCoreModule} from '@agm/core';
+import {GroupIntervalsByDayOfWeekPipe} from 'src/app/pipes/group-intervals-by-day-of-week.pipe';
+import {DayOfWeekNamePipe} from 'src/app/pipes/date/day-of-week-name.pipe';
 
 describe('DetailsTabComponent', () => {
   let component: DetailsTabComponent;
@@ -21,7 +23,9 @@ describe('DetailsTabComponent', () => {
         TimetableDetailsComponent,
         LoadingComponent,
         MapComponent,
-        TimePipe
+        TimePipe,
+        GroupIntervalsByDayOfWeekPipe,
+        DayOfWeekNamePipe
       ],
       imports: [
         MatTableModule,

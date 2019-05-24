@@ -1,4 +1,4 @@
-enum RepetitionType {
+export enum RepetitionType {
   none = 'none',
   daily = 'daily',
   weekly = 'weekly',

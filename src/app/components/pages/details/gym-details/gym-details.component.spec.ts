@@ -35,6 +35,8 @@ import {TestConstants} from 'src/app/test-constants';
 import {KindIconPipe} from 'src/app/pipes/kind-icon.pipe';
 import {AgmCoreModule} from '@agm/core';
 import {MapComponent} from 'src/app/components/layout/map/map.component';
+import {GroupIntervalsByDayOfWeekPipe} from 'src/app/pipes/group-intervals-by-day-of-week.pipe';
+import {DayOfWeekNamePipe} from 'src/app/pipes/date/day-of-week-name.pipe';
 
 describe('GymDetailsComponent', () => {
   let component: GymDetailsComponent;
@@ -61,6 +63,8 @@ describe('GymDetailsComponent', () => {
         DataUrlPipe,
         CommentListComponent,
         MapComponent,
+        GroupIntervalsByDayOfWeekPipe,
+        DayOfWeekNamePipe,
       ],
       imports: [
         BrowserAnimationsModule,
