@@ -14,7 +14,7 @@ export class FileSaverService {
   /**
    * Encode a file in base64 and save it in the local storage
    */
-  saveFile(key: LocalStorageKey, file: ArrayBuffer | Blob, type: string): Observable<string> {
+  saveFile(key: LocalStorageKey | string, file: ArrayBuffer | Blob, type: string): Observable<string> {
     const subject = new Subject<string>();
     const result$ = subject.asObservable();
     const blob = new Blob([file], {type: type});
@@ -31,11 +31,11 @@ export class FileSaverService {
   /**
    * Encode an image in base64 and save it in the local storage
    */
-  saveImage(key: LocalStorageKey, file: ArrayBuffer | Blob): Observable<string> {
+  saveImage(key: LocalStorageKey | string, file: ArrayBuffer | Blob): Observable<string> {
     return this.saveFile(key, file, 'image');
   }
 
-  loadFile(key: LocalStorageKey): string {
+  loadFile(key: LocalStorageKey | string): string {
     return localStorage.getItem(key);
   }
 }

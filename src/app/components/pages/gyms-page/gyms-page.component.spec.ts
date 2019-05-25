@@ -9,7 +9,7 @@ import {
   MatProgressSpinnerModule,
   MatTabsModule
 } from '@angular/material';
-import {RouterModule} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {LoadingComponent} from '../../layout/loading/loading.component';
 import {Gym} from 'src/app/model/entities/gym';
@@ -84,6 +84,7 @@ describe('GymsPageComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
     filterResult = {content: [], params: {name: '', city: undefined, ratingGreaterThan: 0}, result: []};
     spy = spyOnProperty(TestBed.get(GymService), 'gyms', 'get').and.returnValue(of(mockGyms));
     fixture = TestBed.createComponent(GymsPageComponent);

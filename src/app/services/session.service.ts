@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {LocalStorageKey} from '../model/local-storage-key';
 import {User} from '../model/entities/user';
+import {ImageMetadata} from '../model/entities/images-metadata';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,13 @@ export class SessionService {
 
   clear() {
     localStorage.clear();
+  }
+
+  saveMetadata(metadata: ImageMetadata) {
+    localStorage.setItem(`metadata_${metadata.id}`, JSON.stringify(metadata));
+  }
+
+  getMetadata(metadataId: string): ImageMetadata {
+    return JSON.parse(localStorage.getItem(`metadata_${metadataId}`));
   }
 }

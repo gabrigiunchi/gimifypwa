@@ -13,7 +13,7 @@ import {ImageMetadata} from 'src/app/model/entities/images-metadata';
 export class PhotosTabComponent implements OnChanges {
 
   @Input() gym: Gym;
-  photos$: Observable<Observable<ArrayBuffer>[]>;
+  photos$: Observable<Observable<string>[]>;
 
   constructor(private gymImageService: GymImageServiceService) {
   }
@@ -21,7 +21,7 @@ export class PhotosTabComponent implements OnChanges {
   ngOnChanges() {
     if (this.gym) {
       this.photos$ = this.gymImageService.getPhotoMetadataOfGym(this.gym)
-        .pipe(map((metadata: ImageMetadata[]) => metadata.map(m => this.gymImageService.getPhotoOfGym(m.id))));
+        .pipe(map((metadata: ImageMetadata[]) => metadata.map(m => this.gymImageService.getPhotoOfGym(m))));
     }
   }
 

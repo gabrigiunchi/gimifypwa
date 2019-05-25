@@ -22,9 +22,11 @@ export class GymDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const id = +this.activatedRoute.snapshot.paramMap.get('id');
-    this.gymService.getGymById(id).subscribe(gym => this.gym = gym);
-    this.rating$ = this.gymService.getRatingOfGym(id);
+    this.activatedRoute.paramMap.subscribe(params => {
+      const id = +params.get('id');
+      this.gymService.getGymById(id).subscribe(gym => this.gym = gym);
+      this.rating$ = this.gymService.getRatingOfGym(id);
+    });
   }
 
   back() {
