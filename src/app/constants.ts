@@ -60,7 +60,7 @@ export const CONSTANTS = {
   RESERVATION_THRESHOLD: Duration.fromObject({days: 14}),
   RESERVATION_CANCELLATION_LIMIT: Duration.fromObject({minutes: 20}),
 
-  BASE_URL: 'http://localhost:8080/api/v1/',
+  BASE_URL: 'https://backendtesi.eu-gb.mybluemix.net/api/v1/',
   ALIVE_URL: 'alive',
   LOGIN_URL: 'login',
   GREETINGS_URL: 'greetings',
