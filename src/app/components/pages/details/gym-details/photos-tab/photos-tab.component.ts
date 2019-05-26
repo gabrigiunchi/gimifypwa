@@ -2,7 +2,7 @@ import {Component, Input, OnChanges} from '@angular/core';
 import {Gym} from 'src/app/model/entities/gym';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {GymImageServiceService} from 'src/app/services/server-communication/gym-image-service.service';
+import {GymImageService} from 'src/app/services/server-communication/gym-image-service';
 import {ImageMetadata} from 'src/app/model/entities/images-metadata';
 
 @Component({
@@ -15,7 +15,7 @@ export class PhotosTabComponent implements OnChanges {
   @Input() gym: Gym;
   photos$: Observable<Observable<string>[]>;
 
-  constructor(private gymImageService: GymImageServiceService) {
+  constructor(private gymImageService: GymImageService) {
   }
 
   ngOnChanges() {

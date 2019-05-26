@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {GymImageServiceService} from './gym-image-service.service';
+import {GymImageService} from './gym-image-service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {SessionService} from '../session.service';
 import {HttpClient} from '@angular/common/http';
@@ -7,18 +7,18 @@ import {of} from 'rxjs';
 import {FileSaverService} from '../file-saver.service';
 import {ImageMetadata} from 'src/app/model/entities/images-metadata';
 
-describe('GymImageServiceService', () => {
+describe('GymImageService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [HttpClientTestingModule]
   }));
 
-  let service: GymImageServiceService;
+  let service: GymImageService;
   let sessionService: SessionService;
   let fileSaverService: FileSaverService;
 
   beforeEach(() => {
     spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of('aaa'));
-    service = TestBed.get(GymImageServiceService);
+    service = TestBed.get(GymImageService);
     sessionService = TestBed.get(SessionService);
     sessionService.clear();
     fileSaverService = TestBed.get(FileSaverService);

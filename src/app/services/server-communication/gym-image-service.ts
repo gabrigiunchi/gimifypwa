@@ -13,7 +13,7 @@ import {DataUrlPipe} from 'src/app/pipes/data-url.pipe';
 @Injectable({
   providedIn: 'root'
 })
-export class GymImageServiceService {
+export class GymImageService {
 
   constructor(
     private http: HttpClient,
