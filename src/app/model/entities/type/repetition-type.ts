@@ -1,7 +1,7 @@
 export enum RepetitionType {
-  none = 'none',
-  daily = 'daily',
-  weekly = 'weekly',
-  monthly = 'monthly',
-  yearly = 'yearly'
+  none = 'NONE',
+  daily = 'DAILY',
+  weekly = 'WEEKLY',
+  monthly = 'MONTHLY',
+  yearly = 'YEARLY'
 }

@@ -1,7 +1,7 @@
 <cdk-virtual-scroll-viewport *ngIf="gyms" fxFlexFill itemSize="gyms.length">
   <mat-nav-list>
     <mat-list-item *ngFor="let gym of gyms; last as isLast" (click)="onGymClick(gym)">
-      <mat-icon matListIcon>fitness_center</mat-icon>
+      <img matListAvatar [src]="gym | gymAvatar | async | async | safeUrl" alt="{{gym.id}}">
       <h3 matLine>{{gym.name}}</h3>
       <p matLine>
         <span class="mat-small">{{gym.address}}, {{gym.city.name}}</span>

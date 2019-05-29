@@ -24,6 +24,8 @@ import {GymListComponent} from '../../layout/gym-list/gym-list.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MapComponent} from '../../layout/map/map.component';
 import {AgmCoreModule} from '@agm/core';
+import {GymAvatarPipe} from 'src/app/pipes/gym-avatar.pipe';
+import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 
 describe('GymsPageComponent', () => {
   let component: GymsPageComponent;
@@ -59,7 +61,9 @@ describe('GymsPageComponent', () => {
         LoadingComponent,
         SearchbarComponent,
         GymListComponent,
-        MapComponent
+        MapComponent,
+        GymAvatarPipe,
+        SafeUrlPipe
       ],
       imports: [
         BrowserAnimationsModule,
