@@ -24,7 +24,7 @@ export class GymImageService extends ImageService {
   }
 
   getPhotoOfGym(metadata: ImageMetadata): Observable<string> {
-    return super.getPhoto(metadata, this.urlService.getRestUrl(`${CONSTANTS.GYMS}/photos/${metadata.id}`));
+    return super.getPhoto(metadata, `${CONSTANTS.GYMS}/photos/${metadata.id}`);
   }
 
   getPhotoMetadataOfGym(gym: Gym): Observable<ImageMetadata[]> {
