@@ -39,8 +39,7 @@ export class ReservationService extends CacheService<ReservationSearchParams> {
   }
 
   get myFutureReservations(): Observable<Reservation[]> {
-    const from = DateTime.local().toFormat(CONSTANTS.DEFAULT_DATETIME_FORMAT);
-    const url = this.urlService.getRestUrl(`${CONSTANTS.MY_RESERVATIONS}/from/${from}`);
+    const url = this.urlService.getRestUrl(`${CONSTANTS.MY_RESERVATIONS}/future`);
     return this.http.get<Reservation[]>(url, this.urlService.authenticationHeader);
   }
 
