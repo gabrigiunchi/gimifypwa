@@ -45,7 +45,7 @@ describe('GymImageService', () => {
   it('should download the updated image from cache if the metadata are NOT updated', () => {
     const metadata: ImageMetadata = {id: 'image1', lastModified: 1};
     sessionService.saveMetadata(metadata);
-    const spyOnSaveImage = spyOn(fileSaverService, 'saveImage').and.callFake(() => {});
+    const spyOnSaveImage = spyOn(fileSaverService, 'saveImage').and.returnValue(of({}));
     const spyOnLoadImage = spyOn(fileSaverService, 'loadFile').and.returnValue('');
     const spyOnSaveMetadata = spyOn(sessionService, 'saveMetadata').and.callThrough();
 
@@ -58,7 +58,7 @@ describe('GymImageService', () => {
 
   it('should download the updated image from cache if the metadata are NOT present', () => {
     expect(localStorage.getItem('image1')).toBe(null);
-    const spyOnSaveImage = spyOn(fileSaverService, 'saveImage').and.callFake(() => {});
+    const spyOnSaveImage = spyOn(fileSaverService, 'saveImage').and.returnValue(of({}));
     const spyOnLoadImage = spyOn(fileSaverService, 'loadFile').and.returnValue('');
     const spyOnSaveMetadata = spyOn(sessionService, 'saveMetadata').and.callThrough();
 
