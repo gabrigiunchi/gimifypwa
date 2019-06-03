@@ -20,7 +20,7 @@ export class ImageService {
     protected http: HttpClient) {}
 
 
-  getPhoto(metadata: ImageMetadata, imageUrl: string): Observable<string> {
+  getPhoto(metadata: ImageMetadata, imageUrl: string, caching = true): Observable<string> {
     if (this.metadataAreUpdated(metadata)) {
       console.log(`Found image ${metadata.id} in cache`);
       return of(this.fileSaverService.loadFile(metadata.id));
@@ -30,9 +30,13 @@ export class ImageService {
     return this.http.get<ArrayBuffer>(url, this.urlService.authenticationHeaderForImages)
       .pipe(
         tap(binary => {
-          console.log(`Saving image ${metadata.id}`);
-          this.fileSaverService.saveImage(metadata.id, binary);
-          this.sessionService.saveMetadata(metadata);
+          if (caching) {
+            console.log(`Saving image ${metadata.id}`);
+            this.fileSaverService.saveImage(metadata.id, binary)
+              .subscribe(
+                () => this.sessionService.saveMetadata(metadata),
+                () => console.log(`Could not save image ${metadata.id}`));
+          }
         }),
         map(binary => new DataUrlPipe().transform(binary)));
   }
