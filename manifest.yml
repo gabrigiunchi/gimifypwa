@@ -1,9 +1,13 @@
 ---
 applications:
-    - buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+    - name: gimifypwa
+      buildpacks: 
+        - https://github.com/cloudfoundry/staticfile-buildpack.git
       path: dist/gimifypwa
       routes:
           - route: gimifypwa.eu-gb.mybluemix.net
-      name: gimifypwa
-      memory: 128M
-      stack: cflinuxfs2
+      memory: 256M
+      stack: cflinuxfs3
+      env:
+        FORCE_HTTPS: true
+
