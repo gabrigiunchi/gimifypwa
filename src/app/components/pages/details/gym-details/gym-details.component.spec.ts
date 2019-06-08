@@ -37,6 +37,7 @@ import {AgmCoreModule} from '@agm/core';
 import {MapComponent} from 'src/app/components/layout/map/map.component';
 import {GroupIntervalsByDayOfWeekPipe} from 'src/app/pipes/group-intervals-by-day-of-week.pipe';
 import {DayOfWeekNamePipe} from 'src/app/pipes/date/day-of-week-name.pipe';
+import {AvatarModule} from 'ngx-avatar';
 
 describe('GymDetailsComponent', () => {
   let component: GymDetailsComponent;
@@ -76,6 +77,7 @@ describe('GymDetailsComponent', () => {
         MatIconModule,
         MatListModule,
         MatGridListModule,
+        AvatarModule,
         MatTabsModule,
         MatProgressSpinnerModule,
         MatTableModule,

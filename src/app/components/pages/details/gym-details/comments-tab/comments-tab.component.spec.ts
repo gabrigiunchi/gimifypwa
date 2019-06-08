@@ -11,6 +11,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {DataUrlPipe} from 'src/app/pipes/data-url.pipe';
 import {AvatarPipe} from 'src/app/pipes/avatar.pipe';
+import {AvatarModule} from 'ngx-avatar';
 
 describe('CommentsTabComponent', () => {
   let component: CommentsTabComponent;
@@ -33,6 +34,7 @@ describe('CommentsTabComponent', () => {
         MatDialogModule,
         ScrollingModule,
         MatListModule,
+        AvatarModule,
         MatIconModule,
         MatProgressSpinnerModule,
         HttpClientTestingModule

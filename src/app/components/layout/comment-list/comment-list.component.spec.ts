@@ -6,6 +6,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {DataUrlPipe} from 'src/app/pipes/data-url.pipe';
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {AvatarPipe} from 'src/app/pipes/avatar.pipe';
+import {AvatarModule} from 'ngx-avatar';
 
 describe('CommentListComponent', () => {
   let component: CommentListComponent;
@@ -22,6 +23,7 @@ describe('CommentListComponent', () => {
       ],
       imports: [
         MatListModule,
+        AvatarModule,
         MatIconModule,
         MatProgressSpinnerModule,
         HttpClientTestingModule,

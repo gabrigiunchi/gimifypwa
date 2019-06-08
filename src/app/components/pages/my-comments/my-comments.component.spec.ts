@@ -12,6 +12,7 @@ import {AvatarPipe} from 'src/app/pipes/avatar.pipe';
 import {RatingBarComponent} from '../../layout/rating-bar/rating-bar.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {RouterModule} from '@angular/router';
+import {AvatarModule} from 'ngx-avatar';
 
 describe('MyCommentsComponent', () => {
   let component: MyCommentsComponent;
@@ -33,6 +34,7 @@ describe('MyCommentsComponent', () => {
       imports: [
         ScrollingModule,
         MatIconModule,
+        AvatarModule,
         HttpClientTestingModule,
         RouterModule.forRoot([]),
         MatListModule,

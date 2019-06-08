@@ -5,6 +5,7 @@ import {MatDividerModule, MatIconModule, MatListModule} from '@angular/material'
 import {GymAvatarPipe} from 'src/app/pipes/gym-avatar.pipe';
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {AvatarModule} from 'ngx-avatar';
 
 describe('GymListComponent', () => {
   let component: GymListComponent;
@@ -17,6 +18,7 @@ describe('GymListComponent', () => {
         ScrollingModule,
         MatListModule,
         MatDividerModule,
+        AvatarModule,
         MatIconModule,
         HttpClientTestingModule
       ]

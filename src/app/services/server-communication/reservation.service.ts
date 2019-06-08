@@ -11,7 +11,6 @@ import {DateService} from '../utils/date.service';
 import {Page} from 'src/app/model/page';
 import {SelectLocationResult} from 'src/app/components/modals/dialogs/select-location-dialog/select-location-dialog.component';
 import {CacheService} from '../cache.service';
-import {DateTime} from 'luxon';
 
 export interface ReservationSearchParams {
   location: SelectLocationResult;

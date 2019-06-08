@@ -26,6 +26,7 @@ import {MapComponent} from '../../layout/map/map.component';
 import {AgmCoreModule} from '@agm/core';
 import {GymAvatarPipe} from 'src/app/pipes/gym-avatar.pipe';
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
+import {AvatarModule} from 'ngx-avatar';
 
 describe('GymsPageComponent', () => {
   let component: GymsPageComponent;
@@ -74,6 +75,7 @@ describe('GymsPageComponent', () => {
         ScrollingModule,
         MatIconModule,
         MatInputModule,
+        AvatarModule,
         FormsModule,
         AgmCoreModule.forRoot({
           apiKey: 'AIzaSyBiClW-tzn_XUpFDNs6c5PjwGtE61xaW6A'
