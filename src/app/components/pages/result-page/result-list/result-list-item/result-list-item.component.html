@@ -1,10 +1,12 @@
 <mat-card>
   <mat-card-header>
+    <ngx-avatar size="40" mat-card-avatar name="{{asset.gym.name.split(' ')}}"
+      [src]="asset.gym | gymAvatar | async | async | safeUrl"></ngx-avatar>
     <mat-card-title>{{asset.name}}</mat-card-title>
-    <mat-card-subtitle>{{asset.kind.name}}</mat-card-subtitle>
+    <mat-card-subtitle>{{asset.kind.name | lowercase}}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content style="padding-top: 0.5rem">
-    
+  <mat-card-content>
+
     <div fxLayout="column" fxLayoutGap="1rem">
       <div fxLayout="row">
         <mat-icon>location_city</mat-icon>
@@ -13,6 +15,10 @@
       <div fxLayout="row">
         <mat-icon>place</mat-icon>
         <div>{{asset.gym.address}}, {{asset.gym.city.name}}</div>
+      </div>
+      <div fxLayout="row">
+        <mat-icon>access_time</mat-icon>
+        <div>{{date | dateTime: 'D'}}, {{from | time: asset.gym.city.zoneId}}-{{to | time: asset.gym.city.zoneId}}</div>
       </div>
     </div>
 

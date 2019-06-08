@@ -7,6 +7,11 @@ import {LoadingComponent} from 'src/app/components/layout/loading/loading.compon
 import {MessageComponent} from 'src/app/components/layout/message/message.component';
 import {RouterModule} from '@angular/router';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {AvatarModule} from 'ngx-avatar';
+import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
+import {GymAvatarPipe} from 'src/app/pipes/gym-avatar.pipe';
+import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
+import {TimePipe} from 'src/app/pipes/date/time.pipe';
 
 describe('ResultListComponent', () => {
   let component: ResultListComponent;
@@ -16,16 +21,21 @@ describe('ResultListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         ResultListComponent,
-         ResultListItemComponent,
-         LoadingComponent,
-         MessageComponent
-        ],
+        ResultListItemComponent,
+        LoadingComponent,
+        MessageComponent,
+        SafeUrlPipe,
+        GymAvatarPipe,
+        DateTimePipe,
+        TimePipe,
+      ],
       imports: [
         ScrollingModule,
         MatCardModule,
         MatProgressSpinnerModule,
         MatIconModule,
         MatDialogModule,
+        AvatarModule,
         HttpClientTestingModule,
         RouterModule.forRoot([]),
         NativeDateModule

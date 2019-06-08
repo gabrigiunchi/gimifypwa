@@ -1,3 +1,11 @@
 .container, cdk-virtual-scroll-viewport {
   height: 100%;
 }
+
+.container {
+  padding: 1rem;
+}
+
+.item {
+  margin-bottom: 1rem;
+}

@@ -14,6 +14,11 @@ import {MessageComponent} from '../../layout/message/message.component';
 import {AgmCoreModule} from '@agm/core';
 import {MapComponent} from '../../layout/map/map.component';
 import {AssetsToGymsPipe} from 'src/app/pipes/assets-to-gyms.pipe';
+import {AvatarModule} from 'ngx-avatar';
+import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
+import {GymAvatarPipe} from 'src/app/pipes/gym-avatar.pipe';
+import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
+import {TimePipe} from 'src/app/pipes/date/time.pipe';
 
 describe('ResultPageComponent', () => {
   let component: ResultPageComponent;
@@ -30,7 +35,11 @@ describe('ResultPageComponent', () => {
         MapComponent,
         ResultListItemComponent,
         AssetsToGymsPipe,
-        MessageComponent
+        MessageComponent,
+        SafeUrlPipe,
+        GymAvatarPipe,
+        DateTimePipe,
+        TimePipe
       ],
       imports: [
         BrowserAnimationsModule,
@@ -39,6 +48,7 @@ describe('ResultPageComponent', () => {
         MatCardModule,
         MatToolbarModule,
         MatIconModule,
+        AvatarModule,
         MatProgressSpinnerModule,
         MatTabsModule,
         ScrollingModule,
