@@ -8,6 +8,8 @@ import {City} from 'src/app/model/entities/city';
 import {CacheService} from '../cache.service';
 import {FilterResult} from 'src/app/model/filter-result';
 import {GymFilterParams} from 'src/app/components/pages/gyms-page/gyms-page.component';
+import {Page} from 'src/app/model/page';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,9 @@ export class GymService extends CacheService<FilterResult<Gym, GymFilterParams>>
   }
 
   get gyms(): Observable<Gym[]> {
-    return this.http.get<Gym[]>(this.urlService.getRestUrl(CONSTANTS.GYMS), this.urlService.authenticationHeader);
+    return this.http.get<Page<Gym>>(
+      this.urlService.getRestUrl(`${CONSTANTS.GYMS}/page/0/size/30`),
+      this.urlService.authenticationHeader).pipe(map(page => page.content));
   }
 
   getGymById(id: number): Observable<Gym> {
