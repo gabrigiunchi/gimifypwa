@@ -2,13 +2,14 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {LoginComponent} from './login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatInputModule, MatProgressSpinnerModule, MatSnackBarModule} from '@angular/material';
+import {MatInputModule, MatProgressSpinnerModule, MatSnackBarModule, MatToolbarModule, MatIconModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {Router, RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginService} from 'src/app/services/server-communication/login.service';
 import {of} from 'rxjs';
 import {CONSTANTS} from 'src/app/constants';
+import {ToolbarComponent} from '../../layout/toolbar/toolbar.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -16,16 +17,18 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent],
+      declarations: [LoginComponent, ToolbarComponent],
       imports: [
         BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
         MatInputModule,
         MatProgressSpinnerModule,
+        MatIconModule,
         HttpClientModule,
         RouterModule.forRoot([]),
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatToolbarModule
       ]
     })
       .compileComponents();

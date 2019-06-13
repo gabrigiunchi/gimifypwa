@@ -1,6 +1,7 @@
-<mat-toolbar fxLayout="row">
-  <button mat-icon-button (click)="onBackClick()">
+<mat-toolbar [color]="color" fxLayout="row">
+  <button *ngIf="back" mat-icon-button (click)="onBackClick()">
     <mat-icon>chevron_left</mat-icon>
   </button>
-  <div style="padding-right: 2.5rem" fxFlex="grow" fxLayoutAlign="center center">{{title}}</div>
+  <div fxFlex="grow" fxLayoutAlign="center center">{{title}}</div>
+  <div *ngIf="back" fxFlex="2.5rem"></div>
 </mat-toolbar>

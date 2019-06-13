@@ -7,7 +7,8 @@ import {
   MatInputModule,
   MatListModule,
   MatProgressSpinnerModule,
-  MatTabsModule
+  MatTabsModule,
+  MatToolbarModule
 } from '@angular/material';
 import {Router, RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
@@ -27,6 +28,7 @@ import {AgmCoreModule} from '@agm/core';
 import {GymAvatarPipe} from 'src/app/pipes/gym-avatar.pipe';
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {AvatarModule} from 'ngx-avatar';
+import {ToolbarComponent} from '../../layout/toolbar/toolbar.component';
 
 describe('GymsPageComponent', () => {
   let component: GymsPageComponent;
@@ -64,7 +66,8 @@ describe('GymsPageComponent', () => {
         GymListComponent,
         MapComponent,
         GymAvatarPipe,
-        SafeUrlPipe
+        SafeUrlPipe,
+        ToolbarComponent
       ],
       imports: [
         BrowserAnimationsModule,
@@ -76,6 +79,7 @@ describe('GymsPageComponent', () => {
         MatIconModule,
         MatInputModule,
         AvatarModule,
+        MatToolbarModule,
         FormsModule,
         AgmCoreModule.forRoot({
           apiKey: 'AIzaSyBiClW-tzn_XUpFDNs6c5PjwGtE61xaW6A'

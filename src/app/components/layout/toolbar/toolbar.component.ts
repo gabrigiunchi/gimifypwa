@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Router} from '@angular/router';
+import {ThemePalette} from '@angular/material';
 
 @Component({
   selector: 'app-toolbar',
@@ -9,7 +10,8 @@ import {Router} from '@angular/router';
 export class ToolbarComponent {
 
   @Input() title = '';
-  @Input() back = './';
+  @Input() back: string;
+  @Input() color: ThemePalette;
   @Output() backClick = new EventEmitter();
 
   constructor(private router: Router) {}

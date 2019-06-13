@@ -12,12 +12,14 @@ import {
   MatProgressSpinnerModule,
   MatSlideToggleModule,
   MatSnackBarModule,
-  NativeDateModule
+  NativeDateModule,
+  MatToolbarModule
 } from '@angular/material';
 import {LoadingComponent} from '../../layout/loading/loading.component';
 import {RouterModule} from '@angular/router';
 import {DefaultCityPickerComponent} from '../../input/default-city-picker/default-city-picker.component';
 import {DefaultGymPickerComponent} from '../../input/default-gym-picker/default-gym-picker.component';
+import {ToolbarComponent} from '../../layout/toolbar/toolbar.component';
 
 describe('ProfilePageComponent', () => {
   let component: ProfilePageComponent;
@@ -31,7 +33,8 @@ describe('ProfilePageComponent', () => {
         SafeUrlPipe,
         DefaultCityPickerComponent,
         LoadingComponent,
-        DefaultGymPickerComponent
+        DefaultGymPickerComponent,
+        ToolbarComponent
       ],
       imports: [
         HttpClientModule,
@@ -39,6 +42,7 @@ describe('ProfilePageComponent', () => {
         MatSlideToggleModule,
         MatSnackBarModule,
         MatDialogModule,
+        MatToolbarModule,
         MatDividerModule,
         MatProgressSpinnerModule,
         RouterModule.forRoot([]),

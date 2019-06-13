@@ -9,7 +9,8 @@ import {
   MatDividerModule,
   MatIconModule,
   MatInputModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatToolbarModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
@@ -25,6 +26,7 @@ import {MinStartTimePipe} from 'src/app/pipes/date/min-start-time.pipe';
 import {AssetKindEnum} from 'src/app/model/entities/type/asset-kind-enum';
 import {DateTime} from 'luxon';
 import {DateService} from 'src/app/services/utils/date.service';
+import {ToolbarComponent} from '../../layout/toolbar/toolbar.component';
 
 describe('SearchPageComponent', () => {
   let component: SearchPageComponent;
@@ -41,13 +43,15 @@ describe('SearchPageComponent', () => {
         AssetKindPickerComponent,
         MaxEndTimePipe,
         MinEndTimePipe,
-        MinStartTimePipe
+        MinStartTimePipe,
+        ToolbarComponent
       ],
       imports: [
         BrowserAnimationsModule,
         MatIconModule,
         MatInputModule,
         FormsModule,
+        MatToolbarModule,
         ReactiveFormsModule,
         MatDividerModule,
         MatDatepickerModule,

@@ -39,7 +39,8 @@ describe('ResultPageComponent', () => {
         SafeUrlPipe,
         GymAvatarPipe,
         DateTimePipe,
-        TimePipe
+        TimePipe,
+        ToolbarComponent
       ],
       imports: [
         BrowserAnimationsModule,
