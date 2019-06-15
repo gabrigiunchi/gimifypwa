@@ -1,8 +1,14 @@
 <div fxLayout="column" class="mat-typography container">
-  <button mat-icon-button (click)="cancel()">
-    <mat-icon>close</mat-icon>
-  </button>
-  <h2>{{data.title | titlecase}}</h2>
+  <div class="header" fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="3rem">
+      <button mat-icon-button (click)="cancel()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <h2 fxFlex="grow">{{data.title | titlecase}}</h2>
+    <div fxFlex="3rem"></div>
+  </div>
+
 
   <!-- <mat-divider></mat-divider> -->
   <div fxFlex="grow">
