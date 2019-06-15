@@ -1,8 +1,15 @@
 <div fxLayout="column" class="mat-typography container">
-  <button mat-icon-button (click)="close()">
-    <mat-icon>close</mat-icon>
-  </button>
-  <h2>Select city</h2>
+  <div class="header" fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="3rem">
+      <button mat-icon-button (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <h2 fxFlex="grow">Select city</h2>
+    <div fxFlex="3rem"></div>
+  </div>
+
+
 
   <div *ngIf="cities$ | async as cities; else loading" fxFlex="grow">
     <cdk-virtual-scroll-viewport [itemSize]="cities.length">
