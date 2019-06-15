@@ -15,6 +15,9 @@ import {TestConstants} from 'src/app/test-constants';
 import {MessageComponent} from '../../layout/message/message.component';
 import {ReservationTimePipe} from 'src/app/pipes/date/reservation-time.pipe';
 import {ToolbarComponent} from '../../layout/toolbar/toolbar.component';
+import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
+import {GymAvatarPipe} from 'src/app/pipes/gym-avatar.pipe';
+import {AvatarModule} from 'ngx-avatar';
 
 describe('ReservationsPageComponent', () => {
   let component: ReservationsPageComponent;
@@ -42,11 +45,14 @@ describe('ReservationsPageComponent', () => {
         DateTimePipe,
         ReservationTimePipe,
         ReservationsByDayPipe,
-        MessageComponent
+        MessageComponent,
+        SafeUrlPipe,
+        GymAvatarPipe,
       ],
       imports: [
         ScrollingModule,
         MatIconModule,
+        AvatarModule,
         MatToolbarModule,
         MatListModule,
         RouterModule.forRoot([]),

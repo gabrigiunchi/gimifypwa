@@ -6,6 +6,10 @@ import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 import {ReservationsByDayPipe} from 'src/app/pipes/reservations-by-day.pipe';
 import {RouterModule} from '@angular/router';
 import {ReservationTimePipe} from 'src/app/pipes/date/reservation-time.pipe';
+import {AvatarModule} from 'ngx-avatar';
+import {GymAvatarPipe} from 'src/app/pipes/gym-avatar.pipe';
+import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('ReservationListComponent', () => {
   let component: ReservationListComponent;
@@ -17,12 +21,16 @@ describe('ReservationListComponent', () => {
         ReservationListComponent,
         DateTimePipe,
         ReservationTimePipe,
-        ReservationsByDayPipe
+        ReservationsByDayPipe,
+        GymAvatarPipe,
+        SafeUrlPipe
       ],
       imports: [
         ScrollingModule,
         MatListModule,
+        HttpClientTestingModule,
         MatIconModule,
+        AvatarModule,
         RouterModule.forRoot([])
       ]
     })

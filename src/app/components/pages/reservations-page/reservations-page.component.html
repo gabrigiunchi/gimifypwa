@@ -1,8 +1,10 @@
-<app-toolbar title="Reservations"></app-toolbar>
 <div class="container" fxLayout="column">
+  <app-toolbar title="Reservations"></app-toolbar>
+
 
   <div fxLayout="column" fxFlex="grow" *ngIf="reservations; else loading">
-    <app-reservation-list *ngIf="reservations.length > 0" style="height: 100%" [reservations]="reservations"></app-reservation-list>
+    <app-reservation-list *ngIf="reservations.length > 0" style="height: 100%" [reservations]="reservations">
+    </app-reservation-list>
 
     <app-message *ngIf="reservations.length === 0" title="No reservations"></app-message>
   </div>

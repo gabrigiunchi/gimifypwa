@@ -28,19 +28,23 @@ export class MapComponent implements OnDestroy, AfterViewInit {
   myPosition: LatLngLiteral;
   @Input() lat = 45.006273;
   @Input() lng = 10.603579;
+  @Input() watch = false;
   private watchId: number; // subscription to navigator.geolocation
 
   ngAfterViewInit() {
     if (window.navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => this.updatePosition(position));
-      this.watchId = navigator.geolocation.watchPosition(
-        position => this.updatePosition(position),
-        error => console.log('Error watching position: ', error),
-        {
-          maximumAge: 0,
-          enableHighAccuracy: true,
-          timeout: 5000 // 5 seconds
-        });
+      if (this.watch) {
+        this.watchId = navigator.geolocation.watchPosition(
+          position => this.updatePosition(position),
+          error => console.log('Error watching position: ', error),
+          {
+            maximumAge: 0,
+            enableHighAccuracy: true,
+            timeout: 5000 // 5 seconds
+          });
+      }
+
     } else {
       console.log('Geolocator not available');
     }
