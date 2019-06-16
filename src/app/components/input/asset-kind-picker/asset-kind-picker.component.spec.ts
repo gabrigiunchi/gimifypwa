@@ -45,4 +45,13 @@ describe('AssetKindPickerComponent', () => {
     expect(component.result.name).toBe(kindResult.name);
     expect(component.result.maxReservationTime).toBe(kindResult.maxReservationTime);
   });
+
+  it('should abort the selection', () => {
+    const dialog: MatDialog = TestBed.get(MatDialog);
+    const dialogRef = new MockDialog();
+    spyOn(dialogRef, 'afterClosed').and.returnValue(of(undefined));
+    spyOn(dialog, 'open').and.returnValue(dialogRef);
+    component.openDialog();
+    expect(component.result).toBe(undefined);
+  });
 });

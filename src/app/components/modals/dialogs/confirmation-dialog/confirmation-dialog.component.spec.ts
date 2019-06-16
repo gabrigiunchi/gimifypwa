@@ -2,12 +2,13 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ConfirmationDialogComponent, ConfirmationDialogData} from './confirmation-dialog.component';
 import {MAT_DIALOG_DATA, MatButtonModule, MatDialogRef, NativeDateModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
+import {MockDialog} from 'src/app/test-constants';
 
 describe('ConfirmationDialogComponent', () => {
   let component: ConfirmationDialogComponent;
   let fixture: ComponentFixture<ConfirmationDialogComponent>;
 
-  const mockDialogData: ConfirmationDialogData = ConfirmationDialogComponent.DEFAULT_DATA;
+  const dialogRef = new MockDialog();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -18,8 +19,8 @@ describe('ConfirmationDialogComponent', () => {
         HttpClientModule,
       ],
       providers: [
-        {provide: MatDialogRef, useValue: {}},
-        {provide: MAT_DIALOG_DATA, useValue: mockDialogData}
+        {provide: MatDialogRef, useValue: dialogRef},
+        {provide: MAT_DIALOG_DATA, useValue: undefined}
       ]
     })
       .compileComponents();
@@ -33,5 +34,17 @@ describe('ConfirmationDialogComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should cancel', () => {
+    const spyOnDialog = spyOn(dialogRef, 'close').and.callFake(() => {});
+    component.cancel();
+    expect(spyOnDialog).toHaveBeenCalledWith(false);
+  });
+
+  it('should confirm', () => {
+    const spyOnDialog = spyOn(dialogRef, 'close').and.callFake(() => {});
+    component.confirm();
+    expect(spyOnDialog).toHaveBeenCalledWith(true);
   });
 });

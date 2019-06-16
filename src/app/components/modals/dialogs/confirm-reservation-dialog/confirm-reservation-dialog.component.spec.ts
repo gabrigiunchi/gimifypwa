@@ -1,8 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ConfirmReservationDialogComponent, ConfirmReservationDialogData} from './confirm-reservation-dialog.component';
-import {MAT_DIALOG_DATA, MatDialogRef, MatIconModule} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef, MatIconModule, MatDialog} from '@angular/material';
 import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
-import {TestConstants} from 'src/app/test-constants';
+import {TestConstants, MockDialog} from 'src/app/test-constants';
 
 describe('ConfirmReservationDialogComponent', () => {
   let component: ConfirmReservationDialogComponent;
@@ -15,6 +15,8 @@ describe('ConfirmReservationDialogComponent', () => {
     to: '10:20'
   };
 
+  const dialogRef = new MockDialog();
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ConfirmReservationDialogComponent, DateTimePipe],
@@ -22,7 +24,7 @@ describe('ConfirmReservationDialogComponent', () => {
         MatIconModule,
       ],
       providers: [
-        {provide: MatDialogRef, useValue: {}},
+        {provide: MatDialogRef, useValue: dialogRef},
         {provide: MAT_DIALOG_DATA, useValue: mockDialogData}
       ]
 
@@ -38,5 +40,17 @@ describe('ConfirmReservationDialogComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should cancel', () => {
+    const spyOnDialog = spyOn(dialogRef, 'close').and.callFake(() => {});
+    component.dismiss();
+    expect(spyOnDialog).toHaveBeenCalledWith(false);
+  });
+
+  it('should confirm', () => {
+    const spyOnDialog = spyOn(dialogRef, 'close').and.callFake(() => {});
+    component.onConfirm();
+    expect(spyOnDialog).toHaveBeenCalledWith(true);
   });
 });

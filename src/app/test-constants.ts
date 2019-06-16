@@ -12,6 +12,8 @@ export class MockDialog {
   }
 
   dismiss() {}
+
+  close(el: any) {}
 }
 
 export class TestConstants {

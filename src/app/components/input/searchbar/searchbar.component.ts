@@ -26,9 +26,7 @@ export class SearchbarComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-    if (this.searchFormControl) {
-      this.searchFormControl.patchValue(this.value);
-    }
+    this.searchFormControl.patchValue(this.value);
   }
 
   clear(): void {

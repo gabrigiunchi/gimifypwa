@@ -35,4 +35,13 @@ describe('SearchbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should clear', () => {
+    component.value = 'ciao';
+    component.ngOnChanges();
+    expect(component.searchFormControl.value).toBe('ciao');
+    component.clear();
+    expect(component.value).toBe('');
+    expect(component.searchFormControl.value).toBe('');
+  });
 });

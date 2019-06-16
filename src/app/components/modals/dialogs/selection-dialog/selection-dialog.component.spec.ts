@@ -5,10 +5,13 @@ import {FormsModule} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef, MatDividerModule, MatIconModule, NativeDateModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MockDialog} from 'src/app/test-constants';
 
 describe('SelectionDialogComponent', () => {
   let component: SelectionDialogComponent;
   let fixture: ComponentFixture<SelectionDialogComponent>;
+
+  const dialogRef = new MockDialog();
 
   const mockDialogData: SelectionDialogData = {
     choices: [],
@@ -28,7 +31,7 @@ describe('SelectionDialogComponent', () => {
         MatIconModule
       ],
       providers: [
-        {provide: MatDialogRef, useValue: {}},
+        {provide: MatDialogRef, useValue: dialogRef},
         {provide: MAT_DIALOG_DATA, useValue: mockDialogData}
       ]
     })
@@ -62,5 +65,18 @@ describe('SelectionDialogComponent', () => {
     };
 
     expect(component.toString(1)).toBe('1');
+  });
+
+  it('should cancel', () => {
+    const spyOnDialog = spyOn(dialogRef, 'close').and.callFake(() => {});
+    component.cancel();
+    expect(spyOnDialog).toHaveBeenCalledWith();
+  });
+
+  it('should confirm', () => {
+    const spyOnDialog = spyOn(dialogRef, 'close').and.callFake(() => {});
+    component.selected = 2;
+    component.submit();
+    expect(spyOnDialog).toHaveBeenCalledWith(2);
   });
 });

@@ -5,6 +5,7 @@ import {MAT_DIALOG_DATA, MatDialogRef, MatIconModule, MatProgressSpinnerModule, 
 import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {FormsModule} from '@angular/forms';
+import {MockDialog} from 'src/app/test-constants';
 
 describe('LazySelectionDialogComponent', () => {
   let component: LazySelectionDialogComponent;
@@ -12,8 +13,11 @@ describe('LazySelectionDialogComponent', () => {
 
   const mockDialogData: LazySelectionDialogData = {
     choices$: of([]),
-    title: ''
+    title: '',
+    toStringFunction: n => `number${n}`
   };
+
+  const dialogRef = new MockDialog();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -26,7 +30,7 @@ describe('LazySelectionDialogComponent', () => {
         FormsModule
       ],
       providers: [
-        {provide: MatDialogRef, useValue: {}},
+        {provide: MatDialogRef, useValue: dialogRef},
         {provide: MAT_DIALOG_DATA, useValue: mockDialogData}
       ]
     })
@@ -41,5 +45,27 @@ describe('LazySelectionDialogComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call the custom toString if provided', () => {
+    expect(component.toString(1)).toBe('number1');
+  });
+
+  it('should call the default toString if not provided', () => {
+    component.data.toStringFunction = undefined;
+    expect(component.toString(1)).toBe('1');
+  });
+
+  it('should cancel', () => {
+    const spyOnDialog = spyOn(dialogRef, 'close').and.callFake(() => {});
+    component.cancel();
+    expect(spyOnDialog).toHaveBeenCalledWith();
+  });
+
+  it('should confirm', () => {
+    const spyOnDialog = spyOn(dialogRef, 'close').and.callFake(() => {});
+    component.selected = 2;
+    component.submit();
+    expect(spyOnDialog).toHaveBeenCalledWith(2);
   });
 });
