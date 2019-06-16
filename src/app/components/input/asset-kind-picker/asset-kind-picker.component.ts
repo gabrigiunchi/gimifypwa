@@ -38,7 +38,6 @@ export class AssetKindPickerComponent implements OnInit {
       data: dialogData,
     }).afterClosed().subscribe((result: AssetKind) => {
       if (result) {
-        console.log('Selected asset kind:', result);
         this.result = result;
         this.resultChange.emit(this.result);
       }

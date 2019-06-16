@@ -15,14 +15,11 @@ export class PhotosTabComponent implements OnChanges {
   @Input() gym: Gym;
   photos$: Observable<Observable<string>[]>;
 
-  constructor(private gymImageService: GymImageService) {
-  }
+  constructor(private gymImageService: GymImageService) {}
 
   ngOnChanges() {
-    if (this.gym) {
-      this.photos$ = this.gymImageService.getPhotoMetadataOfGym(this.gym)
-        .pipe(map((metadata: ImageMetadata[]) => metadata.map(m => this.gymImageService.getPhotoOfGym(m))));
-    }
+    this.photos$ = this.gymImageService.getPhotoMetadataOfGym(this.gym)
+      .pipe(map((metadata: ImageMetadata[]) => metadata.map(m => this.gymImageService.getPhotoOfGym(m))));
   }
 
 }

@@ -54,7 +54,7 @@ export class ReservationDetailsComponent implements OnInit {
       DateTime.fromISO(reservation.start, {zone: zoneId});
   }
 
-  private deleteReservation(reservation: Reservation) {
+  deleteReservation(reservation: Reservation) {
     this.isDeleting = true;
     this.reservationService.deleteMyReservation(reservation)
       .pipe(finalize(() => this.isDeleting = false))

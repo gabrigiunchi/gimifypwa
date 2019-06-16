@@ -2,16 +2,19 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ResultListComponent} from './result-list.component';
 import {ResultListItemComponent} from './result-list-item/result-list-item.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {MatCardModule, MatDialogModule, MatIconModule, MatProgressSpinnerModule, NativeDateModule} from '@angular/material';
+import {MatCardModule, MatDialogModule, MatIconModule, MatProgressSpinnerModule, NativeDateModule, MatDialog} from '@angular/material';
 import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';
 import {MessageComponent} from 'src/app/components/layout/message/message.component';
-import {RouterModule} from '@angular/router';
+import {RouterModule, Router} from '@angular/router';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {AvatarModule} from 'ngx-avatar';
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {GymAvatarPipe} from 'src/app/pipes/gym-avatar.pipe';
 import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 import {TimePipe} from 'src/app/pipes/date/time.pipe';
+import {of} from 'rxjs';
+import {ReservationService} from 'src/app/services/server-communication/reservation.service';
+import {MockDialog, TestConstants} from 'src/app/test-constants';
 
 describe('ResultListComponent', () => {
   let component: ResultListComponent;
@@ -52,5 +55,20 @@ describe('ResultListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should make a reservation', () => {
+    const spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    spyOn(TestBed.get(ReservationService), 'addReservation').and.returnValue(of({}));
+
+    // Mock dialog
+    const dialog: MatDialog = TestBed.get(MatDialog);
+    const dialogRef = new MockDialog();
+    spyOn(dialogRef, 'afterClosed').and.returnValue(of(true));
+    spyOn(dialog, 'open').and.returnValue(dialogRef);
+
+
+    component.onBookingClick(TestConstants.mockAsset);
+    expect(spyOnRouter).toHaveBeenCalledWith(['/reservations']);
   });
 });

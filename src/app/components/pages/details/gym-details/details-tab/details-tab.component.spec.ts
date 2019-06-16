@@ -11,6 +11,9 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {AgmCoreModule} from '@agm/core';
 import {GroupIntervalsByDayOfWeekPipe} from 'src/app/pipes/group-intervals-by-day-of-week.pipe';
 import {DayOfWeekNamePipe} from 'src/app/pipes/date/day-of-week-name.pipe';
+import {TimetableService} from 'src/app/services/server-communication/timetable.service';
+import {of} from 'rxjs';
+import {TestConstants} from 'src/app/test-constants';
 
 describe('DetailsTabComponent', () => {
   let component: DetailsTabComponent;
@@ -44,6 +47,7 @@ describe('DetailsTabComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOn(TestBed.get(TimetableService), 'getTimetableOfGym').and.returnValue(of(TestConstants.mockTimetable));
     fixture = TestBed.createComponent(DetailsTabComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

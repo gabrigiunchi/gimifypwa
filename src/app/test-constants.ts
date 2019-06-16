@@ -3,8 +3,20 @@ import {Gym} from './model/entities/gym';
 import {Asset} from './model/entities/asset';
 import {Reservation} from './model/entities/reservation';
 import {City} from './model/entities/city';
+import {Observable, of} from 'rxjs';
+import {Timetable} from './model/entities/timetable';
+
+export class MockDialog {
+  afterClosed(): Observable<any> {
+    return of({});
+  }
+
+  dismiss() {}
+}
 
 export class TestConstants {
+
+
   static get mockUser(): User {
     return {
       email: 'gabri@gmail.com',
@@ -48,5 +60,13 @@ export class TestConstants {
       id: key + 1,
       user: TestConstants.mockUser
     }));
+  }
+
+  static get mockTimetable(): Timetable {
+    return {
+      closingDays: [],
+      gym: TestConstants.mockGym,
+      openings: []
+    };
   }
 }
