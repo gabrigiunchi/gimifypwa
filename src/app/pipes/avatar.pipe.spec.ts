@@ -18,7 +18,7 @@ describe('AvatarPipe', () => {
   });
 
   it('should return the avatar of a user', () => {
-    const mockResult = of('avatar');
+    const mockResult = of(new ArrayBuffer(200));
     spyOn(TestBed.get(AvatarService), 'downloadAvatarOfUser').and.returnValue(mockResult);
     const pipe = new AvatarPipe(TestBed.get(AvatarService));
     expect(pipe.transform('username')).toBe(mockResult);
