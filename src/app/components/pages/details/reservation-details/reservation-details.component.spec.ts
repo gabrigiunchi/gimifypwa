@@ -1,16 +1,16 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ReservationDetailsComponent} from './reservation-details.component';
 import {HttpClientModule} from '@angular/common/http';
-import {RouterModule, Router} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import {AgmCoreModule} from '@agm/core';
 import {
+  MatDialog,
   MatDialogModule,
   MatIconModule,
   MatListModule,
   MatProgressSpinnerModule,
   MatToolbarModule,
-  NativeDateModule,
-  MatDialog
+  NativeDateModule
 } from '@angular/material';
 import {ToolbarComponent} from 'src/app/components/layout/toolbar/toolbar.component';
 import {MapComponent} from 'src/app/components/layout/map/map.component';
@@ -20,7 +20,7 @@ import {ReservationTimePipe} from 'src/app/pipes/date/reservation-time.pipe';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {of} from 'rxjs';
 import {Reservation} from 'src/app/model/entities/reservation';
-import {TestConstants, MockDialog} from 'src/app/test-constants';
+import {MockDialog, TestConstants} from 'src/app/test-constants';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('ReservationDetailsComponent', () => {

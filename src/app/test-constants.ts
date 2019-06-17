@@ -5,6 +5,7 @@ import {Reservation} from './model/entities/reservation';
 import {City} from './model/entities/city';
 import {Observable, of} from 'rxjs';
 import {Timetable} from './model/entities/timetable';
+import {Comment} from './model/entities/comment';
 
 export class MockDialog {
   afterClosed(): Observable<any> {
@@ -70,5 +71,28 @@ export class TestConstants {
       gym: TestConstants.mockGym,
       openings: []
     };
+  }
+
+  static get mockComments(): Comment[] {
+    return [
+      {
+        date: '',
+        gymId: 1,
+        id: 1,
+        message: '',
+        rating: 1,
+        title: '',
+        user: this.mockUser
+      },
+      {
+        date: '',
+        gymId: 1,
+        id: 1,
+        message: '',
+        rating: 1,
+        title: '',
+        user: {email: '', id: 2, name: '', notificationsEnabled: true, surname: '', username: ''}
+      }
+    ];
   }
 }

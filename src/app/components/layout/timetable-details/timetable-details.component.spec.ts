@@ -5,6 +5,7 @@ import {MatTableModule} from '@angular/material';
 import {TimePipe} from 'src/app/pipes/date/time.pipe';
 import {GroupIntervalsByDayOfWeekPipe} from 'src/app/pipes/group-intervals-by-day-of-week.pipe';
 import {DayOfWeekNamePipe} from 'src/app/pipes/date/day-of-week-name.pipe';
+import {TestConstants} from 'src/app/test-constants';
 
 describe('TimetableDetailsComponent', () => {
   let component: TimetableDetailsComponent;
@@ -28,10 +29,15 @@ describe('TimetableDetailsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TimetableDetailsComponent);
     component = fixture.componentInstance;
+    component.timetable = TestConstants.mockTimetable;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should return the source', () => {
+    expect(component.source).toEqual(TestConstants.mockTimetable.openings);
   });
 });

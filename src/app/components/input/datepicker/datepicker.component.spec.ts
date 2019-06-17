@@ -54,4 +54,10 @@ describe('DatepickerComponent', () => {
     Settings.defaultZoneName = 'America/New_York';
     expect(component.date).toBe(current);
   });
+
+  it('should update the value', () => {
+    Settings.defaultZoneName = 'UTC';
+    component.date = DateTime.local().toISODate();
+    component.onDateChange({target: undefined, targetElement: undefined, value: new Date()});
+  });
 });

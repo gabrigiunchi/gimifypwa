@@ -1,8 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ConfirmReservationDialogComponent, ConfirmReservationDialogData} from './confirm-reservation-dialog.component';
-import {MAT_DIALOG_DATA, MatDialogRef, MatIconModule, MatDialog} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef, MatIconModule} from '@angular/material';
 import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
-import {TestConstants, MockDialog} from 'src/app/test-constants';
+import {MockDialog, TestConstants} from 'src/app/test-constants';
 
 describe('ConfirmReservationDialogComponent', () => {
   let component: ConfirmReservationDialogComponent;
