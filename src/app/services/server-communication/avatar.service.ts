@@ -51,9 +51,9 @@ export class AvatarService {
       this.urlService.authenticationHeader);
   }
 
-  downloadAvatarOfUser(username: string): Observable<ArrayBuffer> {
-    console.log(`Get avatar of user #${username}`);
-    return this.download(this.urlService.getRestUrl(`${CONSTANTS.AVATARS}/of_user/${username}`));
+  downloadAvatarOfUser(id: number): Observable<ArrayBuffer> {
+    console.log(`Get avatar of user #${id}`);
+    return this.download(this.urlService.getRestUrl(`${CONSTANTS.AVATARS}/of_user/${id}`));
   }
 
   /******************************* MY AVATAR  *********************************************/
