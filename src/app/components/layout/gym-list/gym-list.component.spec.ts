@@ -6,6 +6,7 @@ import {GymAvatarPipe} from 'src/app/pipes/gym-avatar.pipe';
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {AvatarModule} from 'ngx-avatar';
+import {TestConstants} from 'src/app/test-constants';
 
 describe('GymListComponent', () => {
   let component: GymListComponent;
@@ -34,5 +35,12 @@ describe('GymListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should select a gym', () => {
+    const spy = spyOn(component.gymClick, 'emit').and.callThrough();
+    const gym = TestConstants.mockGym;
+    component.onGymClick(gym);
+    expect(spy).toHaveBeenCalledWith(gym);
   });
 });

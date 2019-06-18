@@ -21,11 +21,13 @@ import {RouterModule} from '@angular/router';
 import {DefaultCityPickerComponent} from '../../input/default-city-picker/default-city-picker.component';
 import {DefaultGymPickerComponent} from '../../input/default-gym-picker/default-gym-picker.component';
 import {ToolbarComponent} from '../../layout/toolbar/toolbar.component';
-import {MockDialog} from 'src/app/test-constants';
+import {MockDialog, TestConstants} from 'src/app/test-constants';
 import {LoginService} from 'src/app/services/server-communication/login.service';
 import {UserService} from 'src/app/services/server-communication/user.service';
 import {User} from 'src/app/model/entities/user';
 import {SnackbarService} from 'src/app/services/snackbar.service';
+import {ReservationService} from 'src/app/services/server-communication/reservation.service';
+import {CommentService} from 'src/app/services/server-communication/comment.service';
 
 describe('ProfilePageComponent', () => {
   let component: ProfilePageComponent;
@@ -60,9 +62,11 @@ describe('ProfilePageComponent', () => {
 
   beforeEach(() => {
     const avatarService = TestBed.get(AvatarService);
+    spyOnProperty(TestBed.get(UserService), 'userInfo').and.returnValue(of(TestConstants.mockUser));
+    spyOnProperty(TestBed.get(ReservationService), 'myReservationsCount', 'get').and.returnValue(of(1));
+    spyOnProperty(TestBed.get(CommentService), 'myCommentsCount', 'get').and.returnValue(of(1));
     spyOnProperty(avatarService, 'myAvatar', 'get').and.returnValue(of(''));
-    spyOn(avatarService, 'checkAvatar').and.callFake(() => {
-    });
+    spyOn(avatarService, 'checkAvatar').and.callFake(() => {});
     fixture = TestBed.createComponent(ProfilePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -102,6 +106,12 @@ describe('ProfilePageComponent', () => {
     expect(spyOnSnackbar).toHaveBeenCalled();
     expect(component.isUpdatingSettings).toBe(false);
   });
+
+  it('should update the avatar', async(() => {
+    (TestBed.get(AvatarService) as AvatarService).avatarChanged$ = of('avatar');
+    component.ngOnInit();
+    component.avatar$.subscribe(value => expect(value).toBe('avatar'));
+  }));
 
 
 });
