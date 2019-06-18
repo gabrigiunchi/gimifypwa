@@ -1,26 +1,6 @@
 <mat-nav-list>
-  <a mat-list-item (click)="delete()" [style.color]="'red'">
-    <mat-icon>delete</mat-icon>
-    <span>Restore default</span>
-  </a>
-
-  <a mat-list-item (click)="modify()">
-    <mat-icon>crop_rotate</mat-icon>
-    <span>Modify current avatar</span>
-  </a>
-
-  <a mat-list-item (click)="openFilePicker()">
-    <mat-icon>insert_photo</mat-icon>
-    <span>Choose from gallery</span>
-  </a>
-
-  <a mat-list-item (click)="chooseFromDefault()">
-    <mat-icon>tag_faces</mat-icon>
-    <span>Choose from default avatars</span>
-  </a>
-
-  <a mat-list-item (click)="cancel()">
-    <mat-icon>cancel</mat-icon>
-    <span>Cancel</span>
+  <a *ngFor="let action of actions" mat-list-item (click)="onSelection(action)" [style.color]="action.color">
+    <mat-icon>{{action.icon}}</mat-icon>
+    <span>{{action.title}}</span>
   </a>
 </mat-nav-list>
