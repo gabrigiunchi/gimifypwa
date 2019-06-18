@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {GymDetailsComponent} from './gym-details.component';
 import {HttpClientModule} from '@angular/common/http';
-import {RouterModule} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import {RatingBarComponent} from 'src/app/components/layout/rating-bar/rating-bar.component';
 import {
   MatDialogModule,
@@ -100,5 +100,21 @@ describe('GymDetailsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should go back and not clear the cache', () => {
+    const spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    const spyOnClearCache = spyOn(TestBed.get(GymService), 'clear').and.callFake(() => {});
+    component.back();
+    expect(component.clearCache).toBe(false);
+    expect(spyOnClearCache).not.toHaveBeenCalled();
+    expect(spyOnRouter).toHaveBeenCalledWith(['/gyms']);
+  });
+
+  it('should destroy clear the cache', () => {
+    component.clearCache = true;
+    const spyOnClearCache = spyOn(TestBed.get(GymService), 'clear').and.callFake(() => {});
+    component.ngOnDestroy();
+    expect(spyOnClearCache).toHaveBeenCalled();
   });
 });

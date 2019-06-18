@@ -36,16 +36,14 @@ describe('EditAvatarBottomSheetComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should select an action', () =>
-  {
+  it('should select an action', () => {
     const action = component.actions[0];
     const spyOnDialogref = spyOn(dialogRef, 'dismiss').and.callThrough();
     component.onSelection(action);
     expect(spyOnDialogref).toHaveBeenCalledWith(action.action);
   });
 
-  it('should open the gallery', () =>
-  {
+  it('should open the gallery', () => {
     const action = component.actions[3];
     const spyOnDialogref = spyOn(dialogRef, 'dismiss').and.callThrough();
     const element = document.createElement('span');

@@ -61,4 +61,14 @@ describe('LoginComponent', () => {
     component.login();
     expect(spy).toHaveBeenCalledWith(['/page']);
   });
+
+  it('should fail login', () => {
+    const loginService: LoginService = TestBed.get(LoginService);
+    loginService.redirectUrl = '/page';
+    const spy = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {
+    });
+    spyOn(loginService, 'login').and.returnValue(of(false));
+    component.login();
+    expect(spy).not.toHaveBeenCalled();
+  });
 });

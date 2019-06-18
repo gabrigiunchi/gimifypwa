@@ -37,7 +37,7 @@ export class MyCommentsComponent implements OnInit, OnDestroy {
     this.downloadPage(this.currentPage.number + 1);
   }
 
-  private downloadPage(pageNumber: number): void {
+  downloadPage(pageNumber: number): void {
     this.isLoading = true;
     console.log(`Downloading page ${pageNumber}`);
 
@@ -55,10 +55,6 @@ export class MyCommentsComponent implements OnInit, OnDestroy {
   }
 
   get last(): boolean {
-    return this.currentPage && this.currentPage.last;
-  }
-
-  pageChange(pageIndex: number): void {
-    this.downloadPage(pageIndex);
+    return !!(this.currentPage && this.currentPage.last);
   }
 }
