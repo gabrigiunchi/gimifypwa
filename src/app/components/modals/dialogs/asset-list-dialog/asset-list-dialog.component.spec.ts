@@ -3,18 +3,18 @@ import {AssetListDialogComponent, AssetListDialogData} from './asset-list-dialog
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {
   MAT_DIALOG_DATA,
+  MatDialog,
   MatDialogModule,
   MatDialogRef,
   MatDividerModule,
   MatIconModule,
   MatListModule,
   MatProgressSpinnerModule,
-  NativeDateModule,
-  MatDialog
+  NativeDateModule
 } from '@angular/material';
-import {TestConstants, MockDialog} from 'src/app/test-constants';
+import {MockDialog, TestConstants} from 'src/app/test-constants';
 import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';
-import {RouterModule, Router} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {KindIconPipe} from 'src/app/pipes/kind-icon.pipe';
 import {of} from 'rxjs';
@@ -30,6 +30,7 @@ describe('AssetListDialogComponent', () => {
     from: '10:00',
     to: '10:20'
   };
+  const dialogRef = new MockDialog();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -50,7 +51,7 @@ describe('AssetListDialogComponent', () => {
         NativeDateModule
       ],
       providers: [
-        {provide: MatDialogRef, useValue: {}},
+        {provide: MatDialogRef, useValue: dialogRef},
         {provide: MAT_DIALOG_DATA, useValue: mockDialogData}
       ]
     })
@@ -72,12 +73,29 @@ describe('AssetListDialogComponent', () => {
     spyOn(TestBed.get(ReservationService), 'addReservation').and.returnValue(of({}));
 
     const dialog: MatDialog = TestBed.get(MatDialog);
-    const dialogRef = new MockDialog();
     spyOn(dialogRef, 'afterClosed').and.returnValue(of(true));
     spyOn(component, 'dismiss').and.callFake(() => {});
     spyOn(dialog, 'open').and.returnValue(dialogRef);
 
     component.onBookingClick(TestConstants.mockAsset);
     expect(spyOnRouter).toHaveBeenCalledWith(['/reservations']);
+  });
+
+  it('should cancel the booking', () => {
+    const spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    spyOn(TestBed.get(ReservationService), 'addReservation').and.returnValue(of({}));
+
+    const dialog: MatDialog = TestBed.get(MatDialog);
+    spyOn(dialogRef, 'afterClosed').and.returnValue(of(false));
+    spyOn(dialog, 'open').and.returnValue(dialogRef);
+
+    component.onBookingClick(TestConstants.mockAsset);
+    expect(spyOnRouter).not.toHaveBeenCalled();
+  });
+
+  it('should be dismissed', () => {
+    const spy = spyOn(dialogRef, 'close').and.callFake(() => {});
+    component.dismiss();
+    expect(spy).toHaveBeenCalled();
   });
 });

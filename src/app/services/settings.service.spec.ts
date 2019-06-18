@@ -28,6 +28,46 @@ describe('SettingsService', () => {
     expect(result.name).toBe('MILANO');
   });
 
+  it('should remove the default city', () => {
+    const service: SettingsService = TestBed.get(SettingsService);
+    service.defaultCity = TestConstants.mockCity;
+    expect(localStorage.getItem(LocalStorageKey.defaultCity)).not.toBe(null);
+    service.defaultCity = null;
+    expect(localStorage.getItem(LocalStorageKey.defaultCity)).toBe(null);
+    service.defaultCity = TestConstants.mockCity;
+    expect(localStorage.getItem(LocalStorageKey.defaultCity)).not.toBe(null);
+    service.defaultCity = undefined;
+    expect(localStorage.getItem(LocalStorageKey.defaultCity)).toBe(null);
+  });
+
+  it('should set the default gym', () => {
+    const service: SettingsService = TestBed.get(SettingsService);
+    service.defaultGym = TestConstants.mockGym;
+    const result: City = JSON.parse(localStorage.getItem(LocalStorageKey.defaultGym));
+    expect(result.id).toBe(1);
+    expect(result.name).toBe('gym');
+  });
+
+  it('should get the default gym', () => {
+    const service: SettingsService = TestBed.get(SettingsService);
+    localStorage.setItem(LocalStorageKey.defaultGym, JSON.stringify(TestConstants.mockGym));
+    const result = service.defaultGym;
+    expect(result.id).toBe(1);
+    expect(result.name).toBe('gym');
+  });
+
+  it('should remove the default gym', () => {
+    const service: SettingsService = TestBed.get(SettingsService);
+    service.defaultGym = TestConstants.mockGym;
+    expect(localStorage.getItem(LocalStorageKey.defaultGym)).not.toBe(null);
+    service.defaultGym = null;
+    expect(localStorage.getItem(LocalStorageKey.defaultGym)).toBe(null);
+    service.defaultGym = TestConstants.mockGym;
+    expect(localStorage.getItem(LocalStorageKey.defaultGym)).not.toBe(null);
+    service.defaultGym = undefined;
+    expect(localStorage.getItem(LocalStorageKey.defaultGym)).toBe(null);
+  });
+
   it('should get undefined if the default city is not present in the local storage', () => {
     const service: SettingsService = TestBed.get(SettingsService);
     localStorage.clear();

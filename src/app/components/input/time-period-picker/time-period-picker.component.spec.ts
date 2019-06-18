@@ -91,4 +91,21 @@ describe('TimePeriodPickerComponent', () => {
     expect(component.isValid).toBe(false);
   });
 
+  it('should set the end if it is before the start', () => {
+    component.maxDuration = Duration.fromObject({minutes: 30});
+    component.step = 30;
+
+    component.start = '10:00';
+    component.end = '10:30';
+
+    component.startSet('11:00');
+    expect(component.end).toBe('11:30');
+
+    component.startSet('11:30');
+    expect(component.end).toBe('12:00');
+
+    component.startSet('10:30');
+    expect(component.end).toBe('12:00');
+  });
+
 });

@@ -15,4 +15,18 @@ describe('FooterSectionColorPipe', () => {
     const pipe = new FooterSectionColorPipe(TestBed.get(Router));
     expect(pipe).toBeTruthy();
   });
+
+  it('should get the color for a selected section', () => {
+    const router: Router = TestBed.get(Router);
+    const pipe = new FooterSectionColorPipe(router);
+    spyOnProperty(router, 'url', 'get').and.returnValue('home');
+    expect(pipe.transform({icon: 'face', link: 'home'})).toBe('primary');
+  });
+
+  it('should get the color for a non-selected section', () => {
+    const router: Router = TestBed.get(Router);
+    const pipe = new FooterSectionColorPipe(router);
+    spyOnProperty(router, 'url', 'get').and.returnValue('reservations');
+    expect(pipe.transform({icon: 'face', link: 'home'})).toBe(undefined);
+  });
 });

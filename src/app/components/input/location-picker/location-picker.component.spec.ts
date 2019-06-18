@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {LocationPickerComponent} from './location-picker.component';
-import {MatDialogModule, MatIconModule, MatInputModule, MatDialog} from '@angular/material';
+import {MatDialog, MatDialogModule, MatIconModule, MatInputModule} from '@angular/material';
 import {MockDialog, TestConstants} from 'src/app/test-constants';
 import {of} from 'rxjs';
 import {SelectLocationResult} from '../../modals/dialogs/select-location-dialog/select-location-dialog.component';

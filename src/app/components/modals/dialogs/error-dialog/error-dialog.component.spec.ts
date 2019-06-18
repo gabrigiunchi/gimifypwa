@@ -2,6 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ErrorDialogComponent} from './error-dialog.component';
 import {MAT_DIALOG_DATA, MatDialogRef, MatIconModule} from '@angular/material';
 import {MockDialog} from 'src/app/test-constants';
+import {HttpErrorResponse} from '@angular/common/http';
 
 describe('ErrorDialogComponent', () => {
   let component: ErrorDialogComponent;
@@ -36,5 +37,17 @@ describe('ErrorDialogComponent', () => {
     const spyOnDialogRef = spyOn(dialogRef, 'close');
     component.dismiss();
     expect(spyOnDialogRef).toHaveBeenCalledWith();
+  });
+
+  it('should display an http error', () => {
+    const error: HttpErrorResponse = new HttpErrorResponse({
+      error: [{message: 'error101'}],
+      headers: undefined,
+      status: 404,
+      statusText: '',
+      url: ''
+    });
+    component = new ErrorDialogComponent(undefined, error);
+    expect(component.message).toBe('error101');
   });
 });
