@@ -28,7 +28,9 @@ export class CommentsTabComponent implements OnChanges, OnDestroy {
   }
 
   ngOnChanges() {
-    this.downloadPage(0);
+    if (this.gym) {
+      this.downloadPage(0);
+    }
   }
 
   ngOnDestroy() {
