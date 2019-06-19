@@ -92,4 +92,19 @@ describe('ReservationDetailsComponent', () => {
     component.onDeleteClick(mockReservation);
     expect(spyOnRouter).toHaveBeenCalledWith(['/reservations']);
   });
+
+  it('should cancel the cancellation of a reservation', () => {
+    const spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    const spyOnDelete = spyOn(component, 'deleteReservation').and.callFake(() => {});
+    spyOn(TestBed.get(ReservationService), 'deleteMyReservation').and.returnValue(of({}));
+
+    const dialog: MatDialog = TestBed.get(MatDialog);
+    const dialogRef = new MockDialog();
+    spyOn(dialogRef, 'afterClosed').and.returnValue(of(false));
+    spyOn(dialog, 'open').and.returnValue(dialogRef);
+
+    component.onDeleteClick(mockReservation);
+    expect(spyOnRouter).not.toHaveBeenCalled();
+    expect(spyOnDelete).not.toHaveBeenCalled();
+  });
 });

@@ -67,8 +67,16 @@ describe('CommentsTabComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should not load page 0 on changes if the gym is undefined', () => {
+    const spy = spyOn(component, 'downloadPage').and.callFake(() => {});
+    component.gym = undefined;
+    component.ngOnChanges();
+    expect(spy).not.toHaveBeenCalled();
+  });
+
   it('should load page 0 on changes', () => {
     const spy = spyOn(component, 'downloadPage').and.callFake(() => {});
+    component.gym = TestConstants.mockGym;
     component.ngOnChanges();
     expect(spy).toHaveBeenCalledWith(0);
   });

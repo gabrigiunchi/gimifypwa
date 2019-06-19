@@ -21,7 +21,7 @@ export class AssetsTabComponent implements OnChanges {
   isLoading = false;
   currentPage: Page<AssetDTO>;
   assets: AssetDTO[] = [];
-  private currentDownload: Subscription;
+  currentDownload: Subscription;
 
   constructor(
     private dialog: MatDialog,

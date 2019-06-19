@@ -71,4 +71,18 @@ describe('ResultListComponent', () => {
     component.onBookingClick(TestConstants.mockAsset);
     expect(spyOnRouter).toHaveBeenCalledWith(['/reservations']);
   });
+
+  it('should not confirm the reservation', () => {
+    const spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    const spyOnAdd = spyOn(TestBed.get(ReservationService), 'addReservation').and.returnValue(of({}));
+
+    const dialog: MatDialog = TestBed.get(MatDialog);
+    const dialogRef = new MockDialog();
+    spyOn(dialogRef, 'afterClosed').and.returnValue(of(false));
+    spyOn(dialog, 'open').and.returnValue(dialogRef);
+
+    component.onBookingClick(TestConstants.mockAsset);
+    expect(spyOnRouter).not.toHaveBeenCalled();
+    expect(spyOnAdd).not.toHaveBeenCalled();
+  });
 });

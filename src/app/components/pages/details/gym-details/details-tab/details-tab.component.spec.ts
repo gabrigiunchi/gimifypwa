@@ -47,7 +47,6 @@ describe('DetailsTabComponent', () => {
   }));
 
   beforeEach(() => {
-    spyOn(TestBed.get(TimetableService), 'getTimetableOfGym').and.returnValue(of(TestConstants.mockTimetable));
     fixture = TestBed.createComponent(DetailsTabComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -55,5 +54,19 @@ describe('DetailsTabComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should load the timetable of the gym', () => {
+    const spy = spyOn(TestBed.get(TimetableService), 'getTimetableOfGym').and.returnValue(of(TestConstants.mockTimetable));
+    component.gym = TestConstants.mockGym;
+    component.ngOnChanges();
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should not load the timetable if the gym is undefined', () => {
+    const spy = spyOn(TestBed.get(TimetableService), 'getTimetableOfGym').and.returnValue(of(TestConstants.mockTimetable));
+    component.gym = undefined;
+    component.ngOnChanges();
+    expect(spy).not.toHaveBeenCalled();
   });
 });
