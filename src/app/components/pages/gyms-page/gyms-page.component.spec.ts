@@ -2,6 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {GymFilterParams, GymsPageComponent} from './gyms-page.component';
 import {
   MatChipsModule,
+  MatDialog,
   MatDialogModule,
   MatIconModule,
   MatInputModule,
@@ -20,7 +21,7 @@ import {FilterResult} from 'src/app/model/filter-result';
 import {SearchbarComponent} from '../../input/searchbar/searchbar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TestConstants} from 'src/app/test-constants';
+import {MockDialog, TestConstants} from 'src/app/test-constants';
 import {GymListComponent} from '../../layout/gym-list/gym-list.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MapComponent} from '../../layout/map/map.component';
@@ -150,5 +151,24 @@ describe('GymsPageComponent', () => {
     component.cityFilter = TestConstants.mockCity;
     expect(component.result.length).toBe(1);
     expect(component.result[0].id).toBe(1);
+  });
+
+  it('should pick the city for the filter', () => {
+    const result = TestConstants.mockCity;
+    const dialog: MatDialog = TestBed.get(MatDialog);
+    const dialogRef = new MockDialog();
+    spyOn(dialogRef, 'afterClosed').and.returnValue(of(result));
+    spyOn(dialog, 'open').and.returnValue(dialogRef);
+    component.pickCity();
+    expect(component.cityFilter).toEqual(result);
+  });
+
+  it('should abort the selection of the city for the filter', () => {
+    const dialog: MatDialog = TestBed.get(MatDialog);
+    const dialogRef = new MockDialog();
+    spyOn(dialogRef, 'afterClosed').and.returnValue(of(undefined));
+    spyOn(dialog, 'open').and.returnValue(dialogRef);
+    component.pickCity();
+    expect(component.cityFilter).toBe(undefined);
   });
 });

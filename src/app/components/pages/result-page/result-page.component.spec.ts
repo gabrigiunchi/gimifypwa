@@ -19,6 +19,9 @@ import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {GymAvatarPipe} from 'src/app/pipes/gym-avatar.pipe';
 import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 import {TimePipe} from 'src/app/pipes/date/time.pipe';
+import {CityService} from 'src/app/services/server-communication/city.service';
+import {of} from 'rxjs';
+import {TestConstants} from 'src/app/test-constants';
 
 describe('ResultPageComponent', () => {
   let component: ResultPageComponent;
@@ -63,6 +66,7 @@ describe('ResultPageComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOn(TestBed.get(CityService), 'getCityById').and.returnValue(of(TestConstants.mockCity));
     fixture = TestBed.createComponent(ResultPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -70,5 +74,11 @@ describe('ResultPageComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should go back and set the clearCache to true', () => {
+    component.clearCache = true;
+    component.onBackClick();
+    expect(component.clearCache).toBe(false);
   });
 });

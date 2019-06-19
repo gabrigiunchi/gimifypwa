@@ -2,10 +2,12 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {InfoDialogComponent} from './info-dialog.component';
 import {MAT_DIALOG_DATA, MatDialogRef, NativeDateModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
+import {MockDialog} from 'src/app/test-constants';
 
 describe('InfoDialogComponent', () => {
   let component: InfoDialogComponent;
   let fixture: ComponentFixture<InfoDialogComponent>;
+  const dialogRef = new MockDialog();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -15,7 +17,7 @@ describe('InfoDialogComponent', () => {
         HttpClientModule,
       ],
       providers: [
-        {provide: MatDialogRef, useValue: {}},
+        {provide: MatDialogRef, useValue: dialogRef},
         {provide: MAT_DIALOG_DATA, useValue: {title: '', message: ''}}
       ]
     })
@@ -30,5 +32,11 @@ describe('InfoDialogComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should be dismissed', () => {
+    const spy = spyOn(dialogRef, 'close').and.callFake(() => {});
+    component.dismiss();
+    expect(spy).toHaveBeenCalled();
   });
 });

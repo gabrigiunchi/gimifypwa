@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ReservationsPageComponent} from './reservations-page.component';
 import {RouterModule} from '@angular/router';
-import {MatIconModule, MatListModule, MatProgressSpinnerModule, NativeDateModule, MatToolbarModule} from '@angular/material';
+import {MatIconModule, MatListModule, MatProgressSpinnerModule, MatToolbarModule, NativeDateModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {Reservation} from 'src/app/model/entities/reservation';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';

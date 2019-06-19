@@ -35,7 +35,7 @@ export class ConfirmationDialogComponent {
   constructor(
     private dialogRef: MatDialogRef<ConfirmationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ConfirmationDialogData) {
-    if (data === undefined || data == null) {
+    if (data === undefined) {
       this.data = ConfirmationDialogComponent.DEFAULT_DATA;
     }
   }

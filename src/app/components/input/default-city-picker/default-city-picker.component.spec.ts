@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {DefaultCityPickerComponent} from './default-city-picker.component';
-import {MatDialogModule, MatIconModule, MatDialog} from '@angular/material';
+import {MatDialog, MatDialogModule, MatIconModule} from '@angular/material';
 import {SettingsService} from 'src/app/services/settings.service';
 import {MockDialog, TestConstants} from 'src/app/test-constants';
 import {of} from 'rxjs';

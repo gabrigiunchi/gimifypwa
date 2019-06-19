@@ -23,4 +23,10 @@ describe('AvatarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit an event when the avatar is clicked', () => {
+    const spy = spyOn(component.avatarClick, 'emit').and.callThrough();
+    component.onAvatarClick();
+    expect(spy).toHaveBeenCalled();
+  });
 });
