@@ -38,8 +38,7 @@ describe('AuthGuard', () => {
     const sessionService: SessionService = TestBed.get(SessionService);
     sessionService.clear();
     spyOnProperty(loginService, 'isLoggedIn', 'get').and.returnValue(false);
-    spyOn(TestBed.get(Router), 'navigateByUrl').and.callFake(() => {
-    });
+    spyOn(TestBed.get(Router), 'navigateByUrl').and.callFake(() => {});
     guard.checkLogin('abcde').subscribe(result => {
       expect(result).toBe(false);
       expect(loginService.redirectUrl).toBe('abcde');

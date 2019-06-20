@@ -6,6 +6,7 @@ import {City} from './model/entities/city';
 import {Observable, of} from 'rxjs';
 import {Timetable} from './model/entities/timetable';
 import {Comment} from './model/entities/comment';
+import {ImageMetadata} from './model/entities/images-metadata';
 
 export class MockDialog {
   afterClosed(): Observable<any> {
@@ -93,6 +94,16 @@ export class TestConstants {
         title: '',
         user: {email: '', id: 2, name: '', notificationsEnabled: true, surname: '', username: ''}
       }
+    ];
+  }
+
+  static get mockImageMetadata(): ImageMetadata[] {
+    return [
+      {id: 'image1', lastModified: 12},
+      {id: 'image2', lastModified: 12},
+      {id: 'image3', lastModified: 12},
+      {id: 'image4', lastModified: 12},
+      {id: 'image5', lastModified: 12},
     ];
   }
 }

@@ -12,6 +12,8 @@ import {TestConstants} from 'src/app/test-constants';
 describe('PhotosTabComponent', () => {
   let component: PhotosTabComponent;
   let fixture: ComponentFixture<PhotosTabComponent>;
+  let spyOnGetMetadata: jasmine.Spy;
+  let spyOnGetPhoto: jasmine.Spy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -26,7 +28,9 @@ describe('PhotosTabComponent', () => {
   }));
 
   beforeEach(() => {
-    spyOn(TestBed.get(GymImageService), 'getPhotoMetadataOfGym').and.returnValue(of([]));
+    const gymImageService: GymImageService = TestBed.get(GymImageService);
+    spyOnGetMetadata = spyOn(gymImageService, 'getPhotoMetadataOfGym').and.returnValue(of(TestConstants.mockImageMetadata));
+    spyOnGetPhoto = spyOn(gymImageService, 'getPhotoOfGym').and.returnValue(of(''));
     fixture = TestBed.createComponent(PhotosTabComponent);
     component = fixture.componentInstance;
     component.gym = TestConstants.mockGym;
@@ -35,5 +39,7 @@ describe('PhotosTabComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    component.ngOnChanges();
+    expect(spyOnGetMetadata).toHaveBeenCalled();
   });
 });

@@ -45,4 +45,10 @@ describe('ResultListItemComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should select the booking', () => {
+    const spy = spyOn(component.bookingClick, 'emit').and.callThrough();
+    component.onBookingClick();
+    expect(spy).toHaveBeenCalledWith(TestConstants.mockAsset);
+  });
 });
