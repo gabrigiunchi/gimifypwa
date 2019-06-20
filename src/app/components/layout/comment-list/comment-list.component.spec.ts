@@ -11,6 +11,7 @@ import {CommentService} from 'src/app/services/server-communication/comment.serv
 import {of} from 'rxjs';
 import {MockDialog, TestConstants} from 'src/app/test-constants';
 import {SessionService} from 'src/app/services/session.service';
+import {UserService} from 'src/app/services/server-communication/user.service';
 
 describe('CommentListComponent', () => {
   let component: CommentListComponent;
@@ -40,7 +41,7 @@ describe('CommentListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CommentListComponent);
     component = fixture.componentInstance;
-    component.comments = TestConstants.mockComments;
+    component.comments = [];
     fixture.detectChanges();
   });
 

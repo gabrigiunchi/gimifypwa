@@ -30,6 +30,7 @@ import {GymAvatarPipe} from 'src/app/pipes/gym-avatar.pipe';
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {AvatarModule} from 'ngx-avatar';
 import {ToolbarComponent} from '../../layout/toolbar/toolbar.component';
+import {GymImageService} from 'src/app/services/server-communication/gym-image-service';
 
 describe('GymsPageComponent', () => {
   let component: GymsPageComponent;
@@ -95,6 +96,8 @@ describe('GymsPageComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOn(TestBed.get(GymImageService), 'getAvatarMetadataOfGym').and.returnValue(of([]));
+    spyOn(TestBed.get(GymImageService), 'getPhotoOfGym').and.returnValue(of(''));
     spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
     filterResult = {content: [], params: {name: '', city: undefined, ratingGreaterThan: 0}, result: []};
     spy = spyOnProperty(TestBed.get(GymService), 'gyms', 'get').and.returnValue(of(mockGyms));

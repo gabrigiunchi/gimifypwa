@@ -19,7 +19,7 @@ export class AssetService {
 
   getAssets(page: number, size: number): Observable<Page<AssetDTO>> {
     const url = this.urlService.getRestUrl(`${CONSTANTS.ASSETS}/page/${page}/size/${size}`);
-    return this.http.get<Page<AssetDTO>>(this.urlService.getRestUrl(url), this.urlService.authenticationHeader);
+    return this.http.get<Page<AssetDTO>>(url, this.urlService.authenticationHeader);
   }
 
   getAssetById(id: number): Observable<Asset> {

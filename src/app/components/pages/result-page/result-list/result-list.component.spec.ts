@@ -15,6 +15,7 @@ import {TimePipe} from 'src/app/pipes/date/time.pipe';
 import {of} from 'rxjs';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {MockDialog, TestConstants} from 'src/app/test-constants';
+import {GymImageService} from 'src/app/services/server-communication/gym-image-service';
 
 describe('ResultListComponent', () => {
   let component: ResultListComponent;
@@ -48,6 +49,8 @@ describe('ResultListComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOn(TestBed.get(GymImageService), 'getAvatarMetadataOfGym').and.returnValue(of([]));
+    spyOn(TestBed.get(GymImageService), 'getPhotoOfGym').and.returnValue(of(''));
     fixture = TestBed.createComponent(ResultListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

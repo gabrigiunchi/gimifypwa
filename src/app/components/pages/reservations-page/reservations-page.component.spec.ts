@@ -18,6 +18,7 @@ import {ToolbarComponent} from '../../layout/toolbar/toolbar.component';
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {GymAvatarPipe} from 'src/app/pipes/gym-avatar.pipe';
 import {AvatarModule} from 'ngx-avatar';
+import {GymImageService} from 'src/app/services/server-communication/gym-image-service';
 
 describe('ReservationsPageComponent', () => {
   let component: ReservationsPageComponent;
@@ -65,6 +66,8 @@ describe('ReservationsPageComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOn(TestBed.get(GymImageService), 'getAvatarMetadataOfGym').and.returnValue(of([]));
+    spyOn(TestBed.get(GymImageService), 'getPhotoOfGym').and.returnValue(of(''));
     spy = spyOnProperty(TestBed.get(ReservationService), 'myFutureReservations', 'get').and.returnValue(of(mockReservations));
     fixture = TestBed.createComponent(ReservationsPageComponent);
     component = fixture.componentInstance;

@@ -38,10 +38,24 @@ import {MapComponent} from 'src/app/components/layout/map/map.component';
 import {GroupIntervalsByDayOfWeekPipe} from 'src/app/pipes/group-intervals-by-day-of-week.pipe';
 import {DayOfWeekNamePipe} from 'src/app/pipes/date/day-of-week-name.pipe';
 import {AvatarModule} from 'ngx-avatar';
+import {GymImageService} from 'src/app/services/server-communication/gym-image-service';
+import {CommentService} from 'src/app/services/server-communication/comment.service';
+import {TimetableService} from 'src/app/services/server-communication/timetable.service';
+import {Page} from 'src/app/model/page';
+import {Comment} from 'src/app/model/entities/comment';
+import {AvatarService} from 'src/app/services/server-communication/avatar.service';
 
 describe('GymDetailsComponent', () => {
   let component: GymDetailsComponent;
   let fixture: ComponentFixture<GymDetailsComponent>;
+  const mockPage: Page<Comment> = {
+    content: TestConstants.mockComments.slice(0, 1),
+    empty: false,
+    first: false, last: false,
+    number: 1,
+    totalElements: 20,
+    totalPages: 4
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -90,6 +104,10 @@ describe('GymDetailsComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOn(TestBed.get(GymImageService), 'getPhotoOfGym').and.returnValue(of(''));
+    spyOn(TestBed.get(AvatarService), 'downloadAvatarOfUser').and.returnValue(of(new ArrayBuffer(20)));
+    spyOn(TestBed.get(CommentService), 'getCommentsByGym').and.returnValue(of(mockPage));
+    spyOn(TestBed.get(TimetableService), 'getTimetableOfGym').and.returnValue(of(TestConstants.mockTimetable));
     const gymService: GymService = TestBed.get(GymService);
     spyOn(gymService, 'getRatingOfGym').and.returnValue(of(1));
     spyOn(gymService, 'getGymById').and.returnValue(of(TestConstants.mockGym));

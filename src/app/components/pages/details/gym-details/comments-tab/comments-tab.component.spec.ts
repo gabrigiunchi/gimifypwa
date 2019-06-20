@@ -17,6 +17,7 @@ import {of} from 'rxjs';
 import {Page} from 'src/app/model/page';
 import {Comment} from 'src/app/model/entities/comment';
 import {MockDialog, TestConstants} from 'src/app/test-constants';
+import {AvatarService} from 'src/app/services/server-communication/avatar.service';
 
 describe('CommentsTabComponent', () => {
   let component: CommentsTabComponent;
@@ -58,6 +59,7 @@ describe('CommentsTabComponent', () => {
 
   beforeEach(() => {
     spyOn(TestBed.get(CommentService), 'getCommentsByGym').and.returnValue(of(mockPage));
+    spyOn(TestBed.get(AvatarService), 'downloadAvatarOfUser').and.returnValue(of(new ArrayBuffer(20)));
     fixture = TestBed.createComponent(CommentsTabComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

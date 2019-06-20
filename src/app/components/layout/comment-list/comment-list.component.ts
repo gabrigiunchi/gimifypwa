@@ -13,7 +13,7 @@ import {finalize} from 'rxjs/operators';
 })
 export class CommentListComponent {
 
-  @Input() comments: Comment[];
+  @Input() comments: Comment[] = [];
   @Output() commentsChange = new EventEmitter<Comment[]>();
   isDeletingComment = false;
 

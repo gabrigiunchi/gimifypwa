@@ -9,6 +9,8 @@ import {AvatarModule} from 'ngx-avatar';
 import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 import {TimePipe} from 'src/app/pipes/date/time.pipe';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {GymImageService} from 'src/app/services/server-communication/gym-image-service';
+import {of} from 'rxjs';
 
 describe('ResultListItemComponent', () => {
   let component: ResultListItemComponent;
@@ -36,6 +38,7 @@ describe('ResultListItemComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOn(TestBed.get(GymImageService), 'getAvatarMetadataOfGym').and.returnValue(of([]));
     fixture = TestBed.createComponent(ResultListItemComponent);
     component = fixture.componentInstance;
     component.asset = TestConstants.mockAsset;

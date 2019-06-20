@@ -7,6 +7,8 @@ import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {AvatarModule} from 'ngx-avatar';
 import {TestConstants} from 'src/app/test-constants';
+import {of} from 'rxjs';
+import {GymImageService} from 'src/app/services/server-communication/gym-image-service';
 
 describe('GymListComponent', () => {
   let component: GymListComponent;
@@ -28,6 +30,8 @@ describe('GymListComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOn(TestBed.get(GymImageService), 'getAvatarMetadataOfGym').and.returnValue(of([]));
+    spyOn(TestBed.get(GymImageService), 'getPhotoOfGym').and.returnValue(of(''));
     fixture = TestBed.createComponent(GymListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

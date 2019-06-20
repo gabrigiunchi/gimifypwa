@@ -22,6 +22,7 @@ import {TimePipe} from 'src/app/pipes/date/time.pipe';
 import {CityService} from 'src/app/services/server-communication/city.service';
 import {of} from 'rxjs';
 import {TestConstants} from 'src/app/test-constants';
+import {GymImageService} from 'src/app/services/server-communication/gym-image-service';
 
 describe('ResultPageComponent', () => {
   let component: ResultPageComponent;
@@ -66,6 +67,8 @@ describe('ResultPageComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOn(TestBed.get(GymImageService), 'getAvatarMetadataOfGym').and.returnValue(of([]));
+    spyOn(TestBed.get(GymImageService), 'getPhotoOfGym').and.returnValue(of(''));
     spyOn(TestBed.get(CityService), 'getCityById').and.returnValue(of(TestConstants.mockCity));
     fixture = TestBed.createComponent(ResultPageComponent);
     component = fixture.componentInstance;
