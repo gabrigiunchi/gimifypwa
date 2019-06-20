@@ -4,7 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef, MatIconModule, MatInputModule, MatProgres
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TestConstants, MockDialog} from 'src/app/test-constants';
+import {MockDialog, TestConstants} from 'src/app/test-constants';
 import {of} from 'rxjs';
 import {CommentService} from 'src/app/services/server-communication/comment.service';
 import {CommentDTO} from 'src/app/model/dto/commentDTO';

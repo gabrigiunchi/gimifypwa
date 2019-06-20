@@ -114,7 +114,7 @@ export class SelectLocationDialogComponent implements OnInit {
     this.gymFormGroup.patchValue({gym: gym});
   }
 
-  private loadCities() {
+  loadCities() {
     this.isLoadingCities = true;
     this.cityService.cities
       .pipe(finalize(() => this.isLoadingCities = false))
@@ -135,7 +135,7 @@ export class SelectLocationDialogComponent implements OnInit {
       );
   }
 
-  private loadGymsOfCity(city: City) {
+  loadGymsOfCity(city: City) {
     this.isLoadingGyms = true;
     this.gymService.getGymsByCity(city)
       .pipe(finalize(() => this.isLoadingGyms = false))

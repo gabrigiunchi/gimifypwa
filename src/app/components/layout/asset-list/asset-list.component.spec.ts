@@ -4,7 +4,6 @@ import {MatIconModule, MatListModule} from '@angular/material';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {KindIconPipe} from 'src/app/pipes/kind-icon.pipe';
-import {TestConstants} from 'src/app/test-constants';
 import {AssetDTO} from 'src/app/model/dto/assetDTO';
 
 describe('AssetListComponent', () => {
