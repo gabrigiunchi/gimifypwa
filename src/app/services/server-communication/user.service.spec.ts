@@ -1,29 +1,50 @@
-import {TestBed} from '@angular/core/testing';
+import {TestBed, async} from '@angular/core/testing';
 import {UserService} from './user.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {SessionService} from '../session.service';
 import {TestConstants} from 'src/app/test-constants';
+import {UrlService} from '../url.service';
+import {of} from 'rxjs';
+import {CONSTANTS} from 'src/app/constants';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('UserService', () => {
+
+  let userService: UserService;
+
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [HttpClientModule]
+    imports: [HttpClientTestingModule]
   }));
 
+  beforeEach(() => {
+    userService = TestBed.get(UserService);
+    spyOnProperty(TestBed.get(UrlService), 'authenticationHeader', 'get').and.returnValue({});
+  });
+
   it('should be created', () => {
-    const service: UserService = TestBed.get(UserService);
-    expect(service).toBeTruthy();
+    expect(userService).toBeTruthy();
   });
 
   it('should say if an id is the logged user\' id', () => {
-    const service: UserService = TestBed.get(UserService);
     const sessionService: SessionService = TestBed.get(SessionService);
     sessionService.user = TestConstants.mockUser;
-    expect(service.isLoggedUser(1)).toBe(true);
+    expect(userService.isLoggedUser(1)).toBe(true);
   });
 
   it('should say if an id is not the logged user\' id', () => {
-    const service: UserService = TestBed.get(UserService);
     localStorage.clear();
-    expect(service.isLoggedUser(1)).toBe(false);
+    expect(userService.isLoggedUser(1)).toBe(false);
+  });
+
+  it('should get the user\'s info', async(() => {
+    const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(TestConstants.mockUser));
+    userService.userInfo.subscribe(result => expect(result).toEqual(TestConstants.mockUser));
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.USERS_URL}/me`, {});
+  }));
+
+  it('should enable/disable the notifications', () => {
+    const spy = spyOn(TestBed.get(HttpClient), 'patch').and.returnValue(of(TestConstants.mockUser));
+    userService.setNotifications(true);
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.USERS_URL}/me/notifications/active/true`, {}, {});
   });
 });

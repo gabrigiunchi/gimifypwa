@@ -6,6 +6,7 @@ import {HttpClient} from '@angular/common/http';
 import {of} from 'rxjs';
 import {FileSaverService} from '../file-saver.service';
 import {ImageMetadata} from 'src/app/model/entities/images-metadata';
+import {UrlService} from '../url.service';
 
 describe('GymImageService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -17,6 +18,7 @@ describe('GymImageService', () => {
   let fileSaverService: FileSaverService;
 
   beforeEach(() => {
+    spyOnProperty(TestBed.get(UrlService), 'authenticationHeader', 'get').and.returnValue({});
     spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of('aaa'));
     service = TestBed.get(GymImageService);
     sessionService = TestBed.get(SessionService);

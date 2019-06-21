@@ -19,7 +19,7 @@ export class ChooseDefaultAvatarComponent implements OnInit, OnDestroy {
 
   isLoading = false;
   private _gallery = new Map<string, GalleryItem>();
-  private binaries = new Map<string, ArrayBuffer>();
+  binaries = new Map<string, ArrayBuffer>();
   private subscriptions: Subscription[] = [];
   private gallerySize: number;
 
@@ -57,7 +57,7 @@ export class ChooseDefaultAvatarComponent implements OnInit, OnDestroy {
     return Array.from(this._gallery.values());
   }
 
-  private download(metadata: ImageMetadata): void {
+  download(metadata: ImageMetadata): void {
     // Download the avatar and put it in the gallery
     this.subscriptions.push(this.avatarService.downloadAvatar(metadata.id)
       .subscribe(binaries => {
