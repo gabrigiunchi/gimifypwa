@@ -1,12 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {EditAvatarBottomSheetComponent} from './edit-avatar-bottom-sheet.component';
-import {
-  MatBottomSheetModule,
-  MatBottomSheetRef,
-  MatIconModule,
-  MatListModule,
-  NativeDateModule
-} from '@angular/material';
+import {MatBottomSheetModule, MatBottomSheetRef, MatIconModule, MatListModule, NativeDateModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {MockDialog} from 'src/app/test-constants';
 

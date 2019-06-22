@@ -1,4 +1,4 @@
-import {TestBed, async} from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 
 import {GymService} from './gym.service';
 import {HttpClient} from '@angular/common/http';

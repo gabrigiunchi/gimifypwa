@@ -18,12 +18,16 @@ describe('AvatarPipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  it('should return the avatar of a user', () => {
+  it('should return the avatar of a user', async(() => {
+    const user = TestConstants.mockUser;
     const avatarService: AvatarService = TestBed.get(AvatarService);
-    const mockResult = of(of(new ArrayBuffer(200)));
-    spyOn(avatarService, 'downloadAvatarOfUser').and.returnValue(mockResult);
+    const mockResult = of(new ArrayBuffer(200));
     spyOn(avatarService, 'getMetadataOfUser').and.returnValue(of(TestConstants.mockImageMetadata[0]));
+    const spyOnDownload = spyOn(avatarService, 'downloadAvatarOfUser').and.returnValue(mockResult);
     const pipe = new AvatarPipe(TestBed.get(AvatarService));
-    expect(pipe.transform(TestConstants.mockUser)).toBe(mockResult);
-  });
+    pipe.transform(user).subscribe(result => {
+      expect(result).toEqual(mockResult);
+      expect(spyOnDownload).toHaveBeenCalledWith(user.id);
+    });
+  }));
 });

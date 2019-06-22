@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {AssetService} from './asset.service';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {of} from 'rxjs';
 import {CONSTANTS} from 'src/app/constants';
 import {SessionService} from '../session.service';

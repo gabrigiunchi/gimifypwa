@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {TimetableService} from './timetable.service';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TestConstants} from 'src/app/test-constants';
 import {UrlService} from '../url.service';
 import {of} from 'rxjs';

@@ -6,7 +6,7 @@ import {MatIconModule, MatProgressSpinnerModule, MatToolbarModule} from '@angula
 import {AvatarService} from 'src/app/services/server-communication/avatar.service';
 import {AvatarComponent} from '../../layout/avatar/avatar.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {RouterModule, Router} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import {ToolbarComponent} from '../../layout/toolbar/toolbar.component';
 import {TestConstants} from 'src/app/test-constants';
 import {AvatarModule} from 'ngx-avatar';

@@ -1,6 +1,6 @@
-import {TestBed, async} from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 import {CommentService} from './comment.service';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {UrlService} from '../url.service';
 import {of} from 'rxjs';
 import {CONSTANTS} from 'src/app/constants';
