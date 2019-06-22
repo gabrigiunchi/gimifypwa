@@ -19,8 +19,10 @@ describe('AvatarPipe', () => {
   });
 
   it('should return the avatar of a user', () => {
-    const mockResult = of(new ArrayBuffer(200));
-    spyOn(TestBed.get(AvatarService), 'downloadAvatarOfUser').and.returnValue(mockResult);
+    const avatarService: AvatarService = TestBed.get(AvatarService);
+    const mockResult = of(of(new ArrayBuffer(200)));
+    spyOn(avatarService, 'downloadAvatarOfUser').and.returnValue(mockResult);
+    spyOn(avatarService, 'getMetadataOfUser').and.returnValue(of(TestConstants.mockImageMetadata[0]));
     const pipe = new AvatarPipe(TestBed.get(AvatarService));
     expect(pipe.transform(TestConstants.mockUser)).toBe(mockResult);
   });

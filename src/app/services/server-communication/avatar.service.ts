@@ -51,6 +51,11 @@ export class AvatarService {
       this.urlService.authenticationHeader);
   }
 
+  getMetadataOfUser(id: number): Observable<ImageMetadata> {
+    return this.http.get<ImageMetadata>(
+      this.urlService.getRestUrl(`${CONSTANTS.AVATARS}/metadata/of_user/${id}`), this.urlService.authenticationHeader);
+  }
+
   downloadAvatarOfUser(id: number): Observable<ArrayBuffer> {
     console.log(`Get avatar of user #${id}`);
     return this.download(this.urlService.getRestUrl(`${CONSTANTS.AVATARS}/of_user/${id}`));
@@ -63,21 +68,18 @@ export class AvatarService {
       metadata => {
         console.log('Received avatar\'s metadata from server: ', metadata);
         const savedMetadata = this.avatarMetadata;
-        if (savedMetadata) {
-          console.log('Found saved metadata, check if the avatar is up to date');
 
-          if (savedMetadata.lastModified === metadata.lastModified) {
-            console.log('Avatar is up to date');
-            this.avatarSubject.next(this.cachedAvatar);
-          } else {
-            console.log('Avatar is not up to date, download the new version');
-            this.avatarMetadata = metadata;
-            this.downloadMyAvatar().subscribe(result => this.avatarSubject.next(result));
-          }
+        if (!!(savedMetadata && savedMetadata.lastModified === metadata.lastModified)) {
+          console.log('Avatar is up to date');
+          this.avatarSubject.next(this.isDefaultAvatar ? undefined : this.cachedAvatar);
         } else {
-          console.log('Avatar not found in cache, downloading...');
+          console.log('Avatar not found or not up to date');
           this.avatarMetadata = metadata;
-          this.downloadMyAvatar().subscribe(result => this.avatarSubject.next(result));
+          if (!this.isDefaultAvatar) {
+            this.downloadMyAvatar().subscribe(result => this.avatarSubject.next(result));
+          } else {
+            this.avatarSubject.next(undefined);
+          }
         }
       }
     );
@@ -103,7 +105,7 @@ export class AvatarService {
     }
 
     console.log('Avatar not found in cache, downloading an updated version....');
-    return this.downloadMyAvatar();
+    return this.isDefaultAvatar ? of(undefined) : this.downloadMyAvatar();
   }
 
   get cachedAvatar(): string {
@@ -137,7 +139,7 @@ export class AvatarService {
     return this.http.delete(this.urlService.getRestUrl(CONSTANTS.MY_AVATAR), this.urlService.authenticationHeader)
       .pipe(tap(() => {
         console.log('Avatar reset, download the default one....');
-        this.downloadMyAvatar().subscribe(result => this.avatarSubject.next(result));
+        this.avatarSubject.next(undefined);
       }));
   }
 
@@ -153,5 +155,9 @@ export class AvatarService {
 
   set avatarMetadata(metadata: ImageMetadata) {
     localStorage.setItem(LocalStorageKey.avatarMetadata, JSON.stringify(metadata));
+  }
+
+  get isDefaultAvatar(): boolean {
+    return this.avatarMetadata && this.avatarMetadata.id === AvatarService.DEFAULT_AVATAR_METADATA.id;
   }
 }

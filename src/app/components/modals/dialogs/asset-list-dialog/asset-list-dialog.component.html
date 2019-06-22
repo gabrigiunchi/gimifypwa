@@ -3,9 +3,9 @@
     <button mat-icon-button (click)="dismiss()">
       <mat-icon>close</mat-icon>
     </button>
-    <h1 fxFlex="grow" style="padding-right: 2.5rem" fxLayout="row" fxLayoutAlign="center center">
+    <h2 fxFlex="grow" style="padding-right: 2.5rem" fxLayout="row" fxLayoutAlign="center center">
       {{gymName}}
-    </h1>
+    </h2>
   </div>
 
   <cdk-virtual-scroll-viewport fxFlex="grow" *ngIf="!isLoading && data.assets.length > 0" itemSize="data.assets.length">

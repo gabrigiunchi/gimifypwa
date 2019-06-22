@@ -4,7 +4,8 @@
     <mat-spinner [diameter]="50"></mat-spinner>
   </div>
   <div fxLayout="row wrap" fxLayoutAlign="center">
-    <app-avatar *ngFor="let item of gallery" [avatar]="item.dataUrl" (avatarClick)="avatarSelected(item.id)" size="5">
-    </app-avatar>
+    <ngx-avatar *ngFor="let item of gallery" (clickOnAvatar)="avatarSelected(item.id)" [src]="item.dataUrl | safeUrl"
+      [size]="80" [value]="item.id">
+    </ngx-avatar>
   </div>
 </div>

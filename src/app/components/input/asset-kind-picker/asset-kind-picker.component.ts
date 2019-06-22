@@ -26,7 +26,7 @@ export class AssetKindPickerComponent implements OnInit {
   openDialog() {
     const dialogData: SelectionDialogData = {
       choices: this.assetKinds,
-      title: 'Select asset kind',
+      title: 'Select type of asset',
       toStringFunction: (assetKind: AssetKind) => assetKind.name
     };
 

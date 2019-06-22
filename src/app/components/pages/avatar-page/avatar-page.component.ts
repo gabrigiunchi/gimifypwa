@@ -5,7 +5,12 @@ import {AvatarService} from 'src/app/services/server-communication/avatar.servic
 import {ImageCropperService} from 'src/app/services/image-cropper.service';
 import {ConfirmationDialogComponent} from '../../modals/dialogs/confirmation-dialog/confirmation-dialog.component';
 import {Router} from '@angular/router';
-import {EditAvatarAction, EditAvatarBottomSheetComponent} from '../../modals/edit-avatar-bottom-sheet/edit-avatar-bottom-sheet.component';
+import {
+  EditAvatarActionEnum,
+  EditAvatarBottomSheetComponent
+} from '../../modals/edit-avatar-bottom-sheet/edit-avatar-bottom-sheet.component';
+import {SessionService} from 'src/app/services/session.service';
+import {User} from 'src/app/model/entities/user';
 
 @Component({
   selector: 'app-avatar-page',
@@ -15,14 +20,18 @@ import {EditAvatarAction, EditAvatarBottomSheetComponent} from '../../modals/edi
 export class AvatarPageComponent implements OnInit, OnDestroy {
   avatar: string;
   isLoading = false;
+  user: User;
   private subscriptions: Subscription[] = [];
 
   constructor(
+    private sessionService: SessionService,
     private router: Router,
     private imageCropperService: ImageCropperService,
     private dialog: MatDialog,
     private bottomSheet: MatBottomSheet,
     private avatarService: AvatarService) {
+
+    this.user = this.sessionService.user;
   }
 
   ngOnInit(): void {
@@ -74,17 +83,17 @@ export class AvatarPageComponent implements OnInit, OnDestroy {
     this.router.navigate(['/profile/avatar/modify']);
   }
 
-  private handleBottomSheetAction(action: EditAvatarAction): void {
+  private handleBottomSheetAction(action: EditAvatarActionEnum): void {
     switch (action) {
-      case EditAvatarAction.delete:
+      case EditAvatarActionEnum.delete:
         this.openConfirmCancellationDialog();
         break;
 
-      case EditAvatarAction.chooseFromDefault:
+      case EditAvatarActionEnum.chooseFromDefault:
         this.router.navigate(['profile/avatar/defaults']);
         break;
 
-      case EditAvatarAction.modifyCurrent:
+      case EditAvatarActionEnum.modifyCurrent:
         this.changeAvatar(this.avatar);
         break;
 

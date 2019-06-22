@@ -104,8 +104,12 @@ describe('GymDetailsComponent', () => {
   }));
 
   beforeEach(() => {
+    const avatarService: AvatarService = TestBed.get(AvatarService);
+    const mockResult = of(of(new ArrayBuffer(200)));
+    spyOn(avatarService, 'downloadAvatarOfUser').and.returnValue(mockResult);
+    spyOn(avatarService, 'getMetadataOfUser').and.returnValue(of(TestConstants.mockImageMetadata[0]));
+
     spyOn(TestBed.get(GymImageService), 'getPhotoOfGym').and.returnValue(of(''));
-    spyOn(TestBed.get(AvatarService), 'downloadAvatarOfUser').and.returnValue(of(new ArrayBuffer(20)));
     spyOn(TestBed.get(CommentService), 'getCommentsByGym').and.returnValue(of(mockPage));
     spyOn(TestBed.get(TimetableService), 'getTimetableOfGym').and.returnValue(of(TestConstants.mockTimetable));
     const gymService: GymService = TestBed.get(GymService);

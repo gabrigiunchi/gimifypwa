@@ -2,7 +2,8 @@
 <div class="container" fxLayout="column" *ngIf="userInfo$ | async as userInfo; else loading">
 
   <div class="avatar-container" fxLayout="row" fxLayoutAlign="center center">
-    <app-avatar routerLink="/profile/avatar" [avatar]="avatar$ | async"></app-avatar>
+    <ngx-avatar routerLink="/profile/avatar" [src]="avatar$ | async | safeUrl" [size]="96"
+      name="{{userInfo.name}} {{userInfo.surname}}"></ngx-avatar>
   </div>
 
   <div class="info" fxLayout="column" fxLayoutAlign="center center">

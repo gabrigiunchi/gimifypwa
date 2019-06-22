@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {MatBottomSheetRef} from '@angular/material';
+import {AvatarService} from 'src/app/services/server-communication/avatar.service';
 
-export enum EditAvatarAction {
+export enum EditAvatarActionEnum {
   cancel,
   delete,
   openGallery,
@@ -9,11 +10,12 @@ export enum EditAvatarAction {
   modifyCurrent,
 }
 
-interface Action {
+interface EditAvatarAction {
   title: string;
   icon: string;
-  action: EditAvatarAction;
+  action: EditAvatarActionEnum;
   color?: string;
+  isVisible?: () => boolean;
 }
 
 @Component({
@@ -23,46 +25,51 @@ interface Action {
 })
 export class EditAvatarBottomSheetComponent {
 
-  actions: Action[] = [
+  actions: EditAvatarAction[] = [
     {
-      action: EditAvatarAction.delete,
+      action: EditAvatarActionEnum.delete,
       color: 'red',
       icon: 'delete',
+      isVisible: () => !this.avatarService.isDefaultAvatar,
       title: 'Restore default'
     },
 
     {
-      action: EditAvatarAction.modifyCurrent,
+      action: EditAvatarActionEnum.modifyCurrent,
       icon: 'crop_rotate',
+      isVisible: () => !this.avatarService.isDefaultAvatar,
       title: 'Modify current avatar'
     },
 
     {
-      action: EditAvatarAction.chooseFromDefault,
+      action: EditAvatarActionEnum.chooseFromDefault,
       icon: 'tag_faces',
       title: 'Choose from default avatars'
     },
 
     {
-      action: EditAvatarAction.openGallery,
+      action: EditAvatarActionEnum.openGallery,
       icon: 'insert_photo',
       title: 'Choose from gallery'
     },
 
     {
-      action: EditAvatarAction.cancel,
+      action: EditAvatarActionEnum.cancel,
       icon: 'cancel',
       title: 'Cancel'
     },
   ];
 
-  constructor(private bottomSheetRef: MatBottomSheetRef<EditAvatarBottomSheetComponent>) {
+  constructor(
+    private avatarService: AvatarService,
+    private bottomSheetRef: MatBottomSheetRef<EditAvatarBottomSheetComponent>) {
   }
 
-  onSelection(action: Action): void {
+  onSelection(action: EditAvatarAction): void {
     this.bottomSheetRef.dismiss(action.action);
-    if (action.action === EditAvatarAction.openGallery) {
+    if (action.action === EditAvatarActionEnum.openGallery) {
       document.getElementById('filePicker').click();
     }
   }
+
 }

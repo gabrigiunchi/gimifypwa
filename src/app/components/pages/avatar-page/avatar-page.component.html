@@ -10,7 +10,8 @@
   </mat-toolbar>
   <div fxLayout="column" fxLayoutAlign="center center" fxFlex="grow">
 
-    <app-avatar *ngIf="!isLoading" [size]="18" [avatar]="avatar"></app-avatar>
+    <ngx-avatar *ngIf="!isLoading" [src]="avatar | safeUrl" [size]="280" name="{{user.name}} {{user.surname}}">
+    </ngx-avatar>
     <app-loading paddingTop="0" *ngIf="isLoading"></app-loading>
     <input id="filePicker" type="file" (change)="onFileSelected($event)" [style.visibility]="'hidden'">
   </div>

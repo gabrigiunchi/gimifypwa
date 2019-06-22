@@ -9,6 +9,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {RouterModule, Router} from '@angular/router';
 import {ToolbarComponent} from '../../layout/toolbar/toolbar.component';
 import {TestConstants} from 'src/app/test-constants';
+import {AvatarModule} from 'ngx-avatar';
 
 describe('ChooseDefaultAvatarComponent', () => {
   let component: ChooseDefaultAvatarComponent;
@@ -24,6 +25,7 @@ describe('ChooseDefaultAvatarComponent', () => {
       ],
       imports: [
         MatProgressSpinnerModule,
+        AvatarModule,
         HttpClientTestingModule,
         MatToolbarModule,
         MatIconModule,

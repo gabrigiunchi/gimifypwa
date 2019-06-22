@@ -147,7 +147,7 @@ describe('AvatarService', () => {
     spyOn(TestBed.get(HttpClient), 'delete').and.returnValue(of({}));
     const spy = spyOn(avatarService, 'downloadMyAvatar').and.returnValue(of(''));
     avatarService.deleteAvatar().subscribe(() => {
-      expect(spy).toHaveBeenCalled();
+      expect(spy).not.toHaveBeenCalled();
 
       // Should have saved the new metadata
       const savedMetadata: ImageMetadata = JSON.parse(localStorage.getItem(LocalStorageKey.avatarMetadata));

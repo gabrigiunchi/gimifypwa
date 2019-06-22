@@ -24,6 +24,7 @@ import {LoadingComponent} from './components/layout/loading/loading.component';
 import {FooterSectionColorPipe} from './pipes/footer-section-color.pipe';
 import {DefaultCityPickerComponent} from './components/input/default-city-picker/default-city-picker.component';
 import {DefaultGymPickerComponent} from './components/input/default-gym-picker/default-gym-picker.component';
+import {AvatarModule} from 'ngx-avatar';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -46,6 +47,7 @@ describe('AppComponent', () => {
         RouterTestingModule,
         MatIconModule,
         MatToolbarModule,
+        AvatarModule,
         HttpClientModule,
         MatDividerModule,
         ScrollingModule,

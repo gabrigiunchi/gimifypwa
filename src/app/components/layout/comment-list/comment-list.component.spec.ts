@@ -12,6 +12,7 @@ import {of} from 'rxjs';
 import {MockDialog, TestConstants} from 'src/app/test-constants';
 import {SessionService} from 'src/app/services/session.service';
 import {UserService} from 'src/app/services/server-communication/user.service';
+import {AvatarService} from 'src/app/services/server-communication/avatar.service';
 
 describe('CommentListComponent', () => {
   let component: CommentListComponent;
@@ -39,6 +40,11 @@ describe('CommentListComponent', () => {
   }));
 
   beforeEach(() => {
+    const avatarService: AvatarService = TestBed.get(AvatarService);
+    const mockResult = of(of(new ArrayBuffer(200)));
+    spyOn(avatarService, 'downloadAvatarOfUser').and.returnValue(mockResult);
+    spyOn(avatarService, 'getMetadataOfUser').and.returnValue(of(TestConstants.mockImageMetadata[0]));
+
     fixture = TestBed.createComponent(CommentListComponent);
     component = fixture.componentInstance;
     component.comments = [];

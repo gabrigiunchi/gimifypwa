@@ -58,8 +58,12 @@ describe('CommentsTabComponent', () => {
   }));
 
   beforeEach(() => {
+    const avatarService: AvatarService = TestBed.get(AvatarService);
+    const mockResult = of(of(new ArrayBuffer(200)));
+    spyOn(avatarService, 'downloadAvatarOfUser').and.returnValue(mockResult);
+    spyOn(avatarService, 'getMetadataOfUser').and.returnValue(of(TestConstants.mockImageMetadata[0]));
+
     spyOn(TestBed.get(CommentService), 'getCommentsByGym').and.returnValue(of(mockPage));
-    spyOn(TestBed.get(AvatarService), 'downloadAvatarOfUser').and.returnValue(of(new ArrayBuffer(20)));
     fixture = TestBed.createComponent(CommentsTabComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

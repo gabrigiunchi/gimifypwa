@@ -28,6 +28,7 @@ import {User} from 'src/app/model/entities/user';
 import {SnackbarService} from 'src/app/services/snackbar.service';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {CommentService} from 'src/app/services/server-communication/comment.service';
+import {AvatarModule} from 'ngx-avatar';
 
 describe('ProfilePageComponent', () => {
   let component: ProfilePageComponent;
@@ -50,6 +51,7 @@ describe('ProfilePageComponent', () => {
         MatSlideToggleModule,
         MatSnackBarModule,
         MatDialogModule,
+        AvatarModule,
         MatToolbarModule,
         MatDividerModule,
         MatProgressSpinnerModule,

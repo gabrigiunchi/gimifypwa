@@ -18,6 +18,9 @@ import {ImageCropperService} from 'src/app/services/image-cropper.service';
 import {ImageMetadata} from 'src/app/model/entities/images-metadata';
 import {LoadingComponent} from '../../layout/loading/loading.component';
 import {RouterModule} from '@angular/router';
+import {AvatarModule} from 'ngx-avatar';
+import {SessionService} from 'src/app/services/session.service';
+import {TestConstants} from 'src/app/test-constants';
 
 describe('AvatarPageComponent', () => {
   let component: AvatarPageComponent;
@@ -40,6 +43,7 @@ describe('AvatarPageComponent', () => {
         MatBottomSheetModule,
         MatDialogModule,
         NativeDateModule,
+        AvatarModule,
         HttpClientModule,
         MatIconModule,
         MatToolbarModule,
@@ -51,6 +55,7 @@ describe('AvatarPageComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOnProperty(TestBed.get(SessionService), 'user').and.returnValue(TestConstants.mockUser);
     (TestBed.get(ImageCropperService) as ImageCropperService).clear();
     const avatarService: AvatarService = TestBed.get(AvatarService);
     const mockMetadata: ImageMetadata = {id: 'default', lastModified: 0};
