@@ -15,6 +15,7 @@ import {SelectLocationResult} from '../../modals/dialogs/select-location-dialog/
 })
 export class SearchPageComponent implements OnDestroy {
 
+  today = DateTime.local().toISODate();
   searchParams: ReservationSearchParams;
   step = CONSTANTS.RESERVATION_TIME_SLOT_IN_MINUTES;
   clearCache = true;
@@ -110,8 +111,9 @@ export class SearchPageComponent implements OnDestroy {
   }
 
   private checkDate() {
+    this.today = DateTime.local().toISODate();
     if (DateTime.fromISO(this.searchParams.date) < DateTime.local()) {
-      this.searchParams.date = DateTime.local().toISODate();
+      this.searchParams.date = this.today;
     }
   }
 

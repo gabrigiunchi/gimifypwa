@@ -40,7 +40,7 @@ export const CONSTANTS = {
   COMMENT_MESSAGE_MAX_LENGTH: 140,
 
   DEFAULT_LOCALE: 'en',
-  DEFAULT_DATETIME_FORMAT: `yyyy-MM-dd'T'TTZZ`,
+  DEFAULT_DATETIME_FORMAT: `yyyy-MM-dd'T'HH:mm:ssZZ`,
 
   DATE_FORMATS: {
     parse: {
