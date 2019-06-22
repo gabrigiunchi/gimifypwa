@@ -17,7 +17,7 @@ export const CONSTANTS = {
   SECTIONS: [
     {icon: 'search', link: '/search'},
     {icon: 'book', link: '/reservations'},
-    {icon: 'fitness_center', link: '/gyms'},
+    {icon: 'local_convenience_store', link: '/gyms'},
     {icon: 'person', link: '/profile'},
     // {icon: 'whatshot', link: '/playground'}
   ],
@@ -78,6 +78,8 @@ export const CONSTANTS = {
   PRESET_AVATARS: 'avatars/presets',
 
   MY_POSITION_ICON: '/assets/icons/bluecircle.png',
-  PLACE_ICON: '/assets/icons/svg/place.svg'
+  PLACE_ICON: '/assets/icons/svg/place.svg',
+  GYM_SVG_ICON: '/assets/icons/svg/gym_icon.svg',
+  GYM_ICON: 'local_convenience_store'
 };
 

@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Asset} from 'src/app/model/entities/asset';
+import {CONSTANTS} from 'src/app/constants';
 
 // tslint:disable-next-line: max-line-length
 
@@ -10,6 +11,7 @@ import {Asset} from 'src/app/model/entities/asset';
 })
 export class ResultListItemComponent {
 
+  readonly gymIcon = CONSTANTS.GYM_ICON;
   @Input() asset: Asset;
   @Input() date: string;
   @Input() from: string;

@@ -6,6 +6,7 @@ import {
   SelectLocationStep
 } from '../../modals/dialogs/select-location-dialog/select-location-dialog.component';
 import {MatDialog} from '@angular/material';
+import {CONSTANTS} from 'src/app/constants';
 
 @Component({
   selector: 'app-location-picker',
@@ -14,6 +15,7 @@ import {MatDialog} from '@angular/material';
 })
 export class LocationPickerComponent {
 
+  readonly gymIcon = CONSTANTS.GYM_ICON;
   @Input() result: SelectLocationResult = {city: undefined, gym: undefined};
   @Output() resultChange = new EventEmitter<SelectLocationResult>();
 

@@ -15,7 +15,7 @@ export class MapComponent implements OnDestroy, AfterViewInit {
 
   @Input() gyms: Gym[] = [];
   @Output() gymClick = new EventEmitter<Gym>();
-  @Input() gymIcon = CONSTANTS.PLACE_ICON;
+  @Input() gymIcon = CONSTANTS.GYM_SVG_ICON;
 
   @Input() reservations: Reservation[] = [];
   @Output() reservationClick = new EventEmitter<Reservation>();

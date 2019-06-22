@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Asset} from 'src/app/model/entities/asset';
+import {CONSTANTS} from 'src/app/constants';
 
 export interface ConfirmReservationDialogData {
   asset: Asset;
@@ -15,6 +16,8 @@ export interface ConfirmReservationDialogData {
   styleUrls: ['./confirm-reservation-dialog.component.css']
 })
 export class ConfirmReservationDialogComponent {
+
+  readonly gymIcon = CONSTANTS.GYM_ICON;
 
   constructor(
     private dialogRef: MatDialogRef<ConfirmReservationDialogComponent>,
