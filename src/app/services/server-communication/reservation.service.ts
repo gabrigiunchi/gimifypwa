@@ -32,11 +32,6 @@ export class ReservationService extends CacheService<ReservationSearchParams> {
       super();
   }
 
-  getAllMyReservations(page: number, size: number): Observable<Page<Reservation>> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.MY_RESERVATIONS}/page/${page}/size/${size}`);
-    return this.http.get<Page<Reservation>>(url, this.urlService.authenticationHeader);
-  }
-
   get myFutureReservations(): Observable<Reservation[]> {
     const url = this.urlService.getRestUrl(`${CONSTANTS.MY_RESERVATIONS}/future`);
     return this.http.get<Reservation[]>(url, this.urlService.authenticationHeader);
@@ -71,11 +66,6 @@ export class ReservationService extends CacheService<ReservationSearchParams> {
     return this.http.delete(url, this.urlService.authenticationHeader);
   }
 
-  getReservationsOfAssetOfToday(asset: Asset): Observable<Reservation[]> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.MY_RESERVATIONS}/of_asset/${asset.id}/today`);
-    return this.http.get<Reservation[]>(url, this.urlService.authenticationHeader);
-  }
-
   get myReservationsCount(): Observable<number> {
     return this.http.get<number>(
       this.urlService.getRestUrl(`${CONSTANTS.RESERVATIONS}/me/count`),
@@ -95,11 +85,11 @@ export class ReservationService extends CacheService<ReservationSearchParams> {
       return this.getAvailableAssetsInCity(kind.id, params.location.city.id, from, to);
     }
 
-    return this.getAvailableAssets(kind, from, to);
+    return this.getAvailableAssets(kind.id, from, to);
   }
 
-  getAvailableAssets(kind: AssetKind, from: string, to: string): Observable<Asset[]> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.RESERVATIONS}/available/kind/${kind.id}/from/${from}/to/${to}`);
+  getAvailableAssets(kindId: number, from: string, to: string): Observable<Asset[]> {
+    const url = this.urlService.getRestUrl(`${CONSTANTS.RESERVATIONS}/available/kind/${kindId}/from/${from}/to/${to}`);
     return this.http.get<Asset[]>(url, this.urlService.authenticationHeader);
   }
 
@@ -112,11 +102,5 @@ export class ReservationService extends CacheService<ReservationSearchParams> {
     const url = this.urlService.getRestUrl(`${CONSTANTS.RESERVATIONS}/available/kind/${kindId}/from/${from}/to/${to}/city/${cityId}`);
     return this.http.get<Asset[]>(url, this.urlService.authenticationHeader);
   }
-
-  isAssetAvailable(asset: Asset, from: string, to: string): Observable<boolean> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.RESERVATIONS}/available/asset/${asset.id}/from/${from}/to/${to}`);
-    return this.http.get<boolean>(url, this.urlService.authenticationHeader);
-  }
-
 }
 

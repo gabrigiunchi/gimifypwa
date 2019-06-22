@@ -30,4 +30,19 @@ describe('AvatarPipe', () => {
       expect(spyOnDownload).toHaveBeenCalledWith(user.id);
     });
   }));
+
+  it('should return undefined if the avatar is the default one', async(() => {
+    const user = TestConstants.mockUser;
+    const avatarService: AvatarService = TestBed.get(AvatarService);
+    const mockResult = of(undefined);
+    spyOn(avatarService, 'getMetadataOfUser').and.returnValue(of(AvatarService.DEFAULT_AVATAR_METADATA));
+    const spyOnDownload = spyOn(avatarService, 'downloadAvatarOfUser').and.returnValue(mockResult);
+    const pipe = new AvatarPipe(TestBed.get(AvatarService));
+    pipe.transform(user).subscribe(result => {
+      result.subscribe(avatar => {
+        expect(avatar).toEqual(undefined);
+        expect(spyOnDownload).not.toHaveBeenCalled();
+      });
+    });
+  }));
 });

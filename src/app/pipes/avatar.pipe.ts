@@ -13,9 +13,11 @@ export class AvatarPipe implements PipeTransform {
   }
 
   transform(user: User): Observable<Observable<ArrayBuffer>> {
-    return this.avatarService.getMetadataOfUser(user.id).pipe(map(metadata =>
-      metadata.id === AvatarService.DEFAULT_AVATAR_METADATA.id ? of(undefined) : this.avatarService.downloadAvatarOfUser(user.id)
-    ));
+    return this.avatarService.getMetadataOfUser(user.id)
+      .pipe(
+        map(metadata => metadata.id === AvatarService.DEFAULT_AVATAR_METADATA.id ?
+          of(undefined) : this.avatarService.downloadAvatarOfUser(user.id)
+        ));
   }
 
 }

@@ -7,6 +7,8 @@ import {of} from 'rxjs';
 import {FileSaverService} from '../file-saver.service';
 import {ImageMetadata} from 'src/app/model/entities/images-metadata';
 import {UrlService} from '../url.service';
+import {TestConstants} from 'src/app/test-constants';
+import {CONSTANTS} from 'src/app/constants';
 
 describe('GymImageService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -19,7 +21,6 @@ describe('GymImageService', () => {
 
   beforeEach(() => {
     spyOnProperty(TestBed.get(UrlService), 'authenticationHeader', 'get').and.returnValue({});
-    spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of('aaa'));
     service = TestBed.get(GymImageService);
     sessionService = TestBed.get(SessionService);
     sessionService.clear();
@@ -31,6 +32,7 @@ describe('GymImageService', () => {
   });
 
   it('should get the image from cache if the metadata are updated', () => {
+    spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of('aaa'));
     const metadata: ImageMetadata = {id: 'image1', lastModified: 1};
     sessionService.saveMetadata(metadata);
     const spyOnSaveImage = spyOn(fileSaverService, 'saveImage').and.callFake(() => {});
@@ -45,6 +47,7 @@ describe('GymImageService', () => {
   });
 
   it('should download the updated image from cache if the metadata are NOT updated', () => {
+    spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of('aaa'));
     const metadata: ImageMetadata = {id: 'image1', lastModified: 1};
     sessionService.saveMetadata(metadata);
     const spyOnSaveImage = spyOn(fileSaverService, 'saveImage').and.returnValue(of({}));
@@ -59,6 +62,7 @@ describe('GymImageService', () => {
   });
 
   it('should download the updated image from cache if the metadata are NOT present', () => {
+    spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of('aaa'));
     expect(localStorage.getItem('image1')).toBe(null);
     const spyOnSaveImage = spyOn(fileSaverService, 'saveImage').and.returnValue(of({}));
     const spyOnLoadImage = spyOn(fileSaverService, 'loadFile').and.returnValue('');
@@ -69,5 +73,19 @@ describe('GymImageService', () => {
     expect(spyOnSaveImage).toHaveBeenCalled();
     expect(spyOnSaveMetadata).toHaveBeenCalled();
     expect(spyOnLoadImage).not.toHaveBeenCalled();
+  });
+
+  it('should get the image metadata of a gym', () => {
+    const gym = TestConstants.mockGym;
+    const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of([]));
+    service.getPhotoMetadataOfGym(gym);
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.GYMS}/${gym.id}/photos`, {});
+  });
+
+  it('should get the avatar metadata of a gym', () => {
+    const gym = TestConstants.mockGym;
+    const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(TestConstants.mockImageMetadata[0]));
+    service.getAvatarMetadataOfGym(gym);
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.GYMS}/${gym.id}/avatar/metadata`, {});
   });
 });

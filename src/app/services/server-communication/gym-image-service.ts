@@ -14,6 +14,11 @@ import {ImageService} from './image.service';
 })
 export class GymImageService extends ImageService {
 
+  static readonly DEFAULT_AVATAR_METADATA: ImageMetadata = {
+    id: 'default',
+    lastModified: 0
+  };
+
   constructor(
     http: HttpClient,
     sessionService: SessionService,
