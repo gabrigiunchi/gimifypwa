@@ -44,6 +44,7 @@ import {TimetableService} from 'src/app/services/server-communication/timetable.
 import {Page} from 'src/app/model/page';
 import {Comment} from 'src/app/model/entities/comment';
 import {AvatarService} from 'src/app/services/server-communication/avatar.service';
+import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 
 describe('GymDetailsComponent', () => {
   let component: GymDetailsComponent;
@@ -73,6 +74,7 @@ describe('GymDetailsComponent', () => {
         MessageComponent,
         CommentsTabComponent,
         AvatarPipe,
+        DateTimePipe,
         SafeUrlPipe,
         KindIconPipe,
         DataUrlPipe,

@@ -18,6 +18,7 @@ import {Page} from 'src/app/model/page';
 import {Comment} from 'src/app/model/entities/comment';
 import {MockDialog, TestConstants} from 'src/app/test-constants';
 import {AvatarService} from 'src/app/services/server-communication/avatar.service';
+import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 
 describe('CommentsTabComponent', () => {
   let component: CommentsTabComponent;
@@ -39,6 +40,7 @@ describe('CommentsTabComponent', () => {
         LoadingComponent,
         MessageComponent,
         RatingBarComponent,
+        DateTimePipe,
         FabButtonComponent,
         SafeUrlPipe,
         DataUrlPipe,

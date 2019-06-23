@@ -18,6 +18,7 @@ import {of} from 'rxjs';
 import {Page} from 'src/app/model/page';
 import {Comment} from 'src/app/model/entities/comment';
 import {CommentService} from 'src/app/services/server-communication/comment.service';
+import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 
 describe('MyCommentsComponent', () => {
   let component: MyCommentsComponent;
@@ -39,6 +40,7 @@ describe('MyCommentsComponent', () => {
         ToolbarComponent,
         LoadingComponent,
         CommentListComponent,
+        DateTimePipe,
         MessageComponent,
         SafeUrlPipe,
         DataUrlPipe,

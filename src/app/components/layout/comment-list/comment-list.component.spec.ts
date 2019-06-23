@@ -12,6 +12,7 @@ import {of} from 'rxjs';
 import {MockDialog, TestConstants} from 'src/app/test-constants';
 import {SessionService} from 'src/app/services/session.service';
 import {AvatarService} from 'src/app/services/server-communication/avatar.service';
+import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 
 describe('CommentListComponent', () => {
   let component: CommentListComponent;
@@ -24,6 +25,7 @@ describe('CommentListComponent', () => {
         RatingBarComponent,
         DataUrlPipe,
         SafeUrlPipe,
+        DateTimePipe,
         AvatarPipe
       ],
       imports: [

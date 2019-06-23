@@ -1,6 +1,6 @@
 <mat-list *ngIf="comments" role="list">
   <div *ngFor="let comment of comments">
-    <mat-list-item role="listitem">
+    <mat-list-item style="height: 4.5rem" role="listitem">
       <ngx-avatar matListAvatar size="40" name="{{comment.user.name}} {{comment.user.surname}}"
         [src]="comment.user | avatar | async | async | dataUrl | safeUrl"></ngx-avatar>
       <div class="comment-header" matLine fxLayout="row" fxLayoutAlign="start center">
@@ -14,6 +14,9 @@
           <mat-spinner diameter="24" *ngIf="isDeletingComment"></mat-spinner>
         </div>
       </div>
+      <p matLine>
+        <span class="mat-small">{{comment.date | dateTime: 'D'}}</span>
+      </p>
       <p matLine>
         <span class="title">{{comment.title}}</span>
       </p>
