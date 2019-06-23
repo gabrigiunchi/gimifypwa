@@ -5,7 +5,7 @@
 
   <mat-list>
     <mat-list-item>
-      <mat-icon matListIcon>{{gymIcon}}</mat-icon>
+      <mat-icon matListIcon>fitness_center</mat-icon>
       <h3 matLine>{{reservation.asset.name}} ({{reservation.asset.kind.name}})</h3>
     </mat-list-item>
     <mat-list-item>
@@ -17,7 +17,7 @@
       <h3 matLine>{{reservation | reservationTime: ' - '}}</h3>
     </mat-list-item>
     <mat-list-item>
-      <mat-icon matListIcon>location_city</mat-icon>
+      <mat-icon matListIcon>{{gymIcon}}</mat-icon>
       <h3 matLine>{{reservation.asset.gym.name}}</h3>
     </mat-list-item>
     <mat-list-item>
