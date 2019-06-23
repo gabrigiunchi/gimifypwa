@@ -7,6 +7,8 @@ import {FileSaverService} from '../file-saver.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {ImageMetadata} from 'src/app/model/entities/images-metadata';
 import {UrlService} from '../url.service';
+import {TestConstants} from 'src/app/test-constants';
+import {CONSTANTS} from 'src/app/constants';
 
 describe('AvatarService', () => {
   const metadataFromServer: ImageMetadata = {
@@ -14,30 +16,19 @@ describe('AvatarService', () => {
     lastModified: 2
   };
 
-  const strToArrayBuffer = (str: string): ArrayBuffer => {
-    const buf = new ArrayBuffer(str.length * 2);
-    const bufView = new Uint16Array(buf);
-    for (let i = 0, strLen = str.length; i < strLen; i++) {
-      bufView[i] = str.charCodeAt(i);
-    }
-    return buf;
-  };
-
   let avatarService: AvatarService;
-
-  const mockUrlService = jasmine.createSpyObj('UrlService', ['getRestUrl']);
-  mockUrlService.getRestUrl.and.returnValue('');
+  const typeNone = {type: 'none'};
+  const typeImage = {type: 'image'};
 
   beforeEach(() => TestBed.configureTestingModule({
     imports: [
       HttpClientTestingModule,
-    ],
-    providers: [
-      {provide: UrlService, useValue: mockUrlService},
     ]
   }));
 
   beforeEach(() => {
+    spyOnProperty(TestBed.get(UrlService), 'authenticationHeaderForImages', 'get').and.returnValue(typeImage);
+    spyOnProperty(TestBed.get(UrlService), 'authenticationHeader', 'get').and.returnValue(typeNone);
     avatarService = TestBed.get(AvatarService);
   });
 
@@ -119,7 +110,7 @@ describe('AvatarService', () => {
   });
 
   it('should download my avatar', async(() => {
-    const content: ArrayBuffer = strToArrayBuffer('content');
+    const content: ArrayBuffer = TestConstants.str2ab('content');
     const spyOnDownload = spyOn(avatarService, 'download').and.returnValue(of(content));
     const spyOnFileSaver = spyOn(TestBed.get(FileSaverService), 'saveImage').and.returnValue(of({}));
     avatarService.downloadMyAvatar().subscribe(() => {
@@ -128,10 +119,24 @@ describe('AvatarService', () => {
     });
   }));
 
-  it('should change the avatar', async(() => {
+  it('should change the avatar with an arraybuffer', async(() => {
     const resultMetadata: ImageMetadata = {id: 'user6', lastModified: 328798724982};
     const spy = spyOn(TestBed.get(HttpClient), 'put').and.returnValue(of(resultMetadata));
-    const avatar: ArrayBuffer = strToArrayBuffer('content');
+    const avatar: ArrayBuffer = TestConstants.str2ab('content');
+    avatarService.changeAvatar(avatar).subscribe(() => {
+      expect(spy).toHaveBeenCalled();
+
+      // Should have saved the new metadata
+      const savedMetadata: ImageMetadata = JSON.parse(localStorage.getItem(LocalStorageKey.avatarMetadata));
+      expect(savedMetadata.id).toBe(resultMetadata.id);
+      expect(savedMetadata.lastModified).toBe(resultMetadata.lastModified);
+    });
+  }));
+
+  it('should change the avatar with a blob', async(() => {
+    const resultMetadata: ImageMetadata = {id: 'user6', lastModified: 328798724982};
+    const spy = spyOn(TestBed.get(HttpClient), 'put').and.returnValue(of(resultMetadata));
+    const avatar: Blob = new Blob([TestConstants.str2ab('content')], {type: 'image'});
     avatarService.changeAvatar(avatar).subscribe(() => {
       expect(spy).toHaveBeenCalled();
 
@@ -153,6 +158,79 @@ describe('AvatarService', () => {
       const savedMetadata: ImageMetadata = JSON.parse(localStorage.getItem(LocalStorageKey.avatarMetadata));
       expect(savedMetadata.id).toBe(resultMetadata.id);
       expect(savedMetadata.lastModified).toBe(resultMetadata.lastModified);
+    });
+  }));
+
+  it('should download an image', () => {
+    const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(TestConstants.str2ab('avatar')));
+    avatarService.download('endpoint');
+    expect(spy).toHaveBeenCalledWith('endpoint', typeImage);
+  });
+
+  it('should download an avatar', () => {
+    const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(TestConstants.str2ab('avatar')));
+    avatarService.downloadAvatar('endpoint');
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.AVATARS}/endpoint`, typeImage);
+  });
+
+  it('should download my avatar', () => {
+    const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(TestConstants.str2ab('avatar')));
+    avatarService.downloadMyAvatar();
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.MY_AVATAR}`, typeImage);
+  });
+
+  it('should download the avatar of a user', () => {
+    const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(TestConstants.str2ab('avatar')));
+    avatarService.downloadAvatarOfUser(1);
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.AVATARS}/of_user/1`, typeImage);
+  });
+
+  it('should download the default avatars', async(() => {
+    const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of([]));
+    avatarService.presetAvatarMetadata.subscribe(() => {
+      expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.PRESET_AVATARS}`, typeNone);
+    });
+  }));
+
+  it('should download the avatar metadata of a user', () => {
+    const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(TestConstants.mockImageMetadata[0]));
+    avatarService.getMetadataOfUser(1);
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.AVATARS}/metadata/of_user/1`, typeNone);
+  });
+
+  it('should download my avatar metadata', () => {
+    const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(TestConstants.mockImageMetadata[0]));
+    avatarService.loadMyAvatarMetadata();
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.MY_AVATAR}/metadata`, typeNone);
+  });
+
+  it('should not download the default avatar so the initials can be used for the avatar', () => {
+    localStorage.clear();
+    const spyOnDownloadMyAvatar = spyOn(avatarService, 'downloadMyAvatar').and.callFake(() => {});
+    spyOn(avatarService, 'loadMyAvatarMetadata').and.returnValue(of(AvatarService.DEFAULT_AVATAR_METADATA));
+    avatarService.checkAvatar();
+    expect(spyOnDownloadMyAvatar).not.toHaveBeenCalled();
+  });
+
+  it('should broadcast the default avatar so the initials can be used for the avatar', async(() => {
+    avatarService.avatarChanged$.subscribe(avatar => {
+      expect(avatar).toBeUndefined();
+    });
+    avatarService.avatarMetadata = AvatarService.DEFAULT_AVATAR_METADATA;
+    const spyOnDownloadMyAvatar = spyOn(avatarService, 'downloadMyAvatar').and.callFake(() => {});
+    spyOn(avatarService, 'loadMyAvatarMetadata').and.returnValue(of(AvatarService.DEFAULT_AVATAR_METADATA));
+    avatarService.checkAvatar();
+    expect(spyOnDownloadMyAvatar).not.toHaveBeenCalled();
+  }));
+
+  it('should get my avatar and get undefined if it is the default avatar', async(() => {
+    localStorage.clear();
+    avatarService.avatarMetadata = AvatarService.DEFAULT_AVATAR_METADATA;
+    const spyOnDownloadMyAvatar = spyOn(avatarService, 'downloadMyAvatar').and.callFake(() => {});
+    spyOn(avatarService, 'loadMyAvatarMetadata').and.returnValue(of(AvatarService.DEFAULT_AVATAR_METADATA));
+    avatarService.myAvatar.subscribe(avatar => {
+      expect(spyOnDownloadMyAvatar).not.toHaveBeenCalled();
+      expect(avatar).toBeUndefined();
     });
   }));
 });

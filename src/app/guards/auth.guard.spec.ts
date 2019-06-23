@@ -1,7 +1,7 @@
 import {inject, TestBed} from '@angular/core/testing';
 import {AuthGuard} from './auth.guard';
 import {HttpClientModule} from '@angular/common/http';
-import {Router, RouterModule} from '@angular/router';
+import {Router, RouterModule, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {LoginService} from '../services/server-communication/login.service';
 import {SessionService} from '../services/session.service';
 import {of} from 'rxjs';
@@ -42,6 +42,22 @@ describe('AuthGuard', () => {
     guard.checkLogin('abcde').subscribe(result => {
       expect(result).toBe(false);
       expect(loginService.redirectUrl).toBe('abcde');
+    });
+  }));
+
+
+  it('should redirect to login if the user\s token is no longer valid', inject([AuthGuard], (guard: AuthGuard) => {
+    const loginService: LoginService = TestBed.get(LoginService);
+    const sessionService: SessionService = TestBed.get(SessionService);
+    sessionService.token = 'token';
+    spyOnProperty(loginService, 'isLoggedIn', 'get').and.returnValue(false);
+    const spyOnRouter = spyOn(TestBed.get(Router), 'navigateByUrl').and.callFake(() => {});
+    spyOn(loginService, 'checkToken').and.returnValue(of(false));
+    const routerStateSnapshot: RouterStateSnapshot = {root: undefined, url: 'abcde'};
+    guard.canActivate(undefined, routerStateSnapshot).subscribe(result => {
+      expect(result).toBe(false);
+      expect(loginService.redirectUrl).toBe('abcde');
+      expect(spyOnRouter).toHaveBeenCalledWith('/login');
     });
   }));
 

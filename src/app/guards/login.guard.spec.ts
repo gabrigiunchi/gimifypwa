@@ -2,6 +2,7 @@ import {inject, TestBed} from '@angular/core/testing';
 import {LoginGuard} from './login.guard';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
+import {LoginService} from '../services/server-communication/login.service';
 
 describe('LoginGuard', () => {
   beforeEach(() => {
@@ -11,7 +12,12 @@ describe('LoginGuard', () => {
     });
   });
 
-  it('should ...', inject([LoginGuard], (guard: LoginGuard) => {
+  it('should be created', inject([LoginGuard], (guard: LoginGuard) => {
     expect(guard).toBeTruthy();
+  }));
+
+  it('should activate', inject([LoginGuard], (guard: LoginGuard) => {
+    spyOnProperty(TestBed.get(LoginService), 'isLoggedIn').and.returnValue(true);
+    expect(guard.canActivate()).toBe(false);
   }));
 });
