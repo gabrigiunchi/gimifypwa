@@ -18,6 +18,7 @@ import {CONSTANTS} from 'src/app/constants';
 })
 export class ReservationDetailsComponent implements OnInit {
 
+  readonly gymIcon = CONSTANTS.GYM_ICON;
   reservation$: Observable<Reservation>;
   isDeleting = false;
 
