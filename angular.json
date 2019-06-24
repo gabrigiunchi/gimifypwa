@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pwatesi": {
+    "gimifypwa": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -60,18 +60,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pwatesi:build"
+            "browserTarget": "gimifypwa:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pwatesi:build:production"
+              "browserTarget": "gimifypwa:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pwatesi:build"
+            "browserTarget": "gimifypwa:build"
           }
         },
         "test": {
@@ -108,7 +108,7 @@
         }
       }
     },
-    "pwatesi-e2e": {
+    "gimifypwa-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -117,11 +117,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "pwatesi:serve"
+            "devServerTarget": "gimifypwa:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "pwatesi:serve:production"
+              "devServerTarget": "gimifypwa:serve:production"
             }
           }
         },
@@ -137,5 +137,5 @@
       }
     }
   },
-  "defaultProject": "pwatesi"
+  "defaultProject": "gimifypwa"
 }
