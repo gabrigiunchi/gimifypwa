@@ -83,7 +83,7 @@ describe('LoginComponent', () => {
     expect(spyOnDialog).toHaveBeenCalledWith(ErrorDialogComponent, {
       autoFocus: false,
       restoreFocus: false,
-      data: {title: 'Login error', message: 'Username and/or password incorrect'}
+      data: 'Username and/or password incorrect'
     });
   });
 });

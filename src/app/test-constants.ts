@@ -15,22 +15,28 @@ export class MockDialog {
 
   dismiss() {}
 
+  afterDismissed() {}
+
   close(el: any) {}
 }
 
 export class TestConstants {
 
-  static ab2str(buf: ArrayBuffer) {
+  static ab2str(buf: ArrayBuffer): string {
     return String.fromCharCode.apply(null, new Uint16Array(buf));
   }
 
-  static str2ab(str: string) {
+  static str2ab(str: string): ArrayBuffer {
     const buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
     const bufView = new Uint16Array(buf);
     for (let i = 0, strLen = str.length; i < strLen; i++) {
       bufView[i] = str.charCodeAt(i);
     }
     return buf;
+  }
+
+  static strToBlob(s: string): Blob {
+    return new Blob([this.str2ab(s)], {type: 'image'});
   }
 
 

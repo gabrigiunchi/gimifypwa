@@ -122,7 +122,7 @@ export class AvatarPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  private loadAvatar(): void {
+  loadAvatar(): void {
     this.isLoading = true;
     this.subscriptions.push(this.avatarService.myAvatar
       .subscribe(avatar => {

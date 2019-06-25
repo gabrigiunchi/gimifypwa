@@ -7,7 +7,9 @@ import {
   MatIconModule,
   MatProgressSpinnerModule,
   MatToolbarModule,
-  NativeDateModule
+  NativeDateModule,
+  MatBottomSheet,
+  MatDialog
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {of} from 'rxjs/internal/observable/of';
@@ -17,10 +19,11 @@ import {AvatarService} from 'src/app/services/server-communication/avatar.servic
 import {ImageCropperService} from 'src/app/services/image-cropper.service';
 import {ImageMetadata} from 'src/app/model/entities/images-metadata';
 import {LoadingComponent} from '../../layout/loading/loading.component';
-import {RouterModule} from '@angular/router';
+import {RouterModule, Router} from '@angular/router';
 import {AvatarModule} from 'ngx-avatar';
 import {SessionService} from 'src/app/services/session.service';
-import {TestConstants} from 'src/app/test-constants';
+import {TestConstants, MockDialog} from 'src/app/test-constants';
+import {EditAvatarActionEnum} from '../../modals/edit-avatar-bottom-sheet/edit-avatar-bottom-sheet.component';
 
 describe('AvatarPageComponent', () => {
   let component: AvatarPageComponent;
@@ -86,5 +89,82 @@ describe('AvatarPageComponent', () => {
     spyOn(TestBed.get(ImageCropperService), 'getResult').and.returnValue(Optional.empty());
     component.ngOnInit();
     expect(component.avatar).toBe(avatarContent);
+  });
+
+  it('should go back to the profile page', () => {
+    const spy = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    component.back();
+    expect(spy).toHaveBeenCalledWith(['./profile']);
+  });
+
+  it('should delete the avatar', () => {
+    const bottomSheet = new MockDialog();
+    const dialog = new MockDialog();
+    spyOn(bottomSheet, 'afterDismissed').and.returnValue(of(EditAvatarActionEnum.delete));
+    spyOn(dialog, 'afterClosed').and.returnValue(of(true));
+    spyOn(TestBed.get(MatDialog), 'open').and.returnValue(dialog);
+    spyOn(TestBed.get(MatBottomSheet), 'open').and.returnValue(bottomSheet);
+    const spyOnDelete = spyOn(TestBed.get(AvatarService), 'deleteAvatar').and.returnValue(of({}));
+    component.openBottomSheet();
+    expect(spyOnDelete).toHaveBeenCalled();
+  });
+
+  it('should cancel the cancellation of the avatar', () => {
+    const bottomSheet = new MockDialog();
+    const dialog = new MockDialog();
+    spyOn(bottomSheet, 'afterDismissed').and.returnValue(of(EditAvatarActionEnum.delete));
+    spyOn(dialog, 'afterClosed').and.returnValue(of(false));
+    spyOn(TestBed.get(MatDialog), 'open').and.returnValue(dialog);
+    spyOn(TestBed.get(MatBottomSheet), 'open').and.returnValue(bottomSheet);
+    const spyOnDelete = spyOn(TestBed.get(AvatarService), 'deleteAvatar').and.returnValue(of({}));
+    component.openBottomSheet();
+    expect(spyOnDelete).not.toHaveBeenCalled();
+  });
+
+  it('should choose a default avatar', () => {
+    const bottomSheet = new MockDialog();
+    spyOn(bottomSheet, 'afterDismissed').and.returnValue(of(EditAvatarActionEnum.chooseFromDefault));
+    spyOn(TestBed.get(MatBottomSheet), 'open').and.returnValue(bottomSheet);
+    const spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    component.openBottomSheet();
+    expect(spyOnRouter).toHaveBeenCalledWith(['profile/avatar/defaults']);
+  });
+
+  it('should modify the current avatar', () => {
+    component.avatar = 'avatar';
+    const bottomSheet = new MockDialog();
+    spyOn(bottomSheet, 'afterDismissed').and.returnValue(of(EditAvatarActionEnum.modifyCurrent));
+    spyOn(TestBed.get(MatBottomSheet), 'open').and.returnValue(bottomSheet);
+    const spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    component.openBottomSheet();
+    expect(spyOnRouter).toHaveBeenCalledWith(['/profile/avatar/modify']);
+    expect((TestBed.get(ImageCropperService) as ImageCropperService).getImageToEdit().get()).toBe('avatar');
+  });
+
+  it('should cancel the edit', () => {
+    component.avatar = 'avatar';
+    const bottomSheet = new MockDialog();
+    spyOn(bottomSheet, 'afterDismissed').and.returnValue(of(EditAvatarActionEnum.cancel));
+    spyOn(TestBed.get(MatBottomSheet), 'open').and.returnValue(bottomSheet);
+    const spyOnDialog = spyOn(TestBed.get(MatDialog), 'open').and.returnValue(new MockDialog());
+    const spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    component.openBottomSheet();
+    expect(spyOnRouter).not.toHaveBeenCalled();
+    expect(spyOnDialog).not.toHaveBeenCalled();
+  });
+
+  it('should change the avatar when it is updated', () => {
+    spyOn(TestBed.get(ImageCropperService), 'getResult').and.returnValue(Optional.empty());
+    spyOn(component, 'loadAvatar').and.callFake(() => {});
+    component.avatar = undefined;
+    (TestBed.get(AvatarService) as AvatarService).avatarChanged$ = of('avatar');
+    component.ngOnInit();
+    expect(component.avatar).toBe('avatar');
+  });
+
+  it('should pick a file', () => {
+    const event = {target: {files: [TestConstants.strToBlob('avatar')]}};
+    component.onFileSelected(event);
+    spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
   });
 });
