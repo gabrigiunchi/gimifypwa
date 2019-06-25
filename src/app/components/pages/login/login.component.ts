@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     this.dialog.open(ErrorDialogComponent, {
       autoFocus: false,
       restoreFocus: false,
-      data: {title: 'Login error', message: 'Username and/or password incorrect'}
+      data: 'Username and/or password incorrect'
   });
   }
 }
