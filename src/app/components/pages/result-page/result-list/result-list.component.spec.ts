@@ -12,10 +12,11 @@ import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
 import {GymAvatarPipe} from 'src/app/pipes/gym-avatar.pipe';
 import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 import {TimePipe} from 'src/app/pipes/date/time.pipe';
-import {of} from 'rxjs';
+import {of, throwError} from 'rxjs';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {MockDialog, TestConstants} from 'src/app/test-constants';
 import {GymImageService} from 'src/app/services/server-communication/gym-image-service';
+import {ErrorDialogComponent} from 'src/app/components/modals/dialogs/error-dialog/error-dialog.component';
 
 describe('ResultListComponent', () => {
   let component: ResultListComponent;
@@ -73,6 +74,16 @@ describe('ResultListComponent', () => {
 
     component.onBookingClick(TestConstants.mockAsset);
     expect(spyOnRouter).toHaveBeenCalledWith(['/reservations']);
+  });
+
+  it('should handle error when making a reservation', () => {
+    const spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    spyOn(TestBed.get(ReservationService), 'addReservation').and.returnValue(throwError('error'));
+    const spyOnError = spyOn(TestBed.get(MatDialog), 'open');
+    component.makeReservation(TestConstants.mockAsset);
+    expect(spyOnRouter).not.toHaveBeenCalled();
+    expect(spyOnError).toHaveBeenCalledWith(
+      ErrorDialogComponent, {data: 'error', autoFocus: false, restoreFocus: false});
   });
 
   it('should not confirm the reservation', () => {

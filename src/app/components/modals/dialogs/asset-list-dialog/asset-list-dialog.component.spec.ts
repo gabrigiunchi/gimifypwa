@@ -17,8 +17,9 @@ import {LoadingComponent} from 'src/app/components/layout/loading/loading.compon
 import {Router, RouterModule} from '@angular/router';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {KindIconPipe} from 'src/app/pipes/kind-icon.pipe';
-import {of} from 'rxjs';
+import {of, throwError} from 'rxjs';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
+import {ErrorDialogComponent} from '../error-dialog/error-dialog.component';
 
 describe('AssetListDialogComponent', () => {
   let component: AssetListDialogComponent;
@@ -97,5 +98,15 @@ describe('AssetListDialogComponent', () => {
     const spy = spyOn(dialogRef, 'close').and.callFake(() => {});
     component.dismiss();
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('should handle error when making a reservation', () => {
+    const spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
+    spyOn(TestBed.get(ReservationService), 'addReservation').and.returnValue(throwError('error'));
+    const spyOnError = spyOn(TestBed.get(MatDialog), 'open');
+    component.makeReservation(TestConstants.mockAsset);
+    expect(spyOnRouter).not.toHaveBeenCalled();
+    expect(spyOnError).toHaveBeenCalledWith(
+      ErrorDialogComponent, {data: 'error', autoFocus: false, restoreFocus: false});
   });
 });

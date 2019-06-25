@@ -50,7 +50,7 @@ export class ResultListComponent {
     });
   }
 
-  private makeReservation(asset: Asset) {
+  makeReservation(asset: Asset) {
     this.isLoading = true;
     this.reservationService.addReservation(asset, this.date, this.from, this.to)
       .pipe(finalize(() => this.isLoading = false))

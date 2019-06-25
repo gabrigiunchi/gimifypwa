@@ -42,4 +42,11 @@ describe('PhotosTabComponent', () => {
     component.ngOnChanges();
     expect(spyOnGetMetadata).toHaveBeenCalled();
   });
+
+  it('should download the photos of the gym', async(() => {
+    component.ngOnChanges();
+    component.photos$.subscribe(() => {
+      expect(spyOnGetPhoto).toHaveBeenCalledTimes(TestConstants.mockImageMetadata.length);
+    });
+  }));
 });

@@ -5,6 +5,8 @@ import {LoginService} from 'src/app/services/server-communication/login.service'
 import {SnackbarService} from 'src/app/services/snackbar.service';
 import {finalize} from 'rxjs/operators';
 import {CONSTANTS} from 'src/app/constants';
+import {ErrorDialogComponent} from '../../modals/dialogs/error-dialog/error-dialog.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
   isLoading = false;
 
   constructor(
-    private snackbarService: SnackbarService,
+    private dialog: MatDialog,
     private loginService: LoginService,
     private router: Router) {
   }
@@ -42,7 +44,7 @@ export class LoginComponent implements OnInit {
         },
         () => {
           console.log('Login failed');
-          this.snackbarService.show('Username and/or password incorrect');
+          this.showLoginError();
         });
   }
 
@@ -52,5 +54,13 @@ export class LoginComponent implements OnInit {
 
   private get password(): string {
     return this.loginForm.get('password').value;
+  }
+
+  private showLoginError() {
+    this.dialog.open(ErrorDialogComponent, {
+      autoFocus: false,
+      restoreFocus: false,
+      data: {title: 'Login error', message: 'Username and/or password incorrect'}
+  });
   }
 }

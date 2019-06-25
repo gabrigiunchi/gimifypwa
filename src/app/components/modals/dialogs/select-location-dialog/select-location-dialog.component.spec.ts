@@ -11,7 +11,7 @@ import {
 } from '@angular/material';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CityService} from 'src/app/services/server-communication/city.service';
-import {of} from 'rxjs';
+import {of, throwError} from 'rxjs';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -47,7 +47,6 @@ describe('SelectLocationDialogComponent', () => {
   }));
 
   beforeEach(() => {
-    spyOnProperty(TestBed.get(CityService), 'cities', 'get').and.returnValue(of([TestConstants.mockCity]));
     fixture = TestBed.createComponent(SelectLocationDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -64,6 +63,7 @@ describe('SelectLocationDialogComponent', () => {
   });
 
   it('should submit', () => {
+    spyOnProperty(TestBed.get(CityService), 'cities', 'get').and.returnValue(of([TestConstants.mockCity]));
     component.selectedCity = TestConstants.mockCity;
     component.selectedGym = TestConstants.mockGym;
     const spy = spyOn(dialogRef, 'close').and.callThrough();
@@ -73,11 +73,13 @@ describe('SelectLocationDialogComponent', () => {
   });
 
   it('should change the selection', () => {
+    spyOnProperty(TestBed.get(CityService), 'cities', 'get').and.returnValue(of([TestConstants.mockCity]));
     component.onSelectionChange({previouslySelectedIndex: 1, previouslySelectedStep: undefined, selectedIndex: 2, selectedStep: undefined});
     expect(component.currentStep).toBe(2);
   });
 
   it('should select the city', () => {
+    spyOnProperty(TestBed.get(CityService), 'cities', 'get').and.returnValue(of([TestConstants.mockCity]));
     component.selectedGym = TestConstants.mockGym;
     const spyOnLoadGyms = spyOn(TestBed.get(GymService), 'getGymsByCity').and.returnValue(of([]));
     component.selectedCity = undefined;
@@ -90,6 +92,7 @@ describe('SelectLocationDialogComponent', () => {
   });
 
   it('should select an undefined city', () => {
+    spyOnProperty(TestBed.get(CityService), 'cities', 'get').and.returnValue(of([TestConstants.mockCity]));
     component.selectedGym = TestConstants.mockGym;
     const city = undefined;
     const spyOnLoadGyms = spyOn(TestBed.get(GymService), 'getGymsByCity').and.returnValue(of([]));
@@ -103,6 +106,7 @@ describe('SelectLocationDialogComponent', () => {
   });
 
   it('should select the city and pre-select the gym if provided', () => {
+    spyOnProperty(TestBed.get(CityService), 'cities', 'get').and.returnValue(of([TestConstants.mockCity]));
     const gym = TestConstants.mockGym;
     const city = TestConstants.mockGym.city;
     component.input.gym = gym;
@@ -116,13 +120,27 @@ describe('SelectLocationDialogComponent', () => {
   });
 
   it('should select the gym', () => {
+    spyOnProperty(TestBed.get(CityService), 'cities', 'get').and.returnValue(of([TestConstants.mockCity]));
     component.selectedGym = undefined;
     const gym = TestConstants.mockGym;
     component.onGymSelected(gym);
     expect(component.selectedGym).toEqual(gym);
   });
 
-  it('shoud load the cities and select the one in input', () => {
+  it('should load the cities and select the one in input', () => {
+    spyOnProperty(TestBed.get(CityService), 'cities', 'get').and.returnValue(of([TestConstants.mockCity]));
+    component.selectedCity = TestConstants.mockCity;
+    component.currentStep = SelectLocationStep.city;
+    component.input.city = undefined;
+    const spyOnLoadGyms = spyOn(TestBed.get(GymService), 'getGymsByCity').and.returnValue(of([]));
+    component.loadCities();
+    expect(spyOnLoadGyms).not.toHaveBeenCalled();
+    expect(component.selectedCity).toBeUndefined();
+    expect(component.currentStep).toBe(SelectLocationStep.city);
+  });
+
+  it('should load the cities and select the one in input', () => {
+    spyOnProperty(TestBed.get(CityService), 'cities', 'get').and.returnValue(of([TestConstants.mockCity]));
     component.selectedCity = undefined;
     component.currentStep = SelectLocationStep.city;
     const city = TestConstants.mockCity;
@@ -132,5 +150,17 @@ describe('SelectLocationDialogComponent', () => {
     expect(spyOnLoadGyms).toHaveBeenCalledWith(city);
     expect(component.selectedCity).toEqual(city);
     expect(component.currentStep).toBe(SelectLocationStep.city);
+  });
+
+  it('should handle errors when downloading cities', () => {
+    spyOnProperty(TestBed.get(CityService), 'cities', 'get').and.returnValue(throwError('error'));
+    component.loadCities();
+    expect(component.errorLoadingCities).toBe(true);
+  });
+
+  it('should handle errors when downloading gyms', () => {
+    spyOn(TestBed.get(GymService), 'getGymsByCity').and.returnValue(throwError('error'));
+    component.loadGymsOfCity(TestConstants.mockCity);
+    expect(component.errorLoadingGyms).toBe(true);
   });
 });

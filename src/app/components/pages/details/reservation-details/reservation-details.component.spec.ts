@@ -18,10 +18,11 @@ import {DateTimePipe} from 'src/app/pipes/date/datetime.pipe';
 import {LoadingComponent} from 'src/app/components/layout/loading/loading.component';
 import {ReservationTimePipe} from 'src/app/pipes/date/reservation-time.pipe';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
-import {of} from 'rxjs';
+import {of, throwError} from 'rxjs';
 import {Reservation} from 'src/app/model/entities/reservation';
 import {MockDialog, TestConstants} from 'src/app/test-constants';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ErrorDialogComponent} from 'src/app/components/modals/dialogs/error-dialog/error-dialog.component';
 
 describe('ReservationDetailsComponent', () => {
   let component: ReservationDetailsComponent;
@@ -106,5 +107,14 @@ describe('ReservationDetailsComponent', () => {
     component.onDeleteClick(mockReservation);
     expect(spyOnRouter).not.toHaveBeenCalled();
     expect(spyOnDelete).not.toHaveBeenCalled();
+  });
+
+  it('should handle errors', () => {
+    const spyOnError = spyOn(TestBed.get(MatDialog), 'open').and.callFake(() => {});
+    spyOn(TestBed.get(ReservationService), 'deleteMyReservation').and.returnValue(throwError('error'));
+    component.deleteReservation(TestConstants.mockReservations[0]);
+    expect(spyOnError).toHaveBeenCalledWith(
+      ErrorDialogComponent, {data: 'error', autoFocus: false, restoreFocus: false}
+    );
   });
 });
