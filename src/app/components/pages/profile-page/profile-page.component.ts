@@ -38,7 +38,7 @@ export class ProfilePageComponent implements OnInit {
     this.commentsCount$ = this.commentService.myCommentsCount;
     this.reservationsCount$ = this.reservatiosService.myReservationsCount;
     this.userInfo$ = this.userService.userInfo;
-    this.avatar$ = this.avatarService.myAvatar;
+    this.avatar$ = of(this.avatarService.myAvatar);
     this.avatarService.avatarChanged$.subscribe(avatar => this.avatar$ = of(avatar));
     this.avatarService.checkAvatar();
   }

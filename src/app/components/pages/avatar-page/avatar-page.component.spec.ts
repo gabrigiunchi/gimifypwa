@@ -63,7 +63,7 @@ describe('AvatarPageComponent', () => {
     const avatarService: AvatarService = TestBed.get(AvatarService);
     const mockMetadata: ImageMetadata = {id: 'default', lastModified: 0};
     spyOnChangeAvatar = spyOn(avatarService, 'changeAvatar').and.returnValue(of(mockMetadata));
-    spyOnLoadAvatar = spyOnProperty(avatarService, 'myAvatar').and.returnValue(of(avatarContent));
+    spyOnLoadAvatar = spyOnProperty(avatarService, 'myAvatar').and.returnValue(avatarContent);
     fixture = TestBed.createComponent(AvatarPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

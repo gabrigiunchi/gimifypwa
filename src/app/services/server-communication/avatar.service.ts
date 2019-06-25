@@ -99,13 +99,8 @@ export class AvatarService {
     }));
   }
 
-  get myAvatar(): Observable<string> {
-    if (this.cachedAvatar) {
-      return of(this.cachedAvatar);
-    }
-
-    console.log('Avatar not found in cache, downloading an updated version....');
-    return this.isDefaultAvatar ? of(undefined) : this.downloadMyAvatar();
+  get myAvatar(): string {
+    return this.cachedAvatar ? this.cachedAvatar : undefined;
   }
 
   get cachedAvatar(): string {

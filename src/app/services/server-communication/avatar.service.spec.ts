@@ -84,19 +84,15 @@ describe('AvatarService', () => {
 
   it('should load the avatar from localstorage if present', async(() => {
     const content = 'dajnjdans';
-    const spyOnSavedAvatar = spyOnProperty(avatarService, 'cachedAvatar', 'get').and.returnValue(content);
+    spyOnProperty(avatarService, 'cachedAvatar', 'get').and.returnValue(content);
     const spyOnDownloadAvatar = spyOn(avatarService, 'downloadMyAvatar').and.returnValue(of(''));
-    avatarService.myAvatar.subscribe(avatar => expect(avatar).toBe(content));
-    expect(spyOnSavedAvatar).toHaveBeenCalled();
+    expect(avatarService.myAvatar).toBe(content);
     expect(spyOnDownloadAvatar).not.toHaveBeenCalled();
   }));
 
-  it('should download the avatar from server if there is not one saved', async(() => {
-    const avatarFromServer = 'djsanda';
+  it('should not load the avatar from localstorage if not present', async(() => {
     spyOnProperty(avatarService, 'cachedAvatar', 'get').and.returnValue(undefined);
-    const spyOnDownloadAvatar = spyOn(avatarService, 'downloadMyAvatar').and.returnValue(of(avatarFromServer));
-    avatarService.myAvatar.subscribe(avatar => expect(avatar).toBe(avatarFromServer));
-    expect(spyOnDownloadAvatar).toHaveBeenCalled();
+    expect(avatarService.myAvatar).toBeUndefined();
   }));
 
   it('should clear the cache', () => {
@@ -221,16 +217,5 @@ describe('AvatarService', () => {
     spyOn(avatarService, 'loadMyAvatarMetadata').and.returnValue(of(AvatarService.DEFAULT_AVATAR_METADATA));
     avatarService.checkAvatar();
     expect(spyOnDownloadMyAvatar).not.toHaveBeenCalled();
-  }));
-
-  it('should get my avatar and get undefined if it is the default avatar', async(() => {
-    localStorage.clear();
-    avatarService.avatarMetadata = AvatarService.DEFAULT_AVATAR_METADATA;
-    const spyOnDownloadMyAvatar = spyOn(avatarService, 'downloadMyAvatar').and.callFake(() => {});
-    spyOn(avatarService, 'loadMyAvatarMetadata').and.returnValue(of(AvatarService.DEFAULT_AVATAR_METADATA));
-    avatarService.myAvatar.subscribe(avatar => {
-      expect(spyOnDownloadMyAvatar).not.toHaveBeenCalled();
-      expect(avatar).toBeUndefined();
-    });
   }));
 });

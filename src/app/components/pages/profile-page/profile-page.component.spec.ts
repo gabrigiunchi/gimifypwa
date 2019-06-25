@@ -67,7 +67,7 @@ describe('ProfilePageComponent', () => {
     spyOnProperty(TestBed.get(UserService), 'userInfo').and.returnValue(of(TestConstants.mockUser));
     spyOnProperty(TestBed.get(ReservationService), 'myReservationsCount', 'get').and.returnValue(of(1));
     spyOnProperty(TestBed.get(CommentService), 'myCommentsCount', 'get').and.returnValue(of(1));
-    spyOnProperty(avatarService, 'myAvatar', 'get').and.returnValue(of(''));
+    spyOnProperty(avatarService, 'myAvatar', 'get').and.returnValue('');
     spyOn(avatarService, 'checkAvatar').and.callFake(() => {});
     fixture = TestBed.createComponent(ProfilePageComponent);
     component = fixture.componentInstance;
