@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoginService} from 'src/app/services/server-communication/login.service';
-import {SnackbarService} from 'src/app/services/snackbar.service';
 import {finalize} from 'rxjs/operators';
 import {CONSTANTS} from 'src/app/constants';
 import {ErrorDialogComponent} from '../../modals/dialogs/error-dialog/error-dialog.component';

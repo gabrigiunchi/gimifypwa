@@ -1,6 +1,6 @@
-import {TestBed, async} from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 import {ReservationSearchParams, ReservationService} from './reservation.service';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {of} from 'rxjs';
 import {MatNativeDateModule} from '@angular/material';
 import {TestConstants} from 'src/app/test-constants';

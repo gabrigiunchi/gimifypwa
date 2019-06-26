@@ -1,7 +1,7 @@
 import {inject, TestBed} from '@angular/core/testing';
 import {AuthGuard} from './auth.guard';
 import {HttpClientModule} from '@angular/common/http';
-import {Router, RouterModule, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
+import {Router, RouterModule, RouterStateSnapshot} from '@angular/router';
 import {LoginService} from '../services/server-communication/login.service';
 import {SessionService} from '../services/session.service';
 import {of} from 'rxjs';

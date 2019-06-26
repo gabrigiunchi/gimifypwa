@@ -1,14 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {LoginComponent} from './login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {
-  MatIconModule,
-  MatInputModule,
-  MatProgressSpinnerModule,
-  MatToolbarModule,
-  MatDialogModule,
-  MatDialog
-} from '@angular/material';
+import {MatDialog, MatDialogModule, MatIconModule, MatInputModule, MatProgressSpinnerModule, MatToolbarModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {Router, RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';

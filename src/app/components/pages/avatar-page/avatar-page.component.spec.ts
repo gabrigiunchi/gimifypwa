@@ -2,14 +2,14 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {AvatarPageComponent} from './avatar-page.component';
 import {AvatarComponent} from '../../layout/avatar/avatar.component';
 import {
+  MatBottomSheet,
   MatBottomSheetModule,
+  MatDialog,
   MatDialogModule,
   MatIconModule,
   MatProgressSpinnerModule,
   MatToolbarModule,
-  NativeDateModule,
-  MatBottomSheet,
-  MatDialog
+  NativeDateModule
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {of} from 'rxjs/internal/observable/of';
@@ -19,10 +19,10 @@ import {AvatarService} from 'src/app/services/server-communication/avatar.servic
 import {ImageCropperService} from 'src/app/services/image-cropper.service';
 import {ImageMetadata} from 'src/app/model/entities/images-metadata';
 import {LoadingComponent} from '../../layout/loading/loading.component';
-import {RouterModule, Router} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import {AvatarModule} from 'ngx-avatar';
 import {SessionService} from 'src/app/services/session.service';
-import {TestConstants, MockDialog} from 'src/app/test-constants';
+import {MockDialog, TestConstants} from 'src/app/test-constants';
 import {EditAvatarActionEnum} from '../../modals/edit-avatar-bottom-sheet/edit-avatar-bottom-sheet.component';
 
 describe('AvatarPageComponent', () => {

@@ -8,7 +8,6 @@ import {ReservationDTO} from 'src/app/model/dto/reservationDTO';
 import {Asset} from 'src/app/model/entities/asset';
 import {AssetKind} from 'src/app/model/entities/asset-kind';
 import {DateService} from '../utils/date.service';
-import {Page} from 'src/app/model/page';
 import {SelectLocationResult} from 'src/app/components/modals/dialogs/select-location-dialog/select-location-dialog.component';
 import {CacheService} from '../cache.service';
 

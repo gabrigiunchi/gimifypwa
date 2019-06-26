@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/internal/Observable';
 import {map, tap} from 'rxjs/operators';
 import {Subject} from 'rxjs/internal/Subject';
-import {of} from 'rxjs/internal/observable/of';
 import {LocalStorageKey} from 'src/app/model/local-storage-key';
 import {FileSaverService} from '../file-saver.service';
 import {UrlService} from '../url.service';

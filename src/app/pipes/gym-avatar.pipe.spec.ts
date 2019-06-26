@@ -1,10 +1,9 @@
 import {GymAvatarPipe} from './gym-avatar.pipe';
-import {TestBed, async} from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 import {GymImageService} from '../services/server-communication/gym-image-service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {of} from 'rxjs';
 import {TestConstants} from '../test-constants';
-import {DataUrlPipe} from './data-url.pipe';
 
 describe('GymAvatarPipe', () => {
 
