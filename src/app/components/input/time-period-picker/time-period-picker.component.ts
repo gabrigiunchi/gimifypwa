@@ -10,7 +10,7 @@ import {CONSTANTS} from 'src/app/constants';
 export class TimePeriodPickerComponent {
   @Input() min = CONSTANTS.NEW_RESERVATION_MIN_TIME;
   @Input() max = CONSTANTS.NEW_RESERVATION_MAX_TIME;
-  @Input() maxDuration = Duration.fromObject({hours: 24});
+  @Input() maxDuration;
   @Input() currentDate: string;
   @Input() start = '10:00';
   @Input() end = '10:30';

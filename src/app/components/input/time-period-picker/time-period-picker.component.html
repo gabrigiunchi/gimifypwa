@@ -5,7 +5,7 @@
   </div>
   <div class="hour-label">{{start}}</div>
 </div>
-<input [max]="max" readonly [min]="min | minStartTime:currentDate:step" hidden [ngxTimepicker]="startPicker" [value]="start" [format]="24" type="time">
+<input readonly [min]="min | minStartTime:currentDate:step" hidden [ngxTimepicker]="startPicker" [value]="start" [format]="24" type="time">
 <ngx-material-timepicker #startPicker (timeSet)="startSet($event)" [minutesGap]="step"></ngx-material-timepicker>
 
 <div class="form-item" fxLayout="row" fxLayoutAlign="start center" (click)="endPicker.open()" matRipple>
@@ -16,6 +16,6 @@
   <div class="hour-label">{{end}}</div>
 </div>
 <input readonly 
-[max]="start | maxEndTime:max:maxDuration" 
+[max]="start | maxEndTime:step:max:maxDuration" 
 [min]="start | minEndTime:step" hidden [ngxTimepicker]="endPicker" [value]="end" [disableClick]="true" [format]="24" type="time">
 <ngx-material-timepicker #endPicker [minutesGap]="step" (timeSet)="endSet($event)"></ngx-material-timepicker>

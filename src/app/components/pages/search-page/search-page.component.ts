@@ -78,7 +78,9 @@ export class SearchPageComponent implements OnDestroy {
   }
 
   get maxDuration(): Duration {
-    return Duration.fromObject({minutes: this.searchParams.kind ? this.searchParams.kind.maxReservationTime : 1440});
+    return this.searchParams.kind ?
+      Duration.fromObject({minutes: this.searchParams.kind.maxReservationTime}) :
+      undefined;
   }
 
   private initParams() {
@@ -104,7 +106,7 @@ export class SearchPageComponent implements OnDestroy {
   }
 
   private checkDuration() {
-    if (!this.dateService.isRangeValid(this.searchParams.startHour, this.searchParams.endHour, this.maxDuration)) {
+    if (this.maxDuration && !this.dateService.isRangeValid(this.searchParams.startHour, this.searchParams.endHour, this.maxDuration)) {
       this.searchParams.endHour = DateTime.fromISO(this.searchParams.startHour)
         .plus({minutes: this.searchParams.kind.maxReservationTime}).toFormat('HH:mm');
     }
