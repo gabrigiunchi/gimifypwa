@@ -78,6 +78,7 @@ export const CONSTANTS = {
   PRESET_AVATARS: 'avatars/presets',
 
   MY_POSITION_ICON: '/assets/icons/bluecircle.png',
+  KIWI_BIRD_ICON: '/assets/icons/svg/kiwi-bird.svg',
   PLACE_ICON: '/assets/icons/svg/place.svg',
   GYM_SVG_ICON: '/assets/icons/svg/gym_icon.svg',
   GYM_ICON: 'local_convenience_store'

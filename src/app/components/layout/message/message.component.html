@@ -1,6 +1,9 @@
 <div class="container" [style.paddingTop]="marginTop" fxLayout="column" fxLayoutAlign="center center">
-  <mat-icon *ngIf="icon" [color]="iconColor" [style.fontSize]="iconSize" [style.width]="iconSize"
-    [style.height]="iconSize">{{icon}}</mat-icon>
+  <img [src]="icon" *ngIf="showIcon && icon !== undefined && localIcon" [style.fontSize]="iconSize"
+    [style.width]="iconSize" [style.height]="iconSize">
+  <mat-icon *ngIf="showIcon && icon !== undefined && !localIcon" [color]="iconColor" [style.fontSize]="iconSize"
+    [style.width]="iconSize" [style.height]="iconSize">{{icon}}
+  </mat-icon>
   <h1>{{title}}</h1>
   <h2 *ngIf="subtitle">{{subtitle}}</h2>
   <h3 *ngIf="message">{{message}}</h3>
