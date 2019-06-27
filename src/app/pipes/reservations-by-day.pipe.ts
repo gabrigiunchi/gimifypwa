@@ -9,19 +9,17 @@ export class ReservationsByDayPipe implements PipeTransform {
 
   transform(reservations: Reservation[], ascending = true): Map<string, Reservation[]> {
     const result = new Map<string, Reservation[]>();
-    if (reservations) {
-      reservations
-        .sort((a, b) => a.start.localeCompare(b.start) * (ascending ? 1 : -1))
-        .forEach(reservation => {
-          const day = DateTime.fromISO(reservation.start, {zone: reservation.asset.gym.city.zoneId}).toISODate();
+    reservations
+      .sort((a, b) => a.start.localeCompare(b.start) * (ascending ? 1 : -1))
+      .forEach(reservation => {
+        const day = DateTime.fromISO(reservation.start, {zone: reservation.asset.gym.city.zoneId}).toISODate();
 
-          if (!result.has(day)) {
-            result.set(day, []);
-          }
+        if (!result.has(day)) {
+          result.set(day, []);
+        }
 
-          result.get(day).push(reservation);
-        });
-    }
+        result.get(day).push(reservation);
+      });
 
     return result;
   }
