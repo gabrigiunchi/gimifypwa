@@ -41,7 +41,7 @@ export class LoginService {
     return this.http.post<Token>(url, credentials)
       .pipe(tap((result: Token) => {
         console.log('Login successful');
-        console.log(result.token);
+        console.log(result);
         this.sessionService.token = result.token;
         this.sessionService.user = result.user;
         this._isLoggedIn = true;

@@ -7,5 +7,5 @@
     </div>
   </cdk-virtual-scroll-viewport>
   <app-loading *ngIf="isLoading"></app-loading>
-  <app-message *ngIf="!isLoading && result.length === 0" title="Nothing found"></app-message>
+  <app-message icon="sentiment_dissatisfied" *ngIf="!isLoading && result.length === 0" title="Nothing found"></app-message>
 </div>

@@ -6,7 +6,7 @@
     <app-reservation-list *ngIf="reservations.length > 0" style="height: 100%" [reservations]="reservations">
     </app-reservation-list>
 
-    <app-message *ngIf="reservations.length === 0" title="No reservations"></app-message>
+    <app-message icon="sentiment_dissatisfied" *ngIf="reservations.length === 0" title="Nothing to show"></app-message>
   </div>
 
   <ng-template #loading>
