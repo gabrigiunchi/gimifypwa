@@ -17,11 +17,6 @@ export class MaxEndTimePipe implements PipeTransform {
     }
 
     d = d.plus({minutes: step});
-
-    console.log(d.toISO());
-    console.log(max.toISO());
-    console.log('-------------');
-
     return max.hasSame(d, 'day') ? maxTime : '00:00';
   }
 
