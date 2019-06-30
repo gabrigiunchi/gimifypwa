@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {MessageComponent} from './message.component';
-import {NativeDateModule, MatIconModule} from '@angular/material';
+import {MatIconModule, NativeDateModule} from '@angular/material';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('MessageComponent', () => {
