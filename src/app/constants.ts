@@ -15,11 +15,10 @@ export const CONSTANTS = {
   ],
 
   SECTIONS: [
-    {icon: 'search', link: '/search'},
-    {icon: 'book', link: '/reservations'},
-    {icon: 'local_convenience_store', link: '/gyms'},
-    {icon: 'person', link: '/profile'},
-    // {icon: 'whatshot', link: '/playground'}
+    {icon: 'search', link: '/search', name: 'search'},
+    {icon: 'book', link: '/reservations', name: 'reservations'},
+    {icon: 'local_convenience_store', link: '/gyms', name: 'gyms'},
+    {icon: 'person', link: '/profile', name: 'profile'},
   ],
 
   HOMEPAGE: '/reservations',

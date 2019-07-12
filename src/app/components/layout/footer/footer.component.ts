@@ -4,6 +4,7 @@ import {CONSTANTS} from 'src/app/constants';
 export interface AppSection {
   icon: string;
   link: string;
+  name: string;
 }
 
 @Component({
