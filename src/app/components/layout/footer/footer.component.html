@@ -1,7 +1,7 @@
 <mat-toolbar>
-  <div [routerLink]="section.link" *ngFor="let section of sections" fxFlex="grow" fxLayout="column"
-    fxLayoutAlign="center center">
-    <mat-icon [color]="section | footerSectionColor">{{section.icon}}</mat-icon>
+  <div [style.color]="section | footerSectionColor" [routerLink]="section.link" *ngFor="let section of sections"
+    fxFlex="grow" fxLayout="column" fxLayoutAlign="center center">
+    <mat-icon>{{section.icon}}</mat-icon>
     <span class="mat-small">{{section.name | titlecase}}</span>
   </div>
 </mat-toolbar>

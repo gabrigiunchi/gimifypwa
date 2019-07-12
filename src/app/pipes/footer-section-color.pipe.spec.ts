@@ -20,13 +20,13 @@ describe('FooterSectionColorPipe', () => {
     const router: Router = TestBed.get(Router);
     const pipe = new FooterSectionColorPipe(router);
     spyOnProperty(router, 'url', 'get').and.returnValue('home');
-    expect(pipe.transform({icon: 'face', link: 'home'})).toBe('primary');
+    expect(pipe.transform({icon: 'face', link: 'home', name: 'home'})).toBe('#3f51b5');
   });
 
   it('should get the color for a non-selected section', () => {
     const router: Router = TestBed.get(Router);
     const pipe = new FooterSectionColorPipe(router);
     spyOnProperty(router, 'url', 'get').and.returnValue('reservations');
-    expect(pipe.transform({icon: 'face', link: 'home'})).toBe(undefined);
+    expect(pipe.transform({icon: 'face', link: 'home', name: 'home'})).toBe('black');
   });
 });
