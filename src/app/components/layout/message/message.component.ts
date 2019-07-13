@@ -12,7 +12,7 @@ export class MessageComponent {
   @Input() subtitle = '';
   @Input() message = '';
   @Input() marginTop = '3rem';
-  @Input() icon = CONSTANTS.KIWI_BIRD_ICON;
+  @Input() icon = CONSTANTS.PENGUIN_ICON;
   @Input() iconSize = '7rem';
   @Input() iconColor: ThemePalette = 'primary';
   @Input() localIcon = true;
