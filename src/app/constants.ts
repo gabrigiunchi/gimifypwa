@@ -1,5 +1,6 @@
 import * as p from '../../package.json';
 import {Duration} from 'luxon';
+import {environment} from 'src/environments/environment.js';
 
 export const CONSTANTS = {
   VERSION: p.version,
@@ -59,7 +60,7 @@ export const CONSTANTS = {
   RESERVATION_THRESHOLD: Duration.fromObject({days: 14}),
   RESERVATION_CANCELLATION_LIMIT: Duration.fromObject({minutes: 20}),
 
-  BASE_URL: 'https://backendtesi.eu-gb.mybluemix.net/api/v1/',
+  BASE_URL: environment.apiUrl,
   ALIVE_URL: 'alive',
   LOGIN_URL: 'login',
   GREETINGS_URL: 'greetings',
