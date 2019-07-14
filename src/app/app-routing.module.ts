@@ -31,7 +31,7 @@ const routes: Routes = [
   {path: 'search/kind/:kind/date/:date/from/:from/to/:to/city/:city', component: ResultPageComponent, canActivate: [AuthGuard]},
   {path: 'search/kind/:kind/date/:date/from/:from/to/:to/city/:city/gym/:gym', component: ResultPageComponent, canActivate: [AuthGuard]},
   {path: 'search', component: SearchPageComponent, canActivate: [AuthGuard]},
-  {path: 'playground', component: PlaygroundComponent},
+  {path: 'playground', component: PlaygroundComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: '/reservations', pathMatch: 'full'}
 ];
 

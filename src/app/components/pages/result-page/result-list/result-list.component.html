@@ -1,5 +1,5 @@
-<div class="container">
-  <cdk-virtual-scroll-viewport itemSize="result.length" *ngIf="result.length > 0 && !isLoading && !success">
+<div class="container" *ngIf="!success">
+  <cdk-virtual-scroll-viewport itemSize="result.length" *ngIf="result.length > 0 && !isLoading">
     <div *cdkVirtualFor="let item of result" class="item">
       <app-result-list-item [asset]="item" [date]="date" [from]="from" [to]="to"
         (bookingClick)="onBookingClick($event)">
