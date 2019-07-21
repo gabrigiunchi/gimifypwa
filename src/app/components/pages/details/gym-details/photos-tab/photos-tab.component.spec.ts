@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {PhotosTabComponent} from './photos-tab.component';
-import {MatGridListModule} from '@angular/material';
+import {MatGridListModule, MatProgressSpinnerModule} from '@angular/material';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {SafeUrlPipe} from 'src/app/pipes/safe-url.pipe';
@@ -21,7 +21,8 @@ describe('PhotosTabComponent', () => {
       imports: [
         MatGridListModule,
         HttpClientTestingModule,
-        ScrollingModule
+        ScrollingModule,
+        MatProgressSpinnerModule
       ]
     })
       .compileComponents();
