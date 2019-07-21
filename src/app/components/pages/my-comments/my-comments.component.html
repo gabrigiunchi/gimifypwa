@@ -3,7 +3,7 @@
   <div fxFlex="grow" *ngIf="currentPage !== undefined; else loading" class="body">
     <cdk-virtual-scroll-viewport itemSize="comments.length">
       <app-comment-list [(comments)]="comments"></app-comment-list>
-      <app-message *ngIf="!isLoading && comments.length === 0" message="You have not made any comments"></app-message>
+      <app-message showIcon="true" *ngIf="!isLoading && comments.length === 0" message="You have not made any comments"></app-message>
 
       <div class="load-more-container" fxLayout="row" fxLayoutAlign="center center">
         <button *ngIf="!last && !isLoading" mat-button color="primary" (click)="loadMore()">Load more</button>

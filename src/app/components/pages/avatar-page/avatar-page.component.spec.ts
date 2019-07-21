@@ -31,6 +31,7 @@ describe('AvatarPageComponent', () => {
 
   let spyOnChangeAvatar: jasmine.Spy;
   let spyOnLoadAvatar: jasmine.Spy;
+  let spyOnRouter: jasmine.Spy;
 
   const avatarContent = 'data:image;base64,';
 
@@ -58,6 +59,7 @@ describe('AvatarPageComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
     spyOnProperty(TestBed.get(SessionService), 'user').and.returnValue(TestConstants.mockUser);
     (TestBed.get(ImageCropperService) as ImageCropperService).clear();
     const avatarService: AvatarService = TestBed.get(AvatarService);
@@ -92,9 +94,8 @@ describe('AvatarPageComponent', () => {
   });
 
   it('should go back to the profile page', () => {
-    const spy = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
     component.back();
-    expect(spy).toHaveBeenCalledWith(['./profile']);
+    expect(spyOnRouter).toHaveBeenCalledWith(['./profile']);
   });
 
   it('should delete the avatar', () => {
@@ -125,7 +126,6 @@ describe('AvatarPageComponent', () => {
     const bottomSheet = new MockDialog();
     spyOn(bottomSheet, 'afterDismissed').and.returnValue(of(EditAvatarActionEnum.chooseFromDefault));
     spyOn(TestBed.get(MatBottomSheet), 'open').and.returnValue(bottomSheet);
-    const spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
     component.openBottomSheet();
     expect(spyOnRouter).toHaveBeenCalledWith(['profile/avatar/defaults']);
   });
@@ -135,7 +135,6 @@ describe('AvatarPageComponent', () => {
     const bottomSheet = new MockDialog();
     spyOn(bottomSheet, 'afterDismissed').and.returnValue(of(EditAvatarActionEnum.modifyCurrent));
     spyOn(TestBed.get(MatBottomSheet), 'open').and.returnValue(bottomSheet);
-    const spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
     component.openBottomSheet();
     expect(spyOnRouter).toHaveBeenCalledWith(['/profile/avatar/modify']);
     expect((TestBed.get(ImageCropperService) as ImageCropperService).getImageToEdit().get()).toBe('avatar');
@@ -147,7 +146,6 @@ describe('AvatarPageComponent', () => {
     spyOn(bottomSheet, 'afterDismissed').and.returnValue(of(EditAvatarActionEnum.cancel));
     spyOn(TestBed.get(MatBottomSheet), 'open').and.returnValue(bottomSheet);
     const spyOnDialog = spyOn(TestBed.get(MatDialog), 'open').and.returnValue(new MockDialog());
-    const spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
     component.openBottomSheet();
     expect(spyOnRouter).not.toHaveBeenCalled();
     expect(spyOnDialog).not.toHaveBeenCalled();
@@ -165,6 +163,5 @@ describe('AvatarPageComponent', () => {
   it('should pick a file', () => {
     const event = {target: {files: [TestConstants.strToBlob('avatar')]}};
     component.onFileSelected(event);
-    spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
   });
 });

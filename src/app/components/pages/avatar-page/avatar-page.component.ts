@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, NgZone} from '@angular/core';
 import {MatBottomSheet, MatDialog} from '@angular/material';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {AvatarService} from 'src/app/services/server-communication/avatar.service';
@@ -29,6 +29,7 @@ export class AvatarPageComponent implements OnInit, OnDestroy {
     private imageCropperService: ImageCropperService,
     private dialog: MatDialog,
     private bottomSheet: MatBottomSheet,
+    private ngZone: NgZone,
     private avatarService: AvatarService) {
 
     this.user = this.sessionService.user;
@@ -72,7 +73,7 @@ export class AvatarPageComponent implements OnInit, OnDestroy {
     const reader = new FileReader();
     const file = event.target.files[0];
     reader.onloadend = () => {
-      this.changeAvatar(reader.result as string);
+      this.ngZone.run(() => this.changeAvatar(reader.result as string));
     };
 
     reader.readAsDataURL(file);
