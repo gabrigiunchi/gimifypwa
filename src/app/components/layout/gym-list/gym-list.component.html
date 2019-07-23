@@ -1,6 +1,6 @@
 <cdk-virtual-scroll-viewport *ngIf="gyms" fxFlexFill itemSize="gyms.length">
-  <mat-nav-list>
-    <mat-list-item *ngFor="let gym of gyms; last as isLast" (click)="onGymClick(gym)">
+  <mat-list>
+    <mat-list-item matRipple *ngFor="let gym of gyms; last as isLast" (click)="onGymClick(gym)">
       <ngx-avatar matListAvatar size="40" name="{{gym.name.split(' ')}}"
         [src]="gym | gymAvatar | async | async | safeUrl"></ngx-avatar>
       <h3 matLine>{{gym.name}}</h3>
@@ -9,5 +9,5 @@
       </p>
       <mat-divider *ngIf="!isLast"></mat-divider>
     </mat-list-item>
-  </mat-nav-list>
+  </mat-list>
 </cdk-virtual-scroll-viewport>
