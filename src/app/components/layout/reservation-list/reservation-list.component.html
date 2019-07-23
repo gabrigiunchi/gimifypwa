@@ -1,8 +1,8 @@
 <cdk-virtual-scroll-viewport itemSize="reservations.length">
-  <mat-nav-list>
+  <mat-list>
     <div *cdkVirtualFor="let day of reservations | reservationsByDay | keyvalue">
       <h3 matSubheader>{{day.key | dateTime: 'dd MMMM yyyy'}}</h3>
-      <mat-list-item routerLink="/reservations/{{reservation.id}}" *ngFor="let reservation of day.value">
+      <mat-list-item matRipple routerLink="/reservations/{{reservation.id}}" *ngFor="let reservation of day.value">
         <ngx-avatar size="40" matListAvatar  name="{{reservation.asset.gym.name.split(' ')}}"
           [src]="reservation.asset.gym | gymAvatar | async | async | safeUrl"></ngx-avatar>
         <h4 matLine><span class="mat-body-strong">{{reservation.asset.name}} ({{reservation.asset.kind.name}})</span>
@@ -13,5 +13,5 @@
         </p>
       </mat-list-item>
     </div>
-  </mat-nav-list>
+  </mat-list>
 </cdk-virtual-scroll-viewport>

@@ -1,13 +1,21 @@
-<app-toolbar title="Login"></app-toolbar>
+<app-toolbar title="Gimify"></app-toolbar>
+<div class="title">
+  <h1 class="mat-display-3">Login</h1>
+  <mat-icon>fingerprint</mat-icon>
+</div>
 <div class="container" fxLayout="column" fxLayoutGap="2rem">
   <form [formGroup]="loginForm" fxLayout="column" fxLayoutGap="1rem">
     <mat-form-field appearance="standard">
-      <mat-label>Username</mat-label>
+      <mat-label>
+        <mat-icon>person</mat-icon> <i>Username</i>
+      </mat-label>
       <input matInput type="email" formControlName="username">
     </mat-form-field>
 
     <mat-form-field appearance="standard">
-      <mat-label>Password</mat-label>
+      <mat-label>
+        <mat-icon>lock</mat-icon> <i>Password</i>
+      </mat-label>
       <input matInput type="password" formControlName="password">
     </mat-form-field>
   </form>
