@@ -1,36 +1,33 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {AssetKind} from 'src/app/model/entities/asset-kind';
 import {AssetKindService} from 'src/app/services/server-communication/asset-kind.service';
-import {SelectionDialogComponent, SelectionDialogData} from '../../modals/dialogs/selection-dialog/selection-dialog.component';
 import {MatDialog} from '@angular/material';
+import {
+  LazySelectionDialogComponent,
+  LazySelectionDialogData
+} from '../../modals/dialogs/lazy-selection-dialog/lazy-selection-dialog.component';
 
 @Component({
   selector: 'app-asset-kind-picker',
   templateUrl: './asset-kind-picker.component.html',
   styleUrls: ['./asset-kind-picker.component.css']
 })
-export class AssetKindPickerComponent implements OnInit {
+export class AssetKindPickerComponent {
 
   @Input() result: AssetKind;
   @Output() resultChange = new EventEmitter<AssetKind>();
 
-  private assetKinds: AssetKind[];
-
   constructor(private assetKindService: AssetKindService, private dialog: MatDialog) {
   }
 
-  ngOnInit() {
-    this.assetKindService.assetKinds.subscribe(a => this.assetKinds = a);
-  }
-
   openDialog() {
-    const dialogData: SelectionDialogData = {
-      choices: this.assetKinds,
+    const dialogData: LazySelectionDialogData = {
+      choices$: this.assetKindService.assetKinds,
       title: 'Select type of asset',
       toStringFunction: (assetKind: AssetKind) => assetKind.name
     };
 
-    this.dialog.open(SelectionDialogComponent, {
+    this.dialog.open(LazySelectionDialogComponent, {
       minWidth: '100%',
       height: '100%',
       autoFocus: false,

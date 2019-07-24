@@ -9,8 +9,6 @@
     <div fxFlex="3rem"></div>
   </div>
 
-
-  <!-- <mat-divider></mat-divider> -->
   <div fxFlex="grow">
     <cdk-virtual-scroll-viewport [itemSize]="data.choices.length">
       <mat-radio-group [(ngModel)]="selected" fxLayout="column" fxLayoutGap="2rem">
@@ -21,7 +19,6 @@
     </cdk-virtual-scroll-viewport>
   </div>
 
-  <!-- <mat-divider></mat-divider> -->
   <div class="footer" fxLayout="row" fxLayoutAlign="end">
     <button mat-button color="primary" (click)="cancel()">CANCEL</button>
     <button mat-button color="primary" (click)="submit()" [disabled]="selected === undefined">OK</button>

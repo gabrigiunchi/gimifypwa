@@ -8,5 +8,9 @@ mat-radio-group {
 
 h2 {
   margin: 0;
+  text-align: center;
+}
+
+.header {
   padding: 1rem 0 2rem 0;
 }
