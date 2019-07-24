@@ -9,20 +9,22 @@
     <div fxFlex="3rem"></div>
   </div>
 
-  <div fxFlex="grow" fxLayout="column" *ngIf="data.choices$ | async as choices; else loading">
-    <div fxFlex="grow">
-      <cdk-virtual-scroll-viewport [itemSize]="choices.length">
-        <mat-radio-group [(ngModel)]="selected" fxLayout="column" fxLayoutGap="2rem">
-          <mat-radio-button *cdkVirtualFor="let choice of choices" [value]="choice">
-            {{toString(choice)}}
-          </mat-radio-button>
-        </mat-radio-group>
-      </cdk-virtual-scroll-viewport>
-    </div>
+  <div fxFlex="grow">
+    <div fxFlex="grow" fxLayout="column" *ngIf="data.choices$ | async as choices; else loading">
+      <div fxFlex="grow">
+        <cdk-virtual-scroll-viewport [itemSize]="choices.length">
+          <mat-radio-group [(ngModel)]="selected" fxLayout="column" fxLayoutGap="2rem">
+            <mat-radio-button *cdkVirtualFor="let choice of choices" [value]="choice">
+              {{toString(choice)}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </cdk-virtual-scroll-viewport>
+      </div>
 
-    <div class="footer" fxLayout="row" fxLayoutAlign="end">
-      <button mat-button color="primary" (click)="cancel()">CANCEL</button>
-      <button mat-button color="primary" (click)="submit()" [disabled]="selected === undefined">OK</button>
+      <div class="footer" fxLayout="row" fxLayoutAlign="end">
+        <button mat-button color="primary" (click)="cancel()">CANCEL</button>
+        <button mat-button color="primary" (click)="submit()" [disabled]="selected === undefined">OK</button>
+      </div>
     </div>
   </div>
 </div>
