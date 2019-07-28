@@ -29,6 +29,7 @@ import {SnackbarService} from 'src/app/services/snackbar.service';
 import {ReservationService} from 'src/app/services/server-communication/reservation.service';
 import {CommentService} from 'src/app/services/server-communication/comment.service';
 import {AvatarModule} from 'ngx-avatar';
+import {ChangePasswordComponent} from '../../input/change-password/change-password.component';
 
 describe('ProfilePageComponent', () => {
   let component: ProfilePageComponent;
@@ -43,7 +44,8 @@ describe('ProfilePageComponent', () => {
         DefaultCityPickerComponent,
         LoadingComponent,
         DefaultGymPickerComponent,
-        ToolbarComponent
+        ToolbarComponent,
+        ChangePasswordComponent
       ],
       imports: [
         HttpClientModule,

@@ -25,6 +25,7 @@ import {FooterSectionColorPipe} from './pipes/footer-section-color.pipe';
 import {DefaultCityPickerComponent} from './components/input/default-city-picker/default-city-picker.component';
 import {DefaultGymPickerComponent} from './components/input/default-gym-picker/default-gym-picker.component';
 import {AvatarModule} from 'ngx-avatar';
+import {ChangePasswordComponent} from './components/input/change-password/change-password.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -41,7 +42,8 @@ describe('AppComponent', () => {
         LoadingComponent,
         FooterSectionColorPipe,
         DefaultCityPickerComponent,
-        DefaultGymPickerComponent
+        DefaultGymPickerComponent,
+        ChangePasswordComponent
       ],
       imports: [
         RouterTestingModule,

@@ -53,6 +53,6 @@ describe('UserService', () => {
     const spy = spyOn(TestBed.get(HttpClient), 'post').and.returnValue(of(TestConstants.mockUser));
     const dto: ChangePasswordDTO = {newPassword: 'bbbb', oldPassword: 'dasda'};
     userService.changePassword(dto);
-    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.USERS_URL}/me/password`, dto);
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.USERS_URL}/me/password`, dto, {});
   });
 });
