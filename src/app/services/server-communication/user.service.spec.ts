@@ -7,6 +7,7 @@ import {UrlService} from '../url.service';
 import {of} from 'rxjs';
 import {CONSTANTS} from 'src/app/constants';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {ChangePasswordDTO} from 'src/app/model/dto/change-password-dto';
 
 describe('UserService', () => {
 
@@ -46,5 +47,12 @@ describe('UserService', () => {
     const spy = spyOn(TestBed.get(HttpClient), 'patch').and.returnValue(of(TestConstants.mockUser));
     userService.setNotifications(true);
     expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.USERS_URL}/me/notifications/active/true`, {}, {});
+  });
+
+  it('should change the password', () => {
+    const spy = spyOn(TestBed.get(HttpClient), 'post').and.returnValue(of(TestConstants.mockUser));
+    const dto: ChangePasswordDTO = {newPassword: 'bbbb', oldPassword: 'dasda'};
+    userService.changePassword(dto);
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.USERS_URL}/me/password`, dto);
   });
 });

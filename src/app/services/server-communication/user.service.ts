@@ -6,6 +6,7 @@ import {CONSTANTS} from 'src/app/constants';
 import {User} from 'src/app/model/entities/user';
 import {SessionService} from '../session.service';
 import {tap} from 'rxjs/operators';
+import {ChangePasswordDTO} from 'src/app/model/dto/change-password-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,12 @@ export class UserService {
       this.urlService.getRestUrl(`${CONSTANTS.USERS_URL}/me/notifications/active/${enabled}`),
       {},
       this.urlService.authenticationHeader);
+  }
+
+  changePassword(dto: ChangePasswordDTO): Observable<User> {
+    return this.http.post<User>(
+      this.urlService.getRestUrl(`${CONSTANTS.USERS_URL}/me/password`),
+      dto
+    );
   }
 }
