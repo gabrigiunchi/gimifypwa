@@ -125,6 +125,8 @@ import {GroupIntervalsByDayOfWeekPipe} from './pipes/group-intervals-by-day-of-w
 import {DayOfWeekNamePipe} from './pipes/date/day-of-week-name.pipe';
 import {GymAvatarPipe} from './pipes/gym-avatar.pipe';
 import {AvatarModule} from 'ngx-avatar';
+import {ChangePasswordComponent} from './components/input/change-password/change-password.component';
+import {ChangePasswordDialogComponent} from './components/modals/dialogs/change-password-dialog/change-password-dialog.component';
 
 @NgModule({
   declarations: [
@@ -199,7 +201,9 @@ import {AvatarModule} from 'ngx-avatar';
     GymListComponent,
     GroupIntervalsByDayOfWeekPipe,
     DayOfWeekNamePipe,
-    GymAvatarPipe
+    GymAvatarPipe,
+    ChangePasswordComponent,
+    ChangePasswordDialogComponent
   ],
   imports: [
     FormsModule,
@@ -266,6 +270,7 @@ import {AvatarModule} from 'ngx-avatar';
     GymFilterComponent,
     GymDetailsComponent,
     NewCommentDialogComponent,
+    ChangePasswordDialogComponent,
     EditAvatarBottomSheetComponent,
     ConfirmReservationDialogComponent,
     AssetListDialogComponent,

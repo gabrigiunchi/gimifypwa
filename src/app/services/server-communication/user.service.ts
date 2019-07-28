@@ -39,7 +39,8 @@ export class UserService {
   changePassword(dto: ChangePasswordDTO): Observable<User> {
     return this.http.post<User>(
       this.urlService.getRestUrl(`${CONSTANTS.USERS_URL}/me/password`),
-      dto
+      dto,
+      this.urlService.authenticationHeader
     );
   }
 }
