@@ -1,54 +1,55 @@
-<app-toolbar title="Profile"></app-toolbar>
-<div class="container" fxLayout="column" *ngIf="userInfo$ | async as userInfo; else loading">
+<div fxLayout="column" fxFlexFill>
+  <app-toolbar title="Profile"></app-toolbar>
+  <cdk-virtual-scroll-viewport fxFlex="grow" *ngIf="userInfo$ | async as userInfo; else loading" itemSize="10">
+    <div class="container" fxLayout="column">
+      <div class="avatar-container" fxLayout="row" fxLayoutAlign="center center">
+        <ngx-avatar routerLink="/profile/avatar" [src]="avatar$ | async | safeUrl" [size]="96"
+          name="{{userInfo.name}} {{userInfo.surname}}"></ngx-avatar>
+      </div>
 
-  <div class="avatar-container" fxLayout="row" fxLayoutAlign="center center">
-    <ngx-avatar routerLink="/profile/avatar" [src]="avatar$ | async | safeUrl" [size]="96"
-      name="{{userInfo.name}} {{userInfo.surname}}"></ngx-avatar>
-  </div>
+      <div class="info" fxLayout="column" fxLayoutAlign="center center">
+        <div class="name">{{userInfo.name}} {{userInfo.surname}}</div>
+        <div>{{userInfo.email}}</div>
 
-  <div class="info" fxLayout="column" fxLayoutAlign="center center">
-    <div class="name">{{userInfo.name}} {{userInfo.surname}}</div>
-    <div>{{userInfo.email}}</div>
-
-    <div class="count" fxLayout="row" fxLayoutGap="5rem" routerLink="/reservations">
-      <div class="count-item">
-        <div class="count-item-title">Reservations</div>
-        <div class="count-item-value">
-          <div class="count-item-value">
-            {{reservationsCount$ | async }}</div>
+        <div class="count" fxLayout="row" fxLayoutGap="5rem" routerLink="/reservations">
+          <div class="count-item">
+            <div class="count-item-title">Reservations</div>
+            <div class="count-item-value">
+              <div class="count-item-value">
+                {{reservationsCount$ | async }}</div>
+            </div>
+          </div>
+          <div class="count-item" routerLink="/profile/comments">
+            <div class="count-item-title">Comments</div>
+            <div class="count-item-value">
+              {{commentsCount$ | async}}
+            </div>
+          </div>
         </div>
       </div>
-      <div class="count-item" routerLink="/profile/comments">
-        <div class="count-item-title">Comments</div>
-        <div class="count-item-value">
-          {{commentsCount$ | async}}
+
+      <mat-divider></mat-divider>
+      <div fxFlex="grow" fxLayout="column" class="settings">
+        <div fxLayout="row" style="height: 3rem;" fxLayoutAlign="start center">
+          <mat-icon color="primary">email</mat-icon>
+          <div style="padding: 0 0.5rem" fxFlex="grow" fxLayoutAlign="start center">Email notifications</div>
+          <mat-slide-toggle *ngIf="!isUpdatingSettings" [checked]="userInfo.notificationsEnabled"
+            (change)="onToggleChange($event)"></mat-slide-toggle>
+          <div *ngIf="isUpdatingSettings" fxFlex="3rem" fxLayoutAlign="end center">
+            <mat-spinner diameter="23"></mat-spinner>
+          </div>
         </div>
+        <!-- <app-default-city-picker></app-default-city-picker> -->
+        <app-default-gym-picker></app-default-gym-picker>
+        <app-change-password></app-change-password>
+      </div>
+
+      <div class="logout" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-flat-button color="warn" (click)="onLogoutClick()">Logout</button>
       </div>
     </div>
-  </div>
-
-  <mat-divider></mat-divider>
-  <div fxFlex="grow" fxLayout="column" class="settings">
-    <div fxLayout="row" style="height: 3rem;" fxLayoutAlign="start center">
-      <mat-icon color="primary">email</mat-icon>
-      <div style="padding: 0 0.5rem" fxFlex="grow" fxLayoutAlign="start center">Email notifications</div>
-      <mat-slide-toggle *ngIf="!isUpdatingSettings" [checked]="userInfo.notificationsEnabled"
-        (change)="onToggleChange($event)"></mat-slide-toggle>
-      <div *ngIf="isUpdatingSettings" fxFlex="3rem" fxLayoutAlign="end center">
-        <mat-spinner diameter="23"></mat-spinner>
-      </div>
-    </div>
-    <!-- <app-default-city-picker></app-default-city-picker> -->
-    <app-default-gym-picker></app-default-gym-picker>
-    <app-change-password></app-change-password>
-  </div>
-
-  <div class="logout" fxLayout="row" fxLayoutAlign="center center">
-    <button mat-flat-button color="warn" (click)="onLogoutClick()">Logout</button>
-  </div>
-
+  </cdk-virtual-scroll-viewport>
 </div>
-
 <ng-template #loading>
   <app-loading></app-loading>
 </ng-template>
