@@ -30,6 +30,7 @@ import {ReservationService} from 'src/app/services/server-communication/reservat
 import {CommentService} from 'src/app/services/server-communication/comment.service';
 import {AvatarModule} from 'ngx-avatar';
 import {ChangePasswordComponent} from '../../input/change-password/change-password.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 describe('ProfilePageComponent', () => {
   let component: ProfilePageComponent;
@@ -58,7 +59,8 @@ describe('ProfilePageComponent', () => {
         MatDividerModule,
         MatProgressSpinnerModule,
         RouterModule.forRoot([]),
-        NativeDateModule
+        NativeDateModule,
+        ScrollingModule
       ]
     })
       .compileComponents();

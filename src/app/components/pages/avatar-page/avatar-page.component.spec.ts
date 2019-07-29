@@ -159,9 +159,4 @@ describe('AvatarPageComponent', () => {
     component.ngOnInit();
     expect(component.avatar).toBe('avatar');
   });
-
-  it('should pick a file', () => {
-    const event = {target: {files: [TestConstants.strToBlob('avatar')]}};
-    component.onFileSelected(event);
-  });
 });

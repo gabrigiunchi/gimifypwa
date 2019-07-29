@@ -11,6 +11,7 @@ import {ImageCropperService} from 'src/app/services/image-cropper.service';
 describe('AvatarEditorComponent', () => {
   let component: AvatarEditorComponent;
   let fixture: ComponentFixture<AvatarEditorComponent>;
+  let spyOnRouter: jasmine.Spy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -30,6 +31,7 @@ describe('AvatarEditorComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
     fixture = TestBed.createComponent(AvatarEditorComponent);
     component = fixture.componentInstance;
     component.image = '';
@@ -41,23 +43,20 @@ describe('AvatarEditorComponent', () => {
   });
 
   it('should cancel', () => {
-    const spyOnBack = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
     component.cancel();
-    expect(spyOnBack).toHaveBeenCalledWith(['profile/avatar']);
+    expect(spyOnRouter).toHaveBeenCalledWith(['profile/avatar']);
   });
 
   it('should submit', () => {
-    const spyOnBack = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
     const imageCropperService: ImageCropperService = TestBed.get(ImageCropperService);
     const result = new Blob();
     component.submit(result);
     expect(imageCropperService.getResult().get()).toBe(result);
-    expect(spyOnBack).toHaveBeenCalledWith(['profile/avatar']);
+    expect(spyOnRouter).toHaveBeenCalledWith(['profile/avatar']);
   });
 
   it('should get the image to edit', () => {
     const router = TestBed.get(Router);
-    spyOn(router, 'navigate').and.callFake(() => {});
     const imageCropperService: ImageCropperService = TestBed.get(ImageCropperService);
     imageCropperService.setImageToEdit('image');
     component = new AvatarEditorComponent(imageCropperService, router);

@@ -14,6 +14,7 @@ import {AvatarModule} from 'ngx-avatar';
 describe('ChooseDefaultAvatarComponent', () => {
   let component: ChooseDefaultAvatarComponent;
   let fixture: ComponentFixture<ChooseDefaultAvatarComponent>;
+  let spyOnRouter: jasmine.Spy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -36,6 +37,7 @@ describe('ChooseDefaultAvatarComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
     spyOnProperty(TestBed.get(AvatarService), 'presetAvatarMetadata', 'get').and.returnValue(of([]));
     fixture = TestBed.createComponent(ChooseDefaultAvatarComponent);
     component = fixture.componentInstance;
@@ -57,7 +59,6 @@ describe('ChooseDefaultAvatarComponent', () => {
 
   it('should select an avatar', () => {
     const spy = spyOn(TestBed.get(AvatarService), 'changeAvatar').and.returnValue(of({}));
-    const spyOnRouter = spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
     component.isLoading = true;
     const binary = TestConstants.str2ab('ciao');
     component.binaries.set('1', binary);
