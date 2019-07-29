@@ -57,6 +57,7 @@ describe('AvatarEditorComponent', () => {
 
   it('should get the image to edit', () => {
     const router = TestBed.get(Router);
+    spyOn(router, 'navigate').and.callFake(() => {});
     const imageCropperService: ImageCropperService = TestBed.get(ImageCropperService);
     imageCropperService.setImageToEdit('image');
     component = new AvatarEditorComponent(imageCropperService, router);

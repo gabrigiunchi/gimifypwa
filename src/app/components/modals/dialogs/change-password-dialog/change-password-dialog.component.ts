@@ -26,12 +26,14 @@ export class NewPasswordErrorMatcher implements ErrorStateMatcher {
 })
 export class ChangePasswordDialogComponent {
 
+  oldPasswordControl = new FormControl('', [Validators.required]);
   newPasswordControl = new FormControl('', [Validators.required]);
+  newPasswordRepeatControl = new FormControl('', [Validators.required, newPasswordValidator(this.newPasswordControl)]);
   newPasswordErrorMatcher = new NewPasswordErrorMatcher();
   form = new FormGroup({
-    oldPassword: new FormControl('', [Validators.required]),
+    oldPassword: this.oldPasswordControl,
     newPassword: this.newPasswordControl,
-    newPasswordRepeat: new FormControl('', [Validators.required, newPasswordValidator(this.newPasswordControl)])
+    newPasswordRepeat: this.newPasswordRepeatControl
   });
   isLoading = false;
 

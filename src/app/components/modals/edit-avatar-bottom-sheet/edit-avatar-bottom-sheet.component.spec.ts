@@ -3,6 +3,7 @@ import {EditAvatarBottomSheetComponent} from './edit-avatar-bottom-sheet.compone
 import {MatBottomSheetModule, MatBottomSheetRef, MatIconModule, MatListModule, NativeDateModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {MockDialog} from 'src/app/test-constants';
+import {Router, RouterModule} from '@angular/router';
 
 describe('EditAvatarBottomSheetComponent', () => {
   let component: EditAvatarBottomSheetComponent;
@@ -18,6 +19,7 @@ describe('EditAvatarBottomSheetComponent', () => {
         NativeDateModule,
         HttpClientModule,
         MatIconModule,
+        RouterModule.forRoot([])
       ],
       providers: [
         {provide: MatBottomSheetRef, useValue: dialogRef}
@@ -27,6 +29,7 @@ describe('EditAvatarBottomSheetComponent', () => {
   }));
 
   beforeEach(() => {
+    spyOn(TestBed.get(Router), 'navigate').and.callFake(() => {});
     fixture = TestBed.createComponent(EditAvatarBottomSheetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
