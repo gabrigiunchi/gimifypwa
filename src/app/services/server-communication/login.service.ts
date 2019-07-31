@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 })
 export class LoginService {
 
-  redirectUrl = '';
+  private _redirectUrl = '';
   private _isLoggedIn = false;
   private _isLoading = false;
 
@@ -23,6 +23,15 @@ export class LoginService {
     private sessionService: SessionService,
     private urlService: UrlService,
     private http: HttpClient) {
+  }
+
+  get redirectUrl(): string {
+    return this._redirectUrl;
+  }
+
+  set redirectUrl(value: string) {
+    console.log(`Setting redirect url: ${value}`);
+    this._redirectUrl = value;
   }
 
   get isLoggedIn(): boolean {
@@ -35,7 +44,7 @@ export class LoginService {
 
   login(username: string, password: string): Observable<Token> {
     const credentials: Credentials = {username: username, password: password};
-    console.log('Logging in as ' + credentials.username);
+    console.log(`Logging in as ${credentials.username}`);
 
     const url = this.urlService.getRestUrl(CONSTANTS.LOGIN_URL);
     return this.http.post<Token>(url, credentials)
@@ -57,10 +66,10 @@ export class LoginService {
 
   checkToken(token: string): Observable<boolean> {
     this._isLoading = true;
-    const url = this.urlService.getRestUrl(CONSTANTS.LOGIN_URL + '/token');
+    const url = this.urlService.getRestUrl(`${CONSTANTS.LOGIN_URL}/token`);
     return this.http.post<boolean>(url, token).pipe(
       tap(valid => {
-        console.log('Server responsed, the token is ' + (valid ? 'valid' : 'invalid'));
+        console.log(`Server responded, the token is ${(valid ? 'valid' : 'invalid')}`);
         this._isLoggedIn = valid;
         this._isLoading = false;
       })

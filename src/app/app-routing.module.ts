@@ -17,22 +17,30 @@ import {ResultPageComponent} from './components/pages/result-page/result-page.co
 import {MyCommentsComponent} from './components/pages/my-comments/my-comments.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
-  {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
-  {path: 'profile/comments', component: MyCommentsComponent, canActivate: [AuthGuard]},
-  {path: 'profile/avatar', component: AvatarPageComponent, canActivate: [AuthGuard]},
-  {path: 'profile/avatar/modify', component: AvatarEditorComponent, canActivate: [AuthGuard]},
-  {path: 'profile/avatar/defaults', component: ChooseDefaultAvatarComponent, canActivate: [AuthGuard]},
-  {path: 'gyms', component: GymsPageComponent, canActivate: [AuthGuard]},
-  {path: 'gyms/:id', component: GymDetailsComponent, canActivate: [AuthGuard]},
-  {path: 'assets', component: PlaygroundComponent, canActivate: [AuthGuard]},
-  {path: 'reservations/:id', component: ReservationDetailsComponent, canActivate: [AuthGuard]},
-  {path: 'reservations', component: ReservationsPageComponent, canActivate: [AuthGuard]},
-  {path: 'search/kind/:kind/date/:date/from/:from/to/:to/city/:city', component: ResultPageComponent, canActivate: [AuthGuard]},
-  {path: 'search/kind/:kind/date/:date/from/:from/to/:to/city/:city/gym/:gym', component: ResultPageComponent, canActivate: [AuthGuard]},
-  {path: 'search', component: SearchPageComponent, canActivate: [AuthGuard]},
-  {path: 'playground', component: PlaygroundComponent, canActivate: [AuthGuard]},
-  {path: '', redirectTo: '/reservations', pathMatch: 'full'}
+  {
+    path: 'login', component: LoginComponent, canActivate: [LoginGuard]
+  },
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    children: [
+      {path: 'profile', component: ProfilePageComponent},
+      {path: 'profile/comments', component: MyCommentsComponent},
+      {path: 'profile/avatar', component: AvatarPageComponent},
+      {path: 'profile/avatar/modify', component: AvatarEditorComponent},
+      {path: 'profile/avatar/defaults', component: ChooseDefaultAvatarComponent},
+      {path: 'gyms', component: GymsPageComponent},
+      {path: 'gyms/:id', component: GymDetailsComponent},
+      {path: 'assets', component: PlaygroundComponent},
+      {path: 'reservations/:id', component: ReservationDetailsComponent},
+      {path: 'reservations', component: ReservationsPageComponent},
+      {path: 'search/kind/:kind/date/:date/from/:from/to/:to/city/:city', component: ResultPageComponent},
+      {path: 'search/kind/:kind/date/:date/from/:from/to/:to/city/:city/gym/:gym', component: ResultPageComponent},
+      {path: 'search', component: SearchPageComponent},
+      {path: 'playground', component: PlaygroundComponent},
+      {path: '', redirectTo: '/reservations', pathMatch: 'full'}
+    ]
+  }
 ];
 
 @NgModule({
