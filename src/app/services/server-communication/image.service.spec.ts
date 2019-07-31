@@ -32,7 +32,7 @@ describe('ImageService', () => {
     const spyOnDownload = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(TestConstants.str2ab('image')));
     const spyOnCaching = spyOn(TestBed.get(FileSaverService), 'saveImage').and.returnValue(of({}));
     const spyOnCachingMetadata = spyOn(TestBed.get(SessionService), 'saveMetadata').and.callFake(() => {});
-    imageService.getPhoto(metadata, url).subscribe(() => {
+    imageService.getPhoto(metadata, url, true).subscribe(() => {
       expect(spyOnDownload).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}image1.png`, {});
       expect(spyOnCaching).toHaveBeenCalled();
       expect(spyOnCachingMetadata).toHaveBeenCalled();
@@ -56,7 +56,7 @@ describe('ImageService', () => {
     const spyOnDownload = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(TestConstants.str2ab('image')));
     const spyOnCaching = spyOn(TestBed.get(FileSaverService), 'saveImage').and.returnValue(throwError('could not save image'));
     const spyOnCachingMetadata = spyOn(TestBed.get(SessionService), 'saveMetadata').and.callFake(() => {});
-    imageService.getPhoto(metadata, url).subscribe(() => {
+    imageService.getPhoto(metadata, url, true).subscribe(() => {
       expect(spyOnDownload).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}image1.png`, {});
       expect(spyOnCaching).toHaveBeenCalled();
       expect(spyOnCachingMetadata).not.toHaveBeenCalled();

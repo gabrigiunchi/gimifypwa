@@ -20,7 +20,7 @@ export class ImageService {
     protected http: HttpClient) {}
 
 
-  getPhoto(metadata: ImageMetadata, imageUrl: string, caching = true): Observable<string> {
+  getPhoto(metadata: ImageMetadata, imageUrl: string, caching: boolean): Observable<string> {
     if (this.metadataAreUpdated(metadata)) {
       console.log(`Found image ${metadata.id} in cache`);
       return of(this.fileSaverService.loadFile(metadata.id));

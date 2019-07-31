@@ -25,7 +25,7 @@ describe('GymAvatarPipe', () => {
     const spyOnDownload = spyOn(gymImageService, 'getPhotoOfGym').and.returnValue(result);
     const pipe = new GymAvatarPipe(gymImageService);
     pipe.transform(gym).subscribe(r => {
-      expect(spyOnDownload).toHaveBeenCalledWith(metadata);
+      expect(spyOnDownload).toHaveBeenCalledWith(metadata, false);
     });
   }));
 
@@ -42,4 +42,17 @@ describe('GymAvatarPipe', () => {
       });
     });
   }));
+
+  it('should cache the avatar photo', () => {
+    const result = of(TestConstants.str2ab('ciao'));
+    const gym = TestConstants.mockGym;
+    const metadata = TestConstants.mockImageMetadata[0];
+    const gymImageService: GymImageService = TestBed.get(GymImageService);
+    spyOn(gymImageService, 'getAvatarMetadataOfGym').and.returnValue(of(metadata));
+    const spyOnDownload = spyOn(gymImageService, 'getPhotoOfGym').and.returnValue(result);
+    const pipe = new GymAvatarPipe(gymImageService);
+    pipe.transform(gym, true).subscribe(r => {
+      expect(spyOnDownload).toHaveBeenCalledWith(metadata, true);
+    });
+  });
 });

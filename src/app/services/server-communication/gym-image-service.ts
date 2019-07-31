@@ -28,8 +28,8 @@ export class GymImageService extends ImageService {
       super(sessionService, urlService, fileSaverService, http);
   }
 
-  getPhotoOfGym(metadata: ImageMetadata): Observable<string> {
-    return super.getPhoto(metadata, `${CONSTANTS.GYMS}/photos/${metadata.id}`);
+  getPhotoOfGym(metadata: ImageMetadata, caching: boolean): Observable<string> {
+    return super.getPhoto(metadata, `${CONSTANTS.GYMS}/photos/${metadata.id}`, caching);
   }
 
   getPhotoMetadataOfGym(gym: Gym): Observable<ImageMetadata[]> {

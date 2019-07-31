@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {AppSection} from '../components/layout/footer/footer.component';
 import {Router} from '@angular/router';
+import {AppSection} from '../model/app-section';
 
 @Pipe({
   name: 'footerSectionColor',

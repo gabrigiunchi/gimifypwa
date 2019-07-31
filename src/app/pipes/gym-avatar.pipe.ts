@@ -11,10 +11,10 @@ export class GymAvatarPipe implements PipeTransform {
 
   constructor(private gymImageService: GymImageService) {}
 
-  transform(gym: Gym): Observable<Observable<string>> {
+  transform(gym: Gym, caching = false): Observable<Observable<string>> {
     console.log('Get avatar of gym ' + gym.id);
     return this.gymImageService.getAvatarMetadataOfGym(gym)
-      .pipe(map(m => m.id === GymImageService.DEFAULT_AVATAR_METADATA.id ? of(undefined) : this.gymImageService.getPhotoOfGym(m)));
+      .pipe(map(m => m.id === GymImageService.DEFAULT_AVATAR_METADATA.id ? of(undefined) : this.gymImageService.getPhotoOfGym(m, caching)));
   }
 
 }

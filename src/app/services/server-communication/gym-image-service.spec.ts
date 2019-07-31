@@ -39,7 +39,7 @@ describe('GymImageService', () => {
     const spyOnLoadImage = spyOn(fileSaverService, 'loadFile').and.returnValue('');
     const spyOnSaveMetadata = spyOn(sessionService, 'saveMetadata').and.callThrough();
 
-    service.getPhotoOfGym(metadata);
+    service.getPhotoOfGym(metadata, true);
 
     expect(spyOnSaveImage).not.toHaveBeenCalled();
     expect(spyOnSaveMetadata).not.toHaveBeenCalled();
@@ -54,7 +54,7 @@ describe('GymImageService', () => {
     const spyOnLoadImage = spyOn(fileSaverService, 'loadFile').and.returnValue('');
     const spyOnSaveMetadata = spyOn(sessionService, 'saveMetadata').and.callThrough();
 
-    service.getPhotoOfGym({id: 'image1', lastModified: 2}).subscribe();
+    service.getPhotoOfGym({id: 'image1', lastModified: 2}, true).subscribe();
 
     expect(spyOnSaveImage).toHaveBeenCalled();
     expect(spyOnSaveMetadata).toHaveBeenCalled();
@@ -68,7 +68,7 @@ describe('GymImageService', () => {
     const spyOnLoadImage = spyOn(fileSaverService, 'loadFile').and.returnValue('');
     const spyOnSaveMetadata = spyOn(sessionService, 'saveMetadata').and.callThrough();
 
-    service.getPhotoOfGym({id: 'image1', lastModified: 2}).subscribe();
+    service.getPhotoOfGym({id: 'image1', lastModified: 2}, true).subscribe();
 
     expect(spyOnSaveImage).toHaveBeenCalled();
     expect(spyOnSaveMetadata).toHaveBeenCalled();

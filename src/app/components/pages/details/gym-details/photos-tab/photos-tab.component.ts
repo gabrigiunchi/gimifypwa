@@ -19,7 +19,7 @@ export class PhotosTabComponent implements OnChanges {
 
   ngOnChanges() {
     this.photos$ = this.gymImageService.getPhotoMetadataOfGym(this.gym)
-      .pipe(map((metadata: ImageMetadata[]) => metadata.map(m => this.gymImageService.getPhotoOfGym(m))));
+      .pipe(map((metadata: ImageMetadata[]) => metadata.map(m => this.gymImageService.getPhotoOfGym(m, false))));
   }
 
 }
