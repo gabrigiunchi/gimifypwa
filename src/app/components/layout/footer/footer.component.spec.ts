@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {FooterComponent} from './footer.component';
 import {MatIconModule, MatToolbarModule} from '@angular/material';
 import {FooterSectionColorPipe} from 'src/app/pipes/footer-section-color.pipe';
-import {RouterModule, Router} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import {CONSTANTS} from 'src/app/constants';
 
 describe('FooterComponent', () => {

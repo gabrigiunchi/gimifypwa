@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {SnackbarService} from 'src/app/services/snackbar.service';
 import {ChangePasswordDialogComponent} from '../../modals/dialogs/change-password-dialog/change-password-dialog.component';

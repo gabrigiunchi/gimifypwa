@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, NgZone} from '@angular/core';
+import {Component, NgZone, OnDestroy, OnInit} from '@angular/core';
 import {MatBottomSheet, MatDialog} from '@angular/material';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {AvatarService} from 'src/app/services/server-communication/avatar.service';

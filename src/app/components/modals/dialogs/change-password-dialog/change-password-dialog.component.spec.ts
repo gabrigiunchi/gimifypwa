@@ -1,13 +1,13 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ChangePasswordDialogComponent} from './change-password-dialog.component';
 import {MockDialog} from 'src/app/test-constants';
-import {MatDialogRef, MatInputModule, MatProgressSpinnerModule, MatIconModule, MatDialogModule, MatDialog} from '@angular/material';
-import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {MatDialog, MatDialogModule, MatDialogRef, MatIconModule, MatInputModule, MatProgressSpinnerModule} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ErrorDialogComponent} from '../error-dialog/error-dialog.component';
 import {UserService} from 'src/app/services/server-communication/user.service';
-import {throwError, of} from 'rxjs';
+import {of, throwError} from 'rxjs';
 
 describe('ChangePasswordDialogComponent', () => {
   let component: ChangePasswordDialogComponent;

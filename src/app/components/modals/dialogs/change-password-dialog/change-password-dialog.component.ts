@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {MatDialogRef, MatDialog, ErrorStateMatcher} from '@angular/material';
+import {ErrorStateMatcher, MatDialog, MatDialogRef} from '@angular/material';
 import {UserService} from 'src/app/services/server-communication/user.service';
-import {FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, FormGroupDirective, NgForm} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, FormGroupDirective, NgForm, ValidatorFn, Validators} from '@angular/forms';
 import {ErrorDialogComponent} from '../error-dialog/error-dialog.component';
 import {finalize} from 'rxjs/operators';
 import {HttpErrorResponse} from '@angular/common/http';

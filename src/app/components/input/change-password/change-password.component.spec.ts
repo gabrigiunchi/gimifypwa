@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ChangePasswordComponent} from './change-password.component';
-import {MatIconModule, MatDialogModule, MatSnackBarModule, MatDialog} from '@angular/material';
+import {MatDialog, MatDialogModule, MatIconModule, MatSnackBarModule} from '@angular/material';
 import {of} from 'rxjs';
 import {MockDialog} from 'src/app/test-constants';
 import {SnackbarService} from 'src/app/services/snackbar.service';
