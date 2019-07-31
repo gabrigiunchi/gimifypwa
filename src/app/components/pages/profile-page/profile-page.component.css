@@ -2,10 +2,6 @@
   padding: 1rem;
 }
 
-.outer {
-  height: 100%;
-}
-
 cdk-virtual-scroll-viewport {
   height: 100%;
 }
