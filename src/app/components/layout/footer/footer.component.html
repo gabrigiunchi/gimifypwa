@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <div class="item" [style.color]="section | footerSectionColor" (click)="navigate(section)" *ngFor="let section of sections"
+  <div [style.color]="section | footerSectionColor" (click)="navigate(section)" *ngFor="let section of sections"
     fxFlex="grow" fxLayout="column" fxLayoutAlign="center center">
     <mat-icon>{{section.icon}}</mat-icon>
     <span class="mat-small">{{section.name | titlecase}}</span>
