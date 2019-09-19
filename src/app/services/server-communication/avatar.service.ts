@@ -52,12 +52,12 @@ export class AvatarService {
 
   getMetadataOfUser(id: number): Observable<ImageMetadata> {
     return this.http.get<ImageMetadata>(
-      this.urlService.getRestUrl(`${CONSTANTS.AVATARS}/metadata/of_user/${id}`), this.urlService.authenticationHeader);
+      this.urlService.getRestUrl(`${CONSTANTS.AVATARS}/metadata/user/${id}`), this.urlService.authenticationHeader);
   }
 
   downloadAvatarOfUser(id: number): Observable<ArrayBuffer> {
     console.log(`Get avatar of user #${id}`);
-    return this.download(this.urlService.getRestUrl(`${CONSTANTS.AVATARS}/of_user/${id}`));
+    return this.download(this.urlService.getRestUrl(`${CONSTANTS.AVATARS}/user/${id}`));
   }
 
   /******************************* MY AVATAR  *********************************************/

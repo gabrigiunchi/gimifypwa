@@ -15,7 +15,7 @@ export class TimetableService {
   }
 
   getTimetableOfGym(gym: Gym): Observable<Timetable> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.TIMETABLES}/by_gym/${gym.id}`);
+    const url = this.urlService.getRestUrl(`${CONSTANTS.TIMETABLES}/gym/${gym.id}`);
     return this.http.get<Timetable>(url, this.urlService.authenticationHeader);
   }
 

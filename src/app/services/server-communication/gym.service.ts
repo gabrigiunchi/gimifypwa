@@ -31,7 +31,7 @@ export class GymService extends CacheService<FilterResult<Gym, GymFilterParams>>
   }
 
   getGymsByCity(city: City): Observable<Gym[]> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.GYMS}/by_city/${city.id}`);
+    const url = this.urlService.getRestUrl(`${CONSTANTS.GYMS}/city/${city.id}`);
     return this.http.get<Gym[]>(url, this.urlService.authenticationHeader);
   }
 

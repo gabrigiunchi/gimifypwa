@@ -25,6 +25,6 @@ describe('TimetableService', () => {
     const gym = TestConstants.mockGym;
     const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(TestConstants.mockTimetable));
     service.getTimetableOfGym(gym);
-    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.TIMETABLES}/by_gym/${gym.id}`, {});
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.TIMETABLES}/gym/${gym.id}`, {});
   });
 });

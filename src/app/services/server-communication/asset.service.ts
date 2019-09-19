@@ -27,17 +27,17 @@ export class AssetService {
   }
 
   getAssetsByGym(gym: Gym, page: number, size: number): Observable<Page<AssetDTO>> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.ASSETS}/by_gym/${gym.id}/page/${page}/size/${size}`);
+    const url = this.urlService.getRestUrl(`${CONSTANTS.ASSETS}/gym/${gym.id}/page/${page}/size/${size}`);
     return this.http.get<Page<AssetDTO>>(url, this.urlService.authenticationHeader);
   }
 
   getAssetsByKind(kind: AssetKind, page: number, size: number): Observable<Page<AssetDTO>> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.ASSETS}/by_kind/${kind.id}/page/${page}/size/${size}`);
+    const url = this.urlService.getRestUrl(`${CONSTANTS.ASSETS}/kind/${kind.id}/page/${page}/size/${size}`);
     return this.http.get<Page<AssetDTO>>(url, this.urlService.authenticationHeader);
   }
 
   getAssetsByGymAndKind(gym: Gym, kind: AssetKind): Observable<AssetDTO[]> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.ASSETS}/by_gym/${gym.id}/by_kind/${kind.id}`);
+    const url = this.urlService.getRestUrl(`${CONSTANTS.ASSETS}/gym/${gym.id}/kind/${kind.id}`);
     return this.http.get<AssetDTO[]>(url, this.urlService.authenticationHeader);
   }
 }

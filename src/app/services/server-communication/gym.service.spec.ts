@@ -54,7 +54,7 @@ describe('GymService', () => {
     const city = TestConstants.mockCity;
     const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of([]));
     gymService.getGymsByCity(city);
-    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.GYMS}/by_city/${city.id}`, {});
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.GYMS}/city/${city.id}`, {});
   });
 
   it('should get a the rating of a gym', () => {

@@ -17,7 +17,7 @@ export class CommentService {
   }
 
   getCommentsByGym(gym: Gym, page: number, size: number): Observable<Page<Comment>> {
-    const url = this.urlService.getRestUrl(`${CONSTANTS.COMMENTS}/by_gym/${gym.id}/page/${page}/size/${size}`);
+    const url = this.urlService.getRestUrl(`${CONSTANTS.COMMENTS}/gym/${gym.id}/page/${page}/size/${size}`);
     return this.http.get<Page<Comment>>(url, this.urlService.authenticationHeader);
   }
 

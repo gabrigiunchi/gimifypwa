@@ -178,7 +178,7 @@ describe('AvatarService', () => {
   it('should download the avatar of a user', () => {
     const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(TestConstants.str2ab('avatar')));
     avatarService.downloadAvatarOfUser(1);
-    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.AVATARS}/of_user/1`, typeImage);
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.AVATARS}/user/1`, typeImage);
   });
 
   it('should download the default avatars', async(() => {
@@ -191,7 +191,7 @@ describe('AvatarService', () => {
   it('should download the avatar metadata of a user', () => {
     const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(TestConstants.mockImageMetadata[0]));
     avatarService.getMetadataOfUser(1);
-    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.AVATARS}/metadata/of_user/1`, typeNone);
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.AVATARS}/metadata/user/1`, typeNone);
   });
 
   it('should download my avatar metadata', () => {

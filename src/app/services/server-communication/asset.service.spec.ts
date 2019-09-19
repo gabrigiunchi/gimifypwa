@@ -43,14 +43,14 @@ describe('AssetService', () => {
     const gym = TestConstants.mockGym;
     const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(undefined));
     assetService.getAssetsByGym(gym, 1, 10);
-    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.ASSETS}/by_gym/${gym.id}/page/1/size/10`, {});
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.ASSETS}/gym/${gym.id}/page/1/size/10`, {});
   });
 
   it('should get assets by kind', () => {
     const kind = TestConstants.mockAsset.kind;
     const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(undefined));
     assetService.getAssetsByKind(kind, 1, 10);
-    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.ASSETS}/by_kind/${kind.id}/page/1/size/10`, {});
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.ASSETS}/kind/${kind.id}/page/1/size/10`, {});
   });
 
   it('should get assets by gym and kind', () => {
@@ -58,6 +58,6 @@ describe('AssetService', () => {
     const kind = TestConstants.mockAsset.kind;
     const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of(undefined));
     assetService.getAssetsByGymAndKind(gym, kind);
-    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.ASSETS}/by_gym/${gym.id}/by_kind/${kind.id}`, {});
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.ASSETS}/gym/${gym.id}/kind/${kind.id}`, {});
   });
 });

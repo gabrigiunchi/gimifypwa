@@ -32,7 +32,7 @@ describe('CommentService', () => {
     const gym = TestConstants.mockGym;
     const spy = spyOn(TestBed.get(HttpClient), 'get').and.returnValue(of([]));
     commentService.getCommentsByGym(gym, 1, 10);
-    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.COMMENTS}/by_gym/${gym.id}/page/1/size/10`, {});
+    expect(spy).toHaveBeenCalledWith(`${CONSTANTS.BASE_URL}${CONSTANTS.COMMENTS}/gym/${gym.id}/page/1/size/10`, {});
   });
 
   it('should get my comments', () => {
